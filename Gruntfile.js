@@ -1,0 +1,49 @@
+module.exports = function(grunt) {
+
+  // Project configuration.
+  grunt.initConfig({
+    pkg     : grunt.file.readJSON('package.json') ,
+
+    haml  : {
+      one  : {
+        files   : {
+          'index.html' : 'source/haml/index.haml'
+        }
+      }
+    } ,
+
+    watch : {
+      coffee : {
+        files : 'source/coffee/**/*.coffee' ,
+        tasks : ['coffee']
+      } ,
+
+      haml  : {
+        files : 'source/haml/**/*.haml' ,
+        tasks : ['haml']
+      }
+    } ,
+
+    coffee  : {
+      options : {
+        bare : true
+      } ,
+
+      build : {
+        expand  : true                  , 
+        cwd     : 'source/coffee'              ,
+        src     : '**/*.coffee'  ,
+        dest    : 'src'                 ,
+        ext     : '.js'
+      }
+    }
+
+  });
+
+  grunt.loadNpmTasks( 'grunt-haml' );
+  grunt.loadNpmTasks( 'grunt-contrib-coffee' );
+  grunt.loadNpmTasks( 'grunt-contrib-watch' );
+  
+  grunt.registerTask( 'default', ['haml' , 'coffee' , 'watch'] );
+
+};
