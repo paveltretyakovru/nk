@@ -1,0 +1,32 @@
+{
+  "name": "uk",
+  "version": "0.0.0",
+  "authors": [
+    "Tretyakov Pavel <tretyakovpavel.ru@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "marionette": "~2.4.2",
+    "requirejs": "~2.1.18",
+    "jasmine": "~2.3.4",
+    "marionette.component": "~0.0.1",
+    "backbone-deep-model": "~0.10.4",
+    "rivets-backbone-adapter": "~2.2.0",
+    "jasmine-jquery": "~2.1.0",
+    "jasmine-sinon": "~0.4.0",
+    "pace": "~1.0.2",
+    "bootstrap": "~3.3.5",
+    "handlebars": "~3.0.3",
+    "backbone": "~1.2.1",
+    "requirejs-i18n": "~2.0.6",
+    "sightglass": "~0.2.4",
+    "rivets": "~0.8.1",
+    "requirejs-text": "~2.0.14",
+    "backbone-validation": "~0.11.5"
+  }
+}
