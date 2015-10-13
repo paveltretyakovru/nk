@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg     : grunt.file.readJSON('package.json') ,
 
     haml  : {
-      one  : {
+      dist  : {
         files   : {
           'index.html' : 'source/haml/index.haml'
         }
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.loadNpmTasks( 'grunt-haml' );
+  grunt.loadNpmTasks( 'grunt-haml2html' );
   grunt.loadNpmTasks( 'grunt-contrib-coffee' );
   grunt.loadNpmTasks( 'grunt-contrib-watch' );
   

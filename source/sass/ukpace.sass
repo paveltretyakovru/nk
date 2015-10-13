@@ -1,0 +1,31 @@
+@import compass/css3/transform
+@import compass/css3/transition
+@import compass/css3/user-interface
+
+$progresscolor : #ebb22f
+
+.pace
+    +transform  ( translate3d( 0, 50px, 0 ) )
+    +transition ( transform 0.5s easy-out )
+    +user-select( none )
+
+    -webkit-pointer-events: none
+    pointer-events        : none
+    position              : fixed
+    bottom                : 0
+    left                  : 0
+    width                 : 100%
+
+.pace.pace-active
+    +transform( translate3d( 0px, 0px, 0px ) )
+
+.pace .pace-progress
+    display         : block
+    position        : fixed
+    z-index         : 2000
+    bottom          : 0
+    right           : 100%
+    width           : 100%
+    height          : 10px
+    background      : $progresscolor
+    pointer-events  : none

@@ -1,12 +1,20 @@
-!!! 5
-!!! Stricts
-!!! XML
 
-%html
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
 	%head
+		%meta{ :"http-equiv" => "content-type" , :content =>"text/html; charset=utf-8" }
+
 		%title Index fale
+		%link{ :rel=>"stylesheet" , :href=>"src/css/ukpace.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/style.css" }
+		%link{ :rel=>"stylesheet" , :href=>"bower_components/flexboxgrid/css/flexboxgrid.min.css" }
 	%body
-		%h1 Fucking suckers!
+		#loader.row.around-xs
+			.col-xs-2
+				.logo
+					.logo-back
+						%img{ :src => "src/images/back_loader_logo.svg" }
+					.logo-front
+						%img{ :src => "src/images/front_loader_logo.svg" }
 
 		%script(type="text/javascript" src="bower_components/requirejs/require.js")
 		%script(type="text/javascript" src="src/js/app/config.js")
