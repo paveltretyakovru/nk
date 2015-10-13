@@ -1,0 +1,66 @@
+
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+	%head
+		%meta{ :"http-equiv" => "content-type" , :content =>"text/html; charset=utf-8" }
+
+		%title Index fale
+		%link{ :rel=>"stylesheet" , :href=>"src/css/reset.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/ukpace.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/style.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/lounges.css" }
+		%link{ :rel=>"stylesheet" , :href=>"bower_components/flexboxgrid/css/flexboxgrid.min.css" }
+	%body
+		%main
+			-# Call to action
+			%header
+				%img{ :src=>"src/images/logo.svg" , :alt=>"Уникальные Кальянные" , :height=>"40px" }
+				%nav
+					%a Войти
+					%a Зарегистрироваться
+					%img{ :src=>"src/images/menu.svg" , :height=>"40px" }
+			%section.content
+				%h1 Посетите наши лучшие уникальные места
+				%h3 Наша кальянная – первая в мире территория для курения со свободной оплатой и индивидуальным подходом к каждому гостю и гостье.
+				%button Открыть 
+
+			-# List of lounges
+			%section.instruments
+				%figure
+					%img{ :src=>"src/images/search.svg" , :alt=>"Поиск" , :height=>"16px" }
+					%figcapation Искать по названию
+				%figure
+					%img{ :src=>"src/images/map.svg" , :alt=>"Карта" , :height=>"16px" }
+					%figcapation Карта
+				%figure
+					%img{ :src=>"src/images/location.svg" , :alt=>"Выбрать город" , :height=>"16px" }
+					%figcapation По городу
+			%hr
+
+			-# List of lounges
+			%section.lounges
+				%article.lounge
+					%img{ :src=>"src/images/blazon.svg"}
+					%h4 «Резерв»
+					%small Тюмень
+				%article.lounge
+					%img{ :src=>"src/images/blazon.svg"}
+					%h4 «Резерв»
+					%small Тюмень
+				%article.lounge
+					%img{ :src=>"src/images/blazon.svg"}
+					%h4 «Резерв»
+					%small Тюмень
+				%article.lounge
+					%img{ :src=>"src/images/blazon.svg"}
+					%h4 «Резерв»
+					%small Тюмень
+				%article.lounge
+					%img{ :src=>"src/images/blazon.svg"}
+					%h4 «Резерв»
+					%small Тюмень
+
+		%script(type="text/javascript" src="bower_components/requirejs/require.js")
+		%script(type="text/javascript" src="src/js/app/config.js")
+		%script(type="text/javascript" src="src/js/app/start.js")
+
+
