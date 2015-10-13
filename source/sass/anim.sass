@@ -1,5 +1,6 @@
 @import "compass/css3/animation"
 @import "compass/css3/transform"
+@import "compass/css3/transition"
 
 =keyframes($name)
 	@-webkit-keyframes #{$name}
@@ -19,3 +20,28 @@
 +keyframes( spin_animation )
 	100%
 		+transform( rotate( 360deg ) )
+/* End spin classes */
+
+/* Start fadeout function */
+=fadeout( $selector , $time )
+	#{$selector}
+		+animation ( fadeout_animation $time ease-in-out forwards)
+
++keyframes( fadeout_animation )
+	from
+		opacity: 1
+	to
+		opacity: 0
+/* End fadeout function */
+
+/* Start fadein function */
+=fadein( $selector , $time )
+	#{$selector}
+		+animation ( fadein_animation $time ease-in-out forwards)
+
++keyframes( fadein_animation )
+	from
+		opacity: 0
+	to
+		opacity: 1
+/* End fadein function */

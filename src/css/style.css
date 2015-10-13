@@ -98,6 +98,75 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     transform: rotate(360deg);
   }
 }
+/* End spin classes */
+/* Start fadeout function */
+@-webkit-keyframes fadeout_animation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-moz-keyframes fadeout_animation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-ms-keyframes fadeout_animation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeout_animation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* End fadeout function */
+/* Start fadein function */
+@-webkit-keyframes fadein_animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein_animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadein_animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadein_animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* End fadein function */
 /* line 9, ../../source/sass/style.sass */
 * {
   box-sizing: border-box;
@@ -114,9 +183,26 @@ body {
   overflow: hidden;
 }
 
-/* line 16, ../../source/sass/anim.sass */
+/* ╨Ъ╤А╤Г╤В╨╕╨╝ ╨╗╤Г╤З╨╕ ╨╗╨╛╨│╨╛╤В╨╕╨┐╨░ */
+/* line 17, ../../source/sass/anim.sass */
 .loader-logo-back {
   -moz-animation: spin_animation 4s linear infinite;
   -webkit-animation: spin_animation 4s linear infinite;
   animation: spin_animation 4s linear infinite;
+}
+
+/* ╨б╨╛╨╖╨┤╨░╨╡╨╝ ╨┐╤А╨╛╨┐╨░╨┤╨░╤О╤Й╨╕╨╣ ╨║╨╗╨░╤Б╤Б */
+/* line 27, ../../source/sass/anim.sass */
+.fadeout {
+  -moz-animation: fadeout_animation 1s ease-in-out forwards;
+  -webkit-animation: fadeout_animation 1s ease-in-out forwards;
+  animation: fadeout_animation 1s ease-in-out forwards;
+}
+
+/* ╨б╨╛╨╖╨┤╨░╨╡╨╝ ╨┐╨╛╤П╨▓╨╗╤П╤О╤Й╨╕╨╣╤Б╤П ╨║╨╗╨░╤Б╤Б */
+/* line 39, ../../source/sass/anim.sass */
+.fadein {
+  -moz-animation: fadein_animation 1s ease-in-out forwards;
+  -webkit-animation: fadein_animation 1s ease-in-out forwards;
+  animation: fadein_animation 1s ease-in-out forwards;
 }
