@@ -3,20 +3,17 @@
 	%head
 		%meta{ :"http-equiv" => "content-type" , :content =>"text/html; charset=utf-8" }
 
-		%title Index fale
+		%title Уникальные кальянные
 		%link{ :rel=>"stylesheet" , :href=>"src/css/ukpace.css" }
 		%link{ :rel=>"stylesheet" , :href=>"src/css/style.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/lounges.css" }
 		%link{ :rel=>"stylesheet" , :href=>"bower_components/flexboxgrid/css/flexboxgrid.min.css" }
 	%body
-		#test-block
-
-		#loader.row
-			.col-xs
-				.loader-logo
-					%img.loader-logo-back{ :src => "src/images/back_loader_logo.svg" }
-					%img.loader-logo-front{ :src => "src/images/front_loader_logo.svg" }
+		#loader.row.fadein-loader
+			%img.loader-logo-back{ :src => "src/images/back_loader_logo.svg" }
+			%img.loader-logo-front{ :src => "src/images/front_loader_logo.svg" }
 		
-		#region-content.fadeout
+		%main#region-content.fadeout
 
 		%script(type="text/javascript" src="bower_components/requirejs/require.js")
 		%script(type="text/javascript" src="src/js/app/config.js")

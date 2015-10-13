@@ -20,6 +20,7 @@ require(['app/app', 'pace'], function(app, pace) {
   window.app = app || false;
   loader = document.getElementById('loader');
   loader.addEventListener('webkitAnimationEnd', function(event) {
+    console.log('Animation end!!!!');
     if (loader.style.display !== 'none') {
       loader.style.display = 'none';
     }

@@ -30,7 +30,6 @@ define (require) ->
 	app.addInitializer ( options ) -> return @preload()
 
 	app.regionContent.on 'show' , ->
-		console.log 'TEeeeeeeest'
 		removeClass app.regionContent.el , 'fadeout'
 		addClass app.regionContent.el , 'fadein'
 

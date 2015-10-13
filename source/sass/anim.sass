@@ -26,6 +26,7 @@
 =fadeout( $selector , $time )
 	#{$selector}
 		+animation ( fadeout_animation $time ease-in-out forwards)
+		+animation-fill-mode ( 'forwards' )
 
 +keyframes( fadeout_animation )
 	from
@@ -38,6 +39,7 @@
 =fadein( $selector , $time )
 	#{$selector}
 		+animation ( fadein_animation $time ease-in-out forwards)
+		+animation-fill-mode ( 'forwards' )
 
 +keyframes( fadein_animation )
 	from

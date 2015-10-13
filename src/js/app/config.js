@@ -16,6 +16,7 @@ requirejs.config({
     'rivets': 'bower_components/rivets/dist/rivets',
     'sightglass': 'bower_components/sightglass/index',
     'backbone-validation': 'bower_components/backbone-validation/dist/backbone-validation-min',
+    'gsap': 'bower_components/gsap/src/minified/TweenMax.min',
     'app': 'src/js/app',
     'nls': 'src/js/app/nls',
     'utils': 'src/js/app/utils',

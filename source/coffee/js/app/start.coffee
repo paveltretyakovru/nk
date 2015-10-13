@@ -21,6 +21,7 @@ require [ 'app/app' , 'pace' ] , ( app , pace ) ->
 	loader 		= document.getElementById 'loader'
 
 	loader.addEventListener 'webkitAnimationEnd', ( event ) ->
+		console.log 'Animation end!!!!'
 		loader.style.display = 'none' if loader.style.display != 'none'
 		app.start()
 	, false

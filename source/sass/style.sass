@@ -14,13 +14,32 @@ body
 	max-width : 100%
 
 #loader
-	overflow : hidden
+	position	: absolute
+	overflow 	: hidden
+	width 		: 164px
+	height		: 159px
+	left		: 45%
+	top			: 40%
+
+	img
+		position: inherit
+
+.loader-logo-back
+	width : 100%
+	height: 100%
+
+.loader-logo-front
+	left 	: 35
+	top 	: 35
 
 /* Крутим лучи логотипа */
 +spin( '.loader-logo-back' , 4s )
 
 /* Создаем пропадающий класс */
-+fadeout( '.fadeout' , 1s )
++fadeout( '.fadeout' , 3s )
 
 /* Создаем появляющийся класс */
-+fadein( '.fadein' , 1s )
++fadein( '.fadein' , 2s )
+
+/* Появления лоадера */
++fadein( '.fadein-loader' , 1s )

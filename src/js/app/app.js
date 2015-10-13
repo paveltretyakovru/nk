@@ -33,7 +33,6 @@ define(function(require) {
     return this.preload();
   });
   app.regionContent.on('show', function() {
-    console.log('TEeeeeeeest');
     removeClass(app.regionContent.el, 'fadeout');
     return addClass(app.regionContent.el, 'fadein');
   });
