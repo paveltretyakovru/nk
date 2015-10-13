@@ -1,8 +1,15 @@
-@import compass/css3
-@import compass/css3/transition
+@import "compass/css3"
+@import "compass/css3/transition"
+@import "compass/reset/utilities"
+
++global-reset()
+
+*
+	box-sizing : border-box
 
 body
 	background	: #282C34
+	max-width : 100%
 
 #loader
-	
+	overflow : hidden
