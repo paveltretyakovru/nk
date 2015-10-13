@@ -1,0 +1,21 @@
+@import "compass/css3/animation"
+@import "compass/css3/transform"
+
+=keyframes($name)
+	@-webkit-keyframes #{$name}
+		@content
+	@-moz-keyframes #{$name}
+		@content
+	@-ms-keyframes #{$name}
+		@content
+	@keyframes #{$name}
+		@content
+
+/* Крутим элементы (селектор , секунды (4sec) ) */
+=spin($selector , $time)
+	#{$selector}
+		+animation ( spin_animation $time linear infinite )
+
++keyframes( spin_animation )
+	100%
+		+transform( rotate( 360deg ) )
