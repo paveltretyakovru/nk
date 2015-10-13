@@ -69,30 +69,30 @@ button:after {
   background-image: url(../images/goto.svg);
 }
 
-/* line 61, ../../source/sass/lounges.sass */
+/* line 74, ../../source/sass/lounges.sass */
 main h1 {
   width: 75%;
   margin: 96px 0 32px 0;
 }
 
-/* line 65, ../../source/sass/lounges.sass */
+/* line 78, ../../source/sass/lounges.sass */
 main h3 {
   width: 30%;
   margin-bottom: 32px;
 }
 
-/* line 69, ../../source/sass/lounges.sass */
+/* line 82, ../../source/sass/lounges.sass */
 main button {
   margin-bottom: 64px;
 }
 
-/* line 72, ../../source/sass/lounges.sass */
+/* line 85, ../../source/sass/lounges.sass */
 figure:first-child {
   float: left;
   margin: 0;
 }
 
-/* line 76, ../../source/sass/lounges.sass */
+/* line 89, ../../source/sass/lounges.sass */
 figure {
   display: inline-block;
   float: right;
@@ -100,26 +100,26 @@ figure {
   height: 16px;
 }
 
-/* line 82, ../../source/sass/lounges.sass */
+/* line 95, ../../source/sass/lounges.sass */
 figcapation {
   font-size: 18px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
 
-/* line 86, ../../source/sass/lounges.sass */
+/* line 99, ../../source/sass/lounges.sass */
 figure img {
   margin-right: 8px;
 }
 
-/* line 89, ../../source/sass/lounges.sass */
+/* line 102, ../../source/sass/lounges.sass */
 section.instruments {
   width: 100%;
   height: 16px;
   margin: 32px 0 16px 0;
 }
 
-/* line 93, ../../source/sass/lounges.sass */
+/* line 106, ../../source/sass/lounges.sass */
 hr {
   margin-bottom: 32px;
   width: 100%;
@@ -129,26 +129,33 @@ hr {
   opacity: 0.4;
 }
 
-/* line 100, ../../source/sass/lounges.sass */
+/* line 113, ../../source/sass/lounges.sass */
 section.lounges {
   text-align: justify;
 }
 
-/* line 105, ../../source/sass/lounges.sass */
+/* line 118, ../../source/sass/lounges.sass */
 article.lounge {
   display: inline-block;
   position: relative;
   width: 280px;
-  color: black;
-  text-align: center;
   border-radius: 8px;
-  background: url(../images/venzel-corner.svg) left 16px top 16px no-repeat, url(../images/venzel-corner.svg) right 16px top 16px no-repeat, url(../images/venzel-corner.svg) left 16px bottom 16px no-repeat, url(../images/venzel-corner.svg) right 16px bottom 16px no-repeat, linear-gradient(#ffffff, #e0e8ee);
-  padding: 40px;
+  overflow: hidden;
   margin-bottom: 20px;
 }
 
-/* line 116, ../../source/sass/lounges.sass */
-article.lounge:before {
+/* line 126, ../../source/sass/lounges.sass */
+.frontside {
+  position: relative;
+  color: black;
+  text-align: center;
+  background: url(../images/venzel-corner.svg) left 16px top 16px no-repeat, url(../images/venzel-corner.svg) right 16px top 16px no-repeat, url(../images/venzel-corner.svg) left 16px bottom 16px no-repeat, url(../images/venzel-corner.svg) right 16px bottom 16px no-repeat, linear-gradient(#ffffff, #e0e8ee);
+  padding: 40px;
+  z-index: 50;
+}
+
+/* line 134, ../../source/sass/lounges.sass */
+.frontside:before {
   content: "";
   display: block;
   position: absolute;
@@ -160,8 +167,8 @@ article.lounge:before {
   border-radius: 4px;
 }
 
-/* line 127, ../../source/sass/lounges.sass */
-article.lounge:after {
+/* line 145, ../../source/sass/lounges.sass */
+.frontside:after {
   content: "";
   display: block;
   position: absolute;
@@ -173,12 +180,24 @@ article.lounge:after {
   border-radius: 2px;
 }
 
-/* line 138, ../../source/sass/lounges.sass */
-article.lounge img {
+/* line 156, ../../source/sass/lounges.sass */
+.frontside img {
   margin-bottom: 48px;
 }
 
-/* line 141, ../../source/sass/lounges.sass */
-article.lounge h4 {
+/* line 159, ../../source/sass/lounges.sass */
+.frontside h4 {
   margin-bottom: 8px;
+}
+
+/* line 162, ../../source/sass/lounges.sass */
+.backside {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: red;
+  z-index: 20;
 }
