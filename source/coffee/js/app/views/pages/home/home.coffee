@@ -26,26 +26,25 @@ define ( require ) ->
 			CSSPlugin.defaultTransformPerspective = 1000;
 
 			elements = @el.querySelectorAll '.lounge'
-			console.log elements
 			
-			Array.prototype.forEach.call elements , ( el , i ) ->
-				element = el
+			Array.prototype.forEach.call elements , ( el , i ) ->				
 
 				el.addEventListener 'click' , ->
-					console.log 'test click'
 
-					#frontCard 	= el
-					backCard	= el.querySelector '.lounge-back'
+					backCard	= el.querySelector '.backside'
+					frontCard 	= el.querySelector '.frontside'
+					
+					TweenMax.set backCard , rotationY : -180
 
-					tl = new TimelineMax paused : true
-
+					tl = new TimelineMax 
+						paused 		: true
 					tl
-					#.to element , 1  , rotationY : 180
-					.to backCard  , 1  , rotationY : 0 , 0 
-					.to element   , .5 , z : 50 , 0
-					.to element   , .5 , z : 0  , .5
+					.to frontCard 	, 1 	, rotationY : 180		, 0
+					.to backCard	, 1 	, rotationY : 0			, 0
+					.to el			, .5	, z 		: 200		, 0	
+					#.to el 			, .5	, z 		: 0			, .5
 
-					element.animation = tl
+					el.animation = tl
 
-					element.animation.play()
+					el.animation.play()
 				, false

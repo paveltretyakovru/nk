@@ -35,7 +35,8 @@ require(['app/app', 'pace'], function(app, pace) {
     if (app.debug) {
       console.log('Pace done');
     }
-    return addClass(loader, 'fadeout');
+    addClass(loader, 'fadeout');
+    return removeClass(loader, 'fadein-loader');
   });
   return pace.start({
     document: false

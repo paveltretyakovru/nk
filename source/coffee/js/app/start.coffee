@@ -33,7 +33,8 @@ require [ 'app/app' , 'pace' ] , ( app , pace ) ->
 	# Закончена загрузка файлов приложения
 	pace.on 'done'	, ->
 		console.log 'Pace done' if app.debug
-		addClass loader , 'fadeout'
+		addClass 	loader , 'fadeout'
+		removeClass loader , 'fadein-loader'
 
 	pace.start
 		document : false

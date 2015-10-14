@@ -27,29 +27,46 @@
       </section>
       <hr>
       <section class='lounges'>
+        
         <article class='lounge'>
-          <img src='src/images/blazon.svg'>
-          <h4>«Резерв»</h4>
-          <small>Тюмень</small>
+          <div class='frontside'>
+            <img src='src/images/blazon.svg'>
+            <h4>«Резерв»</h4>
+            <small>Тюмень</small>
+          </div>
+          <div class='backside'> HELLO WORLD! </div>
+        </article>
+        
+        <article class='lounge'>
+          <div class='frontside'>
+            <img src='src/images/blazon.svg'>
+            <h4>«Резерв»</h4>
+            <small>Тюмень</small>
+          </div>
+          <div class='backside'></div>
         </article>
         <article class='lounge'>
-          <img src='src/images/blazon.svg'>
-          <h4>«Резерв»</h4>
-          <small>Тюмень</small>
+          <div class='frontside'>
+            <img src='src/images/blazon.svg'>
+            <h4>«Резерв»</h4>
+            <small>Тюмень</small>
+          </div>
+          <div class='backside'></div>
         </article>
         <article class='lounge'>
-          <img src='src/images/blazon.svg'>
-          <h4>«Резерв»</h4>
-          <small>Тюмень</small>
+          <div class='frontside'>
+            <img src='src/images/blazon.svg'>
+            <h4>«Резерв»</h4>
+            <small>Тюмень</small>
+          </div>
+          <div class='backside'></div>
         </article>
         <article class='lounge'>
-          <img src='src/images/blazon.svg'>
-          <h4>«Резерв»</h4>
-          <small>Тюмень</small>
-        </article>
-        <article class='lounge'>
-          <img src='src/images/blazon.svg'>
-          <h4>«Резерв»</h4>
-          <small>Тюмень</small>
+          <div class='frontside'>
+            <img src='src/images/blazon.svg'>
+            <h4>«Резерв»</h4>
+            <small>Тюмень</small>
+          </div>
+          <div class='backside'></div>
         </article>
       </section>

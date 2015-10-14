@@ -23,26 +23,26 @@ define(function(require) {
       var elements;
       CSSPlugin.defaultTransformPerspective = 1000;
       elements = this.el.querySelectorAll('.lounge');
-      console.log(elements);
       return Array.prototype.forEach.call(elements, function(el, i) {
-        var element;
-        element = el;
         return el.addEventListener('click', function() {
-          var backCard, tl;
-          console.log('test click');
-          backCard = el.querySelector('.lounge-back');
+          var backCard, frontCard, tl;
+          backCard = el.querySelector('.backside');
+          frontCard = el.querySelector('.frontside');
+          TweenMax.set(backCard, {
+            rotationY: -180
+          });
           tl = new TimelineMax({
             paused: true
           });
-          tl.to(backCard, 1, {
+          tl.to(frontCard, 1, {
+            rotationY: 180
+          }, 0).to(backCard, 1, {
             rotationY: 0
-          }, 0).to(element, .5, {
-            z: 50
-          }, 0).to(element, .5, {
-            z: 0
-          }, .5);
-          element.animation = tl;
-          return element.animation.play();
+          }, 0).to(el, .5, {
+            z: 200
+          }, 0);
+          el.animation = tl;
+          return el.animation.play();
         }, false);
       });
     }
