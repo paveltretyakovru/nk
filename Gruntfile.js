@@ -13,6 +13,11 @@
 //'about.html' : 'source/haml/about.haml'   ,
 //'login.html' : 'source/haml/login.haml'   ,
 
+//'index.html' : 'source/haml/index.haml'   , 
+//'places.html': 'source/haml/places.haml'  ,
+//'about.html' : 'source/haml/about.haml'   ,
+//'login.html' : 'source/haml/login.haml'   ,
+
 module.exports = function(grunt) {
 
   // Project configuration.
