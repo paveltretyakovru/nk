@@ -11,7 +11,7 @@ module.exports = function(grunt) {
           'places.html': 'source/haml/places.haml' ,
           'about.html' : 'source/haml/about.haml' ,
           'login.html' : 'source/haml/login.haml' ,
-          'login.html' : 'source/haml/menu.haml'
+          'menu.html' : 'source/haml/menu.haml'
         }
       }
     } ,
