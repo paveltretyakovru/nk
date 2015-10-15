@@ -30,9 +30,11 @@ define ( require ) ->
 
 			# Установка изначальных значений
 			TweenMax.set registerSide , rotationX : -180
+			###
 			TweenMax.set loginSide ,
 				filter 			: "blur(0.5px)"
 				webkitFilter 	: "blur(0.5px)"
+			###
 			
 			# Анимация выезда блока с авторизацией
 			@showBlockLogin = TweenMax.to sectionElement , .3 , right : '0%'
@@ -44,6 +46,8 @@ define ( require ) ->
 			@showRegisterSide
 			.to loginSide 	, 0.5 , rotationX : 180	, 0
 			.to registerSide, 0.5 , rotationX : 0	, 0
+			
+			###
 			.to loginSide 	, 0.5,				
 				webkitFilter 	: "blur(0)"
 				ease 			: "{Power4.easeOut}"
@@ -53,6 +57,7 @@ define ( require ) ->
 				ease 			: "{Power4.easeOut}"
 				filter 			: "blur(0)"
 			, 0
+			###
 
 		showBackLogin : ->
 			@showRegisterSide.reverse()

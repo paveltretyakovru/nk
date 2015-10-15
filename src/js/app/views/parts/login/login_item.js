@@ -27,10 +27,12 @@ define(function(require) {
       loginSide = this.el.querySelector('.login-side');
       TweenMax.set(registerSide, {
         rotationX: -180
-      });
-      TweenMax.set(loginSide, {
-        filter: "blur(0.5px)",
-        webkitFilter: "blur(0.5px)"
+
+        /*
+        			TweenMax.set loginSide ,
+        				filter 			: "blur(0.5px)"
+        				webkitFilter 	: "blur(0.5px)"
+         */
       });
       this.showBlockLogin = TweenMax.to(sectionElement, .3, {
         right: '0%'
@@ -42,15 +44,19 @@ define(function(require) {
         rotationX: 180
       }, 0).to(registerSide, 0.5, {
         rotationX: 0
-      }, 0).to(loginSide, 0.5, {
-        webkitFilter: "blur(0)",
-        ease: "{Power4.easeOut}",
-        filter: "blur(0)"
-      }).to(registerSide, 0.5, {
-        webkitFilter: "blur(0)",
-        ease: "{Power4.easeOut}",
-        filter: "blur(0)"
       }, 0);
+
+      /*
+      			.to loginSide 	, 0.5,				
+      				webkitFilter 	: "blur(0)"
+      				ease 			: "{Power4.easeOut}"
+      				filter 			: "blur(0)"
+      			.to registerSide 	, 0.5,
+      				webkitFilter 	: "blur(0)"
+      				ease 			: "{Power4.easeOut}"
+      				filter 			: "blur(0)"
+      			, 0
+       */
     },
     showBackLogin: function() {
       return this.showRegisterSide.reverse();
