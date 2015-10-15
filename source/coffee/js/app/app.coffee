@@ -1,10 +1,11 @@
 define (require) ->
 	'use strict'
 
-	Marionette = require 'marionette'
-	Routes     = require 'app/routes'
-	Desktop    = require 'controllers/desktop'
-	Handlebars = require 'handlebars'
+	Marionette 	= require 'marionette'
+	Routes     	= require 'app/routes'
+	Desktop    	= require 'controllers/desktop'
+	Handlebars 	= require 'handlebars'
+	Listener 	= require 'utils/listener'
 
 	require 'system/helpers'
 	require 'rivets'
@@ -16,9 +17,13 @@ define (require) ->
 		regions :
 			regionContent	: '#region-content'
 			regionHeader	: '#region-header'
+			regionLogin		: '#region-login'
 
 		initialize : ->
-			console.log 'app/app : initializing app' if @debug				
+			console.log 'app/app : initializing app' if @debug
+
+			@utils 	= {}
+			@utils.Listener = new Listener {}
 
 		preload	: ->
 			console.log 'app/app : preload function ' if @debug

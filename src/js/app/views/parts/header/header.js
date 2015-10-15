@@ -3,6 +3,7 @@ define(function(require) {
   var Marionette, Template;
   Marionette = require('marionette');
   Template = require('text!tmpls/parts/header/header.html');
+  require('gsap');
   return Marionette.ItemView.extend({
     debug: true,
     template: Template,
@@ -13,8 +14,33 @@ define(function(require) {
     events: {
       'click @ui.linkLogin': 'showLogin'
     },
+    initialize: function() {
+      return this.on('render', this.afterRender, this);
+    },
+    afterRender: function() {
+      this.scaleBody = document.getElementById('scale-body');
+      this.scaleClass = 'scale-element';
+      this.scaleAnimation = TweenMax.to(this.scaleBody, 1, {
+        className: this.scaleClass
+      }).paused(true);
+      return app.utils.Listener.setClosest({
+        id: 'clossetOutLogin',
+        title: 'Клик вне логин формы',
+        selector: this.scaleBody,
+        callbackOnElement: (function(_this) {
+          return function() {
+            app.regionLogin.currentView.trigger('hideLogin');
+            return _this.scaleAnimation.reverse();
+          };
+        })(this)
+      });
+    },
     showLogin: function() {
-      return console.log('views/parts/header/header.showLogin : debug');
+      if (this.debug) {
+        console.log('views/parts/header/header.showLogin : debug');
+      }
+      app.regionLogin.currentView.trigger('showLogin');
+      return this.scaleAnimation.play();
     }
   });
 });

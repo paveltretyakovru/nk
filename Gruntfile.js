@@ -71,10 +71,15 @@ module.exports = function(grunt) {
 
   grunt.event.on('watch', function(action, filepath) {
     if(filepath.indexOf('.haml') === -1) return;
+
+    var proto       = ( filepath.indexOf('design_prototypes') !== -1 ) ? true : false
+    var replace     = (proto) ? 'source\\haml\\design_prototypes\\' : 'source\\haml'
+    var root        = (proto) ? '' : 'src'
+
     
     var file        = {};    
-    var destfile    = filepath.replace('.haml','.html');
-    destfile        = destfile.replace('source\\haml' , 'src');
+    var destfile    = filepath.replace( '.haml','.html' );
+    destfile        = destfile.replace(  replace , root );
     file[destfile]  = filepath;
 
     console.log('Compile file ' + filepath + ' to ' + destfile );

@@ -1,10 +1,11 @@
 define(function(require) {
   'use strict';
-  var Desktop, Handlebars, Marionette, Routes, app;
+  var Desktop, Handlebars, Listener, Marionette, Routes, app;
   Marionette = require('marionette');
   Routes = require('app/routes');
   Desktop = require('controllers/desktop');
   Handlebars = require('handlebars');
+  Listener = require('utils/listener');
   require('system/helpers');
   require('rivets');
   require('backbone.rivets');
@@ -12,12 +13,15 @@ define(function(require) {
     debug: true,
     regions: {
       regionContent: '#region-content',
-      regionHeader: '#region-header'
+      regionHeader: '#region-header',
+      regionLogin: '#region-login'
     },
     initialize: function() {
       if (this.debug) {
-        return console.log('app/app : initializing app');
+        console.log('app/app : initializing app');
       }
+      this.utils = {};
+      return this.utils.Listener = new Listener({});
     },
     preload: function() {
       if (this.debug) {

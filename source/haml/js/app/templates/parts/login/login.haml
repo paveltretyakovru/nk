@@ -1,0 +1,20 @@
+%section.login.backside
+	%h2 Регистрация
+	%h3 
+		Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта — 		
+	%form{:action => "", :method => "get"}
+		%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
+		%input{:type => "text", :name => "input", :placeholder => "Пароль"}
+		%button{:type=>"sumbit", :name=>"sumbit"} Войти
+	%a Вы забыли пароль?
+
+%section.login.frontside
+	%h2 Войти
+	%h3
+		Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
+		%a.js-link-registrate{ :href => '#' } зарегистрируйтесь.
+	%form{:action => "", :method => "get"}
+		%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
+		%input{:type => "text", :name => "input", :placeholder => "Пароль"}
+		%button{:type=>"sumbit", :name=>"sumbit"} Войти
+	%a Вы забыли пароль?
