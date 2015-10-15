@@ -2,6 +2,7 @@
 +global-reset()
 
 @import "compass/css3"
+@import "compass/css3/transform"
 
 /* Своя библиотека анимации */
 @import "anim"
@@ -11,7 +12,8 @@
 
 body
 	background	: #282C34
-	max-width : 100%
+	max-width 	: 100%
+	overflow-x 	: hidden
 
 #loader
 	position	: absolute
@@ -120,3 +122,5 @@ $color_gray_light	: #b3b0a1
 .about-desc
 	background-color: $color_gray
 	padding 		: 65px
+
+/* REGIONS */

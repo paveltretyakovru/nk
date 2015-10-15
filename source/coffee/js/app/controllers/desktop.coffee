@@ -3,6 +3,7 @@ define ( require ) ->
 
 	Marionette 	= require 'marionette'
 	HeaderView	= require 'views/parts/header/header'
+	LoginView	= require 'views/parts/login/login_item'
 
 	Pages =
 		Home	: require 'views/pages/home/home'
@@ -20,9 +21,12 @@ define ( require ) ->
 
 			Page 	= new Pages[ args.shift() ] args
 			Header 	= new HeaderView()
+			Login 	= new LoginView()
+
 
 			app.regionContent.show Page
 			app.regionHeader.show Header
+			app.regionLogin.show Login
 
 
 		Home 	: -> @.run 'Home'
