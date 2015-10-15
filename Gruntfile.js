@@ -1,8 +1,3 @@
-//'index.html' : 'source/haml/index.haml'   , 
-//'places.html': 'source/haml/places.haml'  ,
-//'about.html' : 'source/haml/about.haml'   ,
-//'login.html' : 'source/haml/login.haml'   ,
-
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -13,7 +8,7 @@ module.exports = function(grunt) {
 
       dist  : {
         files   : [
-          { expand: true, cwd:'src', src: 'source/haml/**/*.haml', dest: 'src/js', ext : '.html' }
+          { expand: true, cwd:'src', src: 'source/haml/**/*.haml', dest: 'src', ext : '.html' }
         ]
       } ,
 
@@ -56,18 +51,14 @@ module.exports = function(grunt) {
 
   grunt.event.on('watch', function(action, filepath) {
     if(filepath.indexOf('.haml') === -1) return;
-    var file        = {};
-
-    console.log('destfile before' , destfile , filepath )
     
+    var file        = {};    
     var destfile    = filepath.replace('.haml','.html');
-
-    destfile        = destfile.replace('source\\haml' , 'src\\js');
-
-    console.log( 'TEST: ' , destfile , filepath );
-
+    destfile        = destfile.replace('source\\haml' , 'src');
     file[destfile]  = filepath;
 
+    console.log('Compile file ' + filepath + ' to ' + destfile );
+    
     grunt.config('haml.watch.files', file);
   });
 
