@@ -7,15 +7,17 @@ define ( require ) ->
 	require 'gsap'
 
 	Marionette.ItemView.extend
-		debug		: true
-		template 	: Template
+		debugAnimation 	: false
+		debug			: true
+		template 		: Template
 
 		ui 	:
 			'linkRegistration'	: '.js-link-registration'
 			'linkLogin'			: '.js-link-login'
 
 		events 		: 
-			'click @ui.linkLogin'	: 'showLogin'
+			'click @ui.linkLogin'		: 'showLogin'
+			'click @ui.linkRegistration': 'showRegistration'
 
 		initialize 	: ->
 			# Events
@@ -33,13 +35,22 @@ define ( require ) ->
 				id 					: 'clossetOutLogin'
 				title 				: 'Клик вне логин формы'
 				selector 			: @scaleBody
+				
 				# Если клик произошел на элемент
 				callbackOnElement 	: =>					
+					console.log 'scaleAnimation before' , @scaleAnimation.reversed()
+					
 					app.regionLogin.currentView.trigger 'hideLogin'
 					@scaleAnimation.reverse()
 
+					console.log 'scaleAnimation after' , @scaleAnimation.reversed()
+
 		showLogin	: ->
 			console.log 'views/parts/header/header.showLogin : debug' if @debug
+			
 			app.regionLogin.currentView.trigger 'showLogin'
 			@scaleAnimation.play()
-			
+
+		showRegistration : ->			
+			app.regionLogin.currentView.trigger 'showLogin'			
+			@scaleAnimation.play()

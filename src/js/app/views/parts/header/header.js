@@ -5,6 +5,7 @@ define(function(require) {
   Template = require('text!tmpls/parts/header/header.html');
   require('gsap');
   return Marionette.ItemView.extend({
+    debugAnimation: false,
     debug: true,
     template: Template,
     ui: {
@@ -12,7 +13,8 @@ define(function(require) {
       'linkLogin': '.js-link-login'
     },
     events: {
-      'click @ui.linkLogin': 'showLogin'
+      'click @ui.linkLogin': 'showLogin',
+      'click @ui.linkRegistration': 'showRegistration'
     },
     initialize: function() {
       return this.on('render', this.afterRender, this);
@@ -29,8 +31,10 @@ define(function(require) {
         selector: this.scaleBody,
         callbackOnElement: (function(_this) {
           return function() {
+            console.log('scaleAnimation before', _this.scaleAnimation.reversed());
             app.regionLogin.currentView.trigger('hideLogin');
-            return _this.scaleAnimation.reverse();
+            _this.scaleAnimation.reverse();
+            return console.log('scaleAnimation after', _this.scaleAnimation.reversed());
           };
         })(this)
       });
@@ -39,6 +43,10 @@ define(function(require) {
       if (this.debug) {
         console.log('views/parts/header/header.showLogin : debug');
       }
+      app.regionLogin.currentView.trigger('showLogin');
+      return this.scaleAnimation.play();
+    },
+    showRegistration: function() {
       app.regionLogin.currentView.trigger('showLogin');
       return this.scaleAnimation.play();
     }

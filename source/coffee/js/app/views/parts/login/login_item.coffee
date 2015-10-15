@@ -7,8 +7,9 @@ define ( require ) ->
 	require 'gsap'
 
 	View = Marionette.ItemView.extend
-		debug 		: true
-		template 	: Template
+		debugAnimation	: true
+		debug 			: true
+		template 		: Template
 
 		ui :
 			'linkRegistrate' 	: '.js-link-registrate'
@@ -59,18 +60,20 @@ define ( require ) ->
 			, 0
 			###
 
+		# Возврат на формы входу с формы регистрации
 		showBackLogin : ->
 			@showRegisterSide.reverse()
 
-		showLogin : ->
-			@showBlockLogin.play()
+		# Выдвигает окно
+		showLogin : ->			
+			@showBlockLogin.play()			
 
-		hideLogin : ->
-			@showBlockLogin.reverse()
+		# Скрывает окно
+		hideLogin : ->			
+			@showBlockLogin.reverse()						
 
-		showRegistrate : ->
-			console.log 'Show registrate' if @debug		
-
+		# Поварачивает на сторону регистрации
+		showRegistrate : ->						
 			@showRegisterSide.play()
 
 	return View

@@ -5,6 +5,7 @@ define(function(require) {
   Template = require('text!tmpls/parts/login/login.html');
   require('gsap');
   View = Marionette.ItemView.extend({
+    debugAnimation: true,
     debug: true,
     template: Template,
     ui: {
@@ -68,9 +69,6 @@ define(function(require) {
       return this.showBlockLogin.reverse();
     },
     showRegistrate: function() {
-      if (this.debug) {
-        console.log('Show registrate');
-      }
       return this.showRegisterSide.play();
     }
   });
