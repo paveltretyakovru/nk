@@ -10,6 +10,7 @@ module.exports = function(grunt) {
           'index.html' : 'source/haml/index.haml' , 
           'places.html' : 'source/haml/places.haml' ,
           'login.html' : 'source/haml/login.haml' ,
+          'login.html' : 'source/haml/menu.haml'
         }
       }
     } ,
