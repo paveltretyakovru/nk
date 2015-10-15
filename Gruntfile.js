@@ -22,15 +22,6 @@ module.exports = function(grunt) {
     haml  : {
 
       dist  : {
-<<<<<<< HEAD
-        files   : {
-          'index.html' : 'source/haml/index.haml'   , 
-          'places.html': 'source/haml/places.haml' ,
-          'about.html' : 'source/haml/about.haml' ,
-          'login.html' : 'source/haml/login.haml' ,
-          'menu.html' : 'source/haml/menu.haml'
-        }
-=======
         files   : [
           { expand: true, cwd:'src', src: 'source/haml/**/*.haml', dest: 'src', ext : '.html' }
         ]
@@ -38,7 +29,6 @@ module.exports = function(grunt) {
 
       watch : {
         files : {}
->>>>>>> 8c271d187d79c44f223a593c78211f908f4602a6
       }
 
     } ,
@@ -76,10 +66,15 @@ module.exports = function(grunt) {
 
   grunt.event.on('watch', function(action, filepath) {
     if(filepath.indexOf('.haml') === -1) return;
+
+    var proto       = ( filepath.indexOf('design_prototypes') !== -1 ) ? true : false
+    var replace     = (proto) ? 'source\\haml\\design_prototypes\\' : 'source\\haml'
+    var root        = (proto) ? '' : 'src'
+
     
     var file        = {};    
-    var destfile    = filepath.replace('.haml','.html');
-    destfile        = destfile.replace('source\\haml' , 'src');
+    var destfile    = filepath.replace( '.haml','.html' );
+    destfile        = destfile.replace(  replace , root );
     file[destfile]  = filepath;
 
     console.log('Compile file ' + filepath + ' to ' + destfile );
