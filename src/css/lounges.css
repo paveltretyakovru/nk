@@ -10,30 +10,29 @@ body {
   color: white;
   font-family: "Open Sans Regular", sans-serif;
   font-weight: 300;
+  line-height: 16px;
 }
 
-/* line 22, ../../source/sass/lounges.sass */
-main {
+/* line 23, ../../source/sass/lounges.sass */
+.padding48 {
   padding: 48px;
 }
 
-/* line 25, ../../source/sass/lounges.sass */
-nav {
-  float: right;
-}
-
-/* line 28, ../../source/sass/lounges.sass */
+/* line 26, ../../source/sass/lounges.sass */
 h1 {
+  font-family: Bebas Neue;
+  font-weight: 300;
   font-size: 60px;
+  letter-spacing: 6px;
   line-height: 64px;
 }
 
-/* line 32, ../../source/sass/lounges.sass */
+/* line 33, ../../source/sass/lounges.sass */
 h2 {
   font-size: 48px;
 }
 
-/* line 35, ../../source/sass/lounges.sass */
+/* line 36, ../../source/sass/lounges.sass */
 h3 {
   font-family: Bebas Neue;
   font-weight: 300;
@@ -42,7 +41,7 @@ h3 {
   line-height: 24px;
 }
 
-/* line 42, ../../source/sass/lounges.sass */
+/* line 43, ../../source/sass/lounges.sass */
 h4 {
   font-size: 24px;
   line-height: 32px;
@@ -50,30 +49,30 @@ h4 {
   font-weight: 300;
 }
 
-/* line 48, ../../source/sass/lounges.sass */
+/* line 49, ../../source/sass/lounges.sass */
 h5 {
   font-size: 18px;
   font-family: Lora Regular;
   font-weight: 300;
 }
 
-/* line 53, ../../source/sass/lounges.sass */
+/* line 54, ../../source/sass/lounges.sass */
 h6 {
   font-size: 14px;
 }
 
-/* line 56, ../../source/sass/lounges.sass */
+/* line 57, ../../source/sass/lounges.sass */
 small {
   font-size: 12px;
 }
 
-/* line 59, ../../source/sass/lounges.sass */
+/* line 60, ../../source/sass/lounges.sass */
 p {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* line 63, ../../source/sass/lounges.sass */
+/* line 64, ../../source/sass/lounges.sass */
 input {
   position: relative;
   height: 48px;
@@ -87,7 +86,7 @@ input {
   font-size: 14px;
 }
 
-/* line 75, ../../source/sass/lounges.sass */
+/* line 76, ../../source/sass/lounges.sass */
 button {
   position: relative;
   height: 48px;
@@ -99,7 +98,7 @@ button {
   font-size: 14px;
 }
 
-/* line 85, ../../source/sass/lounges.sass */
+/* line 86, ../../source/sass/lounges.sass */
 button:after {
   content: "";
   width: 24px;
@@ -108,30 +107,30 @@ button:after {
   background-image: url(../images/goto.svg);
 }
 
-/* line 98, ../../source/sass/lounges.sass */
+/* line 95, ../../source/sass/lounges.sass */
 main h1 {
   width: 75%;
   margin: 96px 0 32px 0;
 }
 
-/* line 102, ../../source/sass/lounges.sass */
+/* line 99, ../../source/sass/lounges.sass */
 main h3 {
   width: 30%;
   margin-bottom: 32px;
 }
 
-/* line 106, ../../source/sass/lounges.sass */
+/* line 103, ../../source/sass/lounges.sass */
 main button {
   margin-bottom: 64px;
 }
 
-/* line 109, ../../source/sass/lounges.sass */
+/* line 106, ../../source/sass/lounges.sass */
 figure:first-child {
   float: left;
   margin: 0;
 }
 
-/* line 113, ../../source/sass/lounges.sass */
+/* line 110, ../../source/sass/lounges.sass */
 figure {
   display: inline-block;
   float: right;
@@ -139,26 +138,26 @@ figure {
   height: 16px;
 }
 
-/* line 119, ../../source/sass/lounges.sass */
+/* line 116, ../../source/sass/lounges.sass */
 figcapation {
   font-size: 18px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
 
-/* line 123, ../../source/sass/lounges.sass */
+/* line 120, ../../source/sass/lounges.sass */
 figure img {
   margin-right: 8px;
 }
 
-/* line 126, ../../source/sass/lounges.sass */
+/* line 123, ../../source/sass/lounges.sass */
 section.instruments {
   width: 100%;
   height: 16px;
   margin: 32px 0 16px 0;
 }
 
-/* line 130, ../../source/sass/lounges.sass */
+/* line 127, ../../source/sass/lounges.sass */
 hr {
   margin-bottom: 32px;
   width: 100%;
@@ -168,12 +167,12 @@ hr {
   opacity: 0.4;
 }
 
-/* line 137, ../../source/sass/lounges.sass */
+/* line 134, ../../source/sass/lounges.sass */
 section.lounges {
   text-align: justify;
 }
 
-/* line 142, ../../source/sass/lounges.sass */
+/* line 139, ../../source/sass/lounges.sass */
 article.lounge {
   display: inline-block;
   position: relative;
@@ -182,7 +181,7 @@ article.lounge {
   overflow: hidden;
   margin-bottom: 20px;
 }
-/* line 150, ../../source/sass/lounges.sass */
+/* line 147, ../../source/sass/lounges.sass */
 article.lounge .frontside {
   position: relative;
   color: black;
@@ -191,7 +190,7 @@ article.lounge .frontside {
   padding: 40px;
   z-index: 50;
 }
-/* line 158, ../../source/sass/lounges.sass */
+/* line 155, ../../source/sass/lounges.sass */
 article.lounge .frontside:before {
   content: "";
   display: block;
@@ -203,7 +202,7 @@ article.lounge .frontside:before {
   box-shadow: inset rgba(122, 195, 108, 0.5) 0 0 0 2px;
   border-radius: 4px;
 }
-/* line 169, ../../source/sass/lounges.sass */
+/* line 166, ../../source/sass/lounges.sass */
 article.lounge .frontside:after {
   content: "";
   display: block;
@@ -215,15 +214,15 @@ article.lounge .frontside:after {
   box-shadow: inset rgba(122, 195, 108, 0.25) 0 0 0 1px;
   border-radius: 2px;
 }
-/* line 180, ../../source/sass/lounges.sass */
+/* line 177, ../../source/sass/lounges.sass */
 article.lounge .frontside img {
   margin-bottom: 48px;
 }
-/* line 183, ../../source/sass/lounges.sass */
+/* line 180, ../../source/sass/lounges.sass */
 article.lounge .frontside h4 {
   margin-bottom: 8px;
 }
-/* line 186, ../../source/sass/lounges.sass */
+/* line 183, ../../source/sass/lounges.sass */
 article.lounge .backside {
   position: absolute;
   display: block;
@@ -235,14 +234,14 @@ article.lounge .backside {
   z-index: 20;
 }
 
-/* line 196, ../../source/sass/lounges.sass */
+/* line 193, ../../source/sass/lounges.sass */
 .frontside, .backside {
   -moz-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-/* line 200, ../../source/sass/lounges.sass */
+/* line 197, ../../source/sass/lounges.sass */
 section.login {
   position: absolute;
   top: 20%;
@@ -252,23 +251,23 @@ section.login {
   background: linear-gradient(to right top, #17191f, #272b33);
   z-index: 100;
 }
-/* line 209, ../../source/sass/lounges.sass */
+/* line 206, ../../source/sass/lounges.sass */
 section.login h2 {
   color: #EBB22F;
   margin-bottom: 16px;
 }
-/* line 213, ../../source/sass/lounges.sass */
+/* line 210, ../../source/sass/lounges.sass */
 section.login h3 {
   width: 50%;
   margin-bottom: 32px;
 }
-/* line 217, ../../source/sass/lounges.sass */
+/* line 214, ../../source/sass/lounges.sass */
 section.login input {
   margin-bottom: 40px;
   margin-right: 16px;
 }
 
-/* line 221, ../../source/sass/lounges.sass */
+/* line 218, ../../source/sass/lounges.sass */
 section.login:after {
   content: "";
   position: absolute;
@@ -279,7 +278,7 @@ section.login:after {
   background-image: url(../images/key.svg);
 }
 
-/* line 230, ../../source/sass/lounges.sass */
+/* line 227, ../../source/sass/lounges.sass */
 section.login:before {
   content: "";
   position: absolute;
@@ -290,7 +289,7 @@ section.login:before {
   box-shadow: inset rgba(255, 255, 255, 0.1) 0 0 0 1px;
 }
 
-/* line 239, ../../source/sass/lounges.sass */
+/* line 236, ../../source/sass/lounges.sass */
 .background-color-overlay {
   position: fixed;
   display: block;
@@ -304,7 +303,7 @@ section.login:before {
   background-blend-mode: soft-light;
 }
 
-/* line 252, ../../source/sass/lounges.sass */
+/* line 249, ../../source/sass/lounges.sass */
 .background-color-overlay {
   position: fixed;
   display: block;
@@ -317,7 +316,7 @@ section.login:before {
   opacity: 0.9;
 }
 
-/* line 263, ../../source/sass/lounges.sass */
+/* line 260, ../../source/sass/lounges.sass */
 .background-color-overlay:before {
   content: "";
   position: absolute;
@@ -331,12 +330,12 @@ section.login:before {
   opacity: 0.5;
 }
 
-/* line 276, ../../source/sass/lounges.sass */
+/* line 273, ../../source/sass/lounges.sass */
 body {
   perspective: 1000px;
 }
 
-/* line 279, ../../source/sass/lounges.sass */
+/* line 276, ../../source/sass/lounges.sass */
 .scale-element {
   width: 100%;
   height: 100%;
@@ -347,7 +346,7 @@ body {
   overflow: hidden;
 }
 
-/* line 289, ../../source/sass/lounges.sass */
+/* line 286, ../../source/sass/lounges.sass */
 .bg_testing {
   position: absolute;
   display: block;
@@ -360,7 +359,7 @@ body {
   background: white;
 }
 
-/* line 305, ../../source/sass/lounges.sass */
+/* line 302, ../../source/sass/lounges.sass */
 section.left_menu {
   display: inline-block;
   position: relative;
@@ -369,53 +368,53 @@ section.left_menu {
   height: 100%;
   z-index: 200;
 }
-/* line 313, ../../source/sass/lounges.sass */
+/* line 310, ../../source/sass/lounges.sass */
 section.left_menu img {
   margin-bottom: 64px;
 }
-/* line 315, ../../source/sass/lounges.sass */
+/* line 312, ../../source/sass/lounges.sass */
 section.left_menu h4 {
   margin-bottom: 8px;
 }
-/* line 317, ../../source/sass/lounges.sass */
+/* line 314, ../../source/sass/lounges.sass */
 section.left_menu p:first-of-type {
   margin-bottom: 48px;
 }
-/* line 319, ../../source/sass/lounges.sass */
+/* line 316, ../../source/sass/lounges.sass */
 section.left_menu h5 {
   margin-bottom: 4px;
 }
-/* line 321, ../../source/sass/lounges.sass */
+/* line 318, ../../source/sass/lounges.sass */
 section.left_menu p {
   margin-bottom: 24px;
 }
-/* line 323, ../../source/sass/lounges.sass */
+/* line 320, ../../source/sass/lounges.sass */
 section.left_menu a {
   color: #ECB72E;
 }
-/* line 326, ../../source/sass/lounges.sass */
+/* line 323, ../../source/sass/lounges.sass */
 section.left_menu footer {
   margin-top: 64px;
   line-height: 24px;
   text-align: left;
 }
-/* line 330, ../../source/sass/lounges.sass */
+/* line 327, ../../source/sass/lounges.sass */
 section.left_menu footer p {
   float: right;
   margin-bottom: 40px;
 }
-/* line 333, ../../source/sass/lounges.sass */
+/* line 330, ../../source/sass/lounges.sass */
 section.left_menu footer p:first-of-type {
   float: left;
   margin-bottom: 40px;
 }
-/* line 336, ../../source/sass/lounges.sass */
+/* line 333, ../../source/sass/lounges.sass */
 section.left_menu footer img {
   margin-bottom: -8px;
   margin-left: 4px;
 }
 
-/* line 341, ../../source/sass/lounges.sass */
+/* line 338, ../../source/sass/lounges.sass */
 section.right_menu {
   position: relative;
   float: right;
@@ -426,44 +425,237 @@ section.right_menu {
   box-shadow: 0 0 256px 64px rgba(0, 0, 0, 0.25);
   z-index: 200;
 }
-/* line 351, ../../source/sass/lounges.sass */
+/* line 349, ../../source/sass/lounges.sass */
 section.right_menu img {
   height: 16px;
   margin-bottom: 64px;
 }
-/* line 355, ../../source/sass/lounges.sass */
+/* line 353, ../../source/sass/lounges.sass */
 section.right_menu h3 {
   margin-bottom: 8px;
 }
-/* line 357, ../../source/sass/lounges.sass */
+/* line 355, ../../source/sass/lounges.sass */
 section.right_menu p {
   margin-bottom: 48px;
 }
-/* line 359, ../../source/sass/lounges.sass */
+/* line 357, ../../source/sass/lounges.sass */
 section.right_menu button {
   margin-top: 16px;
   display: inline-block;
   width: 160px;
   margin-right: 16px;
 }
-/* line 364, ../../source/sass/lounges.sass */
+/* line 362, ../../source/sass/lounges.sass */
 section.right_menu a {
   display: inline-block;
 }
 
-/* line 368, ../../source/sass/lounges.sass */
+/* line 366, ../../source/sass/lounges.sass */
+#liberty_block1 {
+  display: relative;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+/* line 379, ../../source/sass/lounges.sass */
+#liberty_block1 header img {
+  float: left;
+}
+/* line 381, ../../source/sass/lounges.sass */
+#liberty_block1 header nav {
+  height: 40px;
+  line-height: 44px;
+  float: right;
+}
+/* line 385, ../../source/sass/lounges.sass */
+#liberty_block1 header nav a {
+  font-size: 18px;
+  margin-left: 16px;
+  font-family: Bebas Neue;
+  font-weight: 300;
+}
+/* line 391, ../../source/sass/lounges.sass */
+#liberty_block1 header nav img {
+  margin-left: 16px;
+  float: right;
+}
+/* line 395, ../../source/sass/lounges.sass */
+#liberty_block1 h1 {
+  margin-bottom: 0;
+}
+/* line 398, ../../source/sass/lounges.sass */
+#liberty_block1 h4 {
+  font-family: Lora Regular;
+  margin-bottom: 48px;
+}
+/* line 402, ../../source/sass/lounges.sass */
+#liberty_block1 .informationlib {
+  margin-bottom: 32px;
+}
+/* line 404, ../../source/sass/lounges.sass */
+#liberty_block1 .informationlib figure {
+  float: none;
+  margin-left: 0;
+  margin-right: 32px;
+}
+/* line 408, ../../source/sass/lounges.sass */
+#liberty_block1 .informationlib figure img {
+  float: left;
+  margin-right: 8px;
+}
+/* line 411, ../../source/sass/lounges.sass */
+#liberty_block1 .informationlib figure figcapation {
+  font-size: 14px;
+  text-align: left;
+  line-height: 16px;
+  float: left;
+}
+/* line 418, ../../source/sass/lounges.sass */
+#liberty_block1 .liberactions button {
+  margin-right: 16px;
+}
+/* line 420, ../../source/sass/lounges.sass */
+#liberty_block1 .liberactions button.button-dark {
+  position: relative;
+  height: 48px;
+  width: 256px;
+  border: 2px solid rgba(60, 66, 72, 0.5);
+  background: none;
+  padding: 0 16px 0 16px;
+  line-height: 24px;
+  text-align: left;
+  font-size: 14px;
+}
+/* line 431, ../../source/sass/lounges.sass */
+#liberty_block1 .liberactions button.button-dark:after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  float: right;
+  background-image: url(../images/goto.svg);
+}
+
+/* line 439, ../../source/sass/lounges.sass */
 #liberty_block2 {
-  padding: 48px;
-  height: 320px;
+  padding: 128px 64px 64px 64px;
+  height: 464;
   background: black;
   -webkit-column-count: 2;
   -webkit-column-gap: 48px;
 }
-/* line 374, ../../source/sass/lounges.sass */
-#liberty_block2 h3 {
+/* line 445, ../../source/sass/lounges.sass */
+#liberty_block2 h4 {
+  margin-bottom: 26px;
   line-height: 1.6;
 }
-/* line 376, ../../source/sass/lounges.sass */
-#liberty_block2 p {
+/* line 448, ../../source/sass/lounges.sass */
+#liberty_block2 h5 {
   line-height: 1.6;
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+/* line 454, ../../source/sass/lounges.sass */
+#liberty_block3 {
+  width: 500%;
+  height: 100%;
+  overflow: visible;
+}
+/* line 458, ../../source/sass/lounges.sass */
+#liberty_block3 article {
+  float: left;
+  width: 20%;
+  height: 100%;
+  border: 1px solid black;
+  color: red;
+  background: url(../images/liberty_photo_1.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+
+/* line 467, ../../source/sass/lounges.sass */
+#nav {
+  height: 48px;
+  width: 100%;
+  z-index: 200;
+}
+/* line 471, ../../source/sass/lounges.sass */
+#nav div {
+  float: left;
+  width: 4%;
+  height: 16px;
+  background: url(../images/liberty_photo_1.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+
+/* line 480, ../../source/sass/lounges.sass */
+#liberty_block4 {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+/* line 486, ../../source/sass/lounges.sass */
+#liberty_block4 #map_wrapper {
+  position: absolute;
+  padding: 56px;
+  box-sizing: content-box;
+  width: 18%;
+  height: auto;
+  background: #282C34;
+  top: 25%;
+  right: 64px;
+}
+/* line 496, ../../source/sass/lounges.sass */
+#liberty_block4 #map_wrapper h3 {
+  margin-bottom: 8px;
+  width: 100%;
+  color: #EBB22F;
+}
+/* line 500, ../../source/sass/lounges.sass */
+#liberty_block4 #map_wrapper h5 {
+  margin-bottom: 32px;
+}
+/* line 502, ../../source/sass/lounges.sass */
+#liberty_block4 #map_wrapper p {
+  margin-bottom: 32px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/* line 507, ../../source/sass/lounges.sass */
+#liberty_block5 {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 196px 0px 0px 96px;
+  background: #282C34;
+}
+/* line 515, ../../source/sass/lounges.sass */
+#liberty_block5 h2 {
+  font-size: 48px;
+  font-family: Bebas Neue;
+  letter-spacing: 4px;
+  margin-bottom: 32px;
+  color: #F2AE32;
+}
+/* line 522, ../../source/sass/lounges.sass */
+#liberty_block5 h5 {
+  margin-bottom: 48px;
+}
+/* line 524, ../../source/sass/lounges.sass */
+#liberty_block5 h6 {
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+/* line 527, ../../source/sass/lounges.sass */
+#liberty_block5 p {
+  margin-top: 4px;
 }
