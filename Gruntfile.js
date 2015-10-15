@@ -1,3 +1,18 @@
+//'index.html' : 'source/haml/index.haml'   , 
+//'places.html': 'source/haml/places.haml'  ,
+//'about.html' : 'source/haml/about.haml'   ,
+//'login.html' : 'source/haml/login.haml'   ,
+
+//'index.html' : 'source/haml/index.haml'   , 
+//'places.html': 'source/haml/places.haml'  ,
+//'about.html' : 'source/haml/about.haml'   ,
+//'login.html' : 'source/haml/login.haml'   ,
+
+//'index.html' : 'source/haml/index.haml'   , 
+//'places.html': 'source/haml/places.haml'  ,
+//'about.html' : 'source/haml/about.haml'   ,
+//'login.html' : 'source/haml/login.haml'   ,
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -7,6 +22,15 @@ module.exports = function(grunt) {
     haml  : {
 
       dist  : {
+<<<<<<< HEAD
+        files   : {
+          'index.html' : 'source/haml/index.haml'   , 
+          'places.html': 'source/haml/places.haml' ,
+          'about.html' : 'source/haml/about.haml' ,
+          'login.html' : 'source/haml/login.haml' ,
+          'menu.html' : 'source/haml/menu.haml'
+        }
+=======
         files   : [
           { expand: true, cwd:'src', src: 'source/haml/**/*.haml', dest: 'src', ext : '.html' }
         ]
@@ -14,6 +38,7 @@ module.exports = function(grunt) {
 
       watch : {
         files : {}
+>>>>>>> 8c271d187d79c44f223a593c78211f908f4602a6
       }
 
     } ,
