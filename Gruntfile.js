@@ -73,7 +73,7 @@ module.exports = function(grunt) {
     if(filepath.indexOf('.haml') === -1) return;
 
     var proto       = ( filepath.indexOf('design_prototypes') !== -1 ) ? true : false
-    var replace     = (proto) ? 'source\\haml\\design_prototypes\\' : 'source\\haml'
+    var replace     = (proto) ? 'source/haml/design_prototypes/' : 'source/haml'
     var root        = (proto) ? '' : 'src'
 
     
