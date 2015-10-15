@@ -8,19 +8,23 @@ define(function(require) {
     template: Template,
     initialize: function() {
       if (this.debug) {
-        return console.log('menu_itemvie.initialize');
+        console.log('menu_itemvie.initialize');
       }
+      return this.on('render', this.afterRender, this);
+    },
+    afterRender: function() {
+      return this.initCloseMenuAnimation();
     },
     initCloseMenuAnimation: function() {
       var bco, body, lpm, rpm, t1;
       t1 = new TimelineMax({
         paused: true
       });
-      lpm = document.getElementById("lpm");
-      rpm = document.getElementById("rpm");
-      bco = document.getElementById("bco");
-      body = document.querySelectorAll('body');
-      return t1.to(body, 0.5, {
+      lpm = this.el.querySelectorAll("#lpm");
+      rpm = this.el.querySelectorAll("#rpm");
+      bco = this.el.querySelectorAll("#bco");
+      body = this.el.querySelectorAll('#body');
+      t1.to(body, 0.5, {
         scale: 1,
         webkitFilter: "blur(0)",
         ease: "{Power4.easeOut}"
@@ -39,6 +43,21 @@ define(function(require) {
         immediateRender: true,
         ease: Expo.easeInOut
       }, 0);
+      TweenMax.set(body, {
+        scale: 1,
+        webkitFilter: "blur(0)"
+      });
+      TweenMax.set(lpm, {
+        left: "-20%",
+        autoAlpha: 0
+      });
+      TweenMax.set(rpm, {
+        left: "-20%",
+        autoAlpha: 0
+      });
+      return TweenMax.set(bco, {
+        autoAlpha: 0
+      });
     }
   });
 });

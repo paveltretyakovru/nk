@@ -11,13 +11,18 @@ define ( require ) ->
 		initialize : ->
 			console.log 'menu_itemvie.initialize' if @debug
 
+			@on 'render' , @afterRender , @
+
+		afterRender : ->
+			@initCloseMenuAnimation()
+
 		initCloseMenuAnimation	: ->
 
 			t1 		= new TimelineMax paused : true
-			lpm 	= document.getElementById("lpm")
-			rpm 	= document.getElementById("rpm")
-			bco 	= document.getElementById("bco")
-			body 	= document.querySelectorAll('body')
+			lpm 	= @el.querySelectorAll("#lpm")
+			rpm 	= @el.querySelectorAll("#rpm")
+			bco 	= @el.querySelectorAll("#bco")
+			body 	= @el.querySelectorAll('#body')
 
 			t1
 
@@ -45,3 +50,8 @@ define ( require ) ->
 				immediateRender	:true
 				ease 			: Expo.easeInOut
 			, 	0
+
+			TweenMax.set body , { scale : 1 	 , webkitFilter	:"blur(0)" }
+			TweenMax.set lpm  , { left  : "-20%" , autoAlpha : 0 }
+			TweenMax.set rpm  , { left  : "-20%" , autoAlpha : 0 }
+			TweenMax.set bco  , autoAlpha : 0
