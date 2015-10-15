@@ -7,8 +7,9 @@ module.exports = function(grunt) {
     haml  : {
       dist  : {
         files   : {
-          'index.html' : 'source/haml/index.haml' , 
-          'places.html' : 'source/haml/places.haml' ,
+          'index.html' : 'source/haml/index.haml'   , 
+          'places.html': 'source/haml/places.haml' ,
+          'about.html' : 'source/haml/about.haml' ,
           'login.html' : 'source/haml/login.haml' ,
           'login.html' : 'source/haml/menu.haml'
         }

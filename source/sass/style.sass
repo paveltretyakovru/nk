@@ -43,3 +43,80 @@ body
 
 /* Появления лоадера */
 +fadein( '.fadein-loader' , 1s )
+
+/* FLOAT */
+.content-left
+	text-align 	: left
+.block-left
+	float 		: left
+.block-right
+	float 		: right
+
+/* COLORS */
+$color_orange		: #ECB72E
+$color_dark			: #000
+$color_gray 		: #282C34
+$color_gray_light	: #b3b0a1
+
+.orange-text
+	color 	: $color_orange
+
+.gray-text
+	color 	: $color_gray
+
+.gray-text-light
+	color 	: $color_gray_light
+/* SIZE */
+.h100
+	height: 100%
+
+.w95p
+	width: 95%
+.w5p
+	width: 5%
+
+/* PADDING */
+.padding-left20px
+	padding-left 	: 20px
+
+.padding-top80px
+	padding-top 	: 80px
+
+/* MARGION */
+.margin-left20px
+	margin-left 	: 20px
+
+/* TEXT */
+.text-upper
+	text-transform 	: uppercase
+.text-strong-title
+	font-size 		: 18pt
+	font-family		: 'Lora'
+
+
+/* BUTTONS */
+.button-simple
+	width 		: auto
+	text-align 	: center
+
+.button-simple:after , .button-dark:after
+	background-image: none
+	width 			: 0
+
+.button-dark
+	width 				: auto
+	background-color 	: $color_dark
+	border 				: 2px solid $color_orange
+
+.opacity05
+	opacity : 0.5
+
+
+/* FOR PAGES */
+.dark-with-light
+	background		: #171819 url(/src/images/bg_light.png)	
+	background-size	: cover
+
+.about-desc
+	background-color: $color_gray
+	padding 		: 65px

@@ -1,0 +1,69 @@
+
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+	%head
+		%meta{ :"http-equiv" => "content-type" , :content =>"text/html; charset=utf-8" }
+
+		%title Index fale
+		%link{ :rel=>"stylesheet" , :href=>"src/css/reset.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/ukpace.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/style.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/lounges.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/fonts.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/about.css" }
+		%link{ :rel=>"stylesheet" , :href=>"bower_components/bootstrap-grid-only/css/grid12.css" }
+		%link{ :rel=>"stylesheet" , :href=>"bower_components/font-awesome/css/font-awesome.min.css" }
+	%body
+		%main.dark-with-light
+			-# Call to action
+			%header
+				%img{ :src=>"src/images/logo.svg" , :alt=>"Уникальные Кальянные" , :height=>"40px" }
+				%nav
+					%a Войти
+					%a Зарегистрироваться
+					%img{ :src=>"src/images/menu.svg" , :height=>"40px" }
+			%section.about-section1
+				%h1.orange-text ЛИБЕРТИ
+				%h3 Sed et ceteri codices originale sit unum*
+				.container-fluid
+					.row.content-left.text-upper
+						.col-md-3
+							%i.fa.fa-map-marker.orange-text.w5p
+							.block-right.w95p.padding-left20px
+								Санкт-Петербург,
+								%br
+								улица Маяковского 27
+						.col-md-3
+							%i.fa.fa-phone.orange-text.w5p
+							.block-right.w95p.padding-left20px +7 (812) 922-71-99; 
+						.col-md-6
+							%i.fa.fa-clock-o.orange-text.w5p
+							.block-right.w95p.padding-left20px
+								Пн. - Пт.: с 17:00 до последнего гостя
+								%br
+								Сб. - Вс.: с 16:00 до последнего гост
+					.row
+						.col-md-6.padding-top80px
+							%button.button-simple 	Забронировать столик	
+							%button.button-dark.margin-left20 	Связаться с нами
+					.row
+						.col-md-12.content-left
+						%span.gray-text *Оригинал один - остальное копии
+		%section.about-desc.container
+			.row
+				.col-md-7
+					%strong.text-strong-title Первая в мире территория для курения со свободной оплатой и уникальным подходом к каждому гостю 
+
+					%br
+					%br
+					Почему же Вам стоит выбрать именно эту кальянную Петербурга? Во-первых, привлекает наша особенная атмосфера. Мы начинали как место только "для своих". С того момента утекло много времени, наша команда собрала огромную фанатскую базу, но сумела сохранить ту самую атмосферу. Почему же Вам стоит выбрать именно эту кальянную Петербурга? Во-первых, привлекает наша
+
+				.col-md5
+					test2
+
+
+
+		%script(type="text/javascript" src="bower_components/requirejs/require.js")
+		%script(type="text/javascript" src="src/js/app/config.js")
+		%script(type="text/javascript" src="src/js/app/start.js")
+
+
