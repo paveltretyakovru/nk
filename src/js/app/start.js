@@ -42,22 +42,3 @@ require(['app/app', 'pace'], function(app, pace) {
     document: false
   });
 });
-
-var t1 = new TimelineMax({paused:true})
-    lpm = document.getElementById("lpm")
-    rpm = document.getElementById("rpm")
-    bco = document.getElementById("bco")
-    bmc = document.getElementById("bmc");
-
-document.getElementById("closing").onclick = function closing() {
-  t1.play();
-};
-
-function opening() {
-  t1.reverse();
-};
-
-t1.to(bmc, 1, {scale: 1, webkitFilter:"blur(0px)", ease:Expo.easeInOut})
-.to(lpm, 1.2, {left:"-20%", autoAlpha:0, immediateRender:true, ease:Expo.easeInOut}, 0)
-.to(rpm, 1.2, {right:"-20%", autoAlpha:0, immediateRender:true, ease:Expo.easeInOut}, 0)
-.to(bco, 1.2,{autoAlpha:0, immediateRender:true, ease:Expo.easeInOut}, 0);

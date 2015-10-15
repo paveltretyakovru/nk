@@ -1,4 +1,4 @@
-
+=
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
 	%head
 		%meta{ :"http-equiv" => "content-type" , :content =>"text/html; charset=utf-8" }
@@ -13,7 +13,7 @@
 		%link{ :rel=>"stylesheet" , :href=>"bower_components/bootstrap-grid-only/css/grid12.css" }
 		%link{ :rel=>"stylesheet" , :href=>"bower_components/font-awesome/css/font-awesome.min.css" }
 	%body
-		%main.dark-with-light
+		%main
 			-# Call to action
 			%header
 				%img{ :src=>"src/images/logo.svg" , :alt=>"Уникальные Кальянные" , :height=>"40px" }
@@ -40,15 +40,31 @@
 				%br
 				%button.button-simple 	Забронировать столик	
 				%button.button-dark.margin-left20 	Связаться с нами
-				%p *Оригинал один - остальное копии
+				%p Оригинал один - остальное копии
 		%section#liberty_block2
 			%h3 Первая в мире территория для курения со свободной оплатой и уникальным подходом к каждому гостю 
 			%p Почему же Вам стоит выбрать именно эту кальянную Петербурга? Во-первых, привлекает наша особенная атмосфера. Мы начинали как место только "для своих". С того момента утекло много времени, наша команда собрала огромную фанатскую базу, но сумела сохранить ту самую атмосферу. Почему же Вам стоит выбрать именно эту кальянную Петербурга? Во-первых, привлекает наша.
-		%section
 
-		%script(type="text/javascript" src="bower_components/requirejs/require.js")
-		%script(type="text/javascript" src="src/js/app/config.js")
-		%script(type="text/javascript" src="src/js/app/start.js")
+		-# %section#liberty_block3
+		-# 	%div.shell
+		-# 		%div#bg
+		-# 			%img{ :src=>"src/images/logo.svg",:alt=>"Уникальные Кальянные"}
+		-# 		%div#fg
+				   	
+		-# 		%div#text
+		-# 		    %section One
+		-# 		    %section Two
+		-# 		    %section Three
+		-# 	%div#nav
+		-# 		%div#one one
+		-# 		%div#two two
+		-# 		%div#three three
+
+%script(type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js")
+%script(type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js")
+%script(type="text/javascript" src="bower_components/requirejs/require.js")
+%script(type="text/javascript" src="src/js/app/config.js")
+%script(type="text/javascript" src="src/js/app/start.js")
 
 
 
