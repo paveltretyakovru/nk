@@ -1,0 +1,54 @@
+/* line 8, ../../source/sass/login.sass */
+.autn-section {
+  position: absolute;
+  top: 20%;
+  right: -120%;
+  width: 88%;
+  padding: 80px;
+  background: linear-gradient(to right top, #17191f, #272b33);
+  z-index: 100;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* line 18, ../../source/sass/login.sass */
+.autn-section h2 {
+  color: #EBB22F;
+  margin-bottom: 16px;
+}
+
+/* line 22, ../../source/sass/login.sass */
+.autn-section h3 {
+  width: 50%;
+  margin-bottom: 32px;
+}
+
+/* line 26, ../../source/sass/login.sass */
+.autn-section input {
+  margin-bottom: 40px;
+  margin-right: 16px;
+}
+
+/* line 30, ../../source/sass/login.sass */
+.autn-section:after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 160px);
+  left: -160px;
+  width: 320px;
+  height: 320px;
+  background-image: url(../images/key.svg);
+}
+
+/* line 39, ../../source/sass/login.sass */
+.autn-section:before {
+  content: "";
+  position: absolute;
+  top: 16;
+  left: 16;
+  width: calc(100% - 16px);
+  height: calc(100% - 32px);
+  box-shadow: inset rgba(255, 255, 255, 0.1) 0 0 0 1px;
+  z-index: -1;
+}

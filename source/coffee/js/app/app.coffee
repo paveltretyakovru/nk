@@ -18,6 +18,7 @@ define (require) ->
 			regionContent	: '#region-content'
 			regionHeader	: '#region-header'
 			regionLogin		: '#region-login'
+			regionMenu 		: '#region-menu'
 
 		initialize : ->
 			console.log 'app/app : initializing app' if @debug

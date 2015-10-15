@@ -4,33 +4,76 @@ define ( require ) ->
 	Marionette 	= require 'marionette'
 	Template 	= require 'text!tmpls/parts/login/login.html'
 
+	require 'gsap'
+
 	View = Marionette.ItemView.extend
-		template 	: Template
+		debugAnimation	: true
+		debug 			: true
+		template 		: Template
 
 		ui :
-			'linkRegistrate' : '.js-link-registrate'
+			'linkRegistrate' 	: '.js-link-registrate'
+			'linkBackLogin' 	: '.js-link-back-login'
 
 		events :
-			'click @ui.linkRegistrate' : 'showRegistrate'
+			'click @ui.linkRegistrate' 	: 'showRegistrate'
+			'click @ui.linkBackLogin' 	: 'showBackLogin'
 
 		initialize : ->
 			@on 'showLogin'	, @showLogin , @
 			@on 'hideLogin'	, @hideLogin , @
-			@on 'render' , @afterRender , @
+			@on 'render' 	, @afterRender , @
 
 		afterRender : ->
-			sectionElement = @el.querySelectorAll 'section'
+			sectionElement 	= @el.querySelectorAll '.autn-section'
+			registerSide 	= @el.querySelector '.registr-side'
+			loginSide 		= @el.querySelector '.login-side'
 
-			@showBlockLogin = TweenMax.to sectionElement , 1 , right : '0%'
+			# Установка изначальных значений
+			TweenMax.set registerSide , rotationX : -180
+			###
+			TweenMax.set loginSide ,
+				filter 			: "blur(0.5px)"
+				webkitFilter 	: "blur(0.5px)"
+			###
+			
+			# Анимация выезда блока с авторизацией
+			@showBlockLogin = TweenMax.to sectionElement , .3 , right : '0%'
 			.paused(true)
 
-		showLogin : ->
-			@showBlockLogin.play()
+			# Анимация поворта блока авторизации на регистрацию
+			@showRegisterSide = new TimelineMax 
+				paused 		: true
+			@showRegisterSide
+			.to loginSide 	, 0.5 , rotationX : 180	, 0
+			.to registerSide, 0.5 , rotationX : 0	, 0
+			
+			###
+			.to loginSide 	, 0.5,				
+				webkitFilter 	: "blur(0)"
+				ease 			: "{Power4.easeOut}"
+				filter 			: "blur(0)"
+			.to registerSide 	, 0.5,
+				webkitFilter 	: "blur(0)"
+				ease 			: "{Power4.easeOut}"
+				filter 			: "blur(0)"
+			, 0
+			###
 
-		hideLogin : ->
-			@showBlockLogin.reverse()
+		# Возврат на формы входу с формы регистрации
+		showBackLogin : ->
+			@showRegisterSide.reverse()
 
-		showRegistrate : ->
-			console.log 'Show registrate'
+		# Выдвигает окно
+		showLogin : ->			
+			@showBlockLogin.play()			
+
+		# Скрывает окно
+		hideLogin : ->			
+			@showBlockLogin.reverse()						
+
+		# Поварачивает на сторону регистрации
+		showRegistrate : ->						
+			@showRegisterSide.play()
 
 	return View

@@ -5,14 +5,18 @@ define(function(require) {
   Template = require('text!tmpls/parts/header/header.html');
   require('gsap');
   return Marionette.ItemView.extend({
+    debugAnimation: false,
     debug: true,
     template: Template,
     ui: {
       'linkRegistration': '.js-link-registration',
-      'linkLogin': '.js-link-login'
+      'linkLogin': '.js-link-login',
+      'linkMenu': '.js-link-menu'
     },
     events: {
-      'click @ui.linkLogin': 'showLogin'
+      'click @ui.linkLogin': 'showLogin',
+      'click @ui.linkRegistration': 'showRegistration',
+      'click @ui.linkMenu': 'showMenu'
     },
     initialize: function() {
       return this.on('render', this.afterRender, this);
@@ -20,7 +24,7 @@ define(function(require) {
     afterRender: function() {
       this.scaleBody = document.getElementById('scale-body');
       this.scaleClass = 'scale-element';
-      this.scaleAnimation = TweenMax.to(this.scaleBody, 1, {
+      this.scaleAnimation = TweenMax.to(this.scaleBody, 0.5, {
         className: this.scaleClass
       }).paused(true);
       return app.utils.Listener.setClosest({
@@ -29,8 +33,10 @@ define(function(require) {
         selector: this.scaleBody,
         callbackOnElement: (function(_this) {
           return function() {
+            console.log('scaleAnimation before', _this.scaleAnimation.reversed());
             app.regionLogin.currentView.trigger('hideLogin');
-            return _this.scaleAnimation.reverse();
+            _this.scaleAnimation.reverse();
+            return console.log('scaleAnimation after', _this.scaleAnimation.reversed());
           };
         })(this)
       });
@@ -41,6 +47,13 @@ define(function(require) {
       }
       app.regionLogin.currentView.trigger('showLogin');
       return this.scaleAnimation.play();
+    },
+    showRegistration: function() {
+      app.regionLogin.currentView.trigger('showLogin');
+      return this.scaleAnimation.play();
+    },
+    showMenu: function() {
+      return console.log('Show menu');
     }
   });
 });
