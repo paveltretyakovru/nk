@@ -26,7 +26,7 @@ define ( require ) ->
 			@scaleBody 	= document.getElementById 'scale-body'
 			@scaleClass	= 'scale-element' # Клас анимации ухода назад						
 
-			@scaleAnimation = TweenMax.to @scaleBody , 1 , className : @scaleClass
+			@scaleAnimation = TweenMax.to @scaleBody , 0.5 , className : @scaleClass
 			.paused(true)
 
 			app.utils.Listener.setClosest 

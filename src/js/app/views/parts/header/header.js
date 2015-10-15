@@ -20,7 +20,7 @@ define(function(require) {
     afterRender: function() {
       this.scaleBody = document.getElementById('scale-body');
       this.scaleClass = 'scale-element';
-      this.scaleAnimation = TweenMax.to(this.scaleBody, 1, {
+      this.scaleAnimation = TweenMax.to(this.scaleBody, 0.5, {
         className: this.scaleClass
       }).paused(true);
       return app.utils.Listener.setClosest({

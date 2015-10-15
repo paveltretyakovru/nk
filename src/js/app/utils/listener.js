@@ -140,20 +140,19 @@ define(function(require){
 								// Если тыкнули на элемент , проверяем нужно ли выолнить
 								if('callbackOnElement' in data){
 									data.callbackOnElement(data);
-									console.log('callbackOnElement' , $(e));
+									console.log('callbackOnElement');
 								}
 
 								return
-							}
-							else {								
-								if (DEBUG) console.log('ТЫКНУЛИ ВНЕ ЭЕЛЕМЕНТА');
 							}
 						}
 
 						// Если тыкнули вне элемента , проверяем нужно ли выолнить
 						if('callbackOutElement' in data){
 							data.callbackOutElement(data);
-						}						
+						}
+
+						if (DEBUG) console.log('ТЫКНУЛИ ВНЕ ЭЕЛЕМЕНТА');
 					});
 				}
 			}else{

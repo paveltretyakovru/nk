@@ -1,18 +1,19 @@
-%section.login.backside
+.autn-section.registr-side
 	%h2 Регистрация
 	%h3 
-		Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта — 		
+		Регистрация нового пользователя. Если у вас	уже есть аккаунт - 
+		%a.js-link-back-login{ :href => '#' } войдите
 	%form{:action => "", :method => "get"}
 		%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
+		%input{:type => "text", :name => "input", :placeholder => "ФИО"}
 		%input{:type => "text", :name => "input", :placeholder => "Пароль"}
-		%button{:type=>"sumbit", :name=>"sumbit"} Войти
-	%a Вы забыли пароль?
+		%button{:type=>"sumbit", :name=>"sumbit"} Зарегестрироваться
 
-%section.login.frontside
+.autn-section.login-side
 	%h2 Войти
 	%h3
 		Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
-		%a.js-link-registrate{ :href => '#' } зарегистрируйтесь.
+		%a.js-link-registrate{ :href => '#' } зарегистрируйтесь
 	%form{:action => "", :method => "get"}
 		%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
 		%input{:type => "text", :name => "input", :placeholder => "Пароль"}
