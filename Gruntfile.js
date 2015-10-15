@@ -8,7 +8,8 @@ module.exports = function(grunt) {
       dist  : {
         files   : {
           'index.html' : 'source/haml/index.haml' , 
-          'places.html' : 'source/haml/places.haml'
+          'places.html' : 'source/haml/places.haml' ,
+          'login.html' : 'source/haml/login.haml' ,
         }
       }
     } ,

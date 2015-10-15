@@ -1,0 +1,29 @@
+
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+	%head
+		%meta{ :"http-equiv" => "content-type" , :content =>"text/html; charset=utf-8" }
+
+		%title Index fale
+		%link{ :rel=>"stylesheet" , :href=>"src/css/reset.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/ukpace.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/style.css" }
+		%link{ :rel=>"stylesheet" , :href=>"src/css/lounges.css" }
+		%link{ :rel=>"stylesheet" , :href=>"bower_components/flexboxgrid/css/flexboxgrid.min.css" }
+	%body
+		-# Form
+		%section.login
+			%h2 Войти
+			%h3 Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта — зарегистрируйтесь.
+			%form{:action => "", :method => "get"}
+				%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
+				%input{:type => "text", :name => "input", :placeholder => "Пароль"}
+				%button{:type=>"sumbit", :name=>"sumbit"} Войти
+			%a Вы забыли пароль?
+		-# Background
+		.background-color-overlay
+		-# Main conent
+		%main.bg_testing
+			
+		%script(type="text/javascript" src="bower_components/requirejs/require.js")
+		%script(type="text/javascript" src="src/js/app/config.js")
+		%script(type="text/javascript" src="src/js/app/start.js")
