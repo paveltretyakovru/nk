@@ -1,7 +1,8 @@
 define ( require ) ->
 	'use strict'
 
-	Marionette = require 'marionette'
+	Marionette 	= require 'marionette'
+	HeaderView	= require 'views/parts/header/header'
 
 	Pages =
 		Home	: require 'views/pages/home/home'
@@ -17,7 +18,11 @@ define ( require ) ->
 
 			args = Array.prototype.slice.call arguments
 
-			app.regionContent.show( new Pages[ args.shift() ] (args))
+			Page 	= new Pages[ args.shift() ] args
+			Header 	= new HeaderView()
+
+			app.regionContent.show Page
+			app.regionHeader.show Header
 
 
 		Home 	: -> @.run 'Home'

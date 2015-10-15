@@ -11,7 +11,8 @@ define(function(require) {
   app = new Marionette.Application({
     debug: true,
     regions: {
-      regionContent: '#region-content'
+      regionContent: '#region-content',
+      regionHeader: '#region-header'
     },
     initialize: function() {
       if (this.debug) {
@@ -35,6 +36,10 @@ define(function(require) {
   app.regionContent.on('show', function() {
     removeClass(app.regionContent.el, 'fadeout');
     return addClass(app.regionContent.el, 'fadein');
+  });
+  app.regionHeader.on('show', function() {
+    removeClass(app.regionHeader.el, 'fadeout');
+    return addClass(app.regionHeader.el, 'fadein');
   });
   Marionette.Behaviors.behaviorsLookup = function() {
     return window.Behaviors;

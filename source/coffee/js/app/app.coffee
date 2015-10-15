@@ -15,6 +15,7 @@ define (require) ->
 
 		regions :
 			regionContent	: '#region-content'
+			regionHeader	: '#region-header'
 
 		initialize : ->
 			console.log 'app/app : initializing app' if @debug				
@@ -31,7 +32,11 @@ define (require) ->
 
 	app.regionContent.on 'show' , ->
 		removeClass app.regionContent.el , 'fadeout'
-		addClass app.regionContent.el , 'fadein'
+		addClass app.regionContent.el , 'fadein'	
+
+	app.regionHeader.on 'show' , ->
+		removeClass app.regionHeader.el , 'fadeout'
+		addClass app.regionHeader.el , 'fadein'
 
 
 	Marionette.Behaviors.behaviorsLookup = -> return window.Behaviors

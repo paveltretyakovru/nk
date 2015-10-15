@@ -1,7 +1,8 @@
 define(function(require) {
   'use strict';
-  var Marionette, Pages;
+  var HeaderView, Marionette, Pages;
   Marionette = require('marionette');
+  HeaderView = require('views/parts/header/header');
   Pages = {
     Home: require('views/pages/home/home')
   };
@@ -13,12 +14,15 @@ define(function(require) {
       }
     },
     run: function(pageName, pageParameters) {
-      var args;
+      var Header, Page, args;
       if (this.debug) {
         console.log('controllers/desktop.run : route->' + pageName);
       }
       args = Array.prototype.slice.call(arguments);
-      return app.regionContent.show(new Pages[args.shift()](args));
+      Page = new Pages[args.shift()](args);
+      Header = new HeaderView();
+      app.regionContent.show(Page);
+      return app.regionHeader.show(Header);
     },
     Home: function() {
       return this.run('Home');
