@@ -29,6 +29,8 @@
     "requirejs-text": "~2.0.14",
     "backbone-validation": "~0.11.5",
     "flexboxgrid": "~6.3.0",
-    "gsap": "greensock#~1.18.0"
+    "gsap": "greensock#~1.18.0",
+    "bootstrap-grid-only": "https://github.com/zirafa/bootstrap-grid-only.git",
+    "font-awesome": "~4.4.0"
   }
 }
