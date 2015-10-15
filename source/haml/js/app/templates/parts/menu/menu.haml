@@ -1,12 +1,59 @@
-%section.login
-	%h2 Войти
-	%h3 Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта — зарегистрируйтесь.
-	%form{:action => "", :method => "get"}
-		%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
-		%input{:type => "text", :name => "input", :placeholder => "Пароль"}
-		%button{:type=>"sumbit", :name=>"sumbit"} Войти
-	%a Вы забыли пароль?
+-# Form
+.wrapper_menu
+	-# Right social content
+	%section#lpm.left_menu.closed<
+		%img{ :src=>"src/images/logo.svg" , :alt=>"Unique Hookah Places" , :height=>"40px" }
+		
+		%h4 Первая в мире территория для<br>курения со свободной оплатой и<br>индивидуальным подходом<br>к каждому гостю...
+		%p 
+			24 июл в 14:44 от
+			%a #unihuqhookahplaces
+
+		%h5 Она задала нам неожиданный вопрос
+		%p 
+			24 июл в 14:44 от
+			%a #unihuqhookahplaces
+
+		%h5 Она задала нам неожиданный вопрос
+		%p 
+			24 июл в 14:44 от
+			%a #unihuqhookahplaces
+
+		%h5 Она задала нам неожиданный вопрос
+		%p 
+			24 июл в 14:44 от
+			%a #unihuqhookahplaces
+
+		%h5 Она задала нам неожиданный вопрос
+		%p 
+			24 июл в 14:44 от
+			%a #unihuqhookahplaces
+		%footer
+			%p Copyright © 2015 Уникальные Кальянные
+			%p 
+				Создано в
+				%img{ :src=>"src/images/cpdbbk.svg" , :alt=>"CPD&BBK" , :height=>"24px"}
+	-# Left bar
+	%section#rpm.right_menu.closed
+		%img#closing{ :src=>"src/images/cross.svg" , :alt=>"Закрыть"}
+
+		%h3 Главная страница
+		%p Основная информация
+
+		%h3 Ложи
+		%p Основная информация
+
+		%h3 Философия
+		%p Основная информация
+
+		%h3 Сообщество
+		%p Основная информация
+
+		%h3 Франшиза
+		%p Основная информация
+		
+		%button< Войти
+		%a Регистрация
+
 -# Background
-.background-color-overlay
--# Main conent
-%main.bg_testing
+#bco.background-color-overlay

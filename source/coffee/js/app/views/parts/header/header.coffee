@@ -14,14 +14,16 @@ define ( require ) ->
 		ui 	:
 			'linkRegistration'	: '.js-link-registration'
 			'linkLogin'			: '.js-link-login'
+			'linkMenu'			: '.js-link-menu'
 
 		events 		: 
 			'click @ui.linkLogin'		: 'showLogin'
 			'click @ui.linkRegistration': 'showRegistration'
+			'click @ui.linkMenu'		: 'showMenu'
 
 		initialize 	: ->
 			# Events
-			@on 'render' , @afterRender , @				
+			@on 'render' , @afterRender , @
 
 		afterRender : ->
 			# Элемент который будет уходить назад
@@ -54,3 +56,6 @@ define ( require ) ->
 		showRegistration : ->			
 			app.regionLogin.currentView.trigger 'showLogin'			
 			@scaleAnimation.play()
+
+		showMenu : ->
+			console.log 'Show menu'

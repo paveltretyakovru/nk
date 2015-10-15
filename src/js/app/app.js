@@ -14,7 +14,8 @@ define(function(require) {
     regions: {
       regionContent: '#region-content',
       regionHeader: '#region-header',
-      regionLogin: '#region-login'
+      regionLogin: '#region-login',
+      regionMenu: '#region-menu'
     },
     initialize: function() {
       if (this.debug) {

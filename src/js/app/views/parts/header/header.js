@@ -10,11 +10,13 @@ define(function(require) {
     template: Template,
     ui: {
       'linkRegistration': '.js-link-registration',
-      'linkLogin': '.js-link-login'
+      'linkLogin': '.js-link-login',
+      'linkMenu': '.js-link-menu'
     },
     events: {
       'click @ui.linkLogin': 'showLogin',
-      'click @ui.linkRegistration': 'showRegistration'
+      'click @ui.linkRegistration': 'showRegistration',
+      'click @ui.linkMenu': 'showMenu'
     },
     initialize: function() {
       return this.on('render', this.afterRender, this);
@@ -49,6 +51,9 @@ define(function(require) {
     showRegistration: function() {
       app.regionLogin.currentView.trigger('showLogin');
       return this.scaleAnimation.play();
+    },
+    showMenu: function() {
+      return console.log('Show menu');
     }
   });
 });
