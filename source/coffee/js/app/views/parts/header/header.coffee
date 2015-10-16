@@ -59,3 +59,5 @@ define ( require ) ->
 
 		showMenu : ->
 			console.log 'Show menu'
+
+			app.regionMenu.currentView.trigger 'showMenu'
