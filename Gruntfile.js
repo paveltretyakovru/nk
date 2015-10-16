@@ -70,12 +70,20 @@ module.exports = function(grunt) {
   });
 
   grunt.event.on('watch', function(action, filepath) {
+    
+    var replace , root;
+
     if(filepath.indexOf('.haml') === -1) return;
 
     var proto       = ( filepath.indexOf('design_prototypes') !== -1 ) ? true : false
-    var replace     = (proto) ? 'source/haml/design_prototypes/' : 'source/haml'
-    var root        = (proto) ? '' : 'src'
 
+    if ( filepath.indexOf( '/' ) !== -1 ){
+      replace = (proto) ? 'source/haml/design_prototypes/'    : 'source/haml'
+    } else {
+      replace = (proto) ? 'source\\haml\\design_prototypes\\' : 'source/haml'
+    }
+
+    root            = (proto) ? '' : 'src'
     
     var file        = {};    
     var destfile    = filepath.replace( '.haml','.html' );

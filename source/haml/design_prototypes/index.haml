@@ -13,9 +13,10 @@
 	%body
 		#loader.row.fadein-loader
 			%img.loader-logo-back{ :src => "src/images/back_loader_logo.svg" }
-			%img.loader-logo-front{ :src => "src/images/front_loader_logo.svg" }		
+			%img.loader-logo-front{ :src => "src/images/front_loader_logo.svg" }
 		
-		%main#scale-body
+		%main#scale-body.bg_testing
+			%button{ :onclick=>"opening()"}< Войти
 			
 			%header#region-header.fadeout
 			
