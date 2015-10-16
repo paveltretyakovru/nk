@@ -23,7 +23,7 @@ define(function(require) {
       lpm = this.el.querySelectorAll("#lpm");
       rpm = this.el.querySelectorAll("#rpm");
       bco = this.el.querySelectorAll("#bco");
-      body = this.el.querySelectorAll('#body');
+      body = document.body;
       t1.to(body, 0.5, {
         scale: 1,
         webkitFilter: "blur(0)",

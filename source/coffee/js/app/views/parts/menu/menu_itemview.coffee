@@ -22,7 +22,7 @@ define ( require ) ->
 			lpm 	= @el.querySelectorAll("#lpm")
 			rpm 	= @el.querySelectorAll("#rpm")
 			bco 	= @el.querySelectorAll("#bco")
-			body 	= @el.querySelectorAll('#body')
+			body 	= document.body
 
 			t1
 
