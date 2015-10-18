@@ -9,7 +9,7 @@ define ( require ) ->
 		template 	: Template
 
 		ui 			:
-			'ClosingMenuButton'	: '#closing'
+			'ClosingMenuButton'	: '.js-closing-menu'
 
 		events 		: 
 			'click @ui.ClosingMenuButton' : 'closeMenu'

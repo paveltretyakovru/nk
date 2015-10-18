@@ -7,7 +7,7 @@ define(function(require) {
     debug: true,
     template: Template,
     ui: {
-      'ClosingMenuButton': '#closing'
+      'ClosingMenuButton': '.js-closing-menu'
     },
     events: {
       'click @ui.ClosingMenuButton': 'closeMenu'

@@ -44,9 +44,16 @@ header
 			float: right
 			width: 30px
 
+	a
+		color: #fff
+
 a
 	color 			: $color_orange
 	text-decoration : none
+	letter-spacing 	: 2px
+
+a:hover
+	cursor: pointer
 
 main
 	padding 	: 60px 40px
@@ -230,6 +237,7 @@ section.right_menu
 	z-index: 200
 	right: -40%
 
+	
 	img
 		height 			: 16px
 		margin-bottom	: 64px
@@ -245,6 +253,9 @@ section.right_menu
 		margin-right: 16px
 	a
 		display: inline-block
+
+.js-closing-menu:hover
+	cursor: pointer
 
 // Login
 .autn-section
