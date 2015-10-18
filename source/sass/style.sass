@@ -6,6 +6,7 @@
 @import compass/css3/box-shadow
 @import compass/css3/transition
 @import compass/css3/opacity
+@import blend-modes
 @import compass
 
 /* COLORS */
@@ -21,7 +22,7 @@ $color_gray_light	: #b3b0a1
 	box-sizing : border-box
 
 body
-	background	: #282C34
+	background	: $color_gray
 	max-width 	: 100%
 	overflow-x 	: hidden
 
@@ -187,7 +188,7 @@ main
 	width: 100%
 	opacity: 0.9
 	background-blend-mode: soft-light
-	+background(radial-gradient(center top, 75% 100%, #fff, #000), #282C34)
+	+background(radial-gradient(center top, 75% 100%, #fff, $color_gray), $color_gray)
 
 section.left_menu
 	display: inline-block
