@@ -36,7 +36,8 @@ define(function(require) {
          */
       });
       this.showBlockLogin = TweenMax.to(sectionElement, .3, {
-        right: '0%'
+        right: '0%',
+        ease: Expo.easeInOut
       }).paused(true);
       this.showRegisterSide = new TimelineMax({
         paused: true
