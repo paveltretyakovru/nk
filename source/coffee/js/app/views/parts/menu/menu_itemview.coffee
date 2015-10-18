@@ -42,14 +42,14 @@ define ( require ) ->
 
 			t1
 			.to @scaleBody 		, .5 , { className : @scaleClass , ease : Expo.easeInOut } , 0
-			.to '#region-menu' 	, .5 , { autoAlpha : 1 , ease : Expo.easeInOut } , 0
-			.to lpm , 1.2 , 
+			.to '#region-menu' 	, .3 , { autoAlpha : 1 , ease : Expo.easeInOut } , 0
+			.to lpm , .3 , 
 				left 			: '0%'
 				autoAlpha 	 	: 1
 				ease 			: Expo.easeInOut
 			,	0
 
-			.to rpm , 1.2 ,
+			.to rpm , .3 ,
 				right 			: "0%"
 				autoAlpha 	 	: 1
 				ease 			: Expo.easeInOut

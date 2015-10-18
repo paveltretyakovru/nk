@@ -46,14 +46,14 @@ define(function(require) {
       t1.to(this.scaleBody, .5, {
         className: this.scaleClass,
         ease: Expo.easeInOut
-      }, 0).to('#region-menu', .5, {
+      }, 0).to('#region-menu', .3, {
         autoAlpha: 1,
         ease: Expo.easeInOut
-      }, 0).to(lpm, 1.2, {
+      }, 0).to(lpm, .3, {
         left: '0%',
         autoAlpha: 1,
         ease: Expo.easeInOut
-      }, 0).to(rpm, 1.2, {
+      }, 0).to(rpm, .3, {
         right: "0%",
         autoAlpha: 1,
         ease: Expo.easeInOut
