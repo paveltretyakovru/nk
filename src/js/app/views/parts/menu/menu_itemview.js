@@ -60,9 +60,7 @@ define(function(require) {
       t1.to(this.scaleBody, .5, {
         className: this.scaleClass
       }, 0).to('#region-menu', .5, {
-        autoAlpha: 1,
-        opacity: 1,
-        className: 'scale'
+        autoAlpha: .7
       }, 0).to(lpm, 1.2, {
         left: '0%',
         autoAlpha: 1,

@@ -56,7 +56,7 @@ define ( require ) ->
 
 			t1
 			.to @scaleBody , .5 , className : @scaleClass , 0
-			.to '#region-menu' , .5 , { autoAlpha : 1 , opacity : 1 , className : 'scale'} , 0
+			.to '#region-menu' , .5 , { autoAlpha : .7 } , 0
 			.to lpm , 1.2 , 
 				left 			: '0%'
 				autoAlpha 	 	: 1
