@@ -11,14 +11,17 @@ define ( require ) ->
 		initialize : ->
 			console.log 'menu_itemvie.initialize' if @debug
 
-			@on 'render' , @afterRender , @
-			@on 'showMenu' , @showMenu , @
+			@on 'render'	, @afterRender	, @
+			@on 'showMenu' 	, @showMenu		, @
 
 		afterRender : ->
 			@initCloseMenuAnimation()
 
 		showMenu : ->
 			@closeMenuAnimation.play()
+
+		closeMenu : ->
+			@closeMenuAnimation.reverse()
 
 
 		initCloseMenuAnimation	: ->
@@ -58,7 +61,7 @@ define ( require ) ->
 
 			@closeMenuAnimation = t1;
 
-			#TweenMax.set body , { scale : 1 	 , webkitFilter	:"blur(0)" }
+			#TweenMax.set body , { scale : 1 	 , webkitFilter	:"blur(0)"  , ease :"{Power4.easeOut}"}
 			#TweenMax.set lpm  , { left  : "-20%" , autoAlpha : 0 }
 			#TweenMax.set rpm  , { left  : "-20%" , autoAlpha : 0 }
 			#TweenMax.set bco  , autoAlpha : 0

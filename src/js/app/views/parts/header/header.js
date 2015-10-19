@@ -53,7 +53,8 @@ define(function(require) {
       return this.scaleAnimation.play();
     },
     showMenu: function() {
-      return console.log('Show menu');
+      console.log('Show menu');
+      return app.regionMenu.currentView.trigger('showMenu');
     }
   });
 });

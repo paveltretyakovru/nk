@@ -16,7 +16,7 @@ define(function(require) {
       }
     },
     run: function(pageName, pageParameters) {
-      var Header, Login, Menu, Page, args;
+      var Header, Login, Page, args;
       if (this.debug) {
         console.log('controllers/desktop.run : route->' + pageName);
       }
@@ -24,11 +24,9 @@ define(function(require) {
       Page = new Pages[args.shift()](args);
       Header = new HeaderView();
       Login = new LoginView();
-      Menu = new MenuView();
       app.regionContent.show(Page);
       app.regionHeader.show(Header);
-      app.regionLogin.show(Login);
-      return app.regionMenu.show(Menu);
+      return app.regionLogin.show(Login);
     },
     Home: function() {
       return this.run('Home');

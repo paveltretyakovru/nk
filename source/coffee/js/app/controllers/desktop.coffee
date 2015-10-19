@@ -23,11 +23,11 @@ define ( require ) ->
 			Page 	= new Pages[ args.shift() ] args
 			Header 	= new HeaderView()
 			Login 	= new LoginView()
-			Menu 	= new MenuView()
+			#Menu 	= new MenuView()
 
 			app.regionContent.show Page
 			app.regionHeader.show Header
 			app.regionLogin.show Login
-			app.regionMenu.show Menu
+			#app.regionMenu.show Menu
 
 		Home 	: -> @.run 'Home'
