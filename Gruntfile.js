@@ -80,7 +80,7 @@ module.exports = function(grunt) {
     if ( filepath.indexOf( '/' ) !== -1 ){
       replace = (proto) ? 'source/haml/design_prototypes/'    : 'source/haml'
     } else {
-      replace = (proto) ? 'source\\haml\\design_prototypes\\' : 'source/haml'
+      replace = (proto) ? 'source\\haml\\design_prototypes\\' : 'source\\haml'
     }
 
     root            = (proto) ? '' : 'src'
@@ -90,6 +90,7 @@ module.exports = function(grunt) {
     destfile        = destfile.replace(  replace , root );
     file[destfile]  = filepath;
 
+    console.log('Parts: ' , replace , root);
     console.log('Compile file ' + filepath + ' to ' + destfile );
     
     grunt.config('haml.watch.files', file);
