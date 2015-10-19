@@ -22,14 +22,12 @@ define ( require ) ->
 
 		afterRender : ->
 			@initCloseMenuAnimation()
-			#@closeMenu()
 
 		showMenu : ->			
 			@closeMenuAnimation.play()
 
 		closeMenu : ->
 			TweenMax.set '#region-menu' , { autoAlpha : 1 , opacity : 1 }
-			console.log 'Click close element'
 			@closeMenuAnimation.reverse()
 
 		initCloseMenuAnimation	: ->

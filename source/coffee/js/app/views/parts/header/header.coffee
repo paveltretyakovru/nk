@@ -10,6 +10,7 @@ define ( require ) ->
 		debugAnimation 	: false
 		debug			: true
 		template 		: Template
+		tagName 		: 'header'
 
 		ui 	:
 			'linkRegistration'	: '.js-link-registration'

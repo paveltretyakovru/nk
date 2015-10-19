@@ -30,7 +30,6 @@ define(function(require) {
         autoAlpha: 1,
         opacity: 1
       });
-      console.log('Click close element');
       return this.closeMenuAnimation.reverse();
     },
     initCloseMenuAnimation: function() {
