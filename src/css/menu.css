@@ -1,4 +1,37 @@
 /* line 3, ../../source/sass/menu.sass */
+#region-menu {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  background: radial-gradient(75% 100% at center top, #ffffff, #000000), #282C34;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 15, ../../source/sass/menu.sass */
+.scale {
+  transform: scale(0.95, 0.91);
+  -webkit-transform: scale(0.95, 0.91);
+}
+
+/* line 19, ../../source/sass/menu.sass */
+#region-menu:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-blend-mode: soft-light;
+  background: radial-gradient(75% 100% at center top, #ffffff, #000000), #282C34;
+}
+
+/* line 30, ../../source/sass/menu.sass */
 section.left_menu {
   display: inline-block;
   position: relative;
@@ -6,54 +39,55 @@ section.left_menu {
   padding: 48px;
   height: 100%;
   z-index: 200;
+  left: -40%;
 }
-/* line 16, ../../source/sass/menu.sass */
+/* line 39, ../../source/sass/menu.sass */
 section.left_menu img {
   margin-bottom: 64px;
 }
-/* line 18, ../../source/sass/menu.sass */
+/* line 41, ../../source/sass/menu.sass */
 section.left_menu h4 {
   margin-bottom: 8px;
 }
-/* line 20, ../../source/sass/menu.sass */
+/* line 43, ../../source/sass/menu.sass */
 section.left_menu p:first-of-type {
   margin-bottom: 48px;
 }
-/* line 22, ../../source/sass/menu.sass */
+/* line 45, ../../source/sass/menu.sass */
 section.left_menu h5 {
   margin-bottom: 4px;
 }
-/* line 24, ../../source/sass/menu.sass */
+/* line 47, ../../source/sass/menu.sass */
 section.left_menu p {
   margin-bottom: 24px;
 }
-/* line 26, ../../source/sass/menu.sass */
+/* line 49, ../../source/sass/menu.sass */
 section.left_menu a {
   color: #ECB72E;
 }
-/* line 29, ../../source/sass/menu.sass */
+/* line 52, ../../source/sass/menu.sass */
 section.left_menu footer {
   margin-top: 64px;
   line-height: 24px;
   text-align: left;
 }
-/* line 33, ../../source/sass/menu.sass */
+/* line 56, ../../source/sass/menu.sass */
 section.left_menu footer p {
   float: right;
   margin-bottom: 40px;
 }
-/* line 36, ../../source/sass/menu.sass */
+/* line 59, ../../source/sass/menu.sass */
 section.left_menu footer p:first-of-type {
   float: left;
   margin-bottom: 40px;
 }
-/* line 39, ../../source/sass/menu.sass */
+/* line 62, ../../source/sass/menu.sass */
 section.left_menu footer img {
   margin-bottom: -8px;
   margin-left: 4px;
 }
 
-/* line 44, ../../source/sass/menu.sass */
+/* line 67, ../../source/sass/menu.sass */
 section.right_menu {
   position: relative;
   float: right;
@@ -63,28 +97,29 @@ section.right_menu {
   background: rgba(40, 44, 52, 0.9);
   box-shadow: 0 0 256px 64px rgba(0, 0, 0, 0.25);
   z-index: 200;
+  right: -40%;
 }
-/* line 54, ../../source/sass/menu.sass */
+/* line 78, ../../source/sass/menu.sass */
 section.right_menu img {
   height: 16px;
   margin-bottom: 64px;
 }
-/* line 58, ../../source/sass/menu.sass */
+/* line 82, ../../source/sass/menu.sass */
 section.right_menu h3 {
   margin-bottom: 8px;
 }
-/* line 60, ../../source/sass/menu.sass */
+/* line 84, ../../source/sass/menu.sass */
 section.right_menu p {
   margin-bottom: 48px;
 }
-/* line 62, ../../source/sass/menu.sass */
+/* line 86, ../../source/sass/menu.sass */
 section.right_menu button {
   margin-top: 16px;
   display: inline-block;
   width: 160px;
   margin-right: 16px;
 }
-/* line 67, ../../source/sass/menu.sass */
+/* line 91, ../../source/sass/menu.sass */
 section.right_menu a {
   display: inline-block;
 }
