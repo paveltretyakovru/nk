@@ -19,19 +19,6 @@ define(function(require) {
       this.on('render', this.afterRender, this);
       return this.on('showMenu', this.showMenu, this);
     },
-    onShow: function() {
-
-      /*
-      			lpm 	= @el.querySelectorAll("#lpm")
-      			rpm 	= @el.querySelectorAll("#rpm")
-      			bco 	= @el.querySelectorAll("#bco")
-      			body 	= document.body
-      
-      			body.style.scale = 1
-      			lpm.style.left	= '-20%'
-      			rpm.style.right	= '-20%'
-       */
-    },
     afterRender: function() {
       return this.initCloseMenuAnimation();
     },
@@ -58,9 +45,11 @@ define(function(require) {
       this.scaleBody = document.getElementById('scale-body');
       this.scaleClass = 'scale-element';
       t1.to(this.scaleBody, .5, {
-        className: this.scaleClass
+        className: this.scaleClass,
+        ease: Expo.easeInOut
       }, 0).to('#region-menu', .5, {
-        autoAlpha: .7
+        autoAlpha: .7,
+        ease: Expo.easeInOut
       }, 0).to(lpm, 1.2, {
         left: '0%',
         autoAlpha: 1,

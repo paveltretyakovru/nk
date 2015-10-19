@@ -25,9 +25,9 @@ define ( require ) ->
 			@on 'render' 	, @afterRender , @
 
 		afterRender : ->
-			sectionElement 	= @el.querySelectorAll '.autn-section'
-			registerSide 	= @el.querySelector '.registr-side'
-			loginSide 		= @el.querySelector '.login-side'
+			sectionElement 	= @el.querySelectorAll 	'.autn-section'
+			registerSide 	= @el.querySelector 	'.registr-side'
+			loginSide 		= @el.querySelector 	'.login-side'
 
 			# Установка изначальных значений
 			TweenMax.set registerSide , rotationX : -180

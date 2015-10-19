@@ -20,18 +20,6 @@ define ( require ) ->
 			@on 'render'	, @afterRender	, @
 			@on 'showMenu' 	, @showMenu		, @
 
-		onShow : ->
-			###
-			lpm 	= @el.querySelectorAll("#lpm")
-			rpm 	= @el.querySelectorAll("#rpm")
-			bco 	= @el.querySelectorAll("#bco")
-			body 	= document.body
-
-			body.style.scale = 1
-			lpm.style.left	= '-20%'
-			rpm.style.right	= '-20%'
-			###
-
 		afterRender : ->
 			@initCloseMenuAnimation()
 			#@closeMenu()
@@ -55,8 +43,8 @@ define ( require ) ->
 			@scaleClass	= 'scale-element' # Клас анимации ухода назад
 
 			t1
-			.to @scaleBody , .5 , className : @scaleClass , 0
-			.to '#region-menu' , .5 , { autoAlpha : .7 } , 0
+			.to @scaleBody 		, .5 , { className : @scaleClass , ease : Expo.easeInOut } , 0
+			.to '#region-menu' 	, .5 , { autoAlpha : .7 , ease : Expo.easeInOut } , 0
 			.to lpm , 1.2 , 
 				left 			: '0%'
 				autoAlpha 	 	: 1
