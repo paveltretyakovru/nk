@@ -48,7 +48,7 @@ define(function(require) {
         className: this.scaleClass,
         ease: Expo.easeInOut
       }, 0).to('#region-menu', .5, {
-        autoAlpha: .7,
+        autoAlpha: 1,
         ease: Expo.easeInOut
       }, 0).to(lpm, 1.2, {
         left: '0%',
