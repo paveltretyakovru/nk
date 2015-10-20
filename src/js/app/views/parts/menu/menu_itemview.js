@@ -10,10 +10,14 @@ define(function(require) {
       if (this.debug) {
         console.log('menu_itemvie.initialize');
       }
-      return this.on('render', this.afterRender, this);
+      this.on('render', this.afterRender, this);
+      return this.on('showMenu', this.showMenu, this);
     },
     afterRender: function() {
       return this.initCloseMenuAnimation();
+    },
+    showMenu: function() {
+      return this.closeMenuAnimation.play();
     },
     initCloseMenuAnimation: function() {
       var bco, body, lpm, rpm, t1;
@@ -43,21 +47,7 @@ define(function(require) {
         immediateRender: true,
         ease: Expo.easeInOut
       }, 0);
-      TweenMax.set(body, {
-        scale: 1,
-        webkitFilter: "blur(0)"
-      });
-      TweenMax.set(lpm, {
-        left: "-20%",
-        autoAlpha: 0
-      });
-      TweenMax.set(rpm, {
-        left: "-20%",
-        autoAlpha: 0
-      });
-      return TweenMax.set(bco, {
-        autoAlpha: 0
-      });
+      return this.closeMenuAnimation = t1;
     }
   });
 });
