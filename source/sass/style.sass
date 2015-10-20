@@ -6,7 +6,6 @@
 @import compass/css3/box-shadow
 @import compass/css3/transition
 @import compass/css3/opacity
-@import blend-modes
 @import compass
 
 /* COLORS */
@@ -22,9 +21,10 @@ $color_gray_light	: #b3b0a1
 	box-sizing : border-box
 
 body
-	background	: $color_gray
+	//background	: $color_dark
 	max-width 	: 100%
 	overflow-x 	: hidden
+	background 	: $color_dark
 
 header
 	height 		: 40px
@@ -35,7 +35,7 @@ header
 		line-height: 44px
 		float : right
 		a
-			font-size : 18px
+			font-size 	: 18px
 			margin-left: 16px
 			font-family: Bebas Neue
 			font-weight: 300
@@ -58,6 +58,8 @@ a:hover
 
 main
 	padding 	: 60px 40px
+	background-blend-mode: soft-light
+	+background(radial-gradient(center top, 75% 100%, #fff, $color_dark), $color_gray)	
 
 #loader
 	position	: absolute

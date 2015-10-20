@@ -1,23 +1,3 @@
-//'index.html' : 'source/haml/index.haml'   , 
-//'places.html': 'source/haml/places.haml'  ,
-//'about.html' : 'source/haml/about.haml'   ,
-//'login.html' : 'source/haml/login.haml'   ,
-
-//'index.html' : 'source/haml/index.haml'   , 
-//'places.html': 'source/haml/places.haml'  ,
-//'about.html' : 'source/haml/about.haml'   ,
-//'login.html' : 'source/haml/login.haml'   ,
-
-//'index.html' : 'source/haml/index.haml'   , 
-//'places.html': 'source/haml/places.haml'  ,
-//'about.html' : 'source/haml/about.haml'   ,
-//'login.html' : 'source/haml/login.haml'   ,
-
-//'index.html' : 'source/haml/index.haml'   , 
-//'places.html': 'source/haml/places.haml'  ,
-//'about.html' : 'source/haml/about.haml'   ,
-//'login.html' : 'source/haml/login.haml'   ,
-
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -50,6 +30,11 @@ module.exports = function(grunt) {
         options: {
           spawn: false
         }
+      } ,
+
+      compass : {
+        files : 'source/sass/**/*.sass' ,
+        tasks : ['compass']
       }
     } ,
 
@@ -59,11 +44,19 @@ module.exports = function(grunt) {
       } ,
 
       build : {
-        expand  : true                  , 
-        cwd     : 'source/coffee'              ,
-        src     : '**/*.coffee'  ,
-        dest    : 'src'                 ,
+        expand  : true            , 
+        cwd     : 'source/coffee' ,
+        src     : '**/*.coffee'   ,
+        dest    : 'src'           ,
         ext     : '.js'
+      }
+    } ,
+
+    compass : {
+      dist : {
+        options : {
+          config  : 'config.rb'
+        }
       }
     }
 
@@ -99,6 +92,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-haml2html'       );
   grunt.loadNpmTasks( 'grunt-contrib-coffee'  );
   grunt.loadNpmTasks( 'grunt-contrib-watch'   );
+  grunt.loadNpmTasks( 'grunt-contrib-compass' );
   
   grunt.registerTask( 'default', ['haml' , 'coffee' , 'watch'] );
 
