@@ -57,9 +57,7 @@ a:hover
 	cursor: pointer
 
 main
-	padding 	: 60px 40px
-	background-blend-mode: soft-light
-	+background(radial-gradient(center top, 75% 100%, #fff, $color_dark), $color_gray)	
+	padding 	: 60px 40px	
 
 #loader
 	position	: absolute
@@ -79,6 +77,10 @@ main
 .loader-logo-front
 	left 	: 35
 	top 	: 35
+
+.gradient
+	background-blend-mode: soft-light
+	+background(radial-gradient(center top, 75% 100%, #fff, $color_dark), $color_gray)
 
 /* Крутим лучи логотипа */
 +spin( '.loader-logo-back' , 4s )

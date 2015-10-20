@@ -4,10 +4,10 @@ require [ 'app/app' , 'pace' ] , ( app , pace ) ->
 	#########################################################################################
 	# Нативная функции добавления класса
 	window.addClass = ( el , className ) ->
-		if el.classList
-			el.classList.add className
+		if el.classList?
+			el.classList.add className			
 		else
-			el.className += ' ' + className;
+			el.classList += ' ' + className
 
 	window.removeClass = ( el , className ) ->
 		if el.classList
@@ -29,12 +29,12 @@ require [ 'app/app' , 'pace' ] , ( app , pace ) ->
 	loader 		= document.getElementById 'loader'
 
 	addEvent loader , 'webkitAnimationEnd', ->
-		loader.style.display = 'none' if loader.style.display != 'none'
+		loader.style.display = 'none' if loader.style.display != 'none'		
 		app.start()
 
 	# Костыль для firefox
 	addEvent loader , 'animationend', ->
-		loader.style.display = 'none' if loader.style.display != 'none'
+		loader.style.display = 'none' if loader.style.display != 'none'		
 		app.start()
 
 	# Начата загрузка файлов приложения

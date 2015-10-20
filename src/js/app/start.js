@@ -2,10 +2,10 @@ require(['app/app', 'pace'], function(app, pace) {
   'use strict';
   var loader;
   window.addClass = function(el, className) {
-    if (el.classList) {
+    if (el.classList != null) {
       return el.classList.add(className);
     } else {
-      return el.className += ' ' + className;
+      return el.classList += ' ' + className;
     }
   };
   window.removeClass = function(el, className) {
