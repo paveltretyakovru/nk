@@ -1,19 +1,14 @@
 @import compass/reset/utilities
 +global-reset()
 
+@import compass
 @import compass/css3
 @import compass/css3/transform
 @import compass/css3/box-shadow
 @import compass/css3/transition
 @import compass/css3/opacity
-@import compass
 
-/* COLORS */
-$color_orange		: #ECB72E
-$color_dark			: #000
-$color_gray 		: #282C34
-$color_gray_light	: #b3b0a1
-$color_dark_light 	: #0C0C0C
+@import colors
 
 /* Своя библиотека анимации */
 @import "anim"
@@ -87,7 +82,7 @@ main
 +spin( '.loader-logo-back' , 4s )
 
 /* Создаем пропадающий класс */
-+fadeout( '.fadeout' , 3s )
++fadeout( '.fadeout' , 0s )
 
 /* Создаем появляющийся класс */
 +fadein( '.fadein' , 2s )
