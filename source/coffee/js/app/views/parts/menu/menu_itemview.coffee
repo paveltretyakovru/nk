@@ -8,18 +8,27 @@ define ( require ) ->
 		debug 		: true
 		template 	: Template
 
+		ui 			:
+			'ClosingMenuButton'	: '.js-closing-menu'
+
+		events 		: 
+			'click @ui.ClosingMenuButton' : 'closeMenu'
+
 		initialize : ->
 			console.log 'menu_itemvie.initialize' if @debug
 
-			@on 'render' , @afterRender , @
-			@on 'showMenu' , @showMenu , @
+			@on 'render'	, @afterRender	, @
+			@on 'showMenu' 	, @showMenu		, @
 
 		afterRender : ->
 			@initCloseMenuAnimation()
 
-		showMenu : ->
+		showMenu : ->			
 			@closeMenuAnimation.play()
 
+		closeMenu : ->
+			TweenMax.set '#region-menu' , { autoAlpha : 1 , opacity : 1 }
+			@closeMenuAnimation.reverse()
 
 		initCloseMenuAnimation	: ->
 
@@ -28,37 +37,22 @@ define ( require ) ->
 			rpm 	= @el.querySelectorAll("#rpm")
 			bco 	= @el.querySelectorAll("#bco")
 			body 	= document.body
+			@scaleBody 	= document.getElementById 'scale-body'
+			@scaleClass	= 'scale-element' # Клас анимации ухода назад
 
 			t1
-
-			.to body , 0.5 ,
-				scale 			: 1
-				webkitFilter	:"blur(0)"
-				ease 			:"{Power4.easeOut}"
-
-			.to lpm , 1.2 ,
-				left 		 	: "-20%"
-				autoAlpha 	 	: 0
-				immediateRender : true
+			.to @scaleBody 		, .5 , { className : @scaleClass , ease : Expo.easeInOut } , 0
+			.to '#region-menu' 	, .3 , { autoAlpha : 1 , ease : Expo.easeInOut } , 0
+			.to lpm , .3 , 
+				left 			: '0%'
+				autoAlpha 	 	: 1
 				ease 			: Expo.easeInOut
 			,	0
 
-			.to rpm , 1.2 ,
-				right 			: "-20%"
-				autoAlpha 		: 0
-				immediateRender : true
+			.to rpm , .3 ,
+				right 			: "0%"
+				autoAlpha 	 	: 1
 				ease 			: Expo.easeInOut
 			, 	0
 
-			.to bco , 1.2 ,
-				autoAlpha		: 0
-				immediateRender	:true
-				ease 			: Expo.easeInOut
-			, 	0
-
-			@closeMenuAnimation = t1;
-
-			#TweenMax.set body , { scale : 1 	 , webkitFilter	:"blur(0)" }
-			#TweenMax.set lpm  , { left  : "-20%" , autoAlpha : 0 }
-			#TweenMax.set rpm  , { left  : "-20%" , autoAlpha : 0 }
-			#TweenMax.set bco  , autoAlpha : 0
+			@closeMenuAnimation = t1

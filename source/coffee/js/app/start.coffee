@@ -15,16 +15,27 @@ require [ 'app/app' , 'pace' ] , ( app , pace ) ->
 		else
 			reg = new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi')
 			el.className = el.className.replace( reg , ' ')
+
+	window.addEvent = ( el , eventName , callback ) ->
+		if el.addEventListener
+			el.addEventListener eventName , callback , false
+		else if el.attachEvent
+			console.log 'Attach event'
+			el.attachEvent 'on' + eventName , callback
+		
 	##########################################################################################
 
 	window.app	= app || false
 	loader 		= document.getElementById 'loader'
 
-	loader.addEventListener 'webkitAnimationEnd', ( event ) ->
-		console.log 'Animation end!!!!'
+	addEvent loader , 'webkitAnimationEnd', ->
 		loader.style.display = 'none' if loader.style.display != 'none'
 		app.start()
-	, false
+
+	# Костыль для firefox
+	addEvent loader , 'animationend', ->
+		loader.style.display = 'none' if loader.style.display != 'none'
+		app.start()
 
 	# Начата загрузка файлов приложения
 	pace.on 'start' , ->

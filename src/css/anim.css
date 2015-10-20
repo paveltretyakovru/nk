@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* ╨Ъ╤А╤Г╤В╨╕╨╝ ╤Н╨╗╨╡╨╝╨╡╨╜╤В╤Л (╤Б╨╡╨╗╨╡╨║╤В╨╛╤А , ╤Б╨╡╨║╤Г╨╜╨┤╤Л (4sec) ) */
+/* Крутим элементы (селектор , секунды (4sec) ) */
 @-webkit-keyframes spin_animation {
   100% {
     -moz-transform: rotate(360deg);

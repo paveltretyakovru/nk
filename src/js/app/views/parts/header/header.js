@@ -8,6 +8,7 @@ define(function(require) {
     debugAnimation: false,
     debug: true,
     template: Template,
+    tagName: 'header',
     ui: {
       'linkRegistration': '.js-link-registration',
       'linkLogin': '.js-link-login',

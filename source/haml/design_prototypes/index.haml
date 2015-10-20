@@ -4,26 +4,22 @@
 		%meta{ :"http-equiv" => "content-type" , :content =>"text/html; charset=utf-8" }
 
 		%title Уникальные кальянные
+		%link{ :rel=>"stylesheet" , :href=>"src/css/fonts.css" }
 		%link{ :rel=>"stylesheet" , :href=>"src/css/ukpace.css" }
 		%link{ :rel=>"stylesheet" , :href=>"src/css/style.css" }
 		%link{ :rel=>"stylesheet" , :href=>"src/css/lounges.css" }
-		%link{ :rel=>"stylesheet" , :href=>"src/css/login.css" }
-		%link{ :rel=>"stylesheet" , :href=>"src/css/menu.css" }
 		%link{ :rel=>"stylesheet" , :href=>"bower_components/flexboxgrid/css/flexboxgrid.min.css" }
 	%body
 		#loader.row.fadein-loader
 			%img.loader-logo-back{ :src => "src/images/back_loader_logo.svg" }
 			%img.loader-logo-front{ :src => "src/images/front_loader_logo.svg" }
 		
-		%main#scale-body.bg_testing
-			%button{ :onclick=>"opening()"}< Войти
-			
-			%header#region-header.fadeout
-			
-			#region-content.fadeout			
+		%main#scale-body		
+			-# %button{ :onclick=>"opening()"}< Войти			
+			#region-header.fadeout
+			#region-content.fadeout
 
 		#region-login
-
 		#region-menu
 
 		%script(type="text/javascript" src="bower_components/requirejs/require.js")

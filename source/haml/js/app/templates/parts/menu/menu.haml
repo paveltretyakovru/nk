@@ -1,5 +1,5 @@
--# Form
-.wrapper_menu
+-# Background
+#bco
 	-# Right social content
 	%section#lpm.left_menu
 		%img{ :src=>"src/images/logo.svg" , :alt=>"Unique Hookah Places" , :height=>"40px" }
@@ -34,8 +34,8 @@
 				Создано в
 				%img{ :src=>"src/images/cpdbbk.svg" , :alt=>"CPD&BBK" , :height=>"24px"}
 	-# Left bar
-	%section#rpm.right_menu.closed
-		%img#closing{ :src=>"src/images/cross.svg" , :alt=>"Закрыть"}
+	%section#rpm.right_menu
+		%img.js-closing-menu{ :src=>"src/images/cross.svg" , :alt=>"Закрыть"}
 
 		%h3 Главная страница
 		%p Основная информация
@@ -52,8 +52,5 @@
 		%h3 Франшиза
 		%p Основная информация
 		
-		%button< Войти
+		%button Войти
 		%a Регистрация
-
--# Background
-#bco.background-color-overlay

@@ -1,8 +1,19 @@
-@import "compass/reset/utilities"
+@import compass/reset/utilities
 +global-reset()
 
-@import "compass/css3"
-@import "compass/css3/transform"
+@import compass/css3
+@import compass/css3/transform
+@import compass/css3/box-shadow
+@import compass/css3/transition
+@import compass/css3/opacity
+@import blend-modes
+@import compass
+
+/* COLORS */
+$color_orange		: #ECB72E
+$color_dark			: #000
+$color_gray 		: #282C34
+$color_gray_light	: #b3b0a1
 
 /* Своя библиотека анимации */
 @import "anim"
@@ -11,9 +22,42 @@
 	box-sizing : border-box
 
 body
-	background	: #282C34
+	background	: $color_gray
 	max-width 	: 100%
 	overflow-x 	: hidden
+
+header
+	height 		: 40px
+	
+	img 
+		float: left
+	nav
+		line-height: 44px
+		float : right
+		a
+			font-size : 18px
+			margin-left: 16px
+			font-family: Bebas Neue
+			font-weight: 300
+
+		img
+			margin-left: 16px
+			float: right
+			width: 30px
+
+	a
+		color: #fff
+
+a
+	color 			: $color_orange
+	text-decoration : none
+	letter-spacing 	: 2px
+
+a:hover
+	cursor: pointer
+
+main
+	padding 	: 60px 40px
 
 #loader
 	position	: absolute
@@ -53,12 +97,6 @@ body
 	float 		: left
 .block-right
 	float 		: right
-
-/* COLORS */
-$color_orange		: #ECB72E
-$color_dark			: #000
-$color_gray 		: #282C34
-$color_gray_light	: #b3b0a1
 
 .orange-text
 	color 	: $color_orange
@@ -118,4 +156,146 @@ $color_gray_light	: #b3b0a1
 	background-color: $color_gray
 	padding 		: 65px
 
-/* REGIONS */
+.page-index-content
+	text-align 		: center
+	padding-bottom 	: 80px
+	h1
+		margin	: 30px 0px
+	img	
+		width : 100%
+
+// Menu
+#region-menu
+	visibility 	: hidden
+	position 	: fixed
+	top 		: 0	
+	overflow: hidden
+	top: 0
+	left: 0
+	height: 100%
+	width: 100%
+
+.scale
+	+scale(0.95,0.91)	
+
+#region-menu:before
+	content: ''
+	position: absolute
+	display: block
+	top: 0
+	left: 0
+	height: 100%
+	width: 100%
+	opacity: 0.9
+	background-blend-mode: soft-light
+	+background(radial-gradient(center top, 75% 100%, #fff, $color_gray), $color_gray)
+
+section.left_menu
+	display: inline-block
+	position: relative
+	width: 67%
+	padding: 48px
+	height: 100%
+	z-index: 200
+	left: -40%
+
+	img
+		margin-bottom: 64px
+	h4
+		margin-bottom: 8px
+	p:first-of-type
+		margin-bottom: 48px
+	h5
+		margin-bottom: 4px
+	p 
+		margin-bottom: 24px
+	a
+		color: #ECB72E
+
+	footer
+		margin-top: 64px
+		line-height: 24px
+		text-align: left
+		p
+			float: right
+			margin-bottom: 40px
+		p:first-of-type
+			float: left
+			margin-bottom: 40px
+		img
+			margin-bottom: -8px
+			margin-left: 4px
+
+
+section.right_menu
+	position: relative
+	float: right
+	width: 33%
+	height: 100%
+	padding: 48px
+	background: rgba(40,44,52,.9)
+	box-shadow: 0 0 256px 64px rgba(0,0,0,.25)
+	z-index: 200
+	right: -40%
+
+	
+	img
+		height 			: 16px
+		margin-bottom	: 64px
+
+	h3
+		margin-bottom: 8px
+	p 
+		margin-bottom: 48px
+	button
+		margin-top: 16px
+		display: inline-block
+		width: 160px
+		margin-right: 16px
+	a
+		display: inline-block
+
+.js-closing-menu:hover
+	cursor: pointer
+
+// Login
+.autn-section
+	position	: absolute
+	top			: 20%
+	right 		: -120%	
+	width 		: 88%
+	padding 	: 80px
+	background 	: linear-gradient(left bottom, #17191F, #272B33)
+	z-index 	: 100
+	+backface-visibility( hidden )
+
+.autn-section h2
+	color: $color_orange
+	margin-bottom: 16px
+
+.autn-section h3
+	width: 50%
+	margin-bottom: 32px
+
+.autn-section input 
+	margin-bottom: 40px
+	margin-right: 16px
+
+.autn-section:after
+	content 	: ''
+	position 	: absolute
+	top			: calc(50% - 160px)
+	left		: -160px
+	width		: 320px
+	height 		: 320px
+	background-image: url(../images/key.svg)
+
+.autn-section:before
+	content: ''
+	position: absolute
+	top: 16
+	left: 16
+	width: calc(100% - 16px)
+	height: calc(100% - 32px)
+	box-shadow: inset rgba(255, 255, 255, .1) 0 0 0 1px
+	z-index: -1

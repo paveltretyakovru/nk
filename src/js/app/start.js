@@ -17,15 +17,28 @@ require(['app/app', 'pace'], function(app, pace) {
       return el.className = el.className.replace(reg, ' ');
     }
   };
+  window.addEvent = function(el, eventName, callback) {
+    if (el.addEventListener) {
+      return el.addEventListener(eventName, callback, false);
+    } else if (el.attachEvent) {
+      console.log('Attach event');
+      return el.attachEvent('on' + eventName, callback);
+    }
+  };
   window.app = app || false;
   loader = document.getElementById('loader');
-  loader.addEventListener('webkitAnimationEnd', function(event) {
-    console.log('Animation end!!!!');
+  addEvent(loader, 'webkitAnimationEnd', function() {
     if (loader.style.display !== 'none') {
       loader.style.display = 'none';
     }
     return app.start();
-  }, false);
+  });
+  addEvent(loader, 'animationend', function() {
+    if (loader.style.display !== 'none') {
+      loader.style.display = 'none';
+    }
+    return app.start();
+  });
   pace.on('start', function() {
     if (app.debug) {
       return console.log('Pace start');
