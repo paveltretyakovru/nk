@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 
       compass : {
         files : 'source/sass/**/*.sass' ,
-        tasks : ['compass']
+        tasks : ['compass:dist']
       }
     } ,
 
@@ -54,8 +54,10 @@ module.exports = function(grunt) {
 
     compass : {
       dist : {
-        options : {
-          config  : 'config.rb'
+        options : {          
+          cssDir    : "src/css" ,
+          sassDir   : "source/sass" ,
+          imagesDir : "src/images"
         }
       }
     }

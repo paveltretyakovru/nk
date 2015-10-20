@@ -13,6 +13,7 @@ $color_orange		: #ECB72E
 $color_dark			: #000
 $color_gray 		: #282C34
 $color_gray_light	: #b3b0a1
+$color_dark_light 	: #0C0C0C
 
 /* Своя библиотека анимации */
 @import "anim"
@@ -80,7 +81,7 @@ main
 
 .gradient
 	background-blend-mode: soft-light
-	+background(radial-gradient(center top, 75% 100%, #fff, $color_dark), $color_gray)
+	+background(radial-gradient(center top, 100% 25%, #fff, $color_dark), $color_dark_light)
 
 /* Крутим лучи логотипа */
 +spin( '.loader-logo-back' , 4s )
@@ -192,7 +193,7 @@ main
 	width: 100%
 	opacity: 0.9
 	background-blend-mode: soft-light
-	+background(radial-gradient(center top, 75% 100%, #fff, $color_gray), $color_gray)
+	+background(radial-gradient(center top, 100% 25%, #fff, $color_dark), $color_dark_light)
 
 section.left_menu
 	display: inline-block
