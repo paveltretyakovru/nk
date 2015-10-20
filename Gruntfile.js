@@ -1,23 +1,3 @@
-//'index.html' : 'source/haml/index.haml'   , 
-//'places.html': 'source/haml/places.haml'  ,
-//'about.html' : 'source/haml/about.haml'   ,
-//'login.html' : 'source/haml/login.haml'   ,
-
-//'index.html' : 'source/haml/index.haml'   , 
-//'places.html': 'source/haml/places.haml'  ,
-//'about.html' : 'source/haml/about.haml'   ,
-//'login.html' : 'source/haml/login.haml'   ,
-
-//'index.html' : 'source/haml/index.haml'   , 
-//'places.html': 'source/haml/places.haml'  ,
-//'about.html' : 'source/haml/about.haml'   ,
-//'login.html' : 'source/haml/login.haml'   ,
-
-//'index.html' : 'source/haml/index.haml'   , 
-//'places.html': 'source/haml/places.haml'  ,
-//'about.html' : 'source/haml/about.haml'   ,
-//'login.html' : 'source/haml/login.haml'   ,
-
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -50,6 +30,11 @@ module.exports = function(grunt) {
         options: {
           spawn: false
         }
+      } ,
+
+      compass : {
+        files : 'source/sass/**/*.sass' ,
+        tasks : ['compass']
       }
     } ,
 
@@ -70,8 +55,7 @@ module.exports = function(grunt) {
     compass : {
       dist : {
         options : {
-          config  : 'config.rb' ,
-          watch   : true
+          config  : 'config.rb'
         }
       }
     }
@@ -110,6 +94,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-watch'   );
   grunt.loadNpmTasks( 'grunt-contrib-compass' );
   
-  grunt.registerTask( 'default', ['haml' , 'coffee' , 'compass' , 'watch'] );
+  grunt.registerTask( 'default', ['haml' , 'coffee' , 'watch'] );
 
 };

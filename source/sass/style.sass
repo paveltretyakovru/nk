@@ -21,9 +21,10 @@ $color_gray_light	: #b3b0a1
 	box-sizing : border-box
 
 body
-	background	: $color_gray
+	//background	: $color_dark
 	max-width 	: 100%
 	overflow-x 	: hidden
+	background 	: $color_dark
 
 header
 	height 		: 40px
@@ -57,6 +58,8 @@ a:hover
 
 main
 	padding 	: 60px 40px
+	background-blend-mode: soft-light
+	+background(radial-gradient(center top, 75% 100%, #fff, $color_dark), $color_gray)	
 
 #loader
 	position	: absolute
