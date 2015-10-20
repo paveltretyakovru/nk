@@ -59,11 +59,20 @@ module.exports = function(grunt) {
       } ,
 
       build : {
-        expand  : true                  , 
-        cwd     : 'source/coffee'              ,
-        src     : '**/*.coffee'  ,
-        dest    : 'src'                 ,
+        expand  : true            , 
+        cwd     : 'source/coffee' ,
+        src     : '**/*.coffee'   ,
+        dest    : 'src'           ,
         ext     : '.js'
+      }
+    } ,
+
+    compass : {
+      dist : {
+        options : {
+          config  : 'config.rb' ,
+          watch   : true
+        }
       }
     }
 
@@ -99,7 +108,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-haml2html'       );
   grunt.loadNpmTasks( 'grunt-contrib-coffee'  );
   grunt.loadNpmTasks( 'grunt-contrib-watch'   );
+  grunt.loadNpmTasks( 'grunt-contrib-compass' );
   
-  grunt.registerTask( 'default', ['haml' , 'coffee' , 'watch'] );
+  grunt.registerTask( 'default', ['haml' , 'coffee' , 'compass' , 'watch'] );
 
 };
