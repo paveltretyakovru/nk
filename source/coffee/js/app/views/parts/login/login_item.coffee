@@ -31,7 +31,11 @@ define ( require ) ->
 
 			# Установка изначальных значений
 			TweenMax.set registerSide , rotationX : -180
-			###
+			
+			# Убираем элемент с экрана
+			TweenMax.set @el , display : 'none'
+			
+			### TODO : проработать анимацию во время выезда
 			TweenMax.set loginSide ,
 				filter 			: "blur(0.5px)"
 				webkitFilter 	: "blur(0.5px)"
@@ -40,8 +44,11 @@ define ( require ) ->
 			# Анимация выезда блока с авторизацией
 			@showBlockLogin = new TimelineMax
 				paused : true
-			.to sectionElement , 0 , display : 'block' , 0
+
+			#Показыаем эелемент на эране
+			.to @el , 0  , {zIndex : 200 , display : 'block'}
 			.to sectionElement , .3 ,
+				alpha	: 1
 				right : '0%'
 				ease  : Expo.easeInOut
 			.paused(true)

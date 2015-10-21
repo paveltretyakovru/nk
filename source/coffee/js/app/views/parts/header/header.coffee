@@ -29,7 +29,7 @@ define ( require ) ->
 		afterRender : ->
 			# Элемент который будет уходить назад
 			@scaleBody 	= document.getElementById 'scale-body'
-			@scaleClass	= 'scale-element' # Клас анимации ухода назад						
+			@scaleClass	= 'scale-element' # Клас анимации ухода назад
 
 			@scaleAnimation = TweenMax.to @scaleBody , 0.5 , className : @scaleClass
 			.paused(true)

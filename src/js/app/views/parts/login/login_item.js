@@ -28,8 +28,11 @@ define(function(require) {
       loginSide = this.el.querySelector('.login-side');
       TweenMax.set(registerSide, {
         rotationX: -180
+      });
+      TweenMax.set(this.el, {
+        display: 'none'
 
-        /*
+        /* TODO : проработать анимацию во время выезда
         			TweenMax.set loginSide ,
         				filter 			: "blur(0.5px)"
         				webkitFilter 	: "blur(0.5px)"
@@ -37,9 +40,11 @@ define(function(require) {
       });
       this.showBlockLogin = new TimelineMax({
         paused: true
-      }).to(sectionElement, 0, {
+      }).to(this.el, 0, {
+        zIndex: 200,
         display: 'block'
-      }, 0).to(sectionElement, .3, {
+      }).to(sectionElement, .3, {
+        alpha: 1,
         right: '0%',
         ease: Expo.easeInOut
       }).paused(true);
