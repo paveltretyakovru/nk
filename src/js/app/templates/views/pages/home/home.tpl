@@ -3,6 +3,8 @@
         <h1>Кальянные ложи</h1>
         <span>Открыто более 40 заведенией</span>
         <!-- <button>Открыть</button> -->
+
+
       </section>
 
       <hr>
@@ -34,7 +36,7 @@
             <h4>«Резерв»</h4>
             <small>Тюмень</small>
           </div>
-          <div class='backside'> HELLO WORLD! </div>
+          <div class='backside'> </div>
         </article>
         
         <article class='lounge'>

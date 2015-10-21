@@ -22,27 +22,26 @@ define ( require ) ->
 			@initCardsAnimation()
 
 		initCardsAnimation : ->
-				
-			CSSPlugin.defaultTransformPerspective = 1000;
-
-			elements = @el.querySelectorAll '.lounge'
+			CSSPlugin.defaultTransformPerspective = 1000
 			
+			elements 	= @el.querySelectorAll '.lounge'
 			Array.prototype.forEach.call elements , ( el , i ) ->				
 
-				el.addEventListener 'click' , ->
-
+				el.addEventListener 'click' , ->					
+					
 					backCard	= el.querySelector '.backside'
 					frontCard 	= el.querySelector '.frontside'
 					
 					TweenMax.set backCard , rotationY : -180
 
 					tl = new TimelineMax 
-						paused 		: true
+						paused 	: true
+					
 					tl
+					.set el , zIndex : 200
 					.to frontCard 	, 1 	, rotationY : 180		, 0
 					.to backCard	, 1 	, rotationY : 0			, 0
-					.to el			, .5	, z 		: 200		, 0	
-					#.to el 			, .5	, z 		: 0			, .5
+					.to el			, .5	, z 		: 200		, 0
 
 					el.animation = tl
 

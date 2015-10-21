@@ -34,7 +34,9 @@ define(function(require) {
           tl = new TimelineMax({
             paused: true
           });
-          tl.to(frontCard, 1, {
+          tl.set(el, {
+            zIndex: 200
+          }).to(frontCard, 1, {
             rotationY: 180
           }, 0).to(backCard, 1, {
             rotationY: 0

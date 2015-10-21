@@ -38,7 +38,10 @@ define ( require ) ->
 			###
 			
 			# Анимация выезда блока с авторизацией
-			@showBlockLogin = TweenMax.to sectionElement , .3 ,
+			@showBlockLogin = new TimelineMax
+				paused : true
+			.to sectionElement , 0 , display : 'block' , 0
+			.to sectionElement , .3 ,
 				right : '0%'
 				ease  : Expo.easeInOut
 			.paused(true)

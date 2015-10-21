@@ -35,7 +35,11 @@ define(function(require) {
         				webkitFilter 	: "blur(0.5px)"
          */
       });
-      this.showBlockLogin = TweenMax.to(sectionElement, .3, {
+      this.showBlockLogin = new TimelineMax({
+        paused: true
+      }).to(sectionElement, 0, {
+        display: 'block'
+      }, 0).to(sectionElement, .3, {
         right: '0%',
         ease: Expo.easeInOut
       }).paused(true);
