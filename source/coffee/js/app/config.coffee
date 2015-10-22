@@ -20,6 +20,7 @@ requirejs.config
 		'sightglass'			: 'bower_components/sightglass/index'
 		'backbone-validation'	: 'bower_components/backbone-validation/dist/backbone-validation-min'
 		'gsap'					: 'bower_components/gsap/src/minified/TweenMax.min'
+		'jquery-ui'				: 'bower_components/jquery-ui/jquery-ui.min'
 
 	    # PATH
 		'app'           		: 'src/js/app'
@@ -50,6 +51,7 @@ requirejs.config
 
 	'shim':
 		'jquery'				: 'exports': '$'
+		'jquery-ui'				: 'deps'   : ['jquery']
 		'underscore'			: 'exports': '_'
 		'handlebars'			: 'exports': 'Handlebars'		
 		'backbone'				: 'exports': 'Backbone' , 'deps': [ 'jquery' , 'underscore'] 	

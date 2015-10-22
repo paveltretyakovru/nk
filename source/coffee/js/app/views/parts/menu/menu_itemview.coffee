@@ -19,13 +19,22 @@ define ( require ) ->
 		initialize : ->
 			console.log 'menu_itemvie.initialize' if @debug
 
+
 			@on 'render'	, @afterRender	, @
 			@on 'showMenu' 	, @showMenu		, @
 
-		afterRender : ->
+		onRender : ->
+			@lpm 	= @el.querySelectorAll("#lpm")
+			@rpm 	= @el.querySelectorAll("#rpm")
+			@scaleBody 	= document.getElementById 'scale-body'
+			@scaleClass	= 'scale-element' # Клас анимации ухода назад
+
 			@initCloseMenuAnimation()
 
-		showMenu : ->			
+		afterRender : ->
+			#
+
+		showMenu : ->
 			@closeMenuAnimation.play()
 
 		closeMenu : ->
@@ -35,23 +44,17 @@ define ( require ) ->
 		initCloseMenuAnimation	: ->
 
 			t1 		= new TimelineMax paused : true
-			lpm 	= @el.querySelectorAll("#lpm")
-			rpm 	= @el.querySelectorAll("#rpm")
-			bco 	= @el.querySelectorAll("#bco")
-			body 	= document.body
-			@scaleBody 	= document.getElementById 'scale-body'
-			@scaleClass	= 'scale-element' # Клас анимации ухода назад
 
 			t1
 			.to @scaleBody 		, .5 , { className : '+=' + @scaleClass , ease : Expo.easeInOut } , 0
 			.to '#region-menu' 	, .3 , { autoAlpha : 1 , ease : Expo.easeInOut } , 0
-			.to lpm , .3 , 
+			.to @lpm , 1 , 
 				left 			: '0%'
 				autoAlpha 	 	: 1
 				ease 			: Expo.easeInOut
 			,	0
 
-			.to rpm , .3 ,
+			.to @rpm , 1 ,
 				right 			: "0%"
 				autoAlpha 	 	: 1
 				ease 			: Expo.easeInOut

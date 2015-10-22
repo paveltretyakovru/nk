@@ -87,8 +87,8 @@ main
 	top 	: 35
 
 .gradient
-	background-blend-mode: soft-light
-	+background(radial-gradient(center top, 100% 25%, #fff, $color_gray), $color_gray)
+	//background-blend-mode: soft-light
+	//+background(radial-gradient(center top, 100% 25%, #fff, $color_gray), $color_gray)
 
 /* Крутим лучи логотипа */
 +spin( '.loader-logo-back' , 4s )
@@ -206,8 +206,9 @@ main
 	height: 100%
 	width: 100%
 	opacity: 0.9
-	background-blend-mode: soft-light
-	+background(radial-gradient(center top, 100% 25%, #fff, $color_gray), $color_gray)
+	background-color: $color_dark
+	//background-blend-mode: soft-light
+	//+background(radial-gradient(center top, 100% 25%, #fff, $color_gray), $color_gray)
 
 section.left_menu
 	display: inline-block

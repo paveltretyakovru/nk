@@ -32,6 +32,7 @@
     "gsap": "greensock#~1.18.0",
     "bootstrap-grid-only": "https://github.com/zirafa/bootstrap-grid-only.git",
     "font-awesome": "~4.4.0",
-    "fullpage.js": "~2.7.4"
+    "fullpage.js": "~2.7.4",
+    "jquery-ui": "~1.11.4"
   }
 }

@@ -17,6 +17,7 @@ requirejs.config({
     'sightglass': 'bower_components/sightglass/index',
     'backbone-validation': 'bower_components/backbone-validation/dist/backbone-validation-min',
     'gsap': 'bower_components/gsap/src/minified/TweenMax.min',
+    'jquery-ui': 'bower_components/jquery-ui/jquery-ui.min',
     'app': 'src/js/app',
     'nls': 'src/js/app/nls',
     'utils': 'src/js/app/utils',
@@ -42,6 +43,9 @@ requirejs.config({
   'shim': {
     'jquery': {
       'exports': '$'
+    },
+    'jquery-ui': {
+      'deps': ['jquery']
     },
     'underscore': {
       'exports': '_'
