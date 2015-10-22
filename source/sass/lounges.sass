@@ -97,20 +97,27 @@ button:after
 	background-image: url(../images/goto.svg)
 
 // Section 1
+main h1 		
+	width: 75%		
+	margin: 96px 0 32px 0
+	text-align 	: left
+
 main h3
 	width: 30%
 	margin-bottom: 32px
+	font-size	: 16pt
+	text-align	: left
 
 main button
 	margin-bottom: 64px
 
-figure:last-child
-	float : right
+figure:first-child
+	float : left
 	margin : 0
 	
 figure 
 	display: inline-block
-	float : left
+	float : right
 	margin-left : 16px
 	height : 16px
 
@@ -121,17 +128,17 @@ figcapation
 figure img 
 	margin-right : 8px
 
-section.instruments
+.instruments
 	width: 100%
 	height: 16px
-	margin: 32px 0 32px 0
+	margin: 32px 0 15px 0
 	+sides-padding()
 hr
 	margin-bottom : 32px
-	width : 100%
 	height : 1px
 	background : white
 	+opacity(.4)
+	margin 		: 0 40px 30px 40px
 
 section.lounges
 	text-align: center
@@ -651,6 +658,7 @@ body
 		left: 0
 		opacity: 0.2
 		z-index: 100
+		width: 100%
 
 	#cb3grad
 		position: absolute
