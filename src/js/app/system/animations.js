@@ -9,6 +9,8 @@ define(function(requrie) {
     initialize: function() {
       this.elements.main = document.getElementById('scale-body');
       this.elements.loader = document.getElementById('loader');
+      this.elements.header = document.getElementById('region-header');
+      this.elements.content = document.getElementById('region-content');
       this.animations.hideMain = (function(_this) {
         return function(callback) {
           _this.timelines.hideMain = new TimelineMax({
@@ -45,9 +47,24 @@ define(function(requrie) {
               },
               paused: true
             });
-            _this.timelines.showMain.to(_this.elements.main, 1, {
-              autoAlpha: 1
+            _this.timelines.showMain.set(_this.elements.main, {
+              autoAlpha: 0
             });
+            _this.timelines.showMain.set(_this.elements.header, {
+              autoAlpha: 0
+            });
+            _this.timelines.showMain.set(_this.elements.content, {
+              autoAlpha: 0
+            });
+            _this.timelines.showMain.to(_this.elements.main, 2, {
+              autoAlpha: 1
+            }, 0);
+            _this.timelines.showMain.to(_this.elements.header, 2, {
+              autoAlpha: 1
+            }, 0);
+            _this.timelines.showMain.to(_this.elements.content, 2, {
+              autoAlpha: 1
+            }, 0);
             return _this.timelines.showMain.play();
           }
         };

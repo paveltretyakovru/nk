@@ -11,6 +11,9 @@ define ( requrie ) ->
 		initialize 	: ->
 			@elements.main 		= document.getElementById 'scale-body'
 			@elements.loader 	= document.getElementById 'loader'
+			@elements.header 	= document.getElementById 'region-header'
+			@elements.content 	= document.getElementById 'region-content'
+
 
 			@animations.hideMain = ( callback ) =>
 				@timelines.hideMain = new TimelineMax
@@ -31,8 +34,13 @@ define ( requrie ) ->
 				else
 					@timelines.showMain = new TimelineMax
 						onStart : -> if callback? then callback()
-						paused 	: true
-					@timelines.showMain.to @elements.main , 1 ,  { autoAlpha : 1 }
+						paused 	: true					
+					@timelines.showMain.set @elements.main	, autoAlpha : 0
+					@timelines.showMain.set @elements.header, autoAlpha : 0
+					@timelines.showMain.set @elements.content, autoAlpha : 0
+					@timelines.showMain.to 	@elements.main , 2 	, autoAlpha : 1 , 0
+					@timelines.showMain.to 	@elements.header , 2 	, autoAlpha : 1 , 0
+					@timelines.showMain.to 	@elements.content , 2 	, autoAlpha : 1 , 0
 					@timelines.showMain.play()
 
 	Animations.initialize()

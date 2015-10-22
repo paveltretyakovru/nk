@@ -39,7 +39,13 @@ require [ 'app/app' , 'pace' ] , ( app , pace ) ->
 
 	window.app	= app || false
 	loader 		= document.getElementById 'loader'
-	main 		= document.getElementById 'scale-body'	
+	main 		= document.getElementById 'scale-body'
+	header 		= document.getElementById 'region-header'
+	content 	= document.getElementById 'region-content'
+
+	TweenMax.set main	, autoAlpha : 0
+	TweenMax.set header, autoAlpha : 0
+	TweenMax.set content, autoAlpha : 0
 
 	showLoader()
 

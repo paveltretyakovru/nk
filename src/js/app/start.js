@@ -1,6 +1,6 @@
 require(['app/app', 'pace'], function(app, pace) {
   'use strict';
-  var loader, main;
+  var content, header, loader, main;
   window.addClass = function(el, className) {
     if (el.classList != null) {
       return el.classList.add(className);
@@ -58,6 +58,17 @@ require(['app/app', 'pace'], function(app, pace) {
   window.app = app || false;
   loader = document.getElementById('loader');
   main = document.getElementById('scale-body');
+  header = document.getElementById('region-header');
+  content = document.getElementById('region-content');
+  TweenMax.set(main, {
+    autoAlpha: 0
+  });
+  TweenMax.set(header, {
+    autoAlpha: 0
+  });
+  TweenMax.set(content, {
+    autoAlpha: 0
+  });
   showLoader();
   pace.on('done', function() {
     return hideLoader(function() {
