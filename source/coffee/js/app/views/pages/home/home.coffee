@@ -49,14 +49,8 @@ define ( require ) ->
 					tl
 					.set el , zIndex : 200
 					.to frontCard 	, 1 	, rotationY : 180		, 0
-<<<<<<< HEAD
-					.to backCard	, 1 	, {width: "100vh", top: 0, left: 0, height: "100vh", rotationY : 0}, 0
-					.to el			, .5	, {position: "absolute", top: 0, left: 0, width: "100vh", height: "100vh"}, 0	
-					#.to el 			, .5	, z 		: 0			, .5
-=======
 					.to backCard	, 1 	, rotationY : 0			, 0
 					#.to el			, .5	, z 		: 200		, 0
->>>>>>> 3c4f9b58d4e68f92d1a45bd8c0fa50db64741da4
 
 					el.animation = tl
 

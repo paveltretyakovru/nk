@@ -50,20 +50,7 @@ define(function(require) {
           }).to(frontCard, 1, {
             rotationY: 180
           }, 0).to(backCard, 1, {
-            width: "100vh",
-            top: 0,
-            left: 0,
-            height: "100vh",
             rotationY: 0
-<<<<<<< HEAD
-          }, 0).to(el, .5, {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100vh",
-            height: "100vh"
-=======
->>>>>>> 3c4f9b58d4e68f92d1a45bd8c0fa50db64741da4
           }, 0);
           el.animation = tl;
           return el.animation.play();
