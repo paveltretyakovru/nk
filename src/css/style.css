@@ -577,7 +577,7 @@ section.right_menu a {
 /* line 282, ../../source/sass/style.sass */
 .autn-section {
   position: absolute;
-  top: 20%;
+  top: 200;
   right: -120%;
   width: 88%;
   padding: 80px;
