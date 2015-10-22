@@ -3,17 +3,20 @@ define(function(requrie) {
   var Animations;
   require('gsap');
   Animations = {
-    timelines: {},
-    animations: {},
+    tweens: {},
     elements: {},
+    animations: {},
     initialize: function() {
       this.elements.main = document.getElementById('scale-body');
       this.elements.loader = document.getElementById('loader');
       this.elements.header = document.getElementById('region-header');
       this.elements.content = document.getElementById('region-content');
+      TweenMax.set([this.elements.main, this.elements.header, this.elements.content], {
+        autoAlpha: 0
+      });
       this.animations.hideMain = (function(_this) {
         return function(callback) {
-          _this.timelines.hideMain = new TimelineMax({
+          _this.tweens.hideMain = new TimelineMax({
             onComplete: function() {
               return showLoader(function() {
                 return hideLoader(function() {
@@ -25,21 +28,21 @@ define(function(requrie) {
             },
             paused: true
           });
-          _this.timelines.hideMain.set(_this.elements.main, {
+          _this.tweens.hideMain.set(_this.elements.main, {
             autoAlpha: 1
           }).to(_this.elements.main, .5, {
             autoAlpha: 0,
             display: 'none'
           });
-          return _this.timelines.hideMain.play();
+          return _this.tweens.hideMain.play();
         };
       })(this);
-      return this.animations.showMain = (function(_this) {
+      this.animations.showMain = (function(_this) {
         return function(callback) {
-          if (_this.timelines.hideMain != null) {
-            return _this.timelines.hideMain.reverse();
+          if (_this.tweens.hideMain != null) {
+            return _this.tweens.hideMain.reverse();
           } else {
-            _this.timelines.showMain = new TimelineMax({
+            _this.tweens.showMain = new TimelineMax({
               onStart: function() {
                 if (callback != null) {
                   return callback();
@@ -47,26 +50,52 @@ define(function(requrie) {
               },
               paused: true
             });
-            _this.timelines.showMain.set(_this.elements.main, {
+            _this.tweens.showMain.set([_this.elements.main, _this.elements.header, _this.elements.content], {
               autoAlpha: 0
             });
-            _this.timelines.showMain.set(_this.elements.header, {
-              autoAlpha: 0
-            });
-            _this.timelines.showMain.set(_this.elements.content, {
-              autoAlpha: 0
-            });
-            _this.timelines.showMain.to(_this.elements.main, 2, {
+            _this.tweens.showMain.to(_this.elements.main, 2, {
               autoAlpha: 1
             }, 0);
-            _this.timelines.showMain.to(_this.elements.header, 2, {
+            _this.tweens.showMain.to(_this.elements.header, 2, {
               autoAlpha: 1
             }, 0);
-            _this.timelines.showMain.to(_this.elements.content, 2, {
+            _this.tweens.showMain.to(_this.elements.content, 2, {
               autoAlpha: 1
             }, 0);
-            return _this.timelines.showMain.play();
+            return _this.tweens.showMain.play();
           }
+        };
+      })(this);
+      this.animations.showLoader = (function(_this) {
+        return function(callback) {
+          _this.tweens.showLoader = new TimelineMax({
+            paused: true,
+            onComplete: function() {
+              if (callback != null) {
+                return callback();
+              }
+            }
+          });
+          _this.tweens.showLoader.to(_this.elements.loader, 1, {
+            opacity: 1
+          }, 0);
+          return _this.tweens.showLoader.play();
+        };
+      })(this);
+      return this.animations.hideLoader = (function(_this) {
+        return function(callback) {
+          _this.tweens.hideLoader = new TimelineMax({
+            paused: true,
+            onComplete: function() {
+              if (callback != null) {
+                return callback();
+              }
+            }
+          });
+          _this.tweens.hideLoader.to(_this.elements.loader, .5, {
+            opacity: 0
+          }, 0);
+          return _this.tweens.hideLoader.play();
         };
       })(this);
     }

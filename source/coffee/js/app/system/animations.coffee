@@ -4,9 +4,9 @@ define ( requrie ) ->
 	require 'gsap'
 
 	Animations = 
-		timelines	: {}
-		animations 	: {}
+		tweens		: {}
 		elements	: {}
+		animations 	: {}
 
 		initialize 	: ->
 			@elements.main 		= document.getElementById 'scale-body'
@@ -14,34 +14,45 @@ define ( requrie ) ->
 			@elements.header 	= document.getElementById 'region-header'
 			@elements.content 	= document.getElementById 'region-content'
 
+			TweenMax.set [ @elements.main , @elements.header , @elements.content ]	, autoAlpha : 0
 
 			@animations.hideMain = ( callback ) =>
-				@timelines.hideMain = new TimelineMax
+				@tweens.hideMain = new TimelineMax
 					onComplete : ->
 						showLoader ->
 							hideLoader ->
 								if callback? then callback()
 					paused : true
 
-				@timelines.hideMain
+				@tweens.hideMain
 				.set @elements.main , autoAlpha : 1
 				.to @elements.main 		, .5 ,  { autoAlpha : 0 , display : 'none' }				
 				
-				@timelines.hideMain.play()
+				@tweens.hideMain.play()
 
 			@animations.showMain = ( callback ) =>
-				if @timelines.hideMain? then @timelines.hideMain.reverse()
+				if @tweens.hideMain? then @tweens.hideMain.reverse()
 				else
-					@timelines.showMain = new TimelineMax
+					@tweens.showMain = new TimelineMax
 						onStart : -> if callback? then callback()
 						paused 	: true					
-					@timelines.showMain.set @elements.main	, autoAlpha : 0
-					@timelines.showMain.set @elements.header, autoAlpha : 0
-					@timelines.showMain.set @elements.content, autoAlpha : 0
-					@timelines.showMain.to 	@elements.main , 2 	, autoAlpha : 1 , 0
-					@timelines.showMain.to 	@elements.header , 2 	, autoAlpha : 1 , 0
-					@timelines.showMain.to 	@elements.content , 2 	, autoAlpha : 1 , 0
-					@timelines.showMain.play()
+					@tweens.showMain.set 	[ @elements.main , @elements.header , @elements.content ] , autoAlpha : 0
+					@tweens.showMain.to 	@elements.main , 2 	, autoAlpha : 1 , 0
+					@tweens.showMain.to 	@elements.header , 2 	, autoAlpha : 1 , 0
+					@tweens.showMain.to 	@elements.content , 2 	, autoAlpha : 1 , 0
+					@tweens.showMain.play()
+
+			@animations.showLoader = ( callback ) =>
+				@tweens.showLoader = new TimelineMax paused : true , onComplete : -> callback() if callback?
+				@tweens.showLoader.to @elements.loader  , 1 , opacity : 1 , 0
+
+				@tweens.showLoader.play()		
+
+			@animations.hideLoader = (callback) =>		
+				@tweens.hideLoader = new TimelineMax paused : true , onComplete : -> callback() if callback?					
+				@tweens.hideLoader.to @elements.loader  , .5 , opacity : 0 , 0
+
+				@tweens.hideLoader.play()
 
 	Animations.initialize()
 

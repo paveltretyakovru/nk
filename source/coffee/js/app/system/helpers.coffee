@@ -5,6 +5,30 @@ define ( require ) ->
 	I18n 		= require('utils/i18n')
 	NumFormat 	= require('system/libs/num_format')
 
+	#########################################################################################
+	# Нативная функции добавления класса
+	window.addClass = ( el , className ) ->
+		if el.classList?
+			el.classList.add className			
+		else
+			el.classList += ' ' + className
+
+	window.removeClass = ( el , className ) ->
+		if el.classList
+			el.classList.remove className
+		else
+			reg = new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi')
+			el.className = el.className.replace( reg , ' ')
+
+	window.addEvent = ( el , eventName , callback ) ->
+		if el.addEventListener
+			el.addEventListener eventName , callback , false
+		else if el.attachEvent
+			console.log 'Attach event'
+			el.attachEvent 'on' + eventName , callback
+		
+	##########################################################################################
+
 	###*
 	# Хелпер для интернационализации
 	# @param  {String}     Ключ для поиска перевода

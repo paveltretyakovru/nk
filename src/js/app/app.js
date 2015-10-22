@@ -23,8 +23,7 @@ define(function(require) {
         console.log('app/app : initializing app');
       }
       this.utils = {};
-      this.utils.Listener = new Listener({});
-      return _.extend(this, Animations);
+      return this.utils.Listener = new Listener({});
     },
     preload: function() {
       if (this.debug) {
@@ -37,6 +36,7 @@ define(function(require) {
     },
     Rivets: rivets
   });
+  _.extend(app, Animations);
   app.addInitializer(function(options) {
     return this.preload();
   });

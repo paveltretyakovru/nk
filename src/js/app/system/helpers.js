@@ -4,6 +4,30 @@ define(function(require) {
   Handlebars = require('handlebars');
   I18n = require('utils/i18n');
   NumFormat = require('system/libs/num_format');
+  window.addClass = function(el, className) {
+    if (el.classList != null) {
+      return el.classList.add(className);
+    } else {
+      return el.classList += ' ' + className;
+    }
+  };
+  window.removeClass = function(el, className) {
+    var reg;
+    if (el.classList) {
+      return el.classList.remove(className);
+    } else {
+      reg = new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi');
+      return el.className = el.className.replace(reg, ' ');
+    }
+  };
+  window.addEvent = function(el, eventName, callback) {
+    if (el.addEventListener) {
+      return el.addEventListener(eventName, callback, false);
+    } else if (el.attachEvent) {
+      console.log('Attach event');
+      return el.attachEvent('on' + eventName, callback);
+    }
+  };
 
   /**
   	 * Хелпер для интернационализации
