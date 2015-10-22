@@ -33,10 +33,6 @@ define(function(require) {
       return this.closeMenuAnimation.play();
     },
     closeMenu: function() {
-      TweenMax.set('#region-menu', {
-        autoAlpha: 1,
-        opacity: 1
-      });
       return this.closeMenuAnimation.reverse();
     },
     initCloseMenuAnimation: function() {
@@ -44,21 +40,20 @@ define(function(require) {
       t1 = new TimelineLite({
         paused: true
       });
-      t1.to(this.scaleBody, .5, {
-        className: '+=' + this.scaleClass,
-        ease: Expo.easeInOut
+      t1.to(this.scaleBody, .3, {
+        className: '+=' + this.scaleClass
       }, 0).to('#region-menu', .3, {
         autoAlpha: 1,
         ease: Expo.easeInOut
-      }, 0).to(this.lpm, 1, {
+      }, 0).to(this.lpm, .5, {
         left: '0%',
         autoAlpha: 1,
         ease: Expo.easeInOut
-      }, 0).to(this.rpm, 1, {
+      }, .3).to(this.rpm, .5, {
         right: "0%",
         autoAlpha: 1,
         ease: Expo.easeInOut
-      }, 0);
+      }, .5);
       return this.closeMenuAnimation = t1;
     }
   });

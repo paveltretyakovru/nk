@@ -38,7 +38,7 @@ define ( require ) ->
 			@closeMenuAnimation.play()
 
 		closeMenu : ->
-			TweenMax.set '#region-menu' , { autoAlpha : 1 , opacity : 1 }
+			#TweenMax.set '#region-menu' , { autoAlpha : 1 , opacity : 1 }
 			@closeMenuAnimation.reverse()
 
 		initCloseMenuAnimation	: ->
@@ -46,18 +46,18 @@ define ( require ) ->
 			t1 		= new TimelineLite paused : true
 
 			t1
-			.to @scaleBody 		, .5 , { className : '+=' + @scaleClass , ease : Expo.easeInOut } , 0
+			.to @scaleBody 		, .3 , { className : '+=' + @scaleClass } , 0
 			.to '#region-menu' 	, .3 , { autoAlpha : 1 , ease : Expo.easeInOut } , 0
-			.to @lpm , 1 , 
+			.to @lpm , .5 , 
 				left 			: '0%'
 				autoAlpha 	 	: 1
 				ease 			: Expo.easeInOut
-			,	0
+			,	.3
 
-			.to @rpm , 1 ,
+			.to @rpm , .5 ,
 				right 			: "0%"
 				autoAlpha 	 	: 1
 				ease 			: Expo.easeInOut
-			, 	0
+			, 	.5
 
 			@closeMenuAnimation = t1

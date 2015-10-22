@@ -34,7 +34,7 @@ define ( require ) ->
 			@scaleClass	= 'scale-element' # Клас анимации ухода назад
 
 			# Анимация для отдаления контента при показе формы авторизации
-			@scaleAnimation = new TimelineMax
+			@scaleAnimation = new TimelineLite
 				paused : true
 				onComplete : ->
 					_this.authVisible = true

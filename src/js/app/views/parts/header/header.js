@@ -27,7 +27,7 @@ define(function(require) {
       _this = this;
       this.scaleBody = document.getElementById('scale-body');
       this.scaleClass = 'scale-element';
-      this.scaleAnimation = new TimelineMax({
+      this.scaleAnimation = new TimelineLite({
         paused: true,
         onComplete: function() {
           return _this.authVisible = true;
