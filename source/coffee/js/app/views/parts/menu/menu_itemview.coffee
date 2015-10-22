@@ -10,9 +10,11 @@ define ( require ) ->
 
 		ui 			:
 			'ClosingMenuButton'	: '.js-closing-menu'
+			'MenuSiteLinks'		: '.link-site-menu'
 
 		events 		: 
-			'click @ui.ClosingMenuButton' : 'closeMenu'
+			'click @ui.ClosingMenuButton' 	: 'closeMenu'
+			'click @ui.MenuSiteLinks'		: 'closeMenu'
 
 		initialize : ->
 			console.log 'menu_itemvie.initialize' if @debug

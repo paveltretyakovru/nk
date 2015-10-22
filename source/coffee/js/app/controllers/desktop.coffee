@@ -4,11 +4,12 @@ define ( require ) ->
 	Marionette 	= require 'marionette'
 	HeaderView	= require 'views/parts/header/header'
 	LoginView	= require 'views/parts/login/login_item'
-	MenuView 	= require 'views/parts/menu/menu_itemview'
+	MenuView 	= require 'views/parts/menu/menu_itemview'	
 
 	Pages =
-		Home	: require 'views/pages/home/home'
-		About	: require 'views/pages/about/about'
+		Home		: require 'views/pages/home/home'
+		About		: require 'views/pages/about/about'
+		Community	: require 'views/pages/community/community_layoutview'
 
 	Marionette.Controller.extend
 		debug	: false
@@ -41,5 +42,6 @@ define ( require ) ->
 				app.animations.hideMain ->
 					app.regionContent.show Page
 
-		Home 	: -> @.run 'Home'
-		About 	: -> @.run 'About'
+		Home 		: -> @.run 'Home'
+		About 		: -> @.run 'About'
+		Community 	: -> @.run 'Community'
