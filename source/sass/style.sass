@@ -8,10 +8,12 @@
 @import compass/css3/transition
 @import compass/css3/opacity
 
+/* Цвета дизайна */
 @import colors
-
 /* Своя библиотека анимации */
-@import "anim"
+@import anim
+/* Дефолтные отступы */
+@import paddings
 
 *
 	box-sizing : border-box
@@ -24,6 +26,7 @@ body
 
 header
 	height 		: 40px
+	padding 	: 60px 40px 0
 	
 	img 
 		float: left
@@ -53,7 +56,7 @@ a:hover
 	cursor: pointer
 
 main
-	padding 	: 60px 40px
+	//padding 	: 60px 40px
 
 .novisible
 	visibility 	: hidden
