@@ -18,8 +18,8 @@ define(function(requrie) {
         return function(callback) {
           _this.tweens.hideMain = new TimelineMax({
             onComplete: function() {
-              return showLoader(function() {
-                return hideLoader(function() {
+              return _this.animations.showLoader(function() {
+                return _this.animations.hideLoader(function() {
                   if (callback != null) {
                     return callback();
                   }

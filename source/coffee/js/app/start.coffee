@@ -8,5 +8,4 @@ require [ 'app/app' , 'pace' ] , ( app , pace ) ->
 	# Закончена загрузка файлов приложения
 	pace.on 'done' , -> app.animations.hideLoader -> app.start()
 	# Запусками нижний прогрузчик
-	pace.start
-		document : false
+	pace.start document : false

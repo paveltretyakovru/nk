@@ -18,9 +18,9 @@ define ( requrie ) ->
 
 			@animations.hideMain = ( callback ) =>
 				@tweens.hideMain = new TimelineMax
-					onComplete : ->
-						showLoader ->
-							hideLoader ->
+					onComplete : =>
+						@animations.showLoader =>
+							@animations.hideLoader ->
 								if callback? then callback()
 					paused : true
 
