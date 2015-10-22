@@ -1,12 +1,16 @@
 define(function(require) {
   'use strict';
-  var Marionette, Template;
+  var LoungesCollectionView, Marionette, Template;
   Marionette = require('marionette');
   Template = require('text!tmpls/views/pages/home/home.tpl');
+  LoungesCollectionView = require('views/pages/home/lounges_collectionview');
   require('gsap');
-  return Marionette.ItemView.extend({
+  return Marionette.LayoutView.extend({
     debug: true,
     template: Template,
+    regions: {
+      regionLounges: '#region-lounges'
+    },
     initialize: function() {
       if (this.debug) {
         console.log('pages/home/home.initialize');
@@ -17,6 +21,7 @@ define(function(require) {
       if (this.debug) {
         console.log('page/home/home.afterRender');
       }
+      this.regionLounges.show(new LoungesCollectionView());
       return this.initCardsAnimation();
     },
     initCardsAnimation: function() {

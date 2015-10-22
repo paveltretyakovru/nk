@@ -1,15 +1,19 @@
 define ( require ) ->
 	'use strict'
 
-	Marionette 	= require 'marionette'
+	Marionette = require 'marionette'
 
-	Template 	= require 'text!tmpls/views/pages/home/home.tpl'
+	Template 				= require 'text!tmpls/views/pages/home/home.tpl'
+	LoungesCollectionView 	= require 'views/pages/home/lounges_collectionview'
 
 	require 'gsap'
 
-	Marionette.ItemView.extend
+	Marionette.LayoutView.extend
 		debug		: true
 		template 	: Template
+
+		regions 	: 
+			regionLounges : '#region-lounges'
 
 		initialize 	: ->
 			console.log 'pages/home/home.initialize' if @debug
@@ -18,6 +22,8 @@ define ( require ) ->
 
 		afterRender : ->
 			console.log 'page/home/home.afterRender' if @debug
+
+			@regionLounges.show new LoungesCollectionView()
 
 			@initCardsAnimation()
 

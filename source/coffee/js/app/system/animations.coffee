@@ -39,7 +39,8 @@ define ( requrie ) ->
 				else
 					# Иначе создаем новую
 					@tweens.showMain = new TimelineMax
-						onStart : -> if callback? then callback()
+						onStart : ->							
+							if callback? then callback()
 						paused 	: true					
 					@tweens.showMain.set 	[ @elements.main , @elements.header , @elements.content ] , autoAlpha : 0
 					@tweens.showMain.to 	@elements.main 		, 2 	, autoAlpha : 1 , 0
