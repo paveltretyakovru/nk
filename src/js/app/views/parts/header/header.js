@@ -10,42 +10,26 @@ define(function(require) {
     template: Template,
     tagName: 'header',
     ui: {
-      'linkRegistration': '.js-link-registration',
-      'linkLogin': '.js-link-login',
-      'linkMenu': '.js-link-menu'
+      'linkMenu': '.js-link-menu',
+      'link_loginFromHeader': '.js-login-from-header',
+      'link_registrateFromHeader': '.js-registrate-from-header'
     },
     events: {
-      'click @ui.linkLogin': 'showLogin',
-      'click @ui.linkRegistration': 'showRegistration',
-      'click @ui.linkMenu': 'showMenu'
+      'click @ui.linkMenu': 'showMenu',
+      'click @ui.link_loginFromHeader': 'showLoginFromHeader',
+      'click @ui.link_registrateFromHeader': 'showRegistrateFromHeader'
     },
     initialize: function() {
       return this.on('render', this.afterRender, this);
     },
-    afterRender: function() {
-      var _this;
-      _this = this;
-      this.scaleBody = document.getElementById('scale-body');
-      this.scaleClass = 'scale-element';
-      this.scaleAnimation = new TimelineLite({
-        paused: true,
-        onComplete: function() {
-          return _this.authVisible = true;
-        },
-        onReverseComplete: function() {
-          return _this.authVisible = false;
-        }
-      }).to(this.scaleBody, 0.5, {
-        className: '+=' + this.scaleClass
-      });
-      return this.scaleBody.addEventListener('click', (function(_this) {
-        return function() {
-          if (_this.authVisible) {
-            app.regionLogin.currentView.trigger('hideLogin');
-            return _this.scaleAnimation.reverse();
-          }
-        };
-      })(this));
+    afterRender: function() {},
+    showLoginFromHeader: function(event) {
+      app.regionLogin.currentView.trigger('showLoginFromHeader');
+      return event.preventDefault();
+    },
+    showRegistrateFromHeader: function(event) {
+      app.regionLogin.currentView.trigger('showRegistrateFromHeader');
+      return event.preventDefault();
     },
     showLogin: function(event) {
       if (this.debug) {

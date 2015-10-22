@@ -2,7 +2,7 @@
 	%h2 Регистрация
 	%h3 
 		Регистрация нового пользователя. Если у вас	уже есть аккаунт - 
-		%a.js-link-back-login{ :href => '#' } войдите
+		%a.js-login-from-registrate{ :href => '#' } войдите
 	%form{:action => "", :method => "get"}
 		%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
 		%input{:type => "text", :name => "input", :placeholder => "ФИО"}
@@ -13,7 +13,7 @@
 	%h2 Войти
 	%h3
 		Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
-		%a.js-link-registrate{ :href => '#' } зарегистрируйтесь
+		%a.js-registrate-from-login{ :href => '#' } зарегистрируйтесь
 	%form{:action => "", :method => "get"}
 		%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
 		%input{:type => "text", :name => "input", :placeholder => "Пароль"}

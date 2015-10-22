@@ -13,41 +13,28 @@ define ( require ) ->
 		tagName 		: 'header'
 
 		ui 	:
-			'linkRegistration'	: '.js-link-registration'
-			'linkLogin'			: '.js-link-login'
-			'linkMenu'			: '.js-link-menu'
+			'linkMenu'					: '.js-link-menu'
+			'link_loginFromHeader'		: '.js-login-from-header'
+			'link_registrateFromHeader'	: '.js-registrate-from-header'			
 
 		events 		: 
-			'click @ui.linkLogin'		: 'showLogin'
-			'click @ui.linkRegistration': 'showRegistration'
-			'click @ui.linkMenu'		: 'showMenu'
+			'click @ui.linkMenu'					: 'showMenu'
+			'click @ui.link_loginFromHeader' 		: 'showLoginFromHeader'
+			'click @ui.link_registrateFromHeader'	: 'showRegistrateFromHeader'
 
 		initialize 	: ->
 			# Events
 			@on 'render' , @afterRender , @
 
 		afterRender : ->
-			_this = @
 
-			# Элемент который будет уходить назад
-			@scaleBody 	= document.getElementById 'scale-body'
-			@scaleClass	= 'scale-element' # Клас анимации ухода назад
+		showLoginFromHeader : ( event ) ->
+			app.regionLogin.currentView.trigger 'showLoginFromHeader'
+			event.preventDefault()
 
-			# Анимация для отдаления контента при показе формы авторизации
-			@scaleAnimation = new TimelineLite
-				paused : true
-				onComplete : ->
-					_this.authVisible = true
-				onReverseComplete :->
-					_this.authVisible = false
-
-			.to @scaleBody , 0.5 , className : '+=' + @scaleClass		
-			
-			# Прослушиваем клик вне логин формы
-			@scaleBody.addEventListener 'click' , =>
-				if @authVisible
-					app.regionLogin.currentView.trigger 'hideLogin'
-					@scaleAnimation.reverse()
+		showRegistrateFromHeader : ( event ) ->
+			app.regionLogin.currentView.trigger 'showRegistrateFromHeader'
+			event.preventDefault()
 
 		showLogin			: ( event ) ->
 			console.log 'views/parts/header/header.showLogin : debug' if @debug			

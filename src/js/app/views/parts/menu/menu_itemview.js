@@ -26,35 +26,35 @@ define(function(require) {
       this.rpm = this.el.querySelectorAll("#rpm");
       this.scaleBody = document.getElementById('scale-body');
       this.scaleClass = 'scale-element';
-      return this.initCloseMenuAnimation();
+      return this.initMenuAnimation();
     },
     afterRender: function() {},
     showMenu: function() {
-      return this.closeMenuAnimation.play();
+      return this.showMenuAnimation.play();
     },
     closeMenu: function() {
-      return this.closeMenuAnimation.reverse();
+      return this.showMenuAnimation.reverse();
     },
-    initCloseMenuAnimation: function() {
+    initMenuAnimation: function() {
       var t1;
       t1 = new TimelineLite({
         paused: true
       });
-      t1.to(this.scaleBody, .3, {
+      t1.set([this.lpm, this.rpm], {
+        autoAlpha: 1
+      }).to(this.scaleBody, .3, {
         className: '+=' + this.scaleClass
       }, 0).to('#region-menu', .3, {
         autoAlpha: 1,
         ease: Expo.easeInOut
-      }, 0).to(this.lpm, .5, {
+      }, .3).to(this.lpm, .5, {
         left: '0%',
-        autoAlpha: 1,
         ease: Expo.easeInOut
-      }, .3).to(this.rpm, .5, {
+      }, .6).to(this.rpm, .5, {
         right: "0%",
-        autoAlpha: 1,
         ease: Expo.easeInOut
-      }, .5);
-      return this.closeMenuAnimation = t1;
+      }, .8);
+      return this.showMenuAnimation = t1;
     }
   });
 });

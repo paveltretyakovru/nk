@@ -12,80 +12,71 @@ define ( require ) ->
 		template 		: Template
 
 		ui :
-			'linkRegistrate' 	: '.js-link-registrate'
-			'linkBackLogin' 	: '.js-link-back-login'
+			'link_registrateFromLogin'	: '.js-registrate-from-login'			
+			'link_loginFromRegistrate'	: '.js-login-from-registrate'			
 
 		events :
-			'click @ui.linkRegistrate' 	: 'showRegistrate'
-			'click @ui.linkBackLogin' 	: 'showBackLogin'
+			'click @ui.link_registrateFromLogin'	: 	'showRegistrateFromLogin'			
+			'click @ui.link_loginFromRegistrate'	:	'showLoginFromRegistrate'			
 
 		initialize : ->
-			@on 'showLogin'	, @showLogin , @
+			@on 'showLoginFromHeader'	, @showLoginFromHeader , @
+			@on 'showRegistrateFromHeader'	, @showRegistrateFromHeader , @
 			@on 'hideLogin'	, @hideLogin , @
 			@on 'render' 	, @afterRender , @
 
 		afterRender : ->
-			sectionElement 	= @el.querySelectorAll 	'.autn-section'
-			registerSide 	= @el.querySelector 	'.registr-side'
-			loginSide 		= @el.querySelector 	'.login-side'
+			@sectionElement = @el.querySelectorAll 		'.autn-section'
+			@registerSide 	= @el.querySelector 		'.registr-side'
+			@loginSide 		= @el.querySelector 		'.login-side'			
+			@scaleElement	= document.getElementById 	'scale-body'	# Элемент который будет уходить назад
+			@scaleClass		= 'scale-element' # Клас анимации ухода назад
+			@authVisible	= false
 
-			# Установка изначальных значений
-			TweenMax.set registerSide , rotationX : -180
-			
-			# Убираем элемент с экрана
-			TweenMax.set @el , display : 'none'
-			
-			### TODO : проработать анимацию во время выезда
-			TweenMax.set loginSide ,
-				filter 			: "blur(0.5px)"
-				webkitFilter 	: "blur(0.5px)"
+			pause = =>
+				@dropSectionFromSide.pause()
+
+			###*
+			# ------------- Анимации выводит блок авторизации -------------
 			###
-			
-			# Анимация выезда блока с авторизацией
-			@showBlockLogin = new TimelineMax
-				paused : true
+			@dropSectionFromSide = new TimelineMax paused : true
+			.addLabel 'startAnimation'
+			.set @registerSide , rotationX : -180 
+			.set @el ,{ zIndex : 300  	, display : 'block' }
+			.to @scaleElement 	, .5 	, className : '+=' + @scaleClass , 0
+			.to @sectionElement , .3 	, { right : '0%' , alpha : 1 } , 0
+			.addLabel 'dropSection'
+			.to @registerSide	, .5 	, rotationX : 0 	, 1
+			.to @loginSide 		, .5 	, rotationX : 180 	, 1 # Анимация прокручивает секцию до регистраци
+			.addLabel 'revertRegistr'
 
-			#Показыаем эелемент на эране
-			.to @el , 0  , {zIndex : 200 , display : 'block'}
-			.to sectionElement , .3 ,
-				alpha	: 1
-				right : '0%'
-				ease  : Expo.easeInOut
-			.paused(true)
+			window.test = @dropSectionFromSide
 
-			# Анимация поворта блока авторизации на регистрацию
-			@showRegisterSide = new TimelineMax 
-				paused 		: true
-			@showRegisterSide
-			.to loginSide 	, 0.5 , rotationX : 180	, 0
-			.to registerSide, 0.5 , rotationX : 0	, 0
-			
-			###
-			.to loginSide 	, 0.5,				
-				webkitFilter 	: "blur(0)"
-				ease 			: "{Power4.easeOut}"
-				filter 			: "blur(0)"
-			.to registerSide 	, 0.5,
-				webkitFilter 	: "blur(0)"
-				ease 			: "{Power4.easeOut}"
-				filter 			: "blur(0)"
-			, 0
-			###
+			# Прослушиваем клик вне логин формы
+			@scaleElement.addEventListener 'click' , =>
+				# Если анимация не активна и анимирована
+				if @sectionDropped()
+					# Возвращаем обратно сексию авторизации/регистрации
+					@dropSectionFromSide.tweenTo 0
 
-		# Возврат на формы входу с формы регистрации
-		showBackLogin : ->
-			@showRegisterSide.reverse()
 
-		# Выдвигает окно
-		showLogin : ->			
-			@showBlockLogin.play()			
+		# Проверяет состоияние сексции выдвинута ли она || анимация не активна и анимирована
+		sectionDropped : ->
+			return not @dropSectionFromSide.isActive() and @dropSectionFromSide.progress()
 
-		# Скрывает окно
-		hideLogin : ->			
-			@showBlockLogin.reverse()						
+		
+		showRegistrateFromLogin		: ( event ) ->
+			@dropSectionFromSide.tweenTo 'revertRegistr'
+			event.preventDefault()
 
-		# Поварачивает на сторону регистрации
-		showRegistrate : ->						
-			@showRegisterSide.play()
+		showRegistrateFromHeader	: ( event ) ->
+			@dropSectionFromSide.tweenFromTo 'startAnimation' , 'revertRegistr'
+
+		showLoginFromRegistrate		: ( event ) ->
+			@dropSectionFromSide.tweenTo 'dropSection'
+			event.preventDefault()
+
+		showLoginFromHeader			: ( event ) ->
+			@dropSectionFromSide.tweenFromTo 'startAnimation' , 'dropSection'
 
 	return View

@@ -9,77 +9,78 @@ define(function(require) {
     debug: true,
     template: Template,
     ui: {
-      'linkRegistrate': '.js-link-registrate',
-      'linkBackLogin': '.js-link-back-login'
+      'link_registrateFromLogin': '.js-registrate-from-login',
+      'link_loginFromRegistrate': '.js-login-from-registrate'
     },
     events: {
-      'click @ui.linkRegistrate': 'showRegistrate',
-      'click @ui.linkBackLogin': 'showBackLogin'
+      'click @ui.link_registrateFromLogin': 'showRegistrateFromLogin',
+      'click @ui.link_loginFromRegistrate': 'showLoginFromRegistrate'
     },
     initialize: function() {
-      this.on('showLogin', this.showLogin, this);
+      this.on('showLoginFromHeader', this.showLoginFromHeader, this);
+      this.on('showRegistrateFromHeader', this.showRegistrateFromHeader, this);
       this.on('hideLogin', this.hideLogin, this);
       return this.on('render', this.afterRender, this);
     },
     afterRender: function() {
-      var loginSide, registerSide, sectionElement;
-      sectionElement = this.el.querySelectorAll('.autn-section');
-      registerSide = this.el.querySelector('.registr-side');
-      loginSide = this.el.querySelector('.login-side');
-      TweenMax.set(registerSide, {
-        rotationX: -180
-      });
-      TweenMax.set(this.el, {
-        display: 'none'
+      var pause;
+      this.sectionElement = this.el.querySelectorAll('.autn-section');
+      this.registerSide = this.el.querySelector('.registr-side');
+      this.loginSide = this.el.querySelector('.login-side');
+      this.scaleElement = document.getElementById('scale-body');
+      this.scaleClass = 'scale-element';
+      this.authVisible = false;
+      pause = (function(_this) {
+        return function() {
+          return _this.dropSectionFromSide.pause();
+        };
+      })(this);
 
-        /* TODO : проработать анимацию во время выезда
-        			TweenMax.set loginSide ,
-        				filter 			: "blur(0.5px)"
-        				webkitFilter 	: "blur(0.5px)"
-         */
-      });
-      this.showBlockLogin = new TimelineMax({
-        paused: true
-      }).to(this.el, 0, {
-        zIndex: 200,
-        display: 'block'
-      }).to(sectionElement, .3, {
-        alpha: 1,
-        right: '0%',
-        ease: Expo.easeInOut
-      }).paused(true);
-      this.showRegisterSide = new TimelineMax({
-        paused: true
-      });
-      return this.showRegisterSide.to(loginSide, 0.5, {
-        rotationX: 180
-      }, 0).to(registerSide, 0.5, {
-        rotationX: 0
-      }, 0);
-
-      /*
-      			.to loginSide 	, 0.5,				
-      				webkitFilter 	: "blur(0)"
-      				ease 			: "{Power4.easeOut}"
-      				filter 			: "blur(0)"
-      			.to registerSide 	, 0.5,
-      				webkitFilter 	: "blur(0)"
-      				ease 			: "{Power4.easeOut}"
-      				filter 			: "blur(0)"
-      			, 0
+      /**
+      			 * ------------- Анимации выводит блок авторизации -------------
        */
+      this.dropSectionFromSide = new TimelineMax({
+        paused: true
+      }).addLabel('startAnimation').set(this.registerSide, {
+        rotationX: -180
+      }).set(this.el, {
+        zIndex: 300,
+        display: 'block'
+      }).to(this.scaleElement, .5, {
+        className: '+=' + this.scaleClass
+      }, 0).to(this.sectionElement, .3, {
+        right: '0%',
+        alpha: 1
+      }, 0).addLabel('dropSection').to(this.registerSide, .5, {
+        rotationX: 0
+      }, 1).to(this.loginSide, .5, {
+        rotationX: 180
+      }, 1).addLabel('revertRegistr');
+      window.test = this.dropSectionFromSide;
+      return this.scaleElement.addEventListener('click', (function(_this) {
+        return function() {
+          if (_this.sectionDropped()) {
+            return _this.dropSectionFromSide.tweenTo(0);
+          }
+        };
+      })(this));
     },
-    showBackLogin: function() {
-      return this.showRegisterSide.reverse();
+    sectionDropped: function() {
+      return !this.dropSectionFromSide.isActive() && this.dropSectionFromSide.progress();
     },
-    showLogin: function() {
-      return this.showBlockLogin.play();
+    showRegistrateFromLogin: function(event) {
+      this.dropSectionFromSide.tweenTo('revertRegistr');
+      return event.preventDefault();
     },
-    hideLogin: function() {
-      return this.showBlockLogin.reverse();
+    showRegistrateFromHeader: function(event) {
+      return this.dropSectionFromSide.tweenFromTo('startAnimation', 'revertRegistr');
     },
-    showRegistrate: function() {
-      return this.showRegisterSide.play();
+    showLoginFromRegistrate: function(event) {
+      this.dropSectionFromSide.tweenTo('dropSection');
+      return event.preventDefault();
+    },
+    showLoginFromHeader: function(event) {
+      return this.dropSectionFromSide.tweenFromTo('startAnimation', 'dropSection');
     }
   });
   return View;

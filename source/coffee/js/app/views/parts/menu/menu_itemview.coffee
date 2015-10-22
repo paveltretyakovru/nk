@@ -29,35 +29,34 @@ define ( require ) ->
 			@scaleBody 	= document.getElementById 'scale-body'
 			@scaleClass	= 'scale-element' # Клас анимации ухода назад
 
-			@initCloseMenuAnimation()
+			@initMenuAnimation()
 
 		afterRender : ->
 			#
 
 		showMenu : ->
-			@closeMenuAnimation.play()
+			@showMenuAnimation.play()
 
 		closeMenu : ->
 			#TweenMax.set '#region-menu' , { autoAlpha : 1 , opacity : 1 }
-			@closeMenuAnimation.reverse()
+			@showMenuAnimation.reverse()
 
-		initCloseMenuAnimation	: ->
+		initMenuAnimation	: ->
 
 			t1 		= new TimelineLite paused : true
 
 			t1
+			.set [ @lpm , @rpm ] , autoAlpha : 1
 			.to @scaleBody 		, .3 , { className : '+=' + @scaleClass } , 0
-			.to '#region-menu' 	, .3 , { autoAlpha : 1 , ease : Expo.easeInOut } , 0
+			.to '#region-menu' 	, .3 , { autoAlpha : 1 , ease : Expo.easeInOut } , .3
 			.to @lpm , .5 , 
-				left 			: '0%'
-				autoAlpha 	 	: 1
+				left 			: '0%'				
 				ease 			: Expo.easeInOut
-			,	.3
+			,	.6
 
 			.to @rpm , .5 ,
 				right 			: "0%"
-				autoAlpha 	 	: 1
 				ease 			: Expo.easeInOut
-			, 	.5
+			, 	.8
 
-			@closeMenuAnimation = t1
+			@showMenuAnimation = t1
