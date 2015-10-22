@@ -3,6 +3,8 @@
         <h1>Кальянные ложи</h1>
         <span>Открыто более 40 заведенией</span>
         <!-- <button>Открыть</button> -->
+
+
       </section>
 
       <hr>
@@ -26,47 +28,43 @@
         </figure>
       </section>
       
-      <section class='lounges'>
+      <section class='lounges' id="region-lounges">
         
-        <article class='lounge'>
+        <!-- <article class='lounge'>
           <div class='frontside'>
-            <img src='src/images/blazon.svg'>
-            <h4>«Резерв»</h4>
+            <img src='src/images/blazons/gerb_spb_blazon.svg'>
+            <h4>«blazon»</h4>
             <small>Тюмень</small>
           </div>
-          <div class='backside'> HELLO WORLD! </div>
+          <div class='backside'>
+            
+            <img src="src/images/reverse-side.jpg" style="width: 100%; height: 100%">
+
+          </div>
         </article>
-        
+
         <article class='lounge'>
           <div class='frontside'>
-            <img src='src/images/blazon.svg'>
-            <h4>«Резерв»</h4>
-            <small>Тюмень</small>
+            <img src='src/images/blazons/gerb_spb_academy.svg'>
+            <h4>«Академия»</h4>
+            <small>Санкт-Петербург</small>
           </div>
-          <div class='backside'></div>
-        </article>
-        <article class='lounge'>
-          <div class='frontside'>
-            <img src='src/images/blazon.svg'>
-            <h4>«Резерв»</h4>
-            <small>Тюмень</small>
-          </div>
-          <div class='backside'></div>
+          <div class='backside'><img src="src/images/reverse-side.jpg" style="width: 100%; height: 100%"></div>
         </article>
         <article class='lounge'>
           <div class='frontside'>
-            <img src='src/images/blazon.svg'>
-            <h4>«Резерв»</h4>
-            <small>Тюмень</small>
+            <img src='src/images/blazons/gerb_spb_liberty.svg'>
+            <h4>«Либерти»</h4>
+            <small>Санкт-Петербург</small>
           </div>
-          <div class='backside'></div>
+          <div class='backside'><img src="src/images/reverse-side.jpg" style="width: 100%; height: 100%"></div>
         </article>
         <article class='lounge'>
           <div class='frontside'>
-            <img src='src/images/blazon.svg'>
-            <h4>«Резерв»</h4>
-            <small>Тюмень</small>
+            <img src='src/images/blazons/gerb_kazan_unityhall.svg'>
+            <h4>«unity hall»</h4>
+            <small>Казань</small>
           </div>
-          <div class='backside'></div>
-        </article>
+          <div class='backside'><img src="src/images/reverse-side.jpg" style="width: 100%; height: 100%"></div>
+        </article> -->
       </section>

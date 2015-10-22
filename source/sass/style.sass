@@ -1,21 +1,19 @@
 @import compass/reset/utilities
 +global-reset()
 
+@import compass
 @import compass/css3
 @import compass/css3/transform
 @import compass/css3/box-shadow
 @import compass/css3/transition
 @import compass/css3/opacity
-@import compass
 
-/* COLORS */
-$color_orange		: #ECB72E
-$color_dark			: #000
-$color_gray 		: #282C34
-$color_gray_light	: #b3b0a1
-
+/* Цвета дизайна */
+@import colors
 /* Своя библиотека анимации */
-@import "anim"
+@import anim
+/* Дефолтные отступы */
+@import paddings
 
 *
 	box-sizing : border-box
@@ -28,6 +26,7 @@ body
 
 header
 	height 		: 40px
+	padding 	: 60px 40px 0
 	
 	img 
 		float: left
@@ -57,9 +56,10 @@ a:hover
 	cursor: pointer
 
 main
-	padding 	: 60px 40px
-	background-blend-mode: soft-light
-	+background(radial-gradient(center top, 75% 100%, #fff, $color_dark), $color_gray)	
+	//padding 	: 60px 40px
+
+.novisible
+	visibility 	: hidden
 
 #loader
 	position	: absolute
@@ -68,6 +68,7 @@ main
 	height		: 159px
 	left		: 45%
 	top			: 40%
+	opacity 	: 0
 
 	img
 		position: inherit
@@ -80,11 +81,15 @@ main
 	left 	: 35
 	top 	: 35
 
+.gradient
+	background-blend-mode: soft-light
+	+background(radial-gradient(center top, 100% 25%, #fff, $color_dark), $color_dark_light)
+
 /* Крутим лучи логотипа */
 +spin( '.loader-logo-back' , 4s )
 
 /* Создаем пропадающий класс */
-+fadeout( '.fadeout' , 3s )
++fadeout( '.fadeout' , 2s )
 
 /* Создаем появляющийся класс */
 +fadein( '.fadein' , 2s )
@@ -190,7 +195,7 @@ main
 	width: 100%
 	opacity: 0.9
 	background-blend-mode: soft-light
-	+background(radial-gradient(center top, 75% 100%, #fff, $color_gray), $color_gray)
+	+background(radial-gradient(center top, 100% 25%, #fff, $color_dark), $color_dark_light)
 
 section.left_menu
 	display: inline-block

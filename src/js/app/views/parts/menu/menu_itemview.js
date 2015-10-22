@@ -44,7 +44,7 @@ define(function(require) {
       this.scaleBody = document.getElementById('scale-body');
       this.scaleClass = 'scale-element';
       t1.to(this.scaleBody, .5, {
-        className: this.scaleClass,
+        className: '+=' + this.scaleClass,
         ease: Expo.easeInOut
       }, 0).to('#region-menu', .3, {
         autoAlpha: 1,

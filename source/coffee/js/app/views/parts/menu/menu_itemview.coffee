@@ -41,7 +41,7 @@ define ( require ) ->
 			@scaleClass	= 'scale-element' # Клас анимации ухода назад
 
 			t1
-			.to @scaleBody 		, .5 , { className : @scaleClass , ease : Expo.easeInOut } , 0
+			.to @scaleBody 		, .5 , { className : '+=' + @scaleClass , ease : Expo.easeInOut } , 0
 			.to '#region-menu' 	, .3 , { autoAlpha : 1 , ease : Expo.easeInOut } , 0
 			.to lpm , .3 , 
 				left 			: '0%'

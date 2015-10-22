@@ -8,26 +8,38 @@ define ( require ) ->
 
 	Pages =
 		Home	: require 'views/pages/home/home'
+		About	: require 'views/pages/about/about'
 
 	Marionette.Controller.extend
-		debug	: true
+		debug	: false
+		hidden 	: true
 
 		initialize : ->
 			console.log 'controllers/desktop : initializin function' if @debug
+			@Header = new HeaderView()
+			@Login 	= new LoginView()
+			@Menu 	= new MenuView()
+
+			app.regionHeader.show @Header
+			app.regionLogin.show @Login
+			app.regionMenu.show @Menu
+
+			app.regionContent.on 'show' , ->
+				app.animations.showMain()
 
 		run : ( pageName , pageParameters ) ->
 			console.log 'controllers/desktop.run : route->' + pageName if @debug
 
 			args = Array.prototype.slice.call arguments
-
-			Page 	= new Pages[ args.shift() ] args
-			Header 	= new HeaderView()
-			Login 	= new LoginView()
-			Menu 	= new MenuView()
-
-			app.regionContent.show Page
-			app.regionHeader.show Header
-			app.regionLogin.show Login
-			app.regionMenu.show Menu
+			Page = new Pages[ args.shift() ] args
+			
+			if @hidden
+				app.animations.showMain ->
+					app.regionContent.show Page
+				@hidden = false
+			else
+				app.animations.hideMain ->
+					app.regionContent.show Page
 
 		Home 	: -> @.run 'Home'
+		About 	: -> @.run 'About'

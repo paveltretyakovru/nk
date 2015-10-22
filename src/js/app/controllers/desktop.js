@@ -6,32 +6,49 @@ define(function(require) {
   LoginView = require('views/parts/login/login_item');
   MenuView = require('views/parts/menu/menu_itemview');
   Pages = {
-    Home: require('views/pages/home/home')
+    Home: require('views/pages/home/home'),
+    About: require('views/pages/about/about')
   };
   return Marionette.Controller.extend({
-    debug: true,
+    debug: false,
+    hidden: true,
     initialize: function() {
       if (this.debug) {
-        return console.log('controllers/desktop : initializin function');
+        console.log('controllers/desktop : initializin function');
       }
+      this.Header = new HeaderView();
+      this.Login = new LoginView();
+      this.Menu = new MenuView();
+      app.regionHeader.show(this.Header);
+      app.regionLogin.show(this.Login);
+      app.regionMenu.show(this.Menu);
+      return app.regionContent.on('show', function() {
+        return app.animations.showMain();
+      });
     },
     run: function(pageName, pageParameters) {
-      var Header, Login, Menu, Page, args;
+      var Page, args;
       if (this.debug) {
         console.log('controllers/desktop.run : route->' + pageName);
       }
       args = Array.prototype.slice.call(arguments);
       Page = new Pages[args.shift()](args);
-      Header = new HeaderView();
-      Login = new LoginView();
-      Menu = new MenuView();
-      app.regionContent.show(Page);
-      app.regionHeader.show(Header);
-      app.regionLogin.show(Login);
-      return app.regionMenu.show(Menu);
+      if (this.hidden) {
+        app.animations.showMain(function() {
+          return app.regionContent.show(Page);
+        });
+        return this.hidden = false;
+      } else {
+        return app.animations.hideMain(function() {
+          return app.regionContent.show(Page);
+        });
+      }
     },
     Home: function() {
       return this.run('Home');
+    },
+    About: function() {
+      return this.run('About');
     }
   });
 });

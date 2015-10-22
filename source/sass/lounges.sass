@@ -5,8 +5,13 @@
 @import "compass/css3/transition"
 @import "compass/reset/utilities"
 @import "compass/css3/opacity"
-@import anim
 
+/* Цвета дизайна */
+@import colors
+/* Своя библиотека анимации */
+@import anim
+/* Дефолтные отступы */
+@import paddings
 
 // Base
 
@@ -120,6 +125,7 @@ section.instruments
 	width: 100%
 	height: 16px
 	margin: 32px 0 32px 0
+	+sides-padding()
 hr
 	margin-bottom : 32px
 	width : 100%
@@ -128,7 +134,8 @@ hr
 	+opacity(.4)
 
 section.lounges
-	text-align: justify
+	text-align: center
+	padding : 0 40px 0
 
 $url_0: url(../images/venzel-corner.svg)
 
@@ -139,12 +146,14 @@ article.lounge
 	border-radius: 8px
 	overflow: hidden
 	margin-bottom: 20px
+	margin-right	: 10px
 
 	.frontside
 		position: relative
 		color : black
 		text-align : center
-		background: $url_0 left 16px top 16px no-repeat, $url_0 right 16px top 16px no-repeat, $url_0 left 16px bottom 16px no-repeat, $url_0 right 16px bottom 16px no-repeat, linear-gradient(white, #E0E8EE)
+		background: linear-gradient(white, #E0E8EE)
+		// $url_0 left 16px top 16px no-repeat, $url_0 right 16px top 16px no-repeat, $url_0 left 16px bottom 16px no-repeat, $url_0 right 16px bottom 16px no-repeat,
 		padding: 40px
 		z-index: 50
 		
@@ -172,9 +181,17 @@ article.lounge
 
 	.frontside img 
 		margin-bottom: 48px
+		width : 100%
 
 	.frontside h4 
 		margin-bottom: 8px
+		font-family: Bebas Neue
+		font-size: 36pt
+	
+	.frontside small
+		font-family	: Lora
+		font-size	: 12pt
+		color 		: $color_gray
 
 	.backside
 		position: absolute
@@ -183,7 +200,7 @@ article.lounge
 		top: 0
 		width: 100%
 		height: 100%
-		background : red
+		background : #fff
 		z-index: 20
 
 .frontside , .backside
@@ -323,7 +340,14 @@ body
 
 	h4
 		font-family: Lora Regular
-		margin-bottom: 48px
+		margin-bottom	: 48px
+		margin-top		: 40px
+
+	figcapation
+		font-family		: Bebas Neue
+		font-size 		: 18pt		
+		opacity 		: 1
+		letter-spacing 	: 2px
 
 	.informationlib
 		margin-bottom: 32px
@@ -343,11 +367,15 @@ body
 	.liberactions
 		button
 			margin-right: 16px
+			border 		: none
+			color 		: #fff			
+
 		button.button-dark
 			position : relative
 			height : 48px
 			width : 256px
-			border : 2px solid rgba(60,66,72,.5)
+			//border : 2px solid rgba(60,66,72,.5)
+			border : 2px solid $color_orange
 			background: none
 			padding: 0 16px 0 16px
 			line-height: 24px
@@ -363,11 +391,11 @@ body
 
 // About us
 #liberty_block2
-	padding: 128px 64px 64px 64px
+	padding: 64px 64px 128px 64px
 	height: 464
-	background: black
-	-webkit-column-count: 2
-	-webkit-column-gap: 48px
+	background: $color_gray
+	//-webkit-column-count: 2
+	//-webkit-column-gap: 48px
 	h4
 		margin-bottom: 26px
 		line-height: 1.6
@@ -375,6 +403,21 @@ body
 		line-height: 1.6
 		font-size: 14px
 		opacity: .5
+
+	.block2_article
+		float 		: left
+		width 		: 33%
+		margin-top 	: 35px
+		line-height	: 1.3
+		text-align	: center
+		font-family	: 'Bebas Neue'
+
+		.title
+			font-size	: 14pt
+			color 		: $color_orange
+		.desc
+			font-size	: 18pt
+
 
 // Slider
 #liberty_block3
@@ -409,7 +452,7 @@ body
 	min-height: 100%
 	text-align: center
 	padding: 128px
-	background: #282C34
+	background: $color_dark_light
 
 	h2 
 		font-size: 36px
@@ -438,6 +481,9 @@ body
 	position: relative
 	width: 100%
 	height: 100%
+
+	img
+		width: 100%
 
 	#map_wrapper
 		position: absolute

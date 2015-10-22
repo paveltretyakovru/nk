@@ -1,11 +1,12 @@
 define(function(require) {
   'use strict';
-  var Desktop, Handlebars, Listener, Marionette, Routes, app;
+  var Animations, Desktop, Handlebars, Listener, Marionette, Routes, app;
   Marionette = require('marionette');
   Routes = require('app/routes');
   Desktop = require('controllers/desktop');
   Handlebars = require('handlebars');
   Listener = require('utils/listener');
+  Animations = require('system/animations');
   require('system/helpers');
   require('rivets');
   require('backbone.rivets');
@@ -35,16 +36,9 @@ define(function(require) {
     },
     Rivets: rivets
   });
+  _.extend(app, Animations);
   app.addInitializer(function(options) {
     return this.preload();
-  });
-  app.regionContent.on('show', function() {
-    removeClass(app.regionContent.el, 'fadeout');
-    return addClass(app.regionContent.el, 'fadein');
-  });
-  app.regionHeader.on('show', function() {
-    removeClass(app.regionHeader.el, 'fadeout');
-    return addClass(app.regionHeader.el, 'fadein');
   });
   Marionette.Behaviors.behaviorsLookup = function() {
     return window.Behaviors;
