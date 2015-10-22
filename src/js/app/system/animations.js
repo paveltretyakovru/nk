@@ -28,12 +28,16 @@ define(function(requrie) {
             },
             paused: true
           });
-          _this.tweens.hideMain.set(_this.elements.main, {
+          _this.tweens.hideMain.set([_this.elements.main, _this.elements.header, _this.elements.content], {
             autoAlpha: 1
-          }).to(_this.elements.main, .5, {
+          }).to(_this.elements.main, 2, {
             autoAlpha: 0,
             display: 'none'
-          });
+          }, 0).to(_this.elements.content, 1, {
+            autoAlpha: 0
+          }, 1).to(_this.elements.header, .5, {
+            autoAlpha: 0
+          }, 1.5);
           return _this.tweens.hideMain.play();
         };
       })(this);
@@ -56,12 +60,12 @@ define(function(requrie) {
             _this.tweens.showMain.to(_this.elements.main, 2, {
               autoAlpha: 1
             }, 0);
-            _this.tweens.showMain.to(_this.elements.header, 2, {
+            _this.tweens.showMain.to(_this.elements.header, 1, {
               autoAlpha: 1
-            }, 0);
-            _this.tweens.showMain.to(_this.elements.content, 2, {
+            }, 1);
+            _this.tweens.showMain.to(_this.elements.content, .5, {
               autoAlpha: 1
-            }, 0);
+            }, 1.5);
             return _this.tweens.showMain.play();
           }
         };
