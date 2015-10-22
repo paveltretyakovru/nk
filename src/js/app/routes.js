@@ -12,7 +12,8 @@ define(function(require) {
     appRoutes: {
       '': 'Home',
       'about': 'About',
-      'community': 'Community'
+      'community': 'Community',
+      'philosophie': 'Philosophie'
     }
   });
 });

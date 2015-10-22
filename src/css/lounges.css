@@ -1,8 +1,8 @@
 @charset "UTF-8";
-/* Цвета дизайна */
+/* ╨ж╨▓╨╡╤В╨░ ╨┤╨╕╨╖╨░╨╣╨╜╨░ */
 /* COLORS */
-/* Своя библиотека анимации */
-/* Крутим элементы (селектор , секунды (4sec) ) */
+/* ╨б╨▓╨╛╤П ╨▒╨╕╨▒╨╗╨╕╨╛╤В╨╡╨║╨░ ╨░╨╜╨╕╨╝╨░╤Ж╨╕╨╕ */
+/* ╨Ъ╤А╤Г╤В╨╕╨╝ ╤Н╨╗╨╡╨╝╨╡╨╜╤В╤Л (╤Б╨╡╨╗╨╡╨║╤В╨╛╤А , ╤Б╨╡╨║╤Г╨╜╨┤╤Л (4sec) ) */
 @-webkit-keyframes spin_animation {
   100% {
     -moz-transform: rotate(360deg);
@@ -112,8 +112,8 @@
   }
 }
 /* End fadein function */
-/* Дефолтные отступы */
-/* Отступ по краям */
+/* ╨Ф╨╡╤Д╨╛╨╗╤В╨╜╤Л╨╡ ╨╛╤В╤Б╤В╤Г╨┐╤Л */
+/* ╨Ю╤В╤Б╤В╤Г╨┐ ╨┐╨╛ ╨║╤А╨░╤П╨╝ */
 /* line 18, ../../source/sass/lounges.sass */
 * {
   box-sizing: border-box;
@@ -1035,8 +1035,8 @@ body {
 /* line 781, ../../source/sass/lounges.sass */
 #philosophie_block1 img {
   position: relative;
-  height: 50%;
-  top: 25%;
+  width: 50%;
+  top: 10%;
 }
 
 /* line 786, ../../source/sass/lounges.sass */
