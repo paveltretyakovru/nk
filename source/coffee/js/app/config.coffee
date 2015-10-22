@@ -36,6 +36,7 @@ requirejs.config
 
 		# PLUGINS
 		'pace'					: 'bower_components/pace/pace.min'
+		'onepage-scroll'		: 'bower_components/onepage-scroll/jquery.onepage-scroll.min'
 
 	    # TESTS
 		'spec'					: 'src/js/app/tests/spec'
@@ -65,5 +66,8 @@ requirejs.config
 		'jasmine-sinon'			: 'deps': [ 'jasmine' , 'boot' , 'sinon' ] , 'exports': 'jasmine-sinon'
 		'jasmine-jquery'		: 'deps': [ 'jasmine' , 'boot' , 'jquery' ] , 'exports': 'jasmine-jquery'
 		'boot'					: 'deps': [ 'jasmine' , 'jasmine-html'] , 'exports': 'boot'
+
+		# Plugins
+		'onepage-scroll'		: 'deps' : ['jquery']
 
 	config: i18n: locale: 'ru-ru'	

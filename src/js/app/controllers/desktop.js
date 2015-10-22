@@ -5,6 +5,7 @@ define(function(require) {
   HeaderView = require('views/parts/header/header');
   LoginView = require('views/parts/login/login_item');
   MenuView = require('views/parts/menu/menu_itemview');
+  require('onepage-scroll');
   Pages = {
     Home: require('views/pages/home/home'),
     About: require('views/pages/about/about'),

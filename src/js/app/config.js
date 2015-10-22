@@ -29,6 +29,7 @@ requirejs.config({
     'collections': 'src/js/app/collections',
     'widgets': 'src/js/app/widgets',
     'pace': 'bower_components/pace/pace.min',
+    'onepage-scroll': 'bower_components/onepage-scroll/jquery.onepage-scroll.min',
     'spec': 'src/js/app/tests/spec',
     'sinon': 'bower_components/sinonjs/sinon',
     'jasmine': 'bower_components/jasmine/lib/jasmine-core/jasmine',
@@ -95,6 +96,9 @@ requirejs.config({
     'boot': {
       'deps': ['jasmine', 'jasmine-html'],
       'exports': 'boot'
+    },
+    'onepage-scroll': {
+      'deps': ['jquery']
     }
   },
   config: {
