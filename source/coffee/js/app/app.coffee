@@ -6,6 +6,7 @@ define (require) ->
 	Desktop    	= require 'controllers/desktop'
 	Handlebars 	= require 'handlebars'
 	Listener 	= require 'utils/listener'
+	Animations  = require 'system/animations'
 
 	require 'system/helpers'
 	require 'rivets'
@@ -21,10 +22,13 @@ define (require) ->
 			regionMenu 		: '#region-menu'
 
 		initialize : ->
-			console.log 'app/app : initializing app' if @debug
+			console.log 'app/app : initializing app' if @debug			
 
 			@utils 	= {}
 			@utils.Listener = new Listener {}
+
+			# Компируем в приложение анимации
+			_.extend @ , Animations
 
 		preload	: ->
 			console.log 'app/app : preload function ' if @debug
@@ -35,15 +39,6 @@ define (require) ->
 		Rivets : rivets
 
 	app.addInitializer ( options ) -> return @preload()
-
-	app.regionContent.on 'show' , ->
-		removeClass app.regionContent.el , 'fadeout'
-		addClass app.regionContent.el , 'fadein'	
-
-	app.regionHeader.on 'show' , ->
-		removeClass app.regionHeader.el , 'fadeout'
-		addClass app.regionHeader.el , 'fadein'
-
 
 	Marionette.Behaviors.behaviorsLookup = -> return window.Behaviors
 

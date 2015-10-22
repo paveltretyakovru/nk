@@ -36,7 +36,15 @@
             <h4>«Резерв»</h4>
             <small>Тюмень</small>
           </div>
-          <div class='backside'> </div>
+          <div class='backside'>
+            
+            <img src="src/images/reverse-side.jpg" style="width: 100%; height: 100%">
+            <!-- 
+              <img class="loader-logo-back" src="src/images/back_loader_logo.svg" height="10" />
+              <img class="loader-logo-front" src="src/images/front_loader_logo.svg" />
+            -->
+
+          </div>
         </article>
         
         <article class='lounge'>
@@ -45,7 +53,7 @@
             <h4>«Резерв»</h4>
             <small>Тюмень</small>
           </div>
-          <div class='backside'></div>
+          <div class='backside'><img src="src/images/reverse-side.jpg" style="width: 100%; height: 100%"></div>
         </article>
         <article class='lounge'>
           <div class='frontside'>
@@ -53,7 +61,7 @@
             <h4>«Резерв»</h4>
             <small>Тюмень</small>
           </div>
-          <div class='backside'></div>
+          <div class='backside'><img src="src/images/reverse-side.jpg" style="width: 100%; height: 100%"></div>
         </article>
         <article class='lounge'>
           <div class='frontside'>
@@ -61,7 +69,7 @@
             <h4>«Резерв»</h4>
             <small>Тюмень</small>
           </div>
-          <div class='backside'></div>
+          <div class='backside'><img src="src/images/reverse-side.jpg" style="width: 100%; height: 100%"></div>
         </article>
         <article class='lounge'>
           <div class='frontside'>
@@ -69,6 +77,6 @@
             <h4>«Резерв»</h4>
             <small>Тюмень</small>
           </div>
-          <div class='backside'></div>
+          <div class='backside'><img src="src/images/reverse-side.jpg" style="width: 100%; height: 100%"></div>
         </article>
       </section>

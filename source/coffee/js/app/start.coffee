@@ -22,30 +22,29 @@ require [ 'app/app' , 'pace' ] , ( app , pace ) ->
 		else if el.attachEvent
 			console.log 'Attach event'
 			el.attachEvent 'on' + eventName , callback
+
+	window.showLoader = ( callback ) ->
+		animate = new TimelineMax paused : true , onComplete : -> callback() if callback?
+		animate.to loader  , 1 , opacity : 1 , 0
+
+		animate.play()		
+
+	window.hideLoader = (callback) ->		
+		animate = new TimelineMax paused : true , onComplete : -> callback() if callback?					
+		animate.to loader  , .5 , opacity : 0 , 0
+
+		animate.play()
 		
 	##########################################################################################
 
 	window.app	= app || false
 	loader 		= document.getElementById 'loader'
+	main 		= document.getElementById 'scale-body'	
 
-	addEvent loader , 'webkitAnimationEnd', ->
-		loader.style.display = 'none' if loader.style.display != 'none'		
-		app.start()
-
-	# Костыль для firefox
-	addEvent loader , 'animationend', ->
-		loader.style.display = 'none' if loader.style.display != 'none'		
-		app.start()
-
-	# Начата загрузка файлов приложения
-	pace.on 'start' , ->
-		console.log 'Pace start' if app.debug
+	showLoader()
 
 	# Закончена загрузка файлов приложения
-	pace.on 'done'	, ->
-		console.log 'Pace done' if app.debug
-		addClass 	loader , 'fadeout'
-		removeClass loader , 'fadein-loader'
+	pace.on 'done' , -> hideLoader -> app.start()
 
 	pace.start
 		document : false

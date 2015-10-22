@@ -35,13 +35,16 @@ define ( require ) ->
 					TweenMax.set backCard , rotationY : -180
 
 					tl = new TimelineMax 
-						paused 	: true
+						paused 		: true
+						onComplete	: ->
+							console.log 'Finished animation'
+							app.appRouter.navigate 'about' , trigger : true
 					
 					tl
 					.set el , zIndex : 200
 					.to frontCard 	, 1 	, rotationY : 180		, 0
 					.to backCard	, 1 	, rotationY : 0			, 0
-					.to el			, .5	, z 		: 200		, 0
+					#.to el			, .5	, z 		: 200		, 0
 
 					el.animation = tl
 

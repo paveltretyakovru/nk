@@ -6,7 +6,7 @@ define(function(require) {
   require('gsap');
   return Marionette.ItemView.extend({
     debugAnimation: false,
-    debug: true,
+    debug: false,
     template: Template,
     tagName: 'header',
     ui: {
@@ -23,39 +23,49 @@ define(function(require) {
       return this.on('render', this.afterRender, this);
     },
     afterRender: function() {
+      var _this;
+      _this = this;
       this.scaleBody = document.getElementById('scale-body');
       this.scaleClass = 'scale-element';
-      this.scaleAnimation = TweenMax.to(this.scaleBody, 0.5, {
-        className: this.scaleClass
-      }).paused(true);
-      return app.utils.Listener.setClosest({
-        id: 'clossetOutLogin',
-        title: 'Клик вне логин формы',
-        selector: this.scaleBody,
-        callbackOnElement: (function(_this) {
-          return function() {
-            console.log('scaleAnimation before', _this.scaleAnimation.reversed());
-            app.regionLogin.currentView.trigger('hideLogin');
-            _this.scaleAnimation.reverse();
-            return console.log('scaleAnimation after', _this.scaleAnimation.reversed());
-          };
-        })(this)
+      this.scaleAnimation = new TimelineMax({
+        paused: true,
+        onComplete: function() {
+          return _this.authVisible = true;
+        },
+        onReverseComplete: function() {
+          return _this.authVisible = false;
+        }
+      }).to(this.scaleBody, 0.5, {
+        className: '+=' + this.scaleClass
       });
+      return this.scaleBody.addEventListener('click', (function(_this) {
+        return function() {
+          if (_this.authVisible) {
+            app.regionLogin.currentView.trigger('hideLogin');
+            return _this.scaleAnimation.reverse();
+          }
+        };
+      })(this));
     },
-    showLogin: function() {
+    showLogin: function(event) {
       if (this.debug) {
         console.log('views/parts/header/header.showLogin : debug');
       }
       app.regionLogin.currentView.trigger('showLogin');
-      return this.scaleAnimation.play();
+      this.scaleAnimation.play();
+      return event.preventDefault();
     },
-    showRegistration: function() {
+    showRegistration: function(event) {
       app.regionLogin.currentView.trigger('showLogin');
-      return this.scaleAnimation.play();
+      this.scaleAnimation.play();
+      return event.preventDefault();
     },
-    showMenu: function() {
-      console.log('Show menu');
-      return app.regionMenu.currentView.trigger('showMenu');
+    showMenu: function(event) {
+      if (this.debug) {
+        console.log('Show menu');
+      }
+      app.regionMenu.currentView.trigger('showMenu');
+      return event.preventDefault();
     }
   });
 });

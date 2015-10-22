@@ -3,11 +3,13 @@ define ( require ) ->
 
 	Marionette = require 'marionette'
 
-	Backbone.Marionette.AppRouter.extend
+	window.myRouter = Backbone.Marionette.AppRouter.extend
 		debug		: true
 
 		initialize 	: ->
-			console.log 'app/routes.initialize()'
+			console.log 'app/routes.initialize()' if @debug
 
 		appRoutes 	:
-				''			: 'Home'
+				''			: 'Home' ,
+				'about'		: 'About'
+

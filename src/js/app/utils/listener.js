@@ -7,7 +7,7 @@
 define(function(require){
 	'set strict';
 
-	DEBUG = true;
+	DEBUG = false;
 
 	var Marionette 	= require('marionette');
 	//require('clockpicker');
@@ -97,7 +97,7 @@ define(function(require){
 		 */
 		closestClick : function(options){
 			// Слушаем тык по документу
-			$(document).mousedown(function(e) {
+			$(document).mousedown(function(e) {		
 
 				// Перебираем элементы переданных параметров
 				for(task in options){
@@ -127,10 +127,11 @@ define(function(require){
 
 					if('title' in data){
 						if(DEBUG)console.info('Установлена прослушка клика на ' , data.title , ' c параметрами' , data);
-					}
+					}					
 
 					// Слушаем тык по документу
-					$(document).mousedown(function(e) {
+					$(document).mousedown(function(e) {						
+
 						// Проверяем есть ли селектор в текущем параметре
 						if('selector' in data){
 							// Проверяем тыкнули ли по селектору
@@ -139,8 +140,7 @@ define(function(require){
 
 								// Если тыкнули на элемент , проверяем нужно ли выолнить
 								if('callbackOnElement' in data){
-									data.callbackOnElement(data);
-									console.log('callbackOnElement');
+									data.callbackOnElement(data);									
 								}
 
 								return

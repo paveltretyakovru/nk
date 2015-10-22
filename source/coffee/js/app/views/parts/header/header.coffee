@@ -8,7 +8,7 @@ define ( require ) ->
 
 	Marionette.ItemView.extend
 		debugAnimation 	: false
-		debug			: true
+		debug			: false
 		template 		: Template
 		tagName 		: 'header'
 
@@ -27,38 +27,40 @@ define ( require ) ->
 			@on 'render' , @afterRender , @
 
 		afterRender : ->
+			_this = @
+
 			# Элемент который будет уходить назад
 			@scaleBody 	= document.getElementById 'scale-body'
 			@scaleClass	= 'scale-element' # Клас анимации ухода назад
 
-			@scaleAnimation = TweenMax.to @scaleBody , 0.5 , className : @scaleClass
-			.paused(true)
+			# Анимация для отдаления контента при показе формы авторизации
+			@scaleAnimation = new TimelineMax
+				paused : true
+				onComplete : ->
+					_this.authVisible = true
+				onReverseComplete :->
+					_this.authVisible = false
 
-			app.utils.Listener.setClosest 
-				id 					: 'clossetOutLogin'
-				title 				: 'Клик вне логин формы'
-				selector 			: @scaleBody
-				
-				# Если клик произошел на элемент
-				callbackOnElement 	: =>					
-					console.log 'scaleAnimation before' , @scaleAnimation.reversed()
-					
+			.to @scaleBody , 0.5 , className : '+=' + @scaleClass		
+			
+			# Прослушиваем клик вне логин формы
+			@scaleBody.addEventListener 'click' , =>
+				if @authVisible
 					app.regionLogin.currentView.trigger 'hideLogin'
 					@scaleAnimation.reverse()
 
-					console.log 'scaleAnimation after' , @scaleAnimation.reversed()
-
-		showLogin	: ->
-			console.log 'views/parts/header/header.showLogin : debug' if @debug
-			
+		showLogin			: ( event ) ->
+			console.log 'views/parts/header/header.showLogin : debug' if @debug			
 			app.regionLogin.currentView.trigger 'showLogin'
 			@scaleAnimation.play()
+			event.preventDefault()
 
-		showRegistration : ->			
+		showRegistration 	: ( event ) ->			
 			app.regionLogin.currentView.trigger 'showLogin'			
 			@scaleAnimation.play()
+			event.preventDefault()
 
-		showMenu : ->
-			console.log 'Show menu'
-
+		showMenu 			: ( event ) ->
+			console.log 'Show menu' if @debug
 			app.regionMenu.currentView.trigger 'showMenu'
+			event.preventDefault()

@@ -1,6 +1,6 @@
 require(['app/app', 'pace'], function(app, pace) {
   'use strict';
-  var loader;
+  var loader, main;
   window.addClass = function(el, className) {
     if (el.classList != null) {
       return el.classList.add(className);
@@ -25,31 +25,44 @@ require(['app/app', 'pace'], function(app, pace) {
       return el.attachEvent('on' + eventName, callback);
     }
   };
+  window.showLoader = function(callback) {
+    var animate;
+    animate = new TimelineMax({
+      paused: true,
+      onComplete: function() {
+        if (callback != null) {
+          return callback();
+        }
+      }
+    });
+    animate.to(loader, 1, {
+      opacity: 1
+    }, 0);
+    return animate.play();
+  };
+  window.hideLoader = function(callback) {
+    var animate;
+    animate = new TimelineMax({
+      paused: true,
+      onComplete: function() {
+        if (callback != null) {
+          return callback();
+        }
+      }
+    });
+    animate.to(loader, .5, {
+      opacity: 0
+    }, 0);
+    return animate.play();
+  };
   window.app = app || false;
   loader = document.getElementById('loader');
-  addEvent(loader, 'webkitAnimationEnd', function() {
-    if (loader.style.display !== 'none') {
-      loader.style.display = 'none';
-    }
-    return app.start();
-  });
-  addEvent(loader, 'animationend', function() {
-    if (loader.style.display !== 'none') {
-      loader.style.display = 'none';
-    }
-    return app.start();
-  });
-  pace.on('start', function() {
-    if (app.debug) {
-      return console.log('Pace start');
-    }
-  });
+  main = document.getElementById('scale-body');
+  showLoader();
   pace.on('done', function() {
-    if (app.debug) {
-      console.log('Pace done');
-    }
-    addClass(loader, 'fadeout');
-    return removeClass(loader, 'fadein-loader');
+    return hideLoader(function() {
+      return app.start();
+    });
   });
   return pace.start({
     document: false

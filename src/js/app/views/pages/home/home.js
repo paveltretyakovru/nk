@@ -32,7 +32,13 @@ define(function(require) {
             rotationY: -180
           });
           tl = new TimelineMax({
-            paused: true
+            paused: true,
+            onComplete: function() {
+              console.log('Finished animation');
+              return app.appRouter.navigate('about', {
+                trigger: true
+              });
+            }
           });
           tl.set(el, {
             zIndex: 200
@@ -40,8 +46,6 @@ define(function(require) {
             rotationY: 180
           }, 0).to(backCard, 1, {
             rotationY: 0
-          }, 0).to(el, .5, {
-            z: 200
           }, 0);
           el.animation = tl;
           return el.animation.play();

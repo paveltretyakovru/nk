@@ -53,7 +53,10 @@ a:hover
 	cursor: pointer
 
 main
-	padding 	: 60px 40px	
+	padding 	: 60px 40px
+
+.novisible
+	visibility 	: hidden
 
 #loader
 	position	: absolute
@@ -62,6 +65,7 @@ main
 	height		: 159px
 	left		: 45%
 	top			: 40%
+	opacity 	: 0
 
 	img
 		position: inherit
@@ -82,7 +86,7 @@ main
 +spin( '.loader-logo-back' , 4s )
 
 /* Создаем пропадающий класс */
-+fadeout( '.fadeout' , 0s )
++fadeout( '.fadeout' , 2s )
 
 /* Создаем появляющийся класс */
 +fadein( '.fadein' , 2s )
