@@ -41,7 +41,7 @@ define(function(require) {
     },
     initCloseMenuAnimation: function() {
       var t1;
-      t1 = new TimelineMax({
+      t1 = new TimelineLite({
         paused: true
       });
       t1.to(this.scaleBody, .5, {

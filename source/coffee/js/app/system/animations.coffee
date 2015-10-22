@@ -18,7 +18,7 @@ define ( requrie ) ->
 
 			# Скрытие всего контента
 			@animations.hideMain = ( callback ) =>
-				@tweens.hideMain = new TimelineMax
+				@tweens.hideMain = new TimelineLite
 					onComplete : =>
 						@animations.showLoader =>
 							@animations.hideLoader ->
@@ -38,7 +38,7 @@ define ( requrie ) ->
 				if @tweens.hideMain? then @tweens.hideMain.reverse()
 				else
 					# Иначе создаем новую
-					@tweens.showMain = new TimelineMax
+					@tweens.showMain = new TimelineLite
 						onStart : ->							
 							if callback? then callback()
 						paused 	: true					
@@ -50,14 +50,14 @@ define ( requrie ) ->
 
 			# Показать загрузчик
 			@animations.showLoader = ( callback ) =>
-				@tweens.showLoader = new TimelineMax paused : true , onComplete : -> callback() if callback?
+				@tweens.showLoader = new TimelineLite paused : true , onComplete : -> callback() if callback?
 				@tweens.showLoader.to @elements.loader  , 1 , opacity : 1 , 0
 
 				@tweens.showLoader.play()		
 
 			# Скрыть загрузчик
 			@animations.hideLoader = (callback) =>		
-				@tweens.hideLoader = new TimelineMax paused : true , onComplete : -> callback() if callback?					
+				@tweens.hideLoader = new TimelineLite paused : true , onComplete : -> callback() if callback?					
 				@tweens.hideLoader.to @elements.loader  , .5 , opacity : 0 , 0
 
 				@tweens.hideLoader.play()

@@ -16,7 +16,7 @@ define(function(requrie) {
       });
       this.animations.hideMain = (function(_this) {
         return function(callback) {
-          _this.tweens.hideMain = new TimelineMax({
+          _this.tweens.hideMain = new TimelineLite({
             onComplete: function() {
               return _this.animations.showLoader(function() {
                 return _this.animations.hideLoader(function() {
@@ -46,7 +46,7 @@ define(function(requrie) {
           if (_this.tweens.hideMain != null) {
             return _this.tweens.hideMain.reverse();
           } else {
-            _this.tweens.showMain = new TimelineMax({
+            _this.tweens.showMain = new TimelineLite({
               onStart: function() {
                 if (callback != null) {
                   return callback();
@@ -72,7 +72,7 @@ define(function(requrie) {
       })(this);
       this.animations.showLoader = (function(_this) {
         return function(callback) {
-          _this.tweens.showLoader = new TimelineMax({
+          _this.tweens.showLoader = new TimelineLite({
             paused: true,
             onComplete: function() {
               if (callback != null) {
@@ -88,7 +88,7 @@ define(function(requrie) {
       })(this);
       return this.animations.hideLoader = (function(_this) {
         return function(callback) {
-          _this.tweens.hideLoader = new TimelineMax({
+          _this.tweens.hideLoader = new TimelineLite({
             paused: true,
             onComplete: function() {
               if (callback != null) {

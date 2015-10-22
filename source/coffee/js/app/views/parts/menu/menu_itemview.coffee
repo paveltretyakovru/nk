@@ -43,7 +43,7 @@ define ( require ) ->
 
 		initCloseMenuAnimation	: ->
 
-			t1 		= new TimelineMax paused : true
+			t1 		= new TimelineLite paused : true
 
 			t1
 			.to @scaleBody 		, .5 , { className : '+=' + @scaleClass , ease : Expo.easeInOut } , 0
