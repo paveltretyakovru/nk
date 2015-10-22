@@ -790,8 +790,8 @@ body {
 /* line 550, ../../source/sass/lounges.sass */
 #community_block1 img {
   position: relative;
-  height: 50%;
-  top: 25%;
+  height: 300px;
+  top: 10%;
 }
 
 /* line 555, ../../source/sass/lounges.sass */
@@ -869,7 +869,7 @@ body {
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding: 120px 80px 0px 80px;
+  padding: 40px 80px 0px 80px;
   text-align: center;
   background: url("../images/bg_glow.jpg");
 }

@@ -4,9 +4,7 @@ define ( require ) ->
 	Marionette 	= require 'marionette'
 	HeaderView	= require 'views/parts/header/header'
 	LoginView	= require 'views/parts/login/login_item'
-	MenuView 	= require 'views/parts/menu/menu_itemview'	
-
-	require 'onepage-scroll'
+	MenuView 	= require 'views/parts/menu/menu_itemview'
 
 	Pages =
 		Home		: require 'views/pages/home/home'
@@ -28,8 +26,7 @@ define ( require ) ->
 			app.regionMenu.show @Menu
 
 			app.regionContent.on 'show' , ->
-				app.animations.showMain()				
-				#app.regionContent.$el.onepage_scroll();
+				app.animations.showMain()
 
 		run : ( pageName , pageParameters ) ->
 			console.log 'controllers/desktop.run : route->' + pageName if @debug
