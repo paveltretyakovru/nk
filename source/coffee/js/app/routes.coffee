@@ -10,6 +10,7 @@ define ( require ) ->
 			console.log 'app/routes.initialize()' if @debug
 
 		appRoutes 	:
-				''			: 'Home' ,
+				''			: 'Home'
 				'about'		: 'About'
+				'community' : 'Community'
 

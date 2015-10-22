@@ -7,7 +7,8 @@ define(function(require) {
   MenuView = require('views/parts/menu/menu_itemview');
   Pages = {
     Home: require('views/pages/home/home'),
-    About: require('views/pages/about/about')
+    About: require('views/pages/about/about'),
+    Community: require('views/pages/community/community_layoutview')
   };
   return Marionette.Controller.extend({
     debug: false,
@@ -49,6 +50,9 @@ define(function(require) {
     },
     About: function() {
       return this.run('About');
+    },
+    Community: function() {
+      return this.run('Community');
     }
   });
 });

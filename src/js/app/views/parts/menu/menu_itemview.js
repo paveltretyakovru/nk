@@ -7,10 +7,12 @@ define(function(require) {
     debug: true,
     template: Template,
     ui: {
-      'ClosingMenuButton': '.js-closing-menu'
+      'ClosingMenuButton': '.js-closing-menu',
+      'MenuSiteLinks': '.link-site-menu'
     },
     events: {
-      'click @ui.ClosingMenuButton': 'closeMenu'
+      'click @ui.ClosingMenuButton': 'closeMenu',
+      'click @ui.MenuSiteLinks': 'closeMenu'
     },
     initialize: function() {
       if (this.debug) {

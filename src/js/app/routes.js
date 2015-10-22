@@ -11,7 +11,8 @@ define(function(require) {
     },
     appRoutes: {
       '': 'Home',
-      'about': 'About'
+      'about': 'About',
+      'community': 'Community'
     }
   });
 });
