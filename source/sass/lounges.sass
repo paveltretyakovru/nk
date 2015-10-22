@@ -788,30 +788,21 @@ body
 	position: relative
 	width: 100%
 	padding: 80px
-	text-align: center
 	background: #282C34
 
-	h2
-		display: inline-block
-		color: #EBB22F
-
-		margin-bottom: 16px
-
-		font-family: "Bebas Neue", sans-serif
-		font-weight: 300
-		line-height: 1.2
-		letter-spacing: 4px
-
-	h2:after
-		content: ''
+	blockquote
 		display: block
-		position: absolute
-		width: 480px
-		height: 256px
-		left: calc(50% - 240px)
-		top: 32px
-		background: url("../images/wreath.svg")
-		background-size: 100% 100%
+		position: relative
+		float: left
+		text-align: right
+		width: 25%
+		margin-right: 48px
+
+		h4
+			margin-bottom: 16px
+
+		cite
+			color: #EBB22F
 
 	h3
 		display: inline-block
@@ -823,117 +814,94 @@ body
 		font-size: 18px
 		line-height: 1.5
 		letter-spacing: 0
+	p
+		-webkit-column-count: 2
+		text-align: justify
+		margin-bottom: 32px
 
-	.game_feature
-		display: inline-block
-		width: 27%
-		margin: 3%
+	button
+		background: none
+		border: 1px solid #EBB22F
 
-		img
-			margin-bottom: 40px
 
-		h4
-			margin-bottom: 16px
 
-			font-family: "Bebas Neue", sans-serif
-			font-weight: 300
-			line-height: 1.2
-			letter-spacing: 4px
-
-		p
-			text-align: justify
-	img
-		width: 80px
-		height: 80px
 #philosophie_block3
 	display: block
 	position: relative
-	overflow: hidden
 	width: 100%
-	padding: 120px 80px 0px 80px
-	text-align: center
+	padding: 120px 80px
+	text-align: left
 	background: url('../images/bg_glow.jpg')
+	background-size: cover
 
-	h3
-		display: inline-block
+	.cont-wrap
+		display: block
 		position: relative
-		color: #EBB22F
-		width: 75%
+		width: 50%
+		h3
+			display: block
+			width: 100%
+			position: relative
+			color: #EBB22F
 
-		margin-bottom: 16px
+			margin-bottom: 16px
 
-		font-size: 36px
-		line-height: 1.2
-		z-index: 200
+			font-size: 36px
+			line-height: 1.2
+			z-index: 200
 
-	p
-		display: inline-block
+		h4
+			display: inline-block
+			position: relative
+
+			margin-bottom: 32px
+
+		p
+			display: inline-block
+			position: relative
+			opacity: 0.5
+
+			margin-bottom: 32px
+
+			font-size: 16px
+			line-height: 1.5
+			z-index: 200
+
+	aside
+		display: block
 		position: relative
-		color: white
-		width: 56%
-
-		margin-bottom: 32px
-
-		font-size: 16px
-		line-height: 1.5
-		z-index: 200
-
-	img
-		position: relative
-		bottom: 0px
-		z-index: 200
-
-	#dust
-		position: absolute
-		top: 0
-		left: 0
-		opacity: 0.2
-		z-index: 100
-
-	#cb3grad
-		position: absolute
-		top: 40%
-		left: 0
-		width: 100%
-		height: 70%
-		background: linear-gradient(rgba(0,0,0,0), #EBB22F)
-		opacity: 0.25
-		z-index: 150
-
-	#cb3grad2
-		position: absolute
-		top: 40%
-		left: 0
-		width: 100%
-		height: 70%
-		background: linear-gradient(rgba(0,0,0,0), #EBB22F)
-		opacity: 0.1
-		z-index: 210
-
-	#cb3smoke
-		position: absolute
-		overflow: hidden
-		top: 0
-		left: 0
-		width: 100%
-		opacity: 0.1
-		z-index: 140
-
+		width: 40%
+		float: left
+		
+		article
+			display: block
+			position: relative
+			width: 40%
+			
+			img
+				display: block
+				position: relative
+				float: left
+				width: 64px
+				height: 64px
 
 #philosophie_block4
 	display: block
 	position: relative
 	width: 100%
-	padding: 80px
-	text-align: center
-	background: #282C34
+	height: 100%
+	padding: 196px 80px 160px 80px
+	text-align: left
+	background: black
 
-	h2
-		display: inline-block
+	h3
+		display: block
+		width: 100%
 		color: #EBB22F
 
 		margin-bottom: 16px
 
+		font-size: 48px
 		font-family: "Bebas Neue", sans-serif
 		font-weight: 300
 		line-height: 1.2
@@ -941,60 +909,68 @@ body
 
 	p
 		display: inline-block
-		color: white
-		width: 56%
+		opacity: 0.5
+		width: 40%
 
-		margin-bottom: 32px
+		margin-bottom: 64px
 
 		font-size: 16px
 		line-height: 1.5
+
+	h5
+		display: inline-block
+		color: #EBB22F
+
+		font-family: "Bebas Neue", sans-serif
+		font-size: 24px
+		font-weight: 300
+		line-height: 1.2
+		letter-spacing: 4px
+
+	h6
+		margin-bottom: 32px
+
+		font-family: "Lora", sans-serif
+		font-size: 14px
+		line-height: 1.5
+		letter-spacing: 0
 
 #philosophie_block5
 	display: block
 	position: relative
 	width: 100%
-	height: 100%
-	padding: 80px
+	height: 480px
+	padding: 160px
 	text-align: center
+	overflow: hidden
 	background: url('../images/bg_glow.jpg')
 
-	.round
-		display: inline-block
-		position: relative
-		height: 160px
-		width: 160px
-		border-radius: 80px
-		background-color: rgba(0,0,0,0.2)
-		z-index: 100
+	img
+		position: absolute
+		display: block
+		height: 512px
+		width: 512px
+		top: -50%
+		left: calc(50% - 256px)
 
-		img 
-			position: relative
-			height: 40%
-			top: 30%
+	h2 
+		font-size: 48px
+		font-family: Bebas Neue
+		letter-spacing: 4px
+		margin-bottom: 32px
+		color: white
 
-	h3
-		display: inline-block
-		position: relative
+	h6
+		opacity: 0.5
 
-		margin-bottom: 24px
-		margin-top: -8px
+		margin-bottom: 32px
 
-		font-size: 36px
-		line-height: 1.2
-		z-index: 400
-
-	p
-		display: inline-block
-		width: 36%
-
-		margin-bottom: 16px
-
-		font-size: 16px
+		font-family: "Lora", sans-serif
+		font-size: 14px
 		line-height: 1.5
+		letter-spacing: 0
 
 	button
 		background: none
 		margin-top: 32px
 		border: 1px solid #EBB22F
-
-		
