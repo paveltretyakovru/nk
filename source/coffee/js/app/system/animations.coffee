@@ -27,9 +27,9 @@ define ( requrie ) ->
 
 				@tweens.hideMain
 				.set [ @elements.main , @elements.header , @elements.content ] 	, autoAlpha : 1
-				.to  @elements.main 	, 2 	, { autoAlpha : 0 , display : 'none' } , 0
-				.to  @elements.content 	, 1 	, autoAlpha : 0 , 1
-				.to  @elements.header 	, .5 	, autoAlpha : 0 , 1.5
+				.to  @elements.content 	, .3 	, autoAlpha : 0 , 0
+				.to  @elements.header 	, .3 	, autoAlpha : 0 , .2
+				.set @elements.main 	, .5 	, { autoAlpha : 0 , display : 'none' }
 				@tweens.hideMain.play()
 
 			# Появление всего контента
@@ -61,10 +61,11 @@ define ( requrie ) ->
 				@tweens.showLoader.play()	
 
 			# Скрыть загрузчик
-			@animations.hideLoader = (callback) =>		
-				@tweens.hideLoader = new TimelineLite paused : true , onComplete : -> callback() if callback?					
-				@tweens.hideLoader.set [ @elements.frontLoaderSVG , @elements.backLoaderSVG ] 	 , className : '-=show'
-				@tweens.hideLoader.to  @elements.loader , 4  , { autoAlpha 	: 0 , display : '' } , 0
+			@animations.hideLoader = (callback) =>
+				@tweens.hideLoader = new TimelineLite paused : true , onComplete : -> callback() if callback?		
+				@tweens.hideLoader.set [ @elements.frontLoaderSVG , @elements.backLoaderSVG ] 	, className : '-=show'
+				@tweens.hideLoader.pause(3)
+				@tweens.hideLoader.to  @elements.loader , .1  , { autoAlpha : 0 } , 3
 
 				@tweens.hideLoader.play()
 

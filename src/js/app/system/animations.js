@@ -30,14 +30,14 @@ define(function(requrie) {
           });
           _this.tweens.hideMain.set([_this.elements.main, _this.elements.header, _this.elements.content], {
             autoAlpha: 1
-          }).to(_this.elements.main, 2, {
+          }).to(_this.elements.content, .3, {
+            autoAlpha: 0
+          }, 0).to(_this.elements.header, .3, {
+            autoAlpha: 0
+          }, .2).set(_this.elements.main, .5, {
             autoAlpha: 0,
             display: 'none'
-          }, 0).to(_this.elements.content, 1, {
-            autoAlpha: 0
-          }, 1).to(_this.elements.header, .5, {
-            autoAlpha: 0
-          }, 1.5);
+          });
           return _this.tweens.hideMain.play();
         };
       })(this);
@@ -104,10 +104,10 @@ define(function(requrie) {
           _this.tweens.hideLoader.set([_this.elements.frontLoaderSVG, _this.elements.backLoaderSVG], {
             className: '-=show'
           });
-          _this.tweens.hideLoader.to(_this.elements.loader, 4, {
-            autoAlpha: 0,
-            display: ''
-          }, 0);
+          _this.tweens.hideLoader.pause(3);
+          _this.tweens.hideLoader.to(_this.elements.loader, .1, {
+            autoAlpha: 0
+          }, 3);
           return _this.tweens.hideLoader.play();
         };
       })(this);

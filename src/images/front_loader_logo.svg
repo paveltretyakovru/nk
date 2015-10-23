@@ -94,7 +94,7 @@
 		
 		@-webkit-keyframes hide {
 			from{ stroke-dashoffset: 0; }
-			to { stroke-dashoffset: 1000;	}
+			to { stroke-dashoffset: 1000;}
 		}
 
 		<!-- +++++++++++++++++++++++++++++++++++++++++++++++ -->
