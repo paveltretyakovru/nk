@@ -36,14 +36,16 @@ define ( require ) ->
 			pause = =>
 				@dropSectionFromSide.pause()
 
+			CSSPlugin.defaultTransformPerspective = 0
+
 			###*
 			# ------------- Анимации выводит блок авторизации -------------
 			###
 			@dropSectionFromSide = new TimelineMax paused : true
 			.addLabel 'startAnimation'
 			.set @registerSide , rotationX : -180 
-			.set @el ,{ zIndex : 300  	, display : 'block' }
-			.to @scaleElement 	, .5 	, className : '+=' + @scaleClass , 0
+			#.set @el ,{ zIndex : 300  	, display : 'block' }
+			#.to @scaleElement 	, .5 	, className : '+=' + @scaleClass , 0
 			.to @sectionElement , .3 	, { right : '0%' , alpha : 1 } , 0
 			.addLabel 'dropSection'
 			.to @registerSide	, .5 	, rotationX : 0 	, 1

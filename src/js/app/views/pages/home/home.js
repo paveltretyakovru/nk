@@ -26,7 +26,7 @@ define(function(require) {
     },
     initCardsAnimation: function() {
       var elements;
-      CSSPlugin.defaultTransformPerspective = 1000;
+      CSSPlugin.defaultTransformPerspective = 600;
       elements = this.el.querySelectorAll('.lounge');
       return Array.prototype.forEach.call(elements, function(el, i) {
         return el.addEventListener('click', function() {

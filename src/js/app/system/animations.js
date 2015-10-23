@@ -72,6 +72,8 @@ define(function(requrie) {
       })(this);
       this.animations.showLoader = (function(_this) {
         return function(callback) {
+          _this.elements.backLoaderSVG = app.elements.loaders[0].getSVGDocument().querySelectorAll('line');
+          _this.elements.frontLoaderSVG = app.elements.loaders[1].getSVGDocument().querySelectorAll('path , line ,  circle , polygon');
           _this.tweens.showLoader = new TimelineLite({
             paused: true,
             onComplete: function() {
@@ -80,8 +82,11 @@ define(function(requrie) {
               }
             }
           });
-          _this.tweens.showLoader.to(_this.elements.loader, 1, {
-            opacity: 1
+          _this.tweens.showLoader.set([_this.elements.frontLoaderSVG, _this.elements.backLoaderSVG], {
+            className: 'show'
+          });
+          _this.tweens.showLoader.to(_this.elements.loader, 3, {
+            autoAlpha: 1
           }, 0);
           return _this.tweens.showLoader.play();
         };
@@ -96,8 +101,12 @@ define(function(requrie) {
               }
             }
           });
-          _this.tweens.hideLoader.to(_this.elements.loader, .5, {
-            opacity: 0
+          _this.tweens.hideLoader.set([_this.elements.frontLoaderSVG, _this.elements.backLoaderSVG], {
+            className: '-=show'
+          });
+          _this.tweens.hideLoader.to(_this.elements.loader, 4, {
+            autoAlpha: 0,
+            display: ''
           }, 0);
           return _this.tweens.hideLoader.play();
         };

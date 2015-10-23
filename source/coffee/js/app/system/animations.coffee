@@ -49,16 +49,22 @@ define ( requrie ) ->
 					@tweens.showMain.play()
 
 			# Показать загрузчик
-			@animations.showLoader = ( callback ) =>
-				@tweens.showLoader = new TimelineLite paused : true , onComplete : -> callback() if callback?
-				@tweens.showLoader.to @elements.loader  , 1 , opacity : 1 , 0
+			@animations.showLoader = ( callback ) =>			
 
-				@tweens.showLoader.play()		
+				@elements.backLoaderSVG  = app.elements.loaders[0].getSVGDocument().querySelectorAll 'line'
+				@elements.frontLoaderSVG = app.elements.loaders[1].getSVGDocument().querySelectorAll 'path , line ,  circle , polygon'
+				
+				@tweens.showLoader = new TimelineLite paused : true , onComplete : -> callback() if callback?
+				@tweens.showLoader.set [ @elements.frontLoaderSVG , @elements.backLoaderSVG ] 	 , className 	: 'show'
+				@tweens.showLoader.to  @elements.loader , 3 , autoAlpha : 1  , 0
+
+				@tweens.showLoader.play()	
 
 			# Скрыть загрузчик
 			@animations.hideLoader = (callback) =>		
 				@tweens.hideLoader = new TimelineLite paused : true , onComplete : -> callback() if callback?					
-				@tweens.hideLoader.to @elements.loader  , .5 , opacity : 0 , 0
+				@tweens.hideLoader.set [ @elements.frontLoaderSVG , @elements.backLoaderSVG ] 	 , className : '-=show'
+				@tweens.hideLoader.to  @elements.loader , 4  , { autoAlpha 	: 0 , display : '' } , 0
 
 				@tweens.hideLoader.play()
 

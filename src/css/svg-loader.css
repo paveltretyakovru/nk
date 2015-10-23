@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* ╨б╨▓╨╛╤П ╨▒╨╕╨▒╨╗╨╕╨╛╤В╨╡╨║╨░ ╨░╨╜╨╕╨╝╨░╤Ж╨╕╨╕ */
 /* ╨Ъ╤А╤Г╤В╨╕╨╝ ╤Н╨╗╨╡╨╝╨╡╨╜╤В╤Л (╤Б╨╡╨╗╨╡╨║╤В╨╛╤А , ╤Б╨╡╨║╤Г╨╜╨┤╤Л (4sec) ) */
 @-webkit-keyframes spin_animation {
   100% {
@@ -109,3 +110,10 @@
   }
 }
 /* End fadein function */
+/* ╨Ъ╤А╤Г╤В╨╕╨╝ ╨╗╤Г╤З╨╕ ╨╗╨╛╨│╨╛╤В╨╕╨┐╨░ */
+/* line 17, ../../source/sass/anim.sass */
+#rays {
+  -moz-animation: spin_animation 4s linear infinite;
+  -webkit-animation: spin_animation 4s linear infinite;
+  animation: spin_animation 4s linear infinite;
+}

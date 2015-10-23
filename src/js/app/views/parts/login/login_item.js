@@ -35,6 +35,7 @@ define(function(require) {
           return _this.dropSectionFromSide.pause();
         };
       })(this);
+      CSSPlugin.defaultTransformPerspective = 0;
 
       /**
       			 * ------------- Анимации выводит блок авторизации -------------
@@ -43,12 +44,7 @@ define(function(require) {
         paused: true
       }).addLabel('startAnimation').set(this.registerSide, {
         rotationX: -180
-      }).set(this.el, {
-        zIndex: 300,
-        display: 'block'
-      }).to(this.scaleElement, .5, {
-        className: '+=' + this.scaleClass
-      }, 0).to(this.sectionElement, .3, {
+      }).to(this.sectionElement, .3, {
         right: '0%',
         alpha: 1
       }, 0).addLabel('dropSection').to(this.registerSide, .5, {

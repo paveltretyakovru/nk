@@ -28,7 +28,7 @@ define ( require ) ->
 			@initCardsAnimation()
 
 		initCardsAnimation : ->
-			CSSPlugin.defaultTransformPerspective = 1000
+			CSSPlugin.defaultTransformPerspective = 600
 			
 			elements 	= @el.querySelectorAll '.lounge'
 			Array.prototype.forEach.call elements , ( el , i ) ->				

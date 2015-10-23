@@ -1,14 +1,44 @@
 require [ 'app/app' , 'pace' ] , ( app , pace ) ->
-	'use strict'	
+	'use strict'
+	loaded 		= false
 
 	window.app	= app || false
 
-	$(document).unbind "scroll"
+	# Функция загружает массив данных и выполняет callback после всех загруженных
+	preloadObjects = ( datas , objects , callback ) ->
+		remaining = datas.length
 
-	#Показываем загрузчик
-	app.animations.showLoader()
+		for i in [0...remaining]
+			obj 	= document.createElement 'object'
+			obj.setAttribute 'data' , datas[i]
+			obj.addEventListener 'load' , ->
+				--remaining
+				callback() if remaining <= 0			
+			document.getElementById('loader').appendChild(obj)
+			objects.push obj
+	#________________________________________________
+
+
+	imagesSrcs 				= [ "src/images/back_loader_logo.svg" , "src/images/front_loader_logo.svg" ]
+	app.elements.loaders 	= [  ]
+	
+	# Ожидаем загрузку SVG прелодеров
+	preloadObjects imagesSrcs , app.elements.loaders , ->
+		console.log 'Images loaded!' , app.elements.loaders
+		
+		# Устанавливаем им необходимые классы
+		app.elements.loaders[0].className = 'loader-logo-back'
+		app.elements.loaders[1].className = 'loader-logo-front'
+
+		# Показываем загрузчик
+		app.animations.showLoader ->
+			if loaded then app.animations.hideLoader -> app.start() else loaded = true
+	
 	# Закончена загрузка файлов приложения
-	pace.on 'done' , -> app.animations.hideLoader -> app.start()
+	pace.on 'done' , ->
+		console.log 'Pace done callback'
+		if loaded then app.animations.hideLoader -> app.start() else loaded = true
+	
 	# Запусками нижний прогрузчик
 	pace.start document : false
 
