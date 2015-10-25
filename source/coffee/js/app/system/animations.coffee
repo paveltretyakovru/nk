@@ -29,7 +29,7 @@ define ( requrie ) ->
 				.set [ @elements.main , @elements.header , @elements.content ] 	, autoAlpha : 1
 				.to  @elements.content 	, .3 	, autoAlpha : 0 , 0
 				.to  @elements.header 	, .3 	, autoAlpha : 0 , .2
-				.set @elements.main 	, .5 	, { autoAlpha : 0 , display : 'none' }
+				.set @elements.main 	, { autoAlpha : 0 , display : 'none' }
 				@tweens.hideMain.play()
 
 			# Появление всего контента

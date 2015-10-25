@@ -34,7 +34,7 @@ define(function(requrie) {
             autoAlpha: 0
           }, 0).to(_this.elements.header, .3, {
             autoAlpha: 0
-          }, .2).set(_this.elements.main, .5, {
+          }, .2).set(_this.elements.main, {
             autoAlpha: 0,
             display: 'none'
           });
