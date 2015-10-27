@@ -975,8 +975,9 @@ body {
   padding: 80px;
   text-align: center;
   background: url("../images/bg_glow.jpg");
+  overflow: hidden;
 }
-/* line 732, ../../source/sass/lounges.sass */
+/* line 733, ../../source/sass/lounges.sass */
 #community_block5 .round {
   display: inline-block;
   position: relative;
@@ -986,13 +987,13 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 100;
 }
-/* line 741, ../../source/sass/lounges.sass */
+/* line 742, ../../source/sass/lounges.sass */
 #community_block5 .round img {
   position: relative;
   height: 40%;
   top: 30%;
 }
-/* line 746, ../../source/sass/lounges.sass */
+/* line 747, ../../source/sass/lounges.sass */
 #community_block5 h3 {
   display: inline-block;
   position: relative;
@@ -1002,7 +1003,7 @@ body {
   line-height: 1.2;
   z-index: 400;
 }
-/* line 757, ../../source/sass/lounges.sass */
+/* line 758, ../../source/sass/lounges.sass */
 #community_block5 p {
   display: inline-block;
   width: 36%;
@@ -1010,14 +1011,14 @@ body {
   font-size: 16px;
   line-height: 1.5;
 }
-/* line 766, ../../source/sass/lounges.sass */
+/* line 767, ../../source/sass/lounges.sass */
 #community_block5 button {
   background: none;
   margin-top: 32px;
   border: 1px solid #EBB22F;
 }
 
-/* line 774, ../../source/sass/lounges.sass */
+/* line 775, ../../source/sass/lounges.sass */
 #philosophie_block1 {
   display: block;
   position: relative;
@@ -1026,14 +1027,14 @@ body {
   text-align: center;
   background: url("../images/bg_smoke_2.jpg");
 }
-/* line 782, ../../source/sass/lounges.sass */
+/* line 783, ../../source/sass/lounges.sass */
 #philosophie_block1 img {
   position: relative;
   width: 50%;
   top: 10%;
 }
 
-/* line 787, ../../source/sass/lounges.sass */
+/* line 788, ../../source/sass/lounges.sass */
 #philosophie_block2 {
   display: block;
   position: relative;
@@ -1041,7 +1042,7 @@ body {
   padding: 80px;
   background: #282C34;
 }
-/* line 794, ../../source/sass/lounges.sass */
+/* line 795, ../../source/sass/lounges.sass */
 #philosophie_block2 blockquote {
   display: block;
   position: relative;
@@ -1050,15 +1051,15 @@ body {
   width: 25%;
   margin-right: 48px;
 }
-/* line 802, ../../source/sass/lounges.sass */
+/* line 803, ../../source/sass/lounges.sass */
 #philosophie_block2 blockquote h4 {
   margin-bottom: 16px;
 }
-/* line 805, ../../source/sass/lounges.sass */
+/* line 806, ../../source/sass/lounges.sass */
 #philosophie_block2 blockquote cite {
   color: #EBB22F;
 }
-/* line 808, ../../source/sass/lounges.sass */
+/* line 809, ../../source/sass/lounges.sass */
 #philosophie_block2 h3 {
   display: inline-block;
   width: 40%;
@@ -1068,19 +1069,19 @@ body {
   line-height: 1.5;
   letter-spacing: 0;
 }
-/* line 818, ../../source/sass/lounges.sass */
+/* line 819, ../../source/sass/lounges.sass */
 #philosophie_block2 p {
   -webkit-column-count: 2;
   text-align: justify;
   margin-bottom: 32px;
 }
-/* line 823, ../../source/sass/lounges.sass */
+/* line 824, ../../source/sass/lounges.sass */
 #philosophie_block2 button {
   background: none;
   border: 1px solid #EBB22F;
 }
 
-/* line 829, ../../source/sass/lounges.sass */
+/* line 830, ../../source/sass/lounges.sass */
 #philosophie_block3 {
   display: block;
   position: relative;
@@ -1090,13 +1091,13 @@ body {
   background: url("../images/bg_glow.jpg");
   background-size: cover;
 }
-/* line 838, ../../source/sass/lounges.sass */
+/* line 839, ../../source/sass/lounges.sass */
 #philosophie_block3 .cont-wrap {
   display: block;
   position: relative;
   width: 50%;
 }
-/* line 842, ../../source/sass/lounges.sass */
+/* line 843, ../../source/sass/lounges.sass */
 #philosophie_block3 .cont-wrap h3 {
   display: block;
   width: 100%;
@@ -1107,13 +1108,13 @@ body {
   line-height: 1.2;
   z-index: 200;
 }
-/* line 854, ../../source/sass/lounges.sass */
+/* line 855, ../../source/sass/lounges.sass */
 #philosophie_block3 .cont-wrap h4 {
   display: inline-block;
   position: relative;
   margin-bottom: 32px;
 }
-/* line 860, ../../source/sass/lounges.sass */
+/* line 861, ../../source/sass/lounges.sass */
 #philosophie_block3 .cont-wrap p {
   display: inline-block;
   position: relative;
@@ -1123,20 +1124,20 @@ body {
   line-height: 1.5;
   z-index: 200;
 }
-/* line 871, ../../source/sass/lounges.sass */
+/* line 872, ../../source/sass/lounges.sass */
 #philosophie_block3 aside {
   display: block;
   position: relative;
   width: 40%;
   float: left;
 }
-/* line 877, ../../source/sass/lounges.sass */
+/* line 878, ../../source/sass/lounges.sass */
 #philosophie_block3 aside article {
   display: block;
   position: relative;
   width: 40%;
 }
-/* line 882, ../../source/sass/lounges.sass */
+/* line 883, ../../source/sass/lounges.sass */
 #philosophie_block3 aside article img {
   display: block;
   position: relative;
@@ -1145,7 +1146,7 @@ body {
   height: 64px;
 }
 
-/* line 889, ../../source/sass/lounges.sass */
+/* line 890, ../../source/sass/lounges.sass */
 #philosophie_block4 {
   display: block;
   position: relative;
@@ -1155,7 +1156,7 @@ body {
   text-align: left;
   background: black;
 }
-/* line 898, ../../source/sass/lounges.sass */
+/* line 899, ../../source/sass/lounges.sass */
 #philosophie_block4 h3 {
   display: block;
   width: 100%;
@@ -1167,7 +1168,7 @@ body {
   line-height: 1.2;
   letter-spacing: 4px;
 }
-/* line 911, ../../source/sass/lounges.sass */
+/* line 912, ../../source/sass/lounges.sass */
 #philosophie_block4 p {
   display: inline-block;
   opacity: 0.5;
@@ -1176,7 +1177,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
 }
-/* line 921, ../../source/sass/lounges.sass */
+/* line 922, ../../source/sass/lounges.sass */
 #philosophie_block4 h5 {
   display: inline-block;
   color: #EBB22F;
@@ -1186,7 +1187,7 @@ body {
   line-height: 1.2;
   letter-spacing: 4px;
 }
-/* line 931, ../../source/sass/lounges.sass */
+/* line 932, ../../source/sass/lounges.sass */
 #philosophie_block4 h6 {
   margin-bottom: 32px;
   font-family: "Lora", sans-serif;
@@ -1195,7 +1196,7 @@ body {
   letter-spacing: 0;
 }
 
-/* line 939, ../../source/sass/lounges.sass */
+/* line 940, ../../source/sass/lounges.sass */
 #philosophie_block5 {
   display: block;
   position: relative;
@@ -1206,7 +1207,7 @@ body {
   overflow: hidden;
   background: url("../images/bg_glow.jpg");
 }
-/* line 949, ../../source/sass/lounges.sass */
+/* line 950, ../../source/sass/lounges.sass */
 #philosophie_block5 img {
   position: absolute;
   display: block;
@@ -1215,7 +1216,7 @@ body {
   top: -50%;
   left: calc(50% - 256px);
 }
-/* line 957, ../../source/sass/lounges.sass */
+/* line 958, ../../source/sass/lounges.sass */
 #philosophie_block5 h2 {
   font-size: 48px;
   font-family: Bebas Neue;
@@ -1223,7 +1224,7 @@ body {
   margin-bottom: 32px;
   color: white;
 }
-/* line 964, ../../source/sass/lounges.sass */
+/* line 965, ../../source/sass/lounges.sass */
 #philosophie_block5 h6 {
   opacity: 0.5;
   margin-bottom: 32px;
@@ -1232,7 +1233,7 @@ body {
   line-height: 1.5;
   letter-spacing: 0;
 }
-/* line 974, ../../source/sass/lounges.sass */
+/* line 975, ../../source/sass/lounges.sass */
 #philosophie_block5 button {
   background: none;
   margin-top: 32px;

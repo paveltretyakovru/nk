@@ -28,6 +28,12 @@ define(function(require) {
       return el.attachEvent('on' + eventName, callback);
     }
   };
+  window.randomInteger = function(min, max) {
+    var rand;
+    rand = min + Math.random() * (max - min);
+    rand = Math.round(rand);
+    return rand;
+  };
 
   /**
   	 * Хелпер для интернационализации

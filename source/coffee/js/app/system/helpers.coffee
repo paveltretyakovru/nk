@@ -26,6 +26,11 @@ define ( require ) ->
 		else if el.attachEvent
 			console.log 'Attach event'
 			el.attachEvent 'on' + eventName , callback
+
+	window.randomInteger = ( min , max ) ->
+		rand = min + Math.random() * (max - min)
+		rand = Math.round rand
+		return rand
 		
 	##########################################################################################
 

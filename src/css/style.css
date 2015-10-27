@@ -660,3 +660,10 @@ section.right_menu a {
   box-shadow: inset rgba(255, 255, 255, 0.1) 0 0 0 1px;
   z-index: -1;
 }
+
+/* line 356, ../../source/sass/style.sass */
+#viewport {
+  position: absolute;
+  top: -10%;
+  left: -5%;
+}

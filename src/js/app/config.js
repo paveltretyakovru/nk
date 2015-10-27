@@ -31,6 +31,8 @@ requirejs.config({
     'widgets': 'src/js/app/widgets',
     'pace': 'bower_components/pace/pace.min',
     'fullpagejs': 'bower_components/fullpage.js/jquery.fullPage.min',
+    'arbor': 'bower_components/arbor/lib/arbor',
+    'arbor-graphics': 'bower_components/arbor/demos/_/graphics',
     'spec': 'src/js/app/tests/spec',
     'sinon': 'bower_components/sinonjs/sinon',
     'jasmine': 'bower_components/jasmine/lib/jasmine-core/jasmine',
@@ -102,6 +104,12 @@ requirejs.config({
       'exports': 'boot'
     },
     'fullpagejs': {
+      'deps': ['jquery']
+    },
+    'arbor': {
+      'deps': ['jquery']
+    },
+    'arbor-graphics': {
       'deps': ['jquery']
     }
   },

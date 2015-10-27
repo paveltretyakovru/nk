@@ -38,6 +38,8 @@ requirejs.config
 		# PLUGINS
 		'pace'					: 'bower_components/pace/pace.min'
 		'fullpagejs'			: 'bower_components/fullpage.js/jquery.fullPage.min'
+		'arbor'					: 'bower_components/arbor/lib/arbor'
+		'arbor-graphics'		: 'bower_components/arbor/demos/_/graphics'
 
 	    # TESTS
 		'spec'					: 'src/js/app/tests/spec'
@@ -70,6 +72,8 @@ requirejs.config
 		'boot'					: 'deps': [ 'jasmine' , 'jasmine-html'] , 'exports': 'boot'
 
 		# Plugins
-		'fullpagejs'		: 'deps' : ['jquery']
+		'fullpagejs'		: 'deps'	: [ 'jquery']
+		'arbor'				: 'deps'	: [ 'jquery']
+		'arbor-graphics'	: 'deps'	: [ 'jquery' ]
 
 	config: i18n: locale: 'ru-ru'	
