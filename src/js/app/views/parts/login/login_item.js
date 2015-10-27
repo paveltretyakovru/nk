@@ -38,7 +38,7 @@ define(function(require) {
       CSSPlugin.defaultTransformPerspective = 0;
 
       /**
-      			 * ------------- Анимации выводит блок авторизации -------------
+      			 * ------------- Анимации выводит блок аутентификации -------------
        */
       this.dropSectionFromSide = new TimelineMax({
         paused: true
@@ -47,36 +47,89 @@ define(function(require) {
       }).to(this.sectionElement, .3, {
         right: '0%',
         alpha: 1
-      }, 0).addLabel('dropSection').to(this.registerSide, .5, {
+      }, 0).addLabel('backToLogin').addLabel('dropSection').to(this.registerSide, .5, {
         rotationX: 0
-      }, 1).to(this.loginSide, .5, {
+      }, .3).to(this.loginSide, .5, {
         rotationX: 180
-      }, 1).addLabel('revertRegistr');
+      }, .3).addLabel('revertRegistr');
+      this.dropRegistrateFromHeader = new TimelineMax({
+        paused: true
+      }).addLabel('startAnimation').set(this.registerSide, {
+        rotationX: -180
+      }).set(this.registerSide, {
+        rotationX: 0
+      }, 'setRevertRegistr').set(this.loginSide, {
+        rotationX: 180
+      }, 'setRevertRegistr').to(this.sectionElement, .3, {
+        right: '0%',
+        alpha: 1
+      }, 0).addLabel('dropSection');
       window.test = this.dropSectionFromSide;
       return this.scaleElement.addEventListener('click', (function(_this) {
         return function() {
-          if (_this.sectionDropped()) {
-            return _this.dropSectionFromSide.tweenTo(0);
-          }
+          return _this.controlReversedAnimations(function() {
+            return console.log('scaleElement');
+          });
         };
       })(this));
     },
+    controlReversedAnimations: function(callback) {
+      var control;
+      control = false;
+      if (this.sectionDropped()) {
+        console.log('sectionDropped');
+        if (callback != null) {
+          this.dropSectionFromSide.eventCallback('onReverseComplete', function() {
+            return callback();
+          });
+        }
+        return this.dropSectionFromSide.reverse();
+        control = true;
+      }
+      if (this.registrateFromHeader()) {
+        console.log('registrateFromHeader');
+        if (callback != null) {
+          this.dropRegistrateFromHeader.eventCallback('onReverseComplete', function() {
+            return callback();
+          });
+        }
+        return this.dropRegistrateFromHeader.reverse();
+        control = true;
+      }
+      if (!control && (callback != null)) {
+        console.log('not Control and callback?');
+        return callback();
+      }
+    },
     sectionDropped: function() {
       return !this.dropSectionFromSide.isActive() && this.dropSectionFromSide.progress();
+    },
+    registrateFromHeader: function() {
+      return !this.dropRegistrateFromHeader.isActive() && this.dropRegistrateFromHeader.progress();
     },
     showRegistrateFromLogin: function(event) {
       this.dropSectionFromSide.tweenTo('revertRegistr');
       return event.preventDefault();
     },
-    showRegistrateFromHeader: function(event) {
-      return this.dropSectionFromSide.tweenFromTo('startAnimation', 'revertRegistr');
-    },
     showLoginFromRegistrate: function(event) {
-      this.dropSectionFromSide.tweenTo('dropSection');
+      this.dropSectionFromSide.tweenFromTo('revertRegistr', 'dropSection');
       return event.preventDefault();
     },
+
+    /* From Header */
+    showRegistrateFromHeader: function(event) {
+      return this.controlReversedAnimations((function(_this) {
+        return function() {
+          return _this.dropRegistrateFromHeader.tweenFromTo('startAnimation', 'dropSection');
+        };
+      })(this));
+    },
     showLoginFromHeader: function(event) {
-      return this.dropSectionFromSide.tweenFromTo('startAnimation', 'dropSection');
+      return this.controlReversedAnimations((function(_this) {
+        return function() {
+          return _this.dropSectionFromSide.tweenFromTo('startAnimation', 'backToLogin');
+        };
+      })(this));
     }
   });
   return View;
