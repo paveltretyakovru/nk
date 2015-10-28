@@ -49,9 +49,9 @@ define ( require ) ->
 			#.to @scaleElement 	, .5 	, className : '+=' + @scaleClass , 0
 			@dropSectionFromSide = new TimelineMax paused : true
 				.add 'startAnimation'				
-				.set @registerSide , rotationX : -180				
-				.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
-				.to @sectionElement , .3 , { right : '0%' , alpha : 1 } , 0
+				.set @registerSide , rotationX : -180
+				#.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
+				.to @sectionElement , .3 , { right : '-20%' , alpha : 1 } , 0
 				.addLabel 'backToLogin'
 				.addLabel 'dropSection'
 					.to @registerSide	, .5 	, rotationX : 0 	, .3
@@ -61,13 +61,19 @@ define ( require ) ->
 			### ___________ Анимация выводит формы регистрации ___________ ###
 			@dropRegistrateFromHeader = new TimelineMax paused : true
 				.add 'startAnimation'
-				.set @registerSide , rotationX : -180
-				.set @registerSide , rotationX 	: 0 , 'setRevertRegistr'
-				.set @loginSide 	, rotationX : 180 , 'setRevertRegistr'
-				.add app.tweens.scaleBody.play() , 'startAnimation'
+					.set @registerSide , rotationX 	: -180
+					.set @registerSide , rotationX 	: 0 , 'setRevertRegistr'
+					.set @loginSide 	, rotationX : 180 , 'setRevertRegistr'
+					#.add app.tweens.scaleBody.play() , 'startAnimation'
 
-				.to @sectionElement , .3 	, { right : '0%' , alpha : 1 } , 0
-				.addLabel 'dropSection'
+					.to @sectionElement , .3 	, { right : '-20%' , alpha : 1 } , 0
+					.addLabel 'dropSection'
+					.add 'revertLoginStart'
+						.set @loginSide , rotationX : -180
+						.to @loginSide	, .5 	, rotationX : 0 	, .3
+						.to @registerSide 		, .5 	, rotationX : 180 	, .3 # Анимация прокручивает секцию до регистраци
+						.add 'revertLogin'
+
 
 			window.test = @dropSectionFromSide
 
@@ -76,8 +82,16 @@ define ( require ) ->
 				@controlReversedAnimations ->
 					console.log 'scaleElement'
 
-		controlReversedAnimations : ( callback ) ->
+		###*
+		# controlReversedAnimations
+		# @return void
+		# @param bool reverse @default = 0  делать ли реверс анимации при существовании callback
+		# @param function callback
+		###
+		controlReversedAnimations : ( reverse , callback ) ->
 			control = false
+
+			if not reverse? then reverse true
 
 			# Если анимация не активна и анимирована
 			if @sectionDropped()
@@ -88,7 +102,7 @@ define ( require ) ->
 					#@dropSectionFromSide.eventCallback 'onReverseComplete' , -> return console.log 'Not callback? dropSectionFromSide'
 
 				# Возвращаем обратно сексию авторизации/регистрации
-				return @dropSectionFromSide.reverse()
+				return  if reverse then @dropSectionFromSide.reverse() else true
 				control = true
 
 			if @registrateFromHeader()
@@ -98,14 +112,14 @@ define ( require ) ->
 				#else
 					#@dropRegistrateFromHeader.eventCallback 'onReverseComplete' , -> return console.log 'Not callback? dropRegistrateFromHeader'
 
-				# Возвращаем поле регистрации за края страницы
-				return @dropRegistrateFromHeader.reverse()
+				# Возвращаем поле регистрации за края страницы				
+				return  if reverse then @dropRegistrateFromHeader.reverse() else true
+
 				control = true
 
 			if not control and callback?
 				console.log 'not Control and callback?'
 				callback()
-
 
 		# Проверяет состоияние сексции выдвинута ли она || анимация не активна и анимирована
 		sectionDropped : ->
@@ -115,22 +129,32 @@ define ( require ) ->
 			return not @dropRegistrateFromHeader.isActive() and @dropRegistrateFromHeader.progress()
 
 		showRegistrateFromLogin		: ( event ) ->
-			@dropSectionFromSide.tweenTo 'revertRegistr'
+			if @registrateFromHeader()				
+				@dropRegistrateFromHeader.tweenFromTo 'revertLogin' , 'dropSection'
+				@controlReversedAnimations false , =>
+					@dropRegistrateFromHeader.tweenTo('startAnimation')
+			else
+				@dropSectionFromSide.tweenTo 'revertRegistr'
 			event.preventDefault()
 
 		showLoginFromRegistrate		: ( event ) ->
-			@controlReversedAnimations =>
-				@dropSectionFromSide.tweenFromTo 'revertRegistr' , 'dropSection'
-
+			if @sectionDropped()				
+				@dropSectionFromSide.tweenFromTo 'revertRegistr' , 'backToLogin'
+				@controlReversedAnimations false , =>
+					@dropSectionFromSide.tweenTo('startAnimation')
+			else
+				@dropRegistrateFromHeader.tweenTo 'revertLogin'
+				#@dropRegistrateFromHeader.tweenFromTo 'revertLoginStart' , 'revertLogin'			
+			
 			event.preventDefault()
 
 		### From Header ###
 		showRegistrateFromHeader	: ( event ) ->
-			@controlReversedAnimations =>
+			@controlReversedAnimations true , =>
 				@dropRegistrateFromHeader.tweenFromTo 'startAnimation' , 'dropSection'
 
 		showLoginFromHeader			: ( event ) ->
-			@controlReversedAnimations =>
+			@controlReversedAnimations true , =>
 				@dropSectionFromSide.tweenFromTo 'startAnimation' , 'backToLogin'
 		doLogin : ( event ) ->
 			event.preventDefault()

@@ -50,7 +50,7 @@ define ( require ) ->
 			.to @scaleBody 		, .3 , { className : '+=' + @scaleClass } , 0
 			.to '#region-menu' 	, .3 , { autoAlpha : 1 , ease : Expo.easeInOut } , .3
 			.to @lpm , .5 , 
-				left 			: '0%'				
+				left 			: '0%'
 				ease 			: Expo.easeInOut
 			,	.6
 

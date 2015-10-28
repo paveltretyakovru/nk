@@ -48,8 +48,8 @@ define ( require ) ->
 					
 					tl
 					.set el , zIndex : 200
-					.to frontCard 	, 1 	, rotationY : 180		, 0
-					.to backCard	, 1 	, rotationY : 0			, 0
+					#.to frontCard 	, 1 	, rotationY : 180		, 0
+					#.to backCard	, 1 	, rotationY : 0			, 0
 					#.to el			, .5	, z 		: 200		, 0
 
 					el.animation = tl

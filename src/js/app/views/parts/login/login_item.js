@@ -47,10 +47,8 @@ define(function(require) {
         paused: true
       }).add('startAnimation').set(this.registerSide, {
         rotationX: -180
-      }).to(this.scaleElement, .3, {
-        className: '+=' + this.scaleClass + ' background-color-overlay'
-      }, 0).to(this.sectionElement, .3, {
-        right: '0%',
+      }).to(this.sectionElement, .3, {
+        right: '-20%',
         alpha: 1
       }, 0).addLabel('backToLogin').addLabel('dropSection').to(this.registerSide, .5, {
         rotationX: 0
@@ -67,10 +65,16 @@ define(function(require) {
         rotationX: 0
       }, 'setRevertRegistr').set(this.loginSide, {
         rotationX: 180
-      }, 'setRevertRegistr').add(app.tweens.scaleBody.play(), 'startAnimation').to(this.sectionElement, .3, {
-        right: '0%',
+      }, 'setRevertRegistr').to(this.sectionElement, .3, {
+        right: '-20%',
         alpha: 1
-      }, 0).addLabel('dropSection');
+      }, 0).addLabel('dropSection').add('revertLoginStart').set(this.loginSide, {
+        rotationX: -180
+      }).to(this.loginSide, .5, {
+        rotationX: 0
+      }, .3).to(this.registerSide, .5, {
+        rotationX: 180
+      }, .3).add('revertLogin');
       window.test = this.dropSectionFromSide;
       return this.scaleElement.addEventListener('click', (function(_this) {
         return function() {
@@ -80,9 +84,19 @@ define(function(require) {
         };
       })(this));
     },
-    controlReversedAnimations: function(callback) {
+
+    /**
+    		 * controlReversedAnimations
+    		 * @return void
+    		 * @param bool reverse @default = 0  делать ли реверс анимации при существовании callback
+    		 * @param function callback
+     */
+    controlReversedAnimations: function(reverse, callback) {
       var control;
       control = false;
+      if (reverse == null) {
+        reverse(true);
+      }
       if (this.sectionDropped()) {
         console.log('sectionDropped');
         if (callback != null) {
@@ -90,7 +104,11 @@ define(function(require) {
             return callback();
           });
         }
-        return this.dropSectionFromSide.reverse();
+        if (reverse) {
+          return this.dropSectionFromSide.reverse();
+        } else {
+          return true;
+        }
         control = true;
       }
       if (this.registrateFromHeader()) {
@@ -100,7 +118,11 @@ define(function(require) {
             return callback();
           });
         }
-        return this.dropRegistrateFromHeader.reverse();
+        if (reverse) {
+          return this.dropRegistrateFromHeader.reverse();
+        } else {
+          return true;
+        }
         control = true;
       }
       if (!control && (callback != null)) {
@@ -115,28 +137,42 @@ define(function(require) {
       return !this.dropRegistrateFromHeader.isActive() && this.dropRegistrateFromHeader.progress();
     },
     showRegistrateFromLogin: function(event) {
-      this.dropSectionFromSide.tweenTo('revertRegistr');
+      if (this.registrateFromHeader()) {
+        this.dropRegistrateFromHeader.tweenFromTo('revertLogin', 'dropSection');
+        this.controlReversedAnimations(false, (function(_this) {
+          return function() {
+            return _this.dropRegistrateFromHeader.tweenTo('startAnimation');
+          };
+        })(this));
+      } else {
+        this.dropSectionFromSide.tweenTo('revertRegistr');
+      }
       return event.preventDefault();
     },
     showLoginFromRegistrate: function(event) {
-      this.controlReversedAnimations((function(_this) {
-        return function() {
-          return _this.dropSectionFromSide.tweenFromTo('revertRegistr', 'dropSection');
-        };
-      })(this));
+      if (this.sectionDropped()) {
+        this.dropSectionFromSide.tweenFromTo('revertRegistr', 'backToLogin');
+        this.controlReversedAnimations(false, (function(_this) {
+          return function() {
+            return _this.dropSectionFromSide.tweenTo('startAnimation');
+          };
+        })(this));
+      } else {
+        this.dropRegistrateFromHeader.tweenTo('revertLogin');
+      }
       return event.preventDefault();
     },
 
     /* From Header */
     showRegistrateFromHeader: function(event) {
-      return this.controlReversedAnimations((function(_this) {
+      return this.controlReversedAnimations(true, (function(_this) {
         return function() {
           return _this.dropRegistrateFromHeader.tweenFromTo('startAnimation', 'dropSection');
         };
       })(this));
     },
     showLoginFromHeader: function(event) {
-      return this.controlReversedAnimations((function(_this) {
+      return this.controlReversedAnimations(true, (function(_this) {
         return function() {
           return _this.dropSectionFromSide.tweenFromTo('startAnimation', 'backToLogin');
         };

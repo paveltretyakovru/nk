@@ -47,11 +47,7 @@ define(function(require) {
           });
           tl.set(el, {
             zIndex: 200
-          }).to(frontCard, 1, {
-            rotationY: 180
-          }, 0).to(backCard, 1, {
-            rotationY: 0
-          }, 0);
+          });
           el.animation = tl;
           return el.animation.play();
         }, false);
