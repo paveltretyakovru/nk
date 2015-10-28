@@ -5,6 +5,7 @@ define ( require ) ->
 	Template 	= require 'text!tmpls/parts/login/login.html'
 
 	require 'gsap'
+	require 'syphon'
 
 	View = Marionette.ItemView.extend
 		debugAnimation	: true
@@ -12,12 +13,15 @@ define ( require ) ->
 		template 		: Template
 
 		ui :
-			'link_registrateFromLogin'	: '.js-registrate-from-login'			
-			'link_loginFromRegistrate'	: '.js-login-from-registrate'			
+			'link_registrateFromLogin'	: '.js-registrate-from-login'
+			'link_loginFromRegistrate'	: '.js-login-from-registrate'
 
 		events :
-			'click @ui.link_registrateFromLogin'	: 	'showRegistrateFromLogin'			
-			'click @ui.link_loginFromRegistrate'	:	'showLoginFromRegistrate'			
+			'click @ui.link_registrateFromLogin'	: 	'showRegistrateFromLogin'
+			'click @ui.link_loginFromRegistrate'	:	'showLoginFromRegistrate'
+			'submit #login_form': 'doLogin'
+			'submit #register_form': 'doRegister'
+
 
 		initialize : ->
 			@on 'showLoginFromHeader'	, @showLoginFromHeader , @
@@ -28,7 +32,7 @@ define ( require ) ->
 		afterRender : ->
 			@sectionElement = @el.querySelectorAll 		'.autn-section'
 			@registerSide 	= @el.querySelector 		'.registr-side'
-			@loginSide 		= @el.querySelector 		'.login-side'			
+			@loginSide 		= @el.querySelector 		'.login-side'
 			@scaleElement	= document.getElementById 	'scale-body'	# Элемент который будет уходить назад
 			@scaleClass		= 'scale-element' # Клас анимации ухода назад
 			@authVisible	= false
@@ -45,24 +49,24 @@ define ( require ) ->
 			.addLabel 'startAnimation'
 			#.set @el ,{ zIndex : 300  	, display : 'block' }
 			#.to @scaleElement 	, .5 	, className : '+=' + @scaleClass , 0
-			
+
 			.set @registerSide , rotationX : -180
-			.to @sectionElement , .3 	, { right : '0%' , alpha : 1 } , 0			
+			.to @sectionElement , .3 	, { right : '0%' , alpha : 1 } , 0
 			.addLabel 'backToLogin'
 
 			.addLabel 'dropSection'
-			
+
 			.to @registerSide	, .5 	, rotationX : 0 	, .3
 			.to @loginSide 		, .5 	, rotationX : 180 	, .3 # Анимация прокручивает секцию до регистраци
 			.addLabel 'revertRegistr'
 
 			@dropRegistrateFromHeader = new TimelineMax paused : true
 				.addLabel 'startAnimation'
-				.set @registerSide , rotationX : -180 
+				.set @registerSide , rotationX : -180
 				.set @registerSide , rotationX 	: 0 , 'setRevertRegistr'
 				.set @loginSide 	, rotationX : 180 , 'setRevertRegistr'
-				
-				.to @sectionElement , .3 	, { right : '0%' , alpha : 1 } , 0			
+
+				.to @sectionElement , .3 	, { right : '0%' , alpha : 1 } , 0
 				.addLabel 'dropSection'
 
 			window.test = @dropSectionFromSide
@@ -86,7 +90,7 @@ define ( require ) ->
 				# Возвращаем обратно сексию авторизации/регистрации
 				return @dropSectionFromSide.reverse()
 				control = true
-			
+
 			if @registrateFromHeader()
 				console.log 'registrateFromHeader'
 				if callback?
@@ -96,7 +100,7 @@ define ( require ) ->
 
 				# Возвращаем поле регистрации за края страницы
 				return @dropRegistrateFromHeader.reverse()
-				control = true 
+				control = true
 
 			if not control and callback?
 				console.log 'not Control and callback?'
@@ -109,9 +113,9 @@ define ( require ) ->
 
 		registrateFromHeader : ->
 			return not @dropRegistrateFromHeader.isActive() and @dropRegistrateFromHeader.progress()
-		
-		showRegistrateFromLogin		: ( event ) ->			
-			@dropSectionFromSide.tweenTo 'revertRegistr'			
+
+		showRegistrateFromLogin		: ( event ) ->
+			@dropSectionFromSide.tweenTo 'revertRegistr'
 			event.preventDefault()
 
 		showLoginFromRegistrate		: ( event ) ->
@@ -119,7 +123,7 @@ define ( require ) ->
 
 			event.preventDefault()
 
-		### From Header ###		
+		### From Header ###
 		showRegistrateFromHeader	: ( event ) ->
 			@controlReversedAnimations =>
 				@dropRegistrateFromHeader.tweenFromTo 'startAnimation' , 'dropSection'
@@ -127,5 +131,16 @@ define ( require ) ->
 		showLoginFromHeader			: ( event ) ->
 			@controlReversedAnimations =>
 				@dropSectionFromSide.tweenFromTo 'startAnimation' , 'backToLogin'
-
+		doLogin : ( event ) ->
+			event.preventDefault()
+			data = Backbone.Syphon.serialize(this);
+			$.post 'http://localhost:3000' + '/api/v1/auth/sessions.json', data, (result) =>
+				console.log "result login: ", result
+			console.log 'do login', data
+		doRegister : ( event ) ->
+			event.preventDefault()
+			data = Backbone.Syphon.serialize(this);
+			$.post 'http://localhost:3000' + '/api/v1/auth/registrations.json', data, (result) =>
+				console.log "result register: ", result
+			console.log 'do register', data
 	return View

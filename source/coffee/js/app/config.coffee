@@ -3,24 +3,25 @@ requirejs.config
 	#'paths'		: 'requirejs'
 	'paths'	:
 		# CORE
-		'requirejs'				: 'bower_components/requirejs/require'
-		'text'					: 'bower_components/requirejs-text/text'
-		'i18n'					: 'bower_components/requirejs-i18n/i18n'
-		'jquery'				: 'bower_components/jquery/dist/jquery.min'
-		'underscore'			: 'bower_components/underscore/underscore-min'
-		'backbone'				: 'bower_components/backbone/backbone-min'
-		'backbone.babysitter'	: 'bower_components/backbone.babysitter/lib/backbone.babysitter'
-		'backbone.wreqr'		: 'bower_components/backbone.wreqr/lib/backbone.wreqr.min'
-		'backbone.deep-model'	: 'bower_components/backbone-deep-model/distribution/deep-model.min'
-		'backbone.rivets'		: 'bower_components/rivets-backbone-adapter/rivets-backbone'
-		'marionette'			: 'bower_components/marionette/lib/core/backbone.marionette'
-		'marionette.component'	: 'bower_components/marionette.component/dist/marionette.component.min'
-		'handlebars'			: 'bower_components/handlebars/handlebars.min'
-		'rivets'				: 'bower_components/rivets/dist/rivets'
-		'sightglass'			: 'bower_components/sightglass/index'
-		'backbone-validation'	: 'bower_components/backbone-validation/dist/backbone-validation-min'
-		'gsap'					: 'bower_components/gsap/src/minified/TweenMax.min'
-		'jquery-ui'				: 'bower_components/jquery-ui/jquery-ui.min'
+		'requirejs'				: 'client/bower_components/requirejs/require'
+		'text'					: 'client/bower_components/requirejs-text/text'
+		'i18n'					: 'client/bower_components/requirejs-i18n/i18n'
+		'jquery'				: 'client/bower_components/jquery/dist/jquery.min'
+		'underscore'			: 'client/bower_components/underscore/underscore-min'
+		'backbone'				: 'client/bower_components/backbone/backbone-min'
+		'backbone.babysitter'	: 'client/bower_components/backbone.babysitter/lib/backbone.babysitter'
+		'backbone.wreqr'		: 'client/bower_components/backbone.wreqr/lib/backbone.wreqr.min'
+		'backbone.deep-model'	: 'client/bower_components/backbone-deep-model/distribution/deep-model.min'
+		'backbone.rivets'		: 'client/bower_components/rivets-backbone-adapter/rivets-backbone'
+		'marionette'			: 'client/bower_components/marionette/lib/core/backbone.marionette'
+		'marionette.component'	: 'client/bower_components/marionette.component/dist/marionette.component.min'
+		'handlebars'			: 'client/bower_components/handlebars/handlebars.min'
+		'rivets'				: 'client/bower_components/rivets/dist/rivets'
+		'sightglass'			: 'client/bower_components/sightglass/index'
+		'backbone-validation'	: 'client/bower_components/backbone-validation/dist/backbone-validation-min'
+		'gsap'					: 'client/bower_components/gsap/src/minified/TweenMax.min'
+		'jquery-ui'				: 'client/bower_components/jquery-ui/jquery-ui.min'
+		'syphon'				: 'client/bower_components/backbone.syphon/lib/backbone.syphon.min'
 
 	    # PATH
 		'app'           		: 'src/js/app'
@@ -36,35 +37,35 @@ requirejs.config
 		'widgets'       		: 'src/js/app/widgets'
 
 		# PLUGINS
-		'pace'					: 'bower_components/pace/pace.min'
-		'fullpagejs'			: 'bower_components/fullpage.js/jquery.fullPage.min'
-		'arbor'					: 'bower_components/arbor/lib/arbor'
-		'arbor-graphics'		: 'bower_components/arbor/demos/_/graphics'
+		'pace'					: 'client/bower_components/pace/pace.min'
+		'fullpagejs'			: 'client/bower_components/fullpage.js/jquery.fullPage.min'
+		'arbor'					: 'client/bower_components/arbor/lib/arbor'
+		'arbor-graphics'		: 'client/bower_components/arbor/demos/_/graphics'
 
 	    # TESTS
 		'spec'					: 'src/js/app/tests/spec'
-		'sinon'					: 'bower_components/sinonjs/sinon'
-		'jasmine'				: 'bower_components/jasmine/lib/jasmine-core/jasmine'
-		'jasmine-html'			: 'bower_components/jasmine/lib/jasmine-core/jasmine-html'
-		'jasmine-ajax'			: 'bower_components/jasmine-ajax/lib/mock-ajax'
-		'jasmine-sinon'			: 'bower_components/jasmine-sinon/lib/jasmine-sinon'
-		'jasmine-jquery'		: 'bower_components/jasmine-jquery/lib/jasmine-jquery'
-		'boot'					: 'bower_components/jasmine/lib/jasmine-core/boot'
+		'sinon'					: 'client/bower_components/sinonjs/sinon'
+		'jasmine'				: 'client/bower_components/jasmine/lib/jasmine-core/jasmine'
+		'jasmine-html'			: 'client/bower_components/jasmine/lib/jasmine-core/jasmine-html'
+		'jasmine-ajax'			: 'client/bower_components/jasmine-ajax/lib/mock-ajax'
+		'jasmine-sinon'			: 'client/bower_components/jasmine-sinon/lib/jasmine-sinon'
+		'jasmine-jquery'		: 'client/bower_components/jasmine-jquery/lib/jasmine-jquery'
+		'boot'					: 'client/bower_components/jasmine/lib/jasmine-core/boot'
 
 	'shim':
 		'jquery'				: 'exports': '$'
 		'jquery-ui'				: 'deps'   : ['jquery']
 		'underscore'			: 'exports': '_'
-		'handlebars'			: 'exports': 'Handlebars'		
-		'backbone'				: 'exports': 'Backbone' , 'deps': [ 'jquery' , 'underscore'] 	
+		'handlebars'			: 'exports': 'Handlebars'
+		'backbone'				: 'exports': 'Backbone' , 'deps': [ 'jquery' , 'underscore']
 		'marionette'			: 'exports': 'Marionette' , 'deps': [ 'jquery' , 'underscore' , 'backbone' , 'backbone.babysitter' , 'backbone.wreqr' ]
-		'marionette.component'	: 'deps': [ 'marionette' ]		
+		'marionette.component'	: 'deps': [ 'marionette' ]
 		'backbone.deep-model'	: 'deps': [ 'jquery' , 'backbone' , 'underscore' ]
-		'rivets'				: 'deps': [ 'sightglass' ]		
+		'rivets'				: 'deps': [ 'sightglass' ]
 		'backbone.rivets'		: 'deps': [ 'backbone' , 'rivets' ]
 		'backbone-validation'	: 'deps': [ 'jquery' , 'backbone' ]
 		'bootstrap'				: 'deps': [ 'jquery' ]
-		'pace'					: 'deps': [ 'jquery' ]		
+		'pace'					: 'deps': [ 'jquery' ]
 		'jasmine'				: 'exports': 'window.jasmineRequire'
 		'jasmine-html'			: 'deps': [ 'jasmine' ] , 'exports': 'jasmine-html'
 		'jasmine-sinon'			: 'deps': [ 'jasmine' , 'boot' , 'sinon' ] , 'exports': 'jasmine-sinon'
@@ -76,4 +77,4 @@ requirejs.config
 		'arbor'				: 'deps'	: [ 'jquery']
 		'arbor-graphics'	: 'deps'	: [ 'jquery' ]
 
-	config: i18n: locale: 'ru-ru'	
+	config: i18n: locale: 'ru-ru'

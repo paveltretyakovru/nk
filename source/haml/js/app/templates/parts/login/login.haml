@@ -1,12 +1,12 @@
 .autn-section.registr-side
 	%h2 Регистрация
-	%h3 
-		Регистрация нового пользователя. Если у вас	уже есть аккаунт - 
+	%h3
+		Регистрация нового пользователя. Если у вас	уже есть аккаунт -
 		%a.js-login-from-registrate{ :href => '#' } войдите
-	%form{:action => "", :method => "get"}
-		%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
-		%input{:type => "text", :name => "input", :placeholder => "ФИО"}
-		%input{:type => "text", :name => "input", :placeholder => "Пароль"}
+	%form{:action => "", :method => "get", :id => "register_form" }
+		%input{:type => "text", :name => "phone", :placeholder => "Номер телефона"}
+		%input{:type => "text", :name => "name", :placeholder => "ФИО"}
+		%input{:type => "text", :name => "password", :placeholder => "Пароль"}
 		%button{:type=>"sumbit", :name=>"sumbit"} Зарегестрироваться
 
 .autn-section.login-side
@@ -14,8 +14,8 @@
 	%h3
 		Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
 		%a.js-registrate-from-login{ :href => '#' } зарегистрируйтесь
-	%form{:action => "", :method => "get"}
-		%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
-		%input{:type => "text", :name => "input", :placeholder => "Пароль"}
+	%form{:action => "", :method => "get", :id => "login_form" }
+		%input{:type => "text", :name => "phone", :placeholder => "Номер телефона"}
+		%input{:type => "text", :name => "password", :placeholder => "Пароль"}
 		%button{:type=>"sumbit", :name=>"sumbit"} Войти
 	%a Вы забыли пароль?

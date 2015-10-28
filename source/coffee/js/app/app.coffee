@@ -10,7 +10,7 @@ define (require) ->
 
 	require 'system/helpers'
 	require 'rivets'
-	require 'backbone.rivets'	
+	require 'backbone.rivets'
 
 	app =new Marionette.Application
 		debug	: true
@@ -22,10 +22,10 @@ define (require) ->
 			regionMenu 		: '#region-menu'
 
 		initialize : ->
-			console.log 'app/app : initializing app' if @debug			
+			console.log 'app/app : initializing app' if @debug
 
 			@utils 	= {}
-			@utils.Listener = new Listener {}		
+			@utils.Listener = new Listener {}
 
 		preload	: ->
 			console.log 'app/app : preload function ' if @debug
@@ -37,7 +37,7 @@ define (require) ->
 
 	# Компируем в приложение анимации
 	_.extend app , Animations
-	
+
 	app.addInitializer ( options ) -> return @preload()
 
 	Marionette.Behaviors.behaviorsLookup = -> return window.Behaviors

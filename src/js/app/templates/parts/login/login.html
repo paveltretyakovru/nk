@@ -4,10 +4,10 @@
     Регистрация нового пользователя. Если у вас	уже есть аккаунт -
     <a class='js-login-from-registrate' href='#'>войдите</a>
   </h3>
-  <form action='' method='get'>
-    <input name='input' placeholder='Номер телефона' type='text'>
-    <input name='input' placeholder='ФИО' type='text'>
-    <input name='input' placeholder='Пароль' type='text'>
+  <form action='' id='register_form' method='get'>
+    <input name='phone' placeholder='Номер телефона' type='text'>
+    <input name='name' placeholder='ФИО' type='text'>
+    <input name='password' placeholder='Пароль' type='text'>
     <button name='sumbit' type='sumbit'>Зарегестрироваться</button>
   </form>
 </div>
@@ -17,9 +17,9 @@
     Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
     <a class='js-registrate-from-login' href='#'>зарегистрируйтесь</a>
   </h3>
-  <form action='' method='get'>
-    <input name='input' placeholder='Номер телефона' type='text'>
-    <input name='input' placeholder='Пароль' type='text'>
+  <form action='' id='login_form' method='get'>
+    <input name='phone' placeholder='Номер телефона' type='text'>
+    <input name='password' placeholder='Пароль' type='text'>
     <button name='sumbit' type='sumbit'>Войти</button>
   </form>
   <a>Вы забыли пароль?</a>

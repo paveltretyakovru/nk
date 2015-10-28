@@ -4,6 +4,7 @@ define(function(require) {
   Marionette = require('marionette');
   Template = require('text!tmpls/parts/login/login.html');
   require('gsap');
+  require('syphon');
   View = Marionette.ItemView.extend({
     debugAnimation: true,
     debug: true,
@@ -14,7 +15,9 @@ define(function(require) {
     },
     events: {
       'click @ui.link_registrateFromLogin': 'showRegistrateFromLogin',
-      'click @ui.link_loginFromRegistrate': 'showLoginFromRegistrate'
+      'click @ui.link_loginFromRegistrate': 'showLoginFromRegistrate',
+      'submit #login_form': 'doLogin',
+      'submit #register_form': 'doRegister'
     },
     initialize: function() {
       this.on('showLoginFromHeader', this.showLoginFromHeader, this);
@@ -130,6 +133,28 @@ define(function(require) {
           return _this.dropSectionFromSide.tweenFromTo('startAnimation', 'backToLogin');
         };
       })(this));
+    },
+    doLogin: function(event) {
+      var data;
+      event.preventDefault();
+      data = Backbone.Syphon.serialize(this);
+      $.post('http://localhost:3000' + '/api/v1/auth/sessions.json', data, (function(_this) {
+        return function(result) {
+          return console.log("result login: ", result);
+        };
+      })(this));
+      return console.log('do login', data);
+    },
+    doRegister: function(event) {
+      var data;
+      event.preventDefault();
+      data = Backbone.Syphon.serialize(this);
+      $.post('http://localhost:3000' + '/api/v1/auth/registrations.json', data, (function(_this) {
+        return function(result) {
+          return console.log("result register: ", result);
+        };
+      })(this));
+      return console.log('do register', data);
     }
   });
   return View;
