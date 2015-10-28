@@ -662,8 +662,50 @@ section.right_menu a {
 }
 
 /* line 356, ../../source/sass/style.sass */
-#viewport {
+#viewport-left, #viewport-right {
   position: absolute;
-  top: -10%;
-  left: -5%;
+  width: 50%;
+  top: 0;
+}
+
+/* line 362, ../../source/sass/style.sass */
+#viewport-left {
+  float: left;
+  left: 0;
+}
+/* line 366, ../../source/sass/style.sass */
+#viewport-left svg {
+  float: left;
+}
+
+/* line 369, ../../source/sass/style.sass */
+#viewport-right {
+  float: right;
+  right: 0;
+}
+/* line 373, ../../source/sass/style.sass */
+#viewport-right svg {
+  float: right;
+}
+
+/* line 385, ../../source/sass/style.sass */
+rect {
+  fill: #fff;
+}
+
+/* line 388, ../../source/sass/style.sass */
+.node {
+  fill: #000;
+}
+
+/* line 391, ../../source/sass/style.sass */
+.cursor {
+  fill: none;
+  stroke: brown;
+  pointer-events: none;
+}
+
+/* line 396, ../../source/sass/style.sass */
+.link {
+  stroke: #999;
 }

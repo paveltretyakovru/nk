@@ -8,19 +8,17 @@ define(function(require) {
     template: LayoutTemplate,
     className: '.main-wrap',
     initialize: function() {
-      return this.on('render', this.afterRender, this);
+      this.on('render', this.afterRender, this);
+      return this.on('show', this.afterShow, this);
     },
     afterRender: function() {
       this.graphCanvas = this.el.querySelectorAll('#viewport')[0];
       this.graphBlock = this.el.querySelectorAll('#community_block5')[0];
       return this.pBlock = this.el.querySelectorAll('p')[0];
     },
-    onShow: function() {
-      var widthGraph;
-      widthGraph = this.graphBlock.offsetWidth;
-      this.graphCanvas.setAttribute('width', widthGraph + widthGraph / 100 * 10);
-      this.graphCanvas.setAttribute('height', this.graphBlock.offsetHeight);
-      return this.graph = new GraphAlgs(this.graphCanvas, 0);
+    afterShow: function() {
+      console.log('On show community');
+      return this.graph = new GraphAlgs(this.graphCanvas, this.graphBlock, this.pBlock);
     }
   });
 });

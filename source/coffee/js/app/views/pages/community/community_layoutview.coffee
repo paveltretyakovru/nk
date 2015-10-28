@@ -11,7 +11,8 @@ define ( require ) ->
 		className 	: '.main-wrap'
 
 		initialize : ->
-			@on 'render' , @afterRender , @
+			@on 'render' 	, @afterRender 	, @
+			@on 'show'		, @afterShow 	, @
 		# end INITIALIZE
 
 		afterRender : ->
@@ -21,12 +22,10 @@ define ( require ) ->
 			@pBlock			= @el.querySelectorAll('p')[0]
 		# end AFTER RENDER
 
-		onShow : ->
-			# Отрисовываем плавающий график
-			widthGraph = @graphBlock.offsetWidth
-			@graphCanvas.setAttribute 'width' , widthGraph +  widthGraph/100 * 10
-			@graphCanvas.setAttribute 'height' , @graphBlock.offsetHeight
-			@graph 	= new GraphAlgs @graphCanvas , 0
+		afterShow : ->
+			console.log 'On show community'
+			# Отрисовываем плавающий график			
+			@graph 	= new GraphAlgs @graphCanvas , @graphBlock , @pBlock
 			
 			# @graphBlock.offsetWidth/2 - @pBlock.offsetWidth/2
 			# + @graphBlock.offsetHeight / 100 * 20

@@ -1,8 +1,9 @@
 define ( require ) ->
 	'use strict'
 
-	require 'arbor'
-	require 'arbor-graphics'
+	#require 'arbor'
+	#require 'arbor-graphics'
+	require 'd3'
 
 	Renderer	= require 'views/pages/community/renderer'
 	
@@ -73,13 +74,159 @@ define ( require ) ->
 		
 		return sparseGraph[num]
 
-	graphAlgs = (element , num)  ->
+	graphAlgs = (element , graphBlock , pBlock)  ->
+		#widthGraph += widthGraph/100 * 10
+		#graphBlock.offsetWidth/2 - pBlock.offsetWidth/2
 
-		sys = arbor.ParticleSystem 1000*(num+1) , 600 * (num+1) , 0.5 *(num+1)
-		sys.parameters gravity : true , 
-		sys.renderer = Renderer element
+		widthGraph = $(graphBlock).width() / 2 - pBlock.offsetWidth / 2
+		heightGraph = graphBlock.offsetWidth
 
-		sys.graft getSparseGraph 0
-		sys.graft getSparseGraph 1
 
-		return sys
+		# width = widthGraph
+		# height = heightGraph
+
+		# color = d3.scale.category20()
+
+		# window.force = d3.layout.force()
+		# #.charge -120
+		# #.linkDistance 100
+		# .size [width, height]		
+
+		# #viewport-right
+
+		# svg = d3.select("#viewport-left").append("svg")
+		# .attr("width", width)
+		# .attr("height", height/2)
+		
+
+		# d3.json "test.json", (error, graph) ->
+		# 	if error then throw error
+
+		# 	force
+		# 		.nodes(graph.nodes)
+		# 		.links(graph.links)
+		# 		.gravity(0.01)
+		# 		.charge(-250)
+		# 		.linkDistance(200)
+		# 		.linkStrength(1)
+		# 		.start();
+
+		# 	link = svg.selectAll(".link")
+		# 	.data 	graph.links
+		# 	.enter().append "line"
+		# 	.attr	"class", "link"
+		# 	.style	"stroke-width", (d) -> return Math.sqrt d.value
+
+		# 	node = svg.selectAll ".node"
+		# 	.data graph.nodes
+		# 	.enter().append "circle"
+		# 	.attr 	"class", "node"
+		# 	.attr 	"r", 20
+		# 	.style 	"fill", (d) -> return if d.color? then d.color else '#282C35'
+		# 	#.style 	"fill", (d) -> return color d.group
+		# 	.call force.drag
+
+		# 	node.append "title"
+		# 	.text (d) -> return d.name
+
+		# 	force.on "tick", ->
+		# 		link.attr "x1", (d) -> return d.source.x
+		# 		.attr "y1", (d) -> return d.source.y
+		# 		.attr "x2", (d) -> return d.target.x
+		# 		.attr "y2", (d) -> return d.target.y
+
+		# 		node.attr "cx", (d) -> return d.x
+		# 		.attr "cy", (d) -> return d.y
+
+		#### -------------------------------------------------- ####
+
+		w = 300
+		h = 300
+		fill = d3.scale.category20()
+		nodes = []
+		links = []
+
+		vis = d3.select("#viewport-right").append("svg:svg")
+		.attr("viewBox", "0 0 " + w + " " + h )
+		.attr("preserveAspectRatio", "xMinYMin")
+
+		vis.append("svg:rect")
+		.attr("width", w)
+		.attr("height", h)
+
+		force = d3.layout.force()
+		.nodes(nodes)
+		.links(links)
+		.size([w, h])
+
+		cursor = vis.append("svg:circle")
+		.attr("r", 30)
+		.attr("transform", "translate(-100,-100)")
+		.attr("class", "cursor")
+
+		force.on "tick", ->
+			vis.selectAll("line.link")
+			.attr "x1", (d) -> return d.source.x
+			.attr "y1", (d) -> return d.source.y
+			.attr "x2", (d) -> return d.target.x
+			.attr "y2", (d) -> return d.target.y;
+
+			vis.selectAll("circle.node")
+			.attr "cx", (d) -> return d.x
+			.attr "cy", (d) -> return d.y
+
+		vis.on "mousemove", ->			
+			cursor.attr "transform", "translate(" + d3.mouse(this) + ")"
+
+		vis.on "mousedown", ->
+			point 	= d3.mouse(this)
+			node 	= {x: point[0], y: point[1]}
+			n 		= nodes.push(node)
+			
+			nodes.forEach (target) ->
+				x = target.x - node.x
+				y = target.y - node.y
+				if (Math.sqrt(x * x + y * y) < 30)
+					links.push({source: node, target: target})
+
+			restart();
+
+		restart = ->
+			vis.selectAll "line.link"
+			.data links
+			.enter().insert "svg:line", "circle.node"
+			.attr "class", "link"
+			.attr "x1", (d) -> return d.source.x
+			.attr "y1", (d) -> return d.source.y
+			.attr "x2", (d) -> return d.target.x
+			.attr "y2", (d) -> return d.target.y
+
+			vis.selectAll("circle.node")
+			.data nodes
+			.enter().insert "svg:circle", "circle.cursor"
+			.attr "class", "node"
+			.attr "cx", (d) -> return d.x
+			.attr "cy", (d) -> return d.y
+			.attr "r", 5
+			.call force.drag
+
+			force.start()
+
+		restart()
+
+		# widthGraph = $(graphBlock).width()
+		# widthGraph += widthGraph/100 * 10
+
+		# heightGraph = $(graphBlock).height()
+
+		# element.setAttribute 'height' 	, heightGraph
+		# element.setAttribute 'width' 	, widthGraph
+
+		# console.log 'WIDTH HEIGHT GRAPH ' , widthGraph , heightGraph
+
+		# sys = arbor.ParticleSystem 1000*(num+1) , 600 * (num+1) , 0.5 *(num+1)
+		# sys.parameters gravity : true , 
+		# sys.renderer = Renderer element
+
+		# sys.graft getSparseGraph 0
+		# sys.graft getSparseGraph 1

@@ -1,8 +1,7 @@
 define(function(require) {
   'use strict';
   var Renderer, getSparseGraph, graphAlgs;
-  require('arbor');
-  require('arbor-graphics');
+  require('d3');
   Renderer = require('views/pages/community/renderer');
   getSparseGraph = function(num) {
     var sparseGraph;
@@ -497,14 +496,76 @@ define(function(require) {
     };
     return sparseGraph[num];
   };
-  return graphAlgs = function(element, num) {
-    var sys;
-    sys = arbor.ParticleSystem(1000 * (num + 1), 600 * (num + 1), 0.5 * (num + 1));
-    sys.parameters({
-      gravity: true
-    }, sys.renderer = Renderer(element));
-    sys.graft(getSparseGraph(0));
-    sys.graft(getSparseGraph(1));
-    return sys;
+  return graphAlgs = function(element, graphBlock, pBlock) {
+    var cursor, fill, force, h, heightGraph, links, nodes, restart, vis, w, widthGraph;
+    widthGraph = $(graphBlock).width() / 2 - pBlock.offsetWidth / 2;
+    heightGraph = graphBlock.offsetWidth;
+    w = 300;
+    h = 300;
+    fill = d3.scale.category20();
+    nodes = [];
+    links = [];
+    vis = d3.select("#viewport-right").append("svg:svg").attr("viewBox", "0 0 " + w + " " + h).attr("preserveAspectRatio", "xMinYMin");
+    vis.append("svg:rect").attr("width", w).attr("height", h);
+    force = d3.layout.force().nodes(nodes).links(links).size([w, h]);
+    cursor = vis.append("svg:circle").attr("r", 30).attr("transform", "translate(-100,-100)").attr("class", "cursor");
+    force.on("tick", function() {
+      vis.selectAll("line.link").attr("x1", function(d) {
+        return d.source.x;
+      }).attr("y1", function(d) {
+        return d.source.y;
+      }).attr("x2", function(d) {
+        return d.target.x;
+      }).attr("y2", function(d) {
+        return d.target.y;
+      });
+      return vis.selectAll("circle.node").attr("cx", function(d) {
+        return d.x;
+      }).attr("cy", function(d) {
+        return d.y;
+      });
+    });
+    vis.on("mousemove", function() {
+      return cursor.attr("transform", "translate(" + d3.mouse(this) + ")");
+    });
+    vis.on("mousedown", function() {
+      var n, node, point;
+      point = d3.mouse(this);
+      node = {
+        x: point[0],
+        y: point[1]
+      };
+      n = nodes.push(node);
+      nodes.forEach(function(target) {
+        var x, y;
+        x = target.x - node.x;
+        y = target.y - node.y;
+        if (Math.sqrt(x * x + y * y) < 30) {
+          return links.push({
+            source: node,
+            target: target
+          });
+        }
+      });
+      return restart();
+    });
+    restart = function() {
+      vis.selectAll("line.link").data(links).enter().insert("svg:line", "circle.node").attr("class", "link").attr("x1", function(d) {
+        return d.source.x;
+      }).attr("y1", function(d) {
+        return d.source.y;
+      }).attr("x2", function(d) {
+        return d.target.x;
+      }).attr("y2", function(d) {
+        return d.target.y;
+      });
+      vis.selectAll("circle.node").data(nodes).enter().insert("svg:circle", "circle.cursor").attr("class", "node").attr("cx", function(d) {
+        return d.x;
+      }).attr("cy", function(d) {
+        return d.y;
+      }).attr("r", 5).call(force.drag);
+      return force.start();
+    };
+    return restart();
   };
 });
