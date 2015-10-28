@@ -43,7 +43,7 @@ define ( require ) ->
 			event.preventDefault()
 
 		showRegistration 	: ( event ) ->			
-			app.regionLogin.currentView.trigger 'showLogin'			
+			app.regionLogin.currentView.trigger 'showLogin'
 			@scaleAnimation.play()
 			event.preventDefault()
 

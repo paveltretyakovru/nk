@@ -45,9 +45,11 @@ define(function(require) {
        */
       this.dropSectionFromSide = new TimelineMax({
         paused: true
-      }).addLabel('startAnimation').set(this.registerSide, {
+      }).add('startAnimation').set(this.registerSide, {
         rotationX: -180
-      }).to(this.sectionElement, .3, {
+      }).to(this.scaleElement, .3, {
+        className: '+=' + this.scaleClass + ' background-color-overlay'
+      }, 0).to(this.sectionElement, .3, {
         right: '0%',
         alpha: 1
       }, 0).addLabel('backToLogin').addLabel('dropSection').to(this.registerSide, .5, {
@@ -55,15 +57,17 @@ define(function(require) {
       }, .3).to(this.loginSide, .5, {
         rotationX: 180
       }, .3).addLabel('revertRegistr');
+
+      /* ___________ Анимация выводит формы регистрации ___________ */
       this.dropRegistrateFromHeader = new TimelineMax({
         paused: true
-      }).addLabel('startAnimation').set(this.registerSide, {
+      }).add('startAnimation').set(this.registerSide, {
         rotationX: -180
       }).set(this.registerSide, {
         rotationX: 0
       }, 'setRevertRegistr').set(this.loginSide, {
         rotationX: 180
-      }, 'setRevertRegistr').to(this.sectionElement, .3, {
+      }, 'setRevertRegistr').add(app.tweens.scaleBody.play(), 'startAnimation').to(this.sectionElement, .3, {
         right: '0%',
         alpha: 1
       }, 0).addLabel('dropSection');
@@ -115,7 +119,11 @@ define(function(require) {
       return event.preventDefault();
     },
     showLoginFromRegistrate: function(event) {
-      this.dropSectionFromSide.tweenFromTo('revertRegistr', 'dropSection');
+      this.controlReversedAnimations((function(_this) {
+        return function() {
+          return _this.dropSectionFromSide.tweenFromTo('revertRegistr', 'dropSection');
+        };
+      })(this));
       return event.preventDefault();
     },
 

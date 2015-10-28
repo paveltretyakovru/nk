@@ -91,7 +91,7 @@ define(function(requrie) {
           return _this.tweens.showLoader.play();
         };
       })(this);
-      return this.animations.hideLoader = (function(_this) {
+      this.animations.hideLoader = (function(_this) {
         return function(callback) {
           _this.tweens.hideLoader = new TimelineLite({
             paused: true,
@@ -111,6 +111,28 @@ define(function(requrie) {
           return _this.tweens.hideLoader.play();
         };
       })(this);
+      this.animations.scaleBody = (function(_this) {
+        return function(callback) {
+          var animation;
+          animation = _this.tweens.scaleBody;
+          if (callback != null) {
+            animation.eventCallback('onComplete', callback);
+          }
+          return animation.play();
+        };
+      })(this);
+
+      /* ------ АНИМАЦИИ (tweens) ------ */
+
+      /* Вывел в методы для инкапсуляции */
+      return this.tweens.scaleBody = this.getScaleBody();
+    },
+    getScaleBody: function() {
+      var scaleClass;
+      scaleClass = 'scale-element';
+      return TweenLite.to(this.elements.main, .3, {
+        className: '+=' + scaleClass + ' background-color-overlay'
+      }, 0).paused(true);
     }
   };
   Animations.initialize();

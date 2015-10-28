@@ -69,6 +69,27 @@ define ( requrie ) ->
 
 				@tweens.hideLoader.play()
 
+			# Свернуть фон
+			@animations.scaleBody = ( callback ) =>
+				animation = @tweens.scaleBody
+				if callback? then animation.eventCallback 'onComplete' , callback
+
+				animation.play()
+				
+			#######################################
+			### ------ АНИМАЦИИ (tweens) ------ ###
+			### Вывел в методы для инкапсуляции ###
+			#######################################
+			@tweens.scaleBody = @getScaleBody()	# соварчиваем фон
+
+		# Анимацию своварчивания фона
+		getScaleBody : ->
+			scaleClass 	= 'scale-element'
+			
+			return TweenLite.to @elements.main , .3 , { className : '+=' + scaleClass + ' background-color-overlay' } , 0
+			.paused( true )
+			
+
 	Animations.initialize()
 
 	return Animations

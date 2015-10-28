@@ -45,26 +45,26 @@ define ( require ) ->
 			###*
 			# ------------- Анимации выводит блок аутентификации -------------
 			###
-			@dropSectionFromSide = new TimelineMax paused : true
-			.addLabel 'startAnimation'
 			#.set @el ,{ zIndex : 300  	, display : 'block' }
 			#.to @scaleElement 	, .5 	, className : '+=' + @scaleClass , 0
+			@dropSectionFromSide = new TimelineMax paused : true
+				.add 'startAnimation'				
+				.set @registerSide , rotationX : -180				
+				.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
+				.to @sectionElement , .3 , { right : '0%' , alpha : 1 } , 0
+				.addLabel 'backToLogin'
+				.addLabel 'dropSection'
+					.to @registerSide	, .5 	, rotationX : 0 	, .3
+					.to @loginSide 		, .5 	, rotationX : 180 	, .3 # Анимация прокручивает секцию до регистраци
+					.addLabel 'revertRegistr'
 
-			.set @registerSide , rotationX : -180
-			.to @sectionElement , .3 	, { right : '0%' , alpha : 1 } , 0
-			.addLabel 'backToLogin'
-
-			.addLabel 'dropSection'
-
-			.to @registerSide	, .5 	, rotationX : 0 	, .3
-			.to @loginSide 		, .5 	, rotationX : 180 	, .3 # Анимация прокручивает секцию до регистраци
-			.addLabel 'revertRegistr'
-
+			### ___________ Анимация выводит формы регистрации ___________ ###
 			@dropRegistrateFromHeader = new TimelineMax paused : true
-				.addLabel 'startAnimation'
+				.add 'startAnimation'
 				.set @registerSide , rotationX : -180
 				.set @registerSide , rotationX 	: 0 , 'setRevertRegistr'
 				.set @loginSide 	, rotationX : 180 , 'setRevertRegistr'
+				.add app.tweens.scaleBody.play() , 'startAnimation'
 
 				.to @sectionElement , .3 	, { right : '0%' , alpha : 1 } , 0
 				.addLabel 'dropSection'
@@ -119,7 +119,8 @@ define ( require ) ->
 			event.preventDefault()
 
 		showLoginFromRegistrate		: ( event ) ->
-			@dropSectionFromSide.tweenFromTo 'revertRegistr' , 'dropSection'
+			@controlReversedAnimations =>
+				@dropSectionFromSide.tweenFromTo 'revertRegistr' , 'dropSection'
 
 			event.preventDefault()
 
