@@ -50,7 +50,7 @@ define ( require ) ->
 			@dropSectionFromSide = new TimelineMax paused : true
 				.add 'startAnimation'				
 				.set @registerSide , rotationX : -180
-				#.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
+				.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
 				.to @sectionElement , .3 , { right : '-20%' , alpha : 1 } , 0
 				.addLabel 'backToLogin'
 				.addLabel 'dropSection'
@@ -64,7 +64,7 @@ define ( require ) ->
 					.set @registerSide , rotationX 	: -180
 					.set @registerSide , rotationX 	: 0 , 'setRevertRegistr'
 					.set @loginSide 	, rotationX : 180 , 'setRevertRegistr'
-					#.add app.tweens.scaleBody.play() , 'startAnimation'
+					.add app.tweens.scaleBody.play() , 'startAnimation'
 
 					.to @sectionElement , .3 	, { right : '-20%' , alpha : 1 } , 0
 					.addLabel 'dropSection'

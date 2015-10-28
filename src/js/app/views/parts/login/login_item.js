@@ -47,7 +47,9 @@ define(function(require) {
         paused: true
       }).add('startAnimation').set(this.registerSide, {
         rotationX: -180
-      }).to(this.sectionElement, .3, {
+      }).to(this.scaleElement, .3, {
+        className: '+=' + this.scaleClass + ' background-color-overlay'
+      }, 0).to(this.sectionElement, .3, {
         right: '-20%',
         alpha: 1
       }, 0).addLabel('backToLogin').addLabel('dropSection').to(this.registerSide, .5, {
@@ -65,7 +67,7 @@ define(function(require) {
         rotationX: 0
       }, 'setRevertRegistr').set(this.loginSide, {
         rotationX: 180
-      }, 'setRevertRegistr').to(this.sectionElement, .3, {
+      }, 'setRevertRegistr').add(app.tweens.scaleBody.play(), 'startAnimation').to(this.sectionElement, .3, {
         right: '-20%',
         alpha: 1
       }, 0).addLabel('dropSection').add('revertLoginStart').set(this.loginSide, {

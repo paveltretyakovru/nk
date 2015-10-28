@@ -29,17 +29,19 @@ define ( requrie ) ->
 				.set [ @elements.main , @elements.header , @elements.content ] 	, autoAlpha : 1
 				.to  @elements.content 	, .3 	, autoAlpha : 0 , 0
 				.to  @elements.header 	, .3 	, autoAlpha : 0 , .2
-				.set @elements.main 	, { autoAlpha : 0 , display : 'none' }
+				.set @elements.main 	, { autoAlpha : 0 }
 				@tweens.hideMain.play()
 
 			# Появление всего контента
-			@animations.showMain = ( callback ) =>
+			@animations.showMain = ( onstart , callback ) =>
 				# Если анимация уже инициализирована
 				if @tweens.hideMain? then @tweens.hideMain.reverse()
 				else
 					# Иначе создаем новую
 					@tweens.showMain = new TimelineLite
 						onStart : ->							
+							if onstart? then onstart()
+						onComplete : ->
 							if callback? then callback()
 						paused 	: true					
 					@tweens.showMain.set 	[ @elements.main , @elements.header , @elements.content ] , autoAlpha : 0

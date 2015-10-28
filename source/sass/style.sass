@@ -78,6 +78,15 @@ main
 	top			: 250px
 	opacity 	: 0
 
+	+transform-origin (50% 50%)
+	+animation ( rot 2s linear )
+
+	+keyframes ( rot )
+		from
+			+rotate( -75deg )
+		to 	
+			+rotate( 0deg )
+
 	object
 		position: inherit
 
@@ -126,7 +135,7 @@ main
 	//+background(radial-gradient(center top, 100% 25%, #fff, $color_gray), $color_gray)
 
 /* Крутим лучи логотипа */
-+spin( '.loader-logo-back' , 4s )
++spin( '.loader-logo-back' , 10s )
 
 /* Создаем пропадающий класс */
 +fadeout( '.fadeout' , 2s )
@@ -309,6 +318,9 @@ section.right_menu
 		margin-right: 16px
 	a
 		display: inline-block
+		color: #fff
+	a:hover
+		color: #ECB72E
 
 .js-closing-menu:hover
 	cursor: pointer

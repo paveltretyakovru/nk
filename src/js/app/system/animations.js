@@ -35,19 +35,23 @@ define(function(requrie) {
           }, 0).to(_this.elements.header, .3, {
             autoAlpha: 0
           }, .2).set(_this.elements.main, {
-            autoAlpha: 0,
-            display: 'none'
+            autoAlpha: 0
           });
           return _this.tweens.hideMain.play();
         };
       })(this);
       this.animations.showMain = (function(_this) {
-        return function(callback) {
+        return function(onstart, callback) {
           if (_this.tweens.hideMain != null) {
             return _this.tweens.hideMain.reverse();
           } else {
             _this.tweens.showMain = new TimelineLite({
               onStart: function() {
+                if (onstart != null) {
+                  return onstart();
+                }
+              },
+              onComplete: function() {
                 if (callback != null) {
                   return callback();
                 }

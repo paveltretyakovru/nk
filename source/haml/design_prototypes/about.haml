@@ -50,18 +50,45 @@
 				%h4 Первая в мире территория для курения со свободной оплатой и уникальным подходом к каждому гостю
 				%h5 Почему же Вам стоит выбрать именно эту кальянную Петербурга? Во-первых, привлекает наша особенная атмосфера. Мы начинали как место только "для своих". С того момента утекло много времени, наша команда собрала огромную фанатскую базу, но сумела сохранить ту самую атмосферу. Почему же Вам стоит выбрать именно эту кальянную Петербурга? Во-первых, привлекает наша особенная атмосфера.
 				
-			%section#liberty_block3
-				%article 1
-				%article 2
-				%article 3
-				%article 4
-				%article 5
-				#nav
-					#one 1
-					#two 2
-					#three 3
-					#fourth 4
-					#five 5
+			%section#liberty_block3.cd-hero
+				%ul.cd-hero-slider.autoplay				
+					%li.selected
+						%img.img-slider{ :src=>"src/images/slider/1.jpg" }
+					%li
+						%img.img-slider{ :src=>"src/images/slider/2.jpg" }
+					%li
+						%img.img-slider{ :src=>"src/images/slider/3.jpg" }
+					%li
+						%img.img-slider{ :src=>"src/images/slider/4.jpg" }
+					%li
+						%img.img-slider{ :src=>"src/images/slider/5.jpg" }
+
+
+					.cd-slider-nav
+						%nav
+							%ul
+								%li.selected
+									%img.img-nav{ :src=>"src/images/slider/1.jpg" }
+								%li
+									%img.img-nav{ :src=>"src/images/slider/2.jpg" }
+								%li
+									%img.img-nav{ :src=>"src/images/slider/3.jpg" }
+								%li
+									%img.img-nav{ :src=>"src/images/slider/4.jpg" }
+								%li
+									%img.img-nav{ :src=>"src/images/slider/5.jpg" }
+
+				-# %article 1
+				-# %article 2
+				-# %article 3
+				-# %article 4
+				-# %article 5
+				-# #nav
+				-# 	#one 1
+				-# 	#two 2
+				-# 	#three 3
+				-# 	#fourth 4
+				-# 	#five 5
 
 			%section#liberty_block_3-5
 				%h2 Кальянные мастера

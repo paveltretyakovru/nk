@@ -1,9 +1,14 @@
 define(function(require) {
   'use strict';
-  var Marionette, Template;
+  var ItemView, Marionette, SliderFuncton, Template;
   Marionette = require('marionette');
   Template = require('text!tmpls/pages/about/about.html');
-  return Marionette.ItemView.extend({
-    template: Template
+  SliderFuncton = require('views/pages/about/slider');
+  ItemView = Marionette.ItemView.extend({
+    template: Template,
+    onShow: function() {
+      return SliderFuncton();
+    }
   });
+  return ItemView;
 });

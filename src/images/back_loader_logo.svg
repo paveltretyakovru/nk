@@ -30,9 +30,9 @@
 	<style>
 		
 		path , line ,  circle , polygon {
-			animation 					: hide 3s linear;
+			animation 					: hide 3s cubic-bezier(0.190, 1.000, 0.220, 1.000);
 			animation-fill-mode			: forwards;
-			-webkit-animation 			: hide 3s ease-out;
+			-webkit-animation 			: hide 3s cubic-bezier(0.190, 1.000, 0.220, 1.000);
     		-webkit-animation-fill-mode	: forwards;
 			stroke-dashoffset			: 1000;
 			stroke-dasharray			: 1000;			
@@ -52,9 +52,9 @@
 
 		path.show , line.show ,  circle.show , polygon.show {
 			display 					: block;
-			animation 					: showe  4s ease-in;
+			animation 					: showe  4s cubic-bezier(0.190, 1.000, 0.220, 1.000);
 			animation-fill-mode 		: forwards;
-			-webkit-animation 			: showe 4s ease-in;
+			-webkit-animation 			: showe 4s cubic-bezier(0.190, 1.000, 0.220, 1.000);
 			-webkit-animation-fill-mode : forwards;
 		}
 
