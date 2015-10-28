@@ -1,6 +1,7 @@
 {
   "name": "uk",
   "version": "0.0.0",
+  "directory": "/bower_components",
   "authors": [
     "Tretyakov Pavel <tretyakovpavel.ru@gmail.com>"
   ],
