@@ -15,3 +15,7 @@ define ( require ) ->
 				'community' 	: 'Community'
 				'philosophie'	: 'Philosophie'
 
+		onRoute : ->
+			console.log 'onRoute!!!'
+			app.regionMenu.currentView.trigger 'hashUpdated'
+

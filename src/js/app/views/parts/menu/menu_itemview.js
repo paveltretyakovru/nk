@@ -12,14 +12,15 @@ define(function(require) {
     },
     events: {
       'click @ui.ClosingMenuButton': 'closeMenu',
-      'click @ui.MenuSiteLinks': 'closeMenu'
+      'click @ui.MenuSiteLinks': 'clickMenuLinks'
     },
     initialize: function() {
       if (this.debug) {
         console.log('menu_itemvie.initialize');
       }
       this.on('render', this.afterRender, this);
-      return this.on('showMenu', this.showMenu, this);
+      this.on('showMenu', this.showMenu, this);
+      return this.on('hashUpdated', this.selectCurrentItemMenu, this);
     },
     onRender: function() {
       this.lpm = this.el.querySelectorAll("#lpm");
@@ -28,12 +29,36 @@ define(function(require) {
       this.scaleClass = 'scale-element';
       return this.initMenuAnimation();
     },
-    afterRender: function() {},
+    afterRender: function() {
+
+      /* code ... */
+    },
+    clickMenuLinks: function(e) {
+      this.selectCurrentItemMenu();
+      return this.closeMenu();
+    },
     showMenu: function() {
       return this.showMenuAnimation.play();
     },
     closeMenu: function() {
       return this.showMenuAnimation.reverse();
+    },
+    selectCurrentItemMenu: function() {
+      var all, currect, i, j, k, now, ref, ref1, results;
+      console.log('Menu itemview selectCurrentItemMenu');
+      now = location.hash !== '' ? location.hash : '#';
+      all = this.el.querySelectorAll('a');
+      for (i = j = 0, ref = all.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+        removeClass(all[i], 'text-color-orange');
+      }
+      currect = findAttr('href=' + now, all);
+      if ((currect != null) && currect.length > 0) {
+        results = [];
+        for (i = k = 0, ref1 = currect.length; 0 <= ref1 ? k < ref1 : k > ref1; i = 0 <= ref1 ? ++k : --k) {
+          results.push(addClass(currect[i], 'text-color-orange'));
+        }
+        return results;
+      }
     },
     initMenuAnimation: function() {
       var t1;

@@ -14,6 +14,10 @@ define(function(require) {
       'about': 'About',
       'community': 'Community',
       'philosophie': 'Philosophie'
+    },
+    onRoute: function() {
+      console.log('onRoute!!!');
+      return app.regionMenu.currentView.trigger('hashUpdated');
     }
   });
 });

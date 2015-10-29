@@ -14,14 +14,14 @@ define ( require ) ->
 
 		events 		: 
 			'click @ui.ClosingMenuButton' 	: 'closeMenu'
-			'click @ui.MenuSiteLinks'		: 'closeMenu'
+			'click @ui.MenuSiteLinks'		: 'clickMenuLinks'
 
 		initialize : ->
 			console.log 'menu_itemvie.initialize' if @debug
 
-
-			@on 'render'	, @afterRender	, @
-			@on 'showMenu' 	, @showMenu		, @
+			@on 'render'		, @afterRender			 , @
+			@on 'showMenu' 		, @showMenu				 , @
+			@on 'hashUpdated' 	, @selectCurrentItemMenu , @
 
 		onRender : ->
 			@lpm 	= @el.querySelectorAll("#lpm")
@@ -32,14 +32,31 @@ define ( require ) ->
 			@initMenuAnimation()
 
 		afterRender : ->
-			#
+			### code ... ###
+
+		clickMenuLinks : ( e ) ->
+			@selectCurrentItemMenu()
+			@closeMenu()
 
 		showMenu : ->
 			@showMenuAnimation.play()
 
 		closeMenu : ->
-			#TweenMax.set '#region-menu' , { autoAlpha : 1 , opacity : 1 }
 			@showMenuAnimation.reverse()
+
+		selectCurrentItemMenu : ->
+			console.log 'Menu itemview selectCurrentItemMenu'
+			now		= if location.hash != '' then location.hash else '#'
+			all 	= @el.querySelectorAll('a')
+
+			for i in [ 0...all.length ]
+				removeClass all[i] , 'text-color-orange'
+
+			currect = findAttr('href='+now , all )
+
+			if currect? and currect.length > 0
+				for i in [ 0...currect.length ]
+					addClass currect[i] , 'text-color-orange'
 
 		initMenuAnimation	: ->
 

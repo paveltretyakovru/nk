@@ -34,6 +34,40 @@ define(function(require) {
     rand = Math.round(rand);
     return rand;
   };
+  window.findAttr = function(selector, findin) {
+    var allElements, arr, attr, attrValue, elemAttr, i, j, matchingElements, ref;
+    matchingElements = [];
+    allElements = findin != null ? findin : document.getElementsByTagName('*');
+    arr = selector.split('=');
+    if (arr.length > 1) {
+      attr = arr[0];
+      attrValue = arr[1];
+    } else {
+      attrValue = arr[0];
+    }
+    for (i = j = 0, ref = allElements.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+      if (attr != null) {
+        elemAttr = allElements[i].getAttribute(attr);
+        if (elemAttr != null) {
+          if (elemAttr === attrValue) {
+            matchingElements.push(allElements[i]);
+          }
+        }
+      } else {
+        console.error("Неправильный формат параметра переданного в функцию");
+      }
+    }
+    return matchingElements;
+  };
+  window.getHashValue = function(key) {
+    var matches;
+    matches = location.hash.match(new RegExp(key + '=([^&]*)'));
+    if (matches) {
+      return matches[1];
+    } else {
+      return null;
+    }
+  };
 
   /**
   	 * Хелпер для интернационализации

@@ -31,6 +31,35 @@ define ( require ) ->
 		rand = min + Math.random() * (max - min)
 		rand = Math.round rand
 		return rand
+
+	window.findAttr = ( selector , findin ) ->
+		matchingElements 	= []
+		allElements 		= if findin? then findin else document.getElementsByTagName '*'		
+		arr					= selector.split('=')
+
+		if arr.length > 1
+			attr = arr[0]
+			attrValue = arr[1]
+		else
+			attrValue = arr[0]
+
+		for i in [0...allElements.length]
+			# Если сущестует название атрибу
+			if attr?
+				elemAttr = allElements[i].getAttribute attr
+				if elemAttr?
+					if elemAttr == attrValue
+						matchingElements.push allElements[i]
+			else
+				console.error "Неправильный формат параметра переданного в функцию"		
+
+		
+
+		return matchingElements
+
+	window.getHashValue = ( key ) ->
+		matches = location.hash.match new RegExp(key+'=([^&]*)')
+		return if matches then matches[1] else null
 		
 	##########################################################################################
 
