@@ -26,6 +26,7 @@ define (require) ->
 
 			@utils 	= {}
 			@utils.Listener = new Listener {}
+			@hostUrl = 'http://localhost:3000'
 
 		preload	: ->
 			console.log 'app/app : preload function ' if @debug

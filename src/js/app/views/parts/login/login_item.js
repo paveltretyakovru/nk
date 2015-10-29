@@ -183,8 +183,11 @@ define(function(require) {
     doLogin: function(event) {
       var data;
       event.preventDefault();
-      data = Backbone.Syphon.serialize(this);
-      $.post('http://localhost:3000' + '/api/v1/auth/sessions.json', data, (function(_this) {
+      data = {
+        phone: this.$('#login_form input[name="phone"]').val(),
+        password: this.$('#login_form input[name="password"]').val()
+      };
+      $.post(app.hostUrl + '/api/v1/auth/sessions.json', data, (function(_this) {
         return function(result) {
           return console.log("result login: ", result);
         };
@@ -193,9 +196,14 @@ define(function(require) {
     },
     doRegister: function(event) {
       var data;
+      console.log(event);
       event.preventDefault();
-      data = Backbone.Syphon.serialize(this);
-      $.post('http://localhost:3000' + '/api/v1/auth/registrations.json', data, (function(_this) {
+      data = {
+        name: this.$('#register_form input[name="name"]').val(),
+        phone: this.$('#register_form input[name="phone"]').val(),
+        password: this.$('#register_form input[name="password"]').val()
+      };
+      $.post(app.hostUrl + '/api/v1/auth/registrations.json', data, (function(_this) {
         return function(result) {
           return console.log("result register: ", result);
         };
