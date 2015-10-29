@@ -15,9 +15,6 @@ define(function(require) {
       'click @ui.MenuSiteLinks': 'clickMenuLinks'
     },
     initialize: function() {
-      if (this.debug) {
-        console.log('menu_itemvie.initialize');
-      }
       this.on('render', this.afterRender, this);
       this.on('showMenu', this.showMenu, this);
       return this.on('hashUpdated', this.selectCurrentItemMenu, this);
@@ -45,7 +42,6 @@ define(function(require) {
     },
     selectCurrentItemMenu: function() {
       var all, currect, i, j, k, now, ref, ref1, results;
-      console.log('Menu itemview selectCurrentItemMenu');
       now = location.hash !== '' ? location.hash : '#';
       all = this.el.querySelectorAll('a');
       for (i = j = 0, ref = all.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {

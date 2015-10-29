@@ -17,7 +17,6 @@ define ( require ) ->
 			'click @ui.MenuSiteLinks'		: 'clickMenuLinks'
 
 		initialize : ->
-			console.log 'menu_itemvie.initialize' if @debug
 
 			@on 'render'		, @afterRender			 , @
 			@on 'showMenu' 		, @showMenu				 , @
@@ -44,8 +43,10 @@ define ( require ) ->
 		closeMenu : ->
 			@showMenuAnimation.reverse()
 
-		selectCurrentItemMenu : ->
-			console.log 'Menu itemview selectCurrentItemMenu'
+		###*
+		# selectCurrentItemMenu обновляет стили ссылок в меню в зависимости от текущего url
+		###
+		selectCurrentItemMenu : ->			
 			now		= if location.hash != '' then location.hash else '#'
 			all 	= @el.querySelectorAll('a')
 

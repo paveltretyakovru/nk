@@ -15,7 +15,8 @@ define ( require ) ->
 				'community' 	: 'Community'
 				'philosophie'	: 'Philosophie'
 
+		# Событие при смены роутов
 		onRoute : ->
-			console.log 'onRoute!!!'
+			# Обновление стилей ссылок в меню
 			app.regionMenu.currentView.trigger 'hashUpdated'
 
