@@ -7,6 +7,7 @@ define ( requrie ) ->
 		tweens		: {}
 		elements	: {}
 		animations 	: {}
+		fastMain 	: true # Быстрый показ
 
 		initialize 	: ->
 			@elements.main 		= document.getElementById 'scale-body'
@@ -45,9 +46,14 @@ define ( requrie ) ->
 							if callback? then callback()
 						paused 	: true					
 					@tweens.showMain.set 	[ @elements.main , @elements.header , @elements.content ] , autoAlpha : 0
-					@tweens.showMain.to 	@elements.main 		, 2 	, autoAlpha : 1 , 0
-					@tweens.showMain.to 	@elements.header 	, 1 	, autoAlpha : 1 , 1
-					@tweens.showMain.to 	@elements.content 	, .5 	, autoAlpha : 1 , 1.5
+					
+					if not @fastMain
+						@tweens.showMain.to 	@elements.main 		, 2 	, autoAlpha : 1 , 0
+						@tweens.showMain.to 	@elements.header 	, 1 	, autoAlpha : 1 , 1
+						@tweens.showMain.to 	@elements.content 	, .5 	, autoAlpha : 1 , 1.5
+					else
+						@tweens.showMain.set 	[@elements.main , @elements.header , @elements.content] , autoAlpha : 1 , 0
+						
 					@tweens.showMain.play()
 
 			# Показать загрузчик

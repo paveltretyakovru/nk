@@ -6,6 +6,7 @@ define(function(require) {
   Marionette = require('marionette');
   require('jquery-ui');
   Scrollfade = Marionette.Behavior.extend({
+    elements: [],
     defaults: {
       animation: {
         effect: 'bounce',
@@ -29,7 +30,6 @@ define(function(require) {
     		 * @return Void
      */
     onShow: function() {
-      this.prepareElements();
       return this.listenEvents();
     },
 
@@ -45,10 +45,11 @@ define(function(require) {
         var setBottomScrollEvent;
         setBottomScrollEvent = function(element) {
           var bottom_of_object, bottom_of_window;
-          bottom_of_object = $(element).position().top + $(element).outerHeight();
+          bottom_of_object = $(element.$el).position().top + $(element.$el).outerHeight();
           bottom_of_window = $(window).scrollTop() + $(window).height();
           if (bottom_of_window > bottom_of_object) {
-            return _this.play(element);
+            console.log('SHOOOW ELEMENT!!!!');
+            return _this.play(element.$el);
           }
         };
         return _this.handleElements(setBottomScrollEvent);
@@ -87,14 +88,17 @@ define(function(require) {
     handleElements: function(callbacks) {
       var HandleDebug, i, j, n, ref, results;
       HandleDebug = true;
-      if (this.ui.FadeTargets.length > 0) {
+      if (this.elements.length) {
+        this.prepareElements();
+      }
+      if (this.elements > 0) {
         results = [];
-        for (i = j = 0, ref = this.ui.FadeTargets.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+        for (i = j = 0, ref = this.elements; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
           if (isFunction(callbacks)) {
             if (HandleDebug) {
               console.log('behaviors/scrollfade.handleDebug(): This is [FUNCTION] callback');
             }
-            results.push(callbacks(this.ui.FadeTargets[i]));
+            results.push(callbacks(this.elements[i]));
           } else if (isArray(callbacks)) {
             if (HandleDebug) {
               console.log('behaviors/scrollfade.handleDebug(): This is [ARRAY] callbacks');
@@ -106,15 +110,16 @@ define(function(require) {
                 if (!callbacks.hasOwnProperty(i)) {
                   continue;
                 }
-                results1.push(callbacks[n](this.ui.FadeTargets[i]));
+                results1.push(callbacks[n](this.elements[i]));
               }
               return results1;
             }).call(this));
           } else if (isString(callbacks) && (callbacks != null) && indexOf.call(this, callbacks) >= 0) {
             if (HandleDebug) {
-              console.log('behaviors/scrollfade.handleDebug(): This is [STRING] callback');
+              results.push(console.log('behaviors/scrollfade.handleDebug(): This is [STRING] callback'));
+            } else {
+              results.push(void 0);
             }
-            results.push(console.log('test'));
           } else {
             results.push(void 0);
           }
@@ -127,11 +132,34 @@ define(function(require) {
     		 * Метод подготавливает элементы перед навешиванием событий
      */
     prepareElements: function() {
-      var action;
-      return action = function(element) {
-        var elements;
-        return elements = [];
-      };
+      var data, el, i, j, ref, results;
+      this.elements = [];
+      if (this.ui.FadeTargets.length > 0) {
+        results = [];
+        for (i = j = 0, ref = this.ui.FadeTargets.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+          data = this.getOptions(this.ui.FadeTargets[i]);
+
+          /*
+          					 * Обрабатываем элемент по типу анимации
+           */
+          if (data.type === 'show') {
+            this.ShowPrepareElement(this.ui.FadeTargets[i]);
+          }
+          el = {};
+          el.$el = this.ui.FadeTargets[i];
+          el.data = data;
+          results.push(this.elements.push(el));
+        }
+        return results;
+      }
+    },
+
+    /**
+    		 * Подготовка элемента к появлению
+     */
+    ShowPrepareElement: function(element) {
+      console.log('ShowPrepareElement', element);
+      return element.css('display', 'none');
     }
   });
   return Scrollfade;

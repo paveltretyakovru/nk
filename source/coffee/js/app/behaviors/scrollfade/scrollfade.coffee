@@ -7,6 +7,9 @@ define ( require ) ->
 	require 'jquery-ui'
 
 	Scrollfade = Marionette.Behavior.extend
+		# Подготовленные элементы для бехейвера
+		elements : []
+
 		# Установка параметров по-умолчанию
 		defaults : 
 			# Параметры анимации
@@ -28,8 +31,7 @@ define ( require ) ->
 		# Метод отрабатывает при появляении страницы, можно сказать старт
 		# @return Void
 		###
-		onShow : ->
-			@prepareElements()
+		onShow : ->			
 			@listenEvents()	# Слушаем события и запускаем анимацию при их срабатывании
 
 		###*
@@ -43,13 +45,14 @@ define ( require ) ->
 			$(window).scroll ->
 				# Создаем функцию для отслеживания прокрутки вниз
 				setBottomScrollEvent = ( element ) ->	
-					bottom_of_object = $( element ).position().top + $( element ).outerHeight()
+					bottom_of_object = $( element.$el ).position().top + $( element.$el ).outerHeight()
 					bottom_of_window = $(window).scrollTop() + $(window).height()
 
 					if bottom_of_window > bottom_of_object
-						_this.play element
+						console.log 'SHOOOW ELEMENT!!!!'
+						_this.play element.$el
 
-				# Запускаем функцию отслеживающую прокрутку вниз
+				# Подготавливем файлы и запускаем функцию отслеживающую прокрутку вниз
 				_this.handleElements setBottomScrollEvent
 
 		###*
@@ -58,7 +61,7 @@ define ( require ) ->
 		###
 		play 	: ( element ) ->
 			# Получаем параметры из тега
-			data = @getOptions element
+			data = @getOptions element			
 
 			# Проверяем тип аниации ( показать , скрыть )
 			switch data.type
@@ -89,31 +92,58 @@ define ( require ) ->
 			# Дебажить ли эту функцию
 			HandleDebug = true
 
-			if @ui.FadeTargets.length > 0				
-				for i in [0...@ui.FadeTargets.length]
+			# Если существуют обработанные элементы
+			if @elements.length
+				@prepareElements()
+
+			# Если существуют необходимые элемент
+			if @elements > 0				
+				for i in [0...@elements]
 
 					# callback function
 					if isFunction callbacks
 						console.log 'behaviors/scrollfade.handleDebug(): This is [FUNCTION] callback' if HandleDebug
-						callbacks @ui.FadeTargets[i]
+						callbacks @elements[i]
 
 					# array with callbacks functions
 					else if isArray callbacks
 						console.log 'behaviors/scrollfade.handleDebug(): This is [ARRAY] callbacks' if HandleDebug
 						for n of callbacks
 							if not callbacks.hasOwnProperty i then continue
-							callbacks[n] @ui.FadeTargets[i]
+							callbacks[n] @elements[i]
 
 					# if is object method
 					else if isString(callbacks) and callbacks? and callbacks in @
 						console.log 'behaviors/scrollfade.handleDebug(): This is [STRING] callback' if HandleDebug
-						console.log 'test'
 
 		###*
 		# Метод подготавливает элементы перед навешиванием событий
 		###
 		prepareElements : ->
-			action = ( element ) ->
-				elements = []
+			@elements = []
+			if @ui.FadeTargets.length > 0
+				for i in [0...@ui.FadeTargets.length]
+					data = @getOptions @ui.FadeTargets[i]
+
+					###
+					# Обрабатываем элемент по типу анимации
+					###
+					
+					# Если нужно показать
+					@ShowPrepareElement @ui.FadeTargets[i] if data.type == 'show'
+
+					# Сохраняем обработанные элементы
+					el 		= {}
+					el.$el	= @ui.FadeTargets[i]
+					el.data	= data
+					@elements.push el
+		
+		###*
+		# Подготовка элемента к появлению
+		###
+		ShowPrepareElement : ( element ) ->
+			console.log 'ShowPrepareElement' , element
+			# Если элемент показывается, необходимо сделать его невидимым
+			element.css 'display' , 'none'
 
 	return Scrollfade

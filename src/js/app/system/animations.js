@@ -6,6 +6,7 @@ define(function(requrie) {
     tweens: {},
     elements: {},
     animations: {},
+    fastMain: true,
     initialize: function() {
       this.elements.main = document.getElementById('scale-body');
       this.elements.loader = document.getElementById('loader');
@@ -61,15 +62,21 @@ define(function(requrie) {
             _this.tweens.showMain.set([_this.elements.main, _this.elements.header, _this.elements.content], {
               autoAlpha: 0
             });
-            _this.tweens.showMain.to(_this.elements.main, 2, {
-              autoAlpha: 1
-            }, 0);
-            _this.tweens.showMain.to(_this.elements.header, 1, {
-              autoAlpha: 1
-            }, 1);
-            _this.tweens.showMain.to(_this.elements.content, .5, {
-              autoAlpha: 1
-            }, 1.5);
+            if (!_this.fastMain) {
+              _this.tweens.showMain.to(_this.elements.main, 2, {
+                autoAlpha: 1
+              }, 0);
+              _this.tweens.showMain.to(_this.elements.header, 1, {
+                autoAlpha: 1
+              }, 1);
+              _this.tweens.showMain.to(_this.elements.content, .5, {
+                autoAlpha: 1
+              }, 1.5);
+            } else {
+              _this.tweens.showMain.set([_this.elements.main, _this.elements.header, _this.elements.content], {
+                autoAlpha: 1
+              }, 0);
+            }
             return _this.tweens.showMain.play();
           }
         };
