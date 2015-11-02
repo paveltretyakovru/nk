@@ -15,8 +15,8 @@ define ( require ) ->
 			# Параметры анимации
 			animation :
 				effect 		: 'bounce'		# http://jqueryui.com/show/
-				duration 	: 'right'		# направелние
-				time 		: 500			# время появления
+				direction 	: 'right'		# направелние
+				time 		: 1000			# время появления
 				type 		: 'show'		# тип show - появление , hide - исчезновение
 
 		ui :
@@ -31,7 +31,8 @@ define ( require ) ->
 		# Метод отрабатывает при появляении страницы, можно сказать старт
 		# @return Void
 		###
-		onShow : ->			
+		onShow : ->
+			@prepareElements()
 			@listenEvents()	# Слушаем события и запускаем анимацию при их срабатывании
 
 		###*
@@ -41,36 +42,35 @@ define ( require ) ->
 		###
 		listenEvents 	: ->
 			_this = @
-
-			$(window).scroll ->
-				# Создаем функцию для отслеживания прокрутки вниз
-				setBottomScrollEvent = ( element ) ->	
-					bottom_of_object = $( element.$el ).position().top + $( element.$el ).outerHeight()
+			
+			# Создаем функцию для отслеживания прокрутки вниз
+			setBottomScrollEvent = ( element ) ->	
+				$(window).scroll ->
+					#console.log 'setBottomScrollEvent' , element
+					bottom_of_object = element.data.topJS
 					bottom_of_window = $(window).scrollTop() + $(window).height()
 
-					if bottom_of_window > bottom_of_object
-						console.log 'SHOOOW ELEMENT!!!!'
-						_this.play element.$el
+					console.log 'BOTTOM' , bottom_of_window , bottom_of_object
 
-				# Подготавливем файлы и запускаем функцию отслеживающую прокрутку вниз
-				_this.handleElements setBottomScrollEvent
+					if bottom_of_window > bottom_of_object
+						_this.play element
+
+			# Подготавливем файлы и запускаем функцию отслеживающую прокрутку вниз
+			_this.handleElements setBottomScrollEvent
 
 		###*
 		# Метод делает анимацию элемента необходимым способом
 		# @return Void
 		###
-		play 	: ( element ) ->
-			# Получаем параметры из тега
-			data = @getOptions element			
-
+		play 	: ( element ) ->			
 			# Проверяем тип аниации ( показать , скрыть )
-			switch data.type
-				when 'hide'					
+			switch element.data.type
+				when 'hide'
 					# Убираем элемент
-					$(element).hide data.effect , data , data.time
+					element.$el.hide element.data.effect , element.data
 				when 'show'
 					# Появляем элемент
-					$(element).show data.effect , data , data.time
+					element.$el.show element.data.effect , element.data
 
 		###*
 		# Получаем параметры  data-scrollfade-* из тега
@@ -78,27 +78,30 @@ define ( require ) ->
 		###
 		getOptions 	: ( element ) ->
 			data 	= {}
-			tmp 	= element.dataset
+			tmp 	= element.el.dataset
 
 			# Сохраняем параметры в удобном виде а так же заполняем недостующие данные , данными по-умолчанию
-			data.effect 	= if tmp.scrollfadeEffect? 	 then tmp.scrollfadeEffect 		else @defaults.animation.effect
-			data.duration 	= if tmp.scrollfadeDuration? then tmp.scrollfadeDuration 	else @defaults.animation.duration
-			data.time 		= if tmp.scrollfadeTime? 	 then tmp.scrollfadeTime 		else @defaults.animation.time
-			data.type 		= if tmp.scrollfadeType? 	 then tmp.scrollfadeType 		else @defaults.animation.type
+			data.effect 	= if tmp.scrollfadeEffect? 	 	then tmp.scrollfadeEffect 			else @defaults.animation.effect
+			data.direction 	= if tmp.scrollfadeDirection? 	then tmp.scrollfadeDirection 		else @defaults.animation.direction
+			data.duration	= if tmp.scrollfadeTime? 	 	then parseInt(tmp.scrollfadeTime) 	else @defaults.animation.time
+			data.type 		= if tmp.scrollfadeType? 	 	then tmp.scrollfadeType 			else @defaults.animation.type
+			data.topJS	= element.$el.offset().top
+
+			console.log 'DATA' , data
 
 			return data
 
 		handleElements	: ( callbacks ) ->
 			# Дебажить ли эту функцию
-			HandleDebug = true
+			HandleDebug = false
 
 			# Если существуют обработанные элементы
-			if @elements.length
+			if not @elements.length				
 				@prepareElements()
 
 			# Если существуют необходимые элемент
-			if @elements > 0				
-				for i in [0...@elements]
+			if @elements.length > 0				
+				for i in [0...@elements.length]
 
 					# callback function
 					if isFunction callbacks
@@ -123,27 +126,25 @@ define ( require ) ->
 			@elements = []
 			if @ui.FadeTargets.length > 0
 				for i in [0...@ui.FadeTargets.length]
-					data = @getOptions @ui.FadeTargets[i]
+
+					# Сохраняем обработанные элементы
+					el 		= {}
+					el.el 	= @ui.FadeTargets[i]
+					el.$el	= $ @ui.FadeTargets[i]
+					el.data	= @getOptions el
+					@elements.push el
 
 					###
 					# Обрабатываем элемент по типу анимации
 					###
-					
-					# Если нужно показать
-					@ShowPrepareElement @ui.FadeTargets[i] if data.type == 'show'
+					# -> Если нужно показать
+					@ShowPrepareElement el if el.data.type == 'show'
 
-					# Сохраняем обработанные элементы
-					el 		= {}
-					el.$el	= @ui.FadeTargets[i]
-					el.data	= data
-					@elements.push el
-		
 		###*
 		# Подготовка элемента к появлению
 		###
 		ShowPrepareElement : ( element ) ->
-			console.log 'ShowPrepareElement' , element
 			# Если элемент показывается, необходимо сделать его невидимым
-			element.css 'display' , 'none'
+			element.$el.css 'display' , 'none'
 
 	return Scrollfade

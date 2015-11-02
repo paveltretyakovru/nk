@@ -10,8 +10,8 @@ define(function(require) {
     defaults: {
       animation: {
         effect: 'bounce',
-        duration: 'right',
-        time: 500,
+        direction: 'right',
+        time: 1000,
         type: 'show'
       }
     },
@@ -30,6 +30,7 @@ define(function(require) {
     		 * @return Void
      */
     onShow: function() {
+      this.prepareElements();
       return this.listenEvents();
     },
 
@@ -39,21 +40,20 @@ define(function(require) {
     		 * @param Function action - параметр указывает обработчик при срабатывания события
      */
     listenEvents: function() {
-      var _this;
+      var _this, setBottomScrollEvent;
       _this = this;
-      return $(window).scroll(function() {
-        var setBottomScrollEvent;
-        setBottomScrollEvent = function(element) {
+      setBottomScrollEvent = function(element) {
+        return $(window).scroll(function() {
           var bottom_of_object, bottom_of_window;
-          bottom_of_object = $(element.$el).position().top + $(element.$el).outerHeight();
+          bottom_of_object = element.data.topJS;
           bottom_of_window = $(window).scrollTop() + $(window).height();
+          console.log('BOTTOM', bottom_of_window, bottom_of_object);
           if (bottom_of_window > bottom_of_object) {
-            console.log('SHOOOW ELEMENT!!!!');
-            return _this.play(element.$el);
+            return _this.play(element);
           }
-        };
-        return _this.handleElements(setBottomScrollEvent);
-      });
+        });
+      };
+      return _this.handleElements(setBottomScrollEvent);
     },
 
     /**
@@ -61,13 +61,11 @@ define(function(require) {
     		 * @return Void
      */
     play: function(element) {
-      var data;
-      data = this.getOptions(element);
-      switch (data.type) {
+      switch (element.data.type) {
         case 'hide':
-          return $(element).hide(data.effect, data, data.time);
+          return element.$el.hide(element.data.effect, element.data);
         case 'show':
-          return $(element).show(data.effect, data, data.time);
+          return element.$el.show(element.data.effect, element.data);
       }
     },
 
@@ -78,22 +76,24 @@ define(function(require) {
     getOptions: function(element) {
       var data, tmp;
       data = {};
-      tmp = element.dataset;
+      tmp = element.el.dataset;
       data.effect = tmp.scrollfadeEffect != null ? tmp.scrollfadeEffect : this.defaults.animation.effect;
-      data.duration = tmp.scrollfadeDuration != null ? tmp.scrollfadeDuration : this.defaults.animation.duration;
-      data.time = tmp.scrollfadeTime != null ? tmp.scrollfadeTime : this.defaults.animation.time;
+      data.direction = tmp.scrollfadeDirection != null ? tmp.scrollfadeDirection : this.defaults.animation.direction;
+      data.duration = tmp.scrollfadeTime != null ? parseInt(tmp.scrollfadeTime) : this.defaults.animation.time;
       data.type = tmp.scrollfadeType != null ? tmp.scrollfadeType : this.defaults.animation.type;
+      data.topJS = element.$el.offset().top;
+      console.log('DATA', data);
       return data;
     },
     handleElements: function(callbacks) {
       var HandleDebug, i, j, n, ref, results;
-      HandleDebug = true;
-      if (this.elements.length) {
+      HandleDebug = false;
+      if (!this.elements.length) {
         this.prepareElements();
       }
-      if (this.elements > 0) {
+      if (this.elements.length > 0) {
         results = [];
-        for (i = j = 0, ref = this.elements; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+        for (i = j = 0, ref = this.elements.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
           if (isFunction(callbacks)) {
             if (HandleDebug) {
               console.log('behaviors/scrollfade.handleDebug(): This is [FUNCTION] callback');
@@ -132,23 +132,25 @@ define(function(require) {
     		 * Метод подготавливает элементы перед навешиванием событий
      */
     prepareElements: function() {
-      var data, el, i, j, ref, results;
+      var el, i, j, ref, results;
       this.elements = [];
       if (this.ui.FadeTargets.length > 0) {
         results = [];
         for (i = j = 0, ref = this.ui.FadeTargets.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-          data = this.getOptions(this.ui.FadeTargets[i]);
+          el = {};
+          el.el = this.ui.FadeTargets[i];
+          el.$el = $(this.ui.FadeTargets[i]);
+          el.data = this.getOptions(el);
+          this.elements.push(el);
 
           /*
           					 * Обрабатываем элемент по типу анимации
            */
-          if (data.type === 'show') {
-            this.ShowPrepareElement(this.ui.FadeTargets[i]);
+          if (el.data.type === 'show') {
+            results.push(this.ShowPrepareElement(el));
+          } else {
+            results.push(void 0);
           }
-          el = {};
-          el.$el = this.ui.FadeTargets[i];
-          el.data = data;
-          results.push(this.elements.push(el));
         }
         return results;
       }
@@ -158,8 +160,7 @@ define(function(require) {
     		 * Подготовка элемента к появлению
      */
     ShowPrepareElement: function(element) {
-      console.log('ShowPrepareElement', element);
-      return element.css('display', 'none');
+      return element.$el.css('display', 'none');
     }
   });
   return Scrollfade;
