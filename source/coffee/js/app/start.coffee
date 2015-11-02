@@ -1,8 +1,8 @@
-require [ 'app/app' , 'pace' ] , ( app , pace ) ->
+require [ 'app/app' , 'pace' , 'app/routes' , 'controllers/desktop' ] , ( app , pace , Routes , Desktop ) ->
 	'use strict'
+	
 	loaded 		= false
-
-	window.app	= app || false
+	window.app	= app || false	
 
 	# Функция загружает массив данных и выполняет callback после всех загруженных
 	preloadObjects = ( datas , objects , callback ) ->
@@ -32,7 +32,12 @@ require [ 'app/app' , 'pace' ] , ( app , pace ) ->
 
 		# Показываем загрузчик
 		app.animations.showLoader ->
-			if loaded then app.animations.hideLoader -> app.start() else loaded = true
+			if loaded 
+				app.animations.hideLoader ->
+					app.appRouter = new Routes controller : new Desktop()
+					app.start()
+
+			else loaded = true
 	
 	# Закончена загрузка файлов приложения
 	pace.on 'done' , ->

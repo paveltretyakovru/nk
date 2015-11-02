@@ -1,4 +1,4 @@
-require(['app/app', 'pace'], function(app, pace) {
+require(['app/app', 'pace', 'app/routes', 'controllers/desktop'], function(app, pace, Routes, Desktop) {
   'use strict';
   var imagesSrcs, loaded, preloadObjects;
   loaded = false;
@@ -30,6 +30,9 @@ require(['app/app', 'pace'], function(app, pace) {
     return app.animations.showLoader(function() {
       if (loaded) {
         return app.animations.hideLoader(function() {
+          app.appRouter = new Routes({
+            controller: new Desktop()
+          });
           return app.start();
         });
       } else {

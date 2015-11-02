@@ -4,6 +4,17 @@ define(function(require) {
   Handlebars = require('handlebars');
   I18n = require('utils/i18n');
   NumFormat = require('system/libs/num_format');
+  window.isString = function(variable) {
+    return typeof variable === "string";
+  };
+  window.isArray = function(variable) {
+    return Array.isArray(variable);
+  };
+  window.isFunction = function(functionToCheck) {
+    var getType;
+    getType = {};
+    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+  };
   window.addClass = function(el, className) {
     if (el.classList != null) {
       return el.classList.add(className);

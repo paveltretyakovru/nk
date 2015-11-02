@@ -40,9 +40,13 @@ define(function(require) {
     closeMenu: function() {
       return this.showMenuAnimation.reverse();
     },
+
+    /**
+    		 * selectCurrentItemMenu обновляет стили ссылок в меню в зависимости от текущего url
+     */
     selectCurrentItemMenu: function() {
       var all, currect, i, j, k, now, ref, ref1, results;
-      now = location.hash !== '' ? location.hash : '#';
+      now = '#' + Backbone.history.getFragment();
       all = this.el.querySelectorAll('a');
       for (i = j = 0, ref = all.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
         removeClass(all[i], 'text-color-orange');

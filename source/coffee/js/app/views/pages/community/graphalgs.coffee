@@ -80,6 +80,5 @@ define ( require ) ->
 		sys.renderer = Renderer element
 
 		sys.graft getSparseGraph 0
-		sys.graft getSparseGraph 1
 
 		return sys

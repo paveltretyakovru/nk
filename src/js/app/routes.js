@@ -16,7 +16,6 @@ define(function(require) {
       'philosophie': 'Philosophie'
     },
     onRoute: function() {
-      console.log('onRoute!!!');
       return app.regionMenu.currentView.trigger('hashUpdated');
     }
   });

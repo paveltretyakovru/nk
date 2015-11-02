@@ -7,10 +7,12 @@
 define(function(require){
 	'set strict';
 
+	//require('clockpicker');
 	DEBUG = false;
 
-	var Marionette 	= require('marionette');
-	//require('clockpicker');
+	var Marionette 		= require('marionette')
+	
+	//require( _.values(BehaviorsList) )
 	require('backbone-validation');
 
 	// Описываем объект
@@ -31,7 +33,8 @@ define(function(require){
 			 * @type {String}
 			 */
 			//hideClockpicker 	: 'hideClockpicker' ,
-			backboneValidation 	: 'initBackboneValidation'
+			backboneValidation 	: 'initBackboneValidation' ,
+			initBehaviors		: 'initBehaviors'
 		} ,
 
 		/**
@@ -213,6 +216,14 @@ define(function(require){
 	    			required: '{0} обязательно'
 	    		}
 			});
+		} ,
+
+		/**
+		 * Инициализирует бихейворы системы
+		 * @return void
+		 */
+		initBehaviors : function(){			
+			window.Behaviors = {}
 		}
 	});
 

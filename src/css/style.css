@@ -745,8 +745,7 @@ section.right_menu a:hover {
 }
 
 /* line 374, ../../source/sass/style.sass */
-#viewport {
-  position: absolute;
-  top: -10%;
-  left: -5%;
+#viewport, #viewport1 {
+  height: 50%;
+  border: 1px solid red;
 }
