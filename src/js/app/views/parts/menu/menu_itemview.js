@@ -40,6 +40,10 @@ define(function(require) {
     closeMenu: function() {
       return this.showMenuAnimation.reverse();
     },
+
+    /**
+    		 * selectCurrentItemMenu обновляет стили ссылок в меню в зависимости от текущего url
+     */
     selectCurrentItemMenu: function() {
       var all, currect, i, j, k, now, ref, ref1, results;
       now = location.hash !== '' ? location.hash : '#';
