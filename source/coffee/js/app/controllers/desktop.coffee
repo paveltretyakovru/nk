@@ -14,7 +14,7 @@ define ( require ) ->
 
 	Marionette.Controller.extend
 		debug	: false
-		hidden 	: true
+		hidden 	: true		
 
 		initialize : ->
 			console.log 'controllers/desktop : initializin function' if @debug
@@ -36,12 +36,18 @@ define ( require ) ->
 			Page = new Pages[ args.shift() ] args
 			
 			if @hidden
-				app.animations.showMain ->
+				if FAST_LOADER
 					app.regionContent.show Page
+				else
+					app.animations.showMain ->
+						app.regionContent.show Page
 				@hidden = false
 			else
-				app.animations.hideMain ->
+				if FAST_LOADER
 					app.regionContent.show Page
+				else
+					app.animations.hideMain ->
+						app.regionContent.show Page
 
 		Home 		: -> @.run 'Home'
 		About 		: -> @.run 'About'
