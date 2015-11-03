@@ -35,6 +35,7 @@ requirejs.config
 		'controllers'   		: 'src/js/app/controllers'
 		'collections'   		: 'src/js/app/collections'
 		'widgets'       		: 'src/js/app/widgets'
+		'behaviors'				: 'src/js/app/behaviors'
 
 		# PLUGINS
 		'pace'					: 'bower_components/pace/pace.min'

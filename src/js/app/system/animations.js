@@ -115,6 +115,22 @@ define(function(requrie) {
           return _this.tweens.hideLoader.play();
         };
       })(this);
+      this.animations.fastHideLoader = (function(_this) {
+        return function(callback) {
+          _this.tweens.hideLoader = new TimelineLite({
+            paused: true,
+            onComplete: function() {
+              if (callback != null) {
+                return callback();
+              }
+            }
+          });
+          _this.tweens.hideLoader.to(_this.elements.loader, 0.1, {
+            autoAlpha: 0
+          }, 0);
+          return _this.tweens.hideLoader.play();
+        };
+      })(this);
       this.animations.scaleBody = (function(_this) {
         return function(callback) {
           var animation;

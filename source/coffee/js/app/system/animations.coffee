@@ -71,6 +71,12 @@ define ( requrie ) ->
 
 				@tweens.hideLoader.play()
 
+			@animations.fastHideLoader = ( callback ) =>
+				@tweens.hideLoader = new TimelineLite paused : true , onComplete : -> callback() if callback?				
+				@tweens.hideLoader.to  @elements.loader , 0.1  , { autoAlpha : 0 } , 0
+
+				@tweens.hideLoader.play()
+
 			# Свернуть фон
 			@animations.scaleBody = ( callback ) =>
 				animation = @tweens.scaleBody

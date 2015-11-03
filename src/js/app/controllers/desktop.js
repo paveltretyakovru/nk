@@ -36,14 +36,22 @@ define(function(require) {
       args = Array.prototype.slice.call(arguments);
       Page = new Pages[args.shift()](args);
       if (this.hidden) {
-        app.animations.showMain(function() {
-          return app.regionContent.show(Page);
-        });
+        if (FAST_LOADER) {
+          app.regionContent.show(Page);
+        } else {
+          app.animations.showMain(function() {
+            return app.regionContent.show(Page);
+          });
+        }
         return this.hidden = false;
       } else {
-        return app.animations.hideMain(function() {
+        if (FAST_LOADER) {
           return app.regionContent.show(Page);
-        });
+        } else {
+          return app.animations.hideMain(function() {
+            return app.regionContent.show(Page);
+          });
+        }
       }
     },
     Home: function() {

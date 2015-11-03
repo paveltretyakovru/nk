@@ -1,8 +1,9 @@
-require(['app/app', 'pace'], function(app, pace) {
+require(['app/app', 'pace', 'app/routes', 'controllers/desktop'], function(app, pace, Routes, Desktop) {
   'use strict';
   var imagesSrcs, loaded, preloadObjects;
   loaded = false;
   window.app = app || false;
+  window.FAST_LOADER = true;
   preloadObjects = function(datas, objects, callback) {
     var i, j, obj, ref, remaining, results;
     remaining = datas.length;
@@ -29,9 +30,21 @@ require(['app/app', 'pace'], function(app, pace) {
     app.elements.loaders[1].className = 'loader-logo-front';
     return app.animations.showLoader(function() {
       if (loaded) {
-        return app.animations.hideLoader(function() {
-          return app.start();
-        });
+        if (!FAST_LOADER) {
+          return app.animations.hideLoader(function() {
+            app.appRouter = new Routes({
+              controller: new Desktop()
+            });
+            return app.start();
+          });
+        } else {
+          return app.animations.fastHideLoader(function() {
+            app.appRouter = new Routes({
+              controller: new Desktop()
+            });
+            return app.start();
+          });
+        }
       } else {
         return loaded = true;
       }

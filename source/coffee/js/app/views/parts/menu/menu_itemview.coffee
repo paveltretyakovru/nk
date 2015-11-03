@@ -47,7 +47,7 @@ define ( require ) ->
 		# selectCurrentItemMenu обновляет стили ссылок в меню в зависимости от текущего url
 		###
 		selectCurrentItemMenu : ->			
-			now		= if location.hash != '' then location.hash else '#'
+			now		= '#' + Backbone.history.getFragment() #if location.hash != '' then location.hash else '#'
 			all 	= @el.querySelectorAll('a')
 
 			for i in [ 0...all.length ]

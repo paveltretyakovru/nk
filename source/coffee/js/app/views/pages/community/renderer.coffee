@@ -159,4 +159,4 @@ define ( require ) ->
 				y: p3.y + h
 			intersect_line_line(p1, p2, tl, tr) or intersect_line_line(p1, p2, tr, br) or intersect_line_line(p1, p2, br, bl) or intersect_line_line(p1, p2, bl, tl) or false
 
-		return that	
+		return that

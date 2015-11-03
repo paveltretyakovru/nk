@@ -6,6 +6,16 @@ define ( require ) ->
 	NumFormat 	= require('system/libs/num_format')
 
 	#########################################################################################
+	window.isString = ( variable ) ->
+		return typeof variable == "string"
+
+	window.isArray = ( variable ) ->
+		return Array.isArray variable
+
+	window.isFunction = ( functionToCheck ) ->
+		getType = {}
+		return functionToCheck && getType.toString.call(functionToCheck) == '[object Function]'
+
 	# Нативная функции добавления класса
 	window.addClass = ( el , className ) ->
 		if el.classList?

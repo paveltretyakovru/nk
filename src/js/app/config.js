@@ -30,6 +30,7 @@ requirejs.config({
     'controllers': 'src/js/app/controllers',
     'collections': 'src/js/app/collections',
     'widgets': 'src/js/app/widgets',
+    'behaviors': 'src/js/app/behaviors',
     'pace': 'bower_components/pace/pace.min',
     'fullpagejs': 'bower_components/fullpage.js/jquery.fullPage.min',
     'arbor': 'bower_components/arbor/lib/arbor',
