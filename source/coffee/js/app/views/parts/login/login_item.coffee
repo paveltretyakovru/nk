@@ -48,7 +48,7 @@ define ( require ) ->
 			#.set @el ,{ zIndex : 300  	, display : 'block' }
 			#.to @scaleElement 	, .5 	, className : '+=' + @scaleClass , 0
 			@dropSectionFromSide = new TimelineMax paused : true
-				.add 'startAnimation'				
+				.add 'startAnimation'
 				.set @registerSide , rotationX : -180
 				.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
 				.to @sectionElement , .3 , { right : '-20%' , alpha : 1 } , 0
@@ -112,7 +112,7 @@ define ( require ) ->
 				#else
 					#@dropRegistrateFromHeader.eventCallback 'onReverseComplete' , -> return console.log 'Not callback? dropRegistrateFromHeader'
 
-				# Возвращаем поле регистрации за края страницы				
+				# Возвращаем поле регистрации за края страницы
 				return  if reverse then @dropRegistrateFromHeader.reverse() else true
 
 				control = true
@@ -129,7 +129,7 @@ define ( require ) ->
 			return not @dropRegistrateFromHeader.isActive() and @dropRegistrateFromHeader.progress()
 
 		showRegistrateFromLogin		: ( event ) ->
-			if @registrateFromHeader()				
+			if @registrateFromHeader()
 				@dropRegistrateFromHeader.tweenFromTo 'revertLogin' , 'dropSection'
 				@controlReversedAnimations false , =>
 					@dropRegistrateFromHeader.tweenTo('startAnimation')
@@ -138,14 +138,14 @@ define ( require ) ->
 			event.preventDefault()
 
 		showLoginFromRegistrate		: ( event ) ->
-			if @sectionDropped()				
+			if @sectionDropped()
 				@dropSectionFromSide.tweenFromTo 'revertRegistr' , 'backToLogin'
 				@controlReversedAnimations false , =>
 					@dropSectionFromSide.tweenTo('startAnimation')
 			else
 				@dropRegistrateFromHeader.tweenTo 'revertLogin'
-				#@dropRegistrateFromHeader.tweenFromTo 'revertLoginStart' , 'revertLogin'			
-			
+				#@dropRegistrateFromHeader.tweenFromTo 'revertLoginStart' , 'revertLogin'
+
 			event.preventDefault()
 
 		### From Header ###
@@ -158,14 +158,24 @@ define ( require ) ->
 				@dropSectionFromSide.tweenFromTo 'startAnimation' , 'backToLogin'
 		doLogin : ( event ) ->
 			event.preventDefault()
-			data = Backbone.Syphon.serialize(this);
-			$.post 'http://localhost:3000' + '/api/v1/auth/sessions.json', data, (result) =>
+			data = {
+				phone: @$('#login_form input[name="phone"]').val(),
+				password: @$('#login_form input[name="password"]').val(),
+			}
+
+			$.post app.hostUrl + '/api/v1/auth/sessions.json', data, (result) =>
 				console.log "result login: ", result
+
 			console.log 'do login', data
 		doRegister : ( event ) ->
+			console.log event
 			event.preventDefault()
-			data = Backbone.Syphon.serialize(this);
-			$.post 'http://localhost:3000' + '/api/v1/auth/registrations.json', data, (result) =>
+			data = {
+				name: @$('#register_form input[name="name"]').val(),
+				phone: @$('#register_form input[name="phone"]').val(),
+				password: @$('#register_form input[name="password"]').val(),
+			}
+			$.post app.hostUrl + '/api/v1/auth/registrations.json', data, (result) =>
 				console.log "result register: ", result
 			console.log 'do register', data
 	return View

@@ -21,7 +21,8 @@ define(function(require) {
         console.log('app/app : initializing app');
       }
       this.utils = {};
-      return this.utils.Listener = new Listener({});
+      this.utils.Listener = new Listener({});
+      return this.hostUrl = 'http://localhost:3000';
     },
     preload: function() {
       if (this.debug) {
