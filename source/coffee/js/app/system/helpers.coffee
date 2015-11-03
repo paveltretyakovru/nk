@@ -6,6 +6,23 @@ define ( require ) ->
 	NumFormat 	= require('system/libs/num_format')
 
 	#########################################################################################
+
+	hasOwnProperty = Object.prototype.hasOwnProperty
+	###*
+	 * Прооверяет obj на пустоту
+	 * @param  {mixed} переменная для проверки на пустоту
+	 * @return {Boolean}
+	###
+	window.isEmpty = ( obj ) ->
+		return true 	if obj == null
+		return false 	if obj.length > 0
+		return true 	if obj.length == 0
+
+		for key of obj
+			return false if hasOwnProperty.call obj , key
+
+		return true
+
 	window.isString = ( variable ) ->
 		return typeof variable == "string"
 

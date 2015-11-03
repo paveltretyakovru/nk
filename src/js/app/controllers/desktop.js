@@ -22,7 +22,7 @@ define(function(require) {
       this.Login = new LoginView();
       this.Menu = new MenuView();
       app.regionHeader.show(this.Header);
-      app.regionLogin.show(this.Login);
+      app.regionAnimatedModal.show(this.Login);
       app.regionMenu.show(this.Menu);
       return app.regionContent.on('show', function() {
         return app.animations.showMain();

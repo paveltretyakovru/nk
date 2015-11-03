@@ -13,7 +13,7 @@ define(function(require) {
     regions: {
       regionContent: '#region-content',
       regionHeader: '#region-header',
-      regionLogin: '#region-login',
+      regionAnimatedModal: '#region-animated-modal',
       regionMenu: '#region-menu'
     },
     initialize: function() {
