@@ -12,7 +12,7 @@ define (require) ->
 	require 'rivets'
 	require 'backbone.rivets'	
 	
-	app =new Marionette.Application
+	app = new Marionette.Application
 		debug	: true
 
 		regions :
@@ -33,8 +33,6 @@ define (require) ->
 
 		Rivets : rivets
 
-	#Marionette.Behaviors.behaviorsLookup = -> return window.Behaviors
-
 	# Компируем в приложение анимации
 	_.extend app , Animations
 
@@ -43,6 +41,5 @@ define (require) ->
 	Marionette.Renderer.render = ( template , data ) ->
 		toHTML = Handlebars.compile template
 		return toHTML data
-
 
 	return app
