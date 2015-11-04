@@ -10,7 +10,6 @@ define ( require ) ->
 
 	Marionette.LayoutView.extend
 		template 			: Template
-		model 				: new Model()
 		className 			: 'animate-modal-parent'
 		
 		bodyView 			: {}
@@ -34,6 +33,8 @@ define ( require ) ->
 			'click @ui.targetFrontLink'	: 'showFront'
 
 		initialize : ->
+			@model = new Model()
+
 			@scaleElement			= document.getElementById 	'scale-body'	# Элемент который будет уходить назад
 			@scaleClass				= 'scale-element' 							# Клас анимации ухода назад
 			@fullReverseCallback 	= {} 

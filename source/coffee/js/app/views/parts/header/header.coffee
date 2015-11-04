@@ -33,16 +33,16 @@ define ( require ) ->
 			@on 'render' , @afterRender , @
 
 		onRender : ->
-			@forgotPassword = new ForgotPasswordComponent()
+
+		afterRender : ->
 			@authComponent 	= new AuthComponent()
+			@forgotPassword = new ForgotPasswordComponent()
 
 			window.tComp = @forgotPassword
 			window.authComponent  = @authComponent
 
 			@regionForgotPassword.show @forgotPassword
 			@regionAuth.show @authComponent
-
-		afterRender : ->
 
 		showLoginFromHeader : ( event ) ->
 			app.regionAnimatedModal.currentView.trigger 'showLoginFromHeader'

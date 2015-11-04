@@ -16,7 +16,7 @@ define ( require ) ->
 
 	AnimatedModal.extend
 		# Подпись ссылки
-		title		: 'Войти test'
+		title		: 'Войти'
 		
 		# Если необходимо составить переворачиваемое окно
 		frontView 	: new FrontView()

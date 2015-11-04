@@ -10,7 +10,6 @@ define(function(require) {
   });
   return Marionette.LayoutView.extend({
     template: Template,
-    model: new Model(),
     className: 'animate-modal-parent',
     bodyView: {},
     frontView: {},
@@ -32,6 +31,7 @@ define(function(require) {
       'click @ui.targetFrontLink': 'showFront'
     },
     initialize: function() {
+      this.model = new Model();
       this.scaleElement = document.getElementById('scale-body');
       this.scaleClass = 'scale-element';
       this.fullReverseCallback = {};

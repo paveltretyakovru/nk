@@ -12,7 +12,7 @@ define(function(require) {
     template: RegTemplate
   });
   return AnimatedModal.extend({
-    title: 'Войти test',
+    title: 'Войти',
     frontView: new FrontView(),
     backView: new BackView()
   });

@@ -23,15 +23,15 @@ define(function(require) {
     initialize: function() {
       return this.on('render', this.afterRender, this);
     },
-    onRender: function() {
-      this.forgotPassword = new ForgotPasswordComponent();
+    onRender: function() {},
+    afterRender: function() {
       this.authComponent = new AuthComponent();
+      this.forgotPassword = new ForgotPasswordComponent();
       window.tComp = this.forgotPassword;
       window.authComponent = this.authComponent;
       this.regionForgotPassword.show(this.forgotPassword);
       return this.regionAuth.show(this.authComponent);
     },
-    afterRender: function() {},
     showLoginFromHeader: function(event) {
       app.regionAnimatedModal.currentView.trigger('showLoginFromHeader');
       return event.preventDefault();
