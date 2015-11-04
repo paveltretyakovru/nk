@@ -690,74 +690,37 @@ section.right_menu a:hover {
 }
 
 /* line 332, ../../source/sass/style.sass */
-.autn-section {
-  position: absolute;
-  top: 200;
-  right: -120%;
-  width: 110%;
-  padding: 80px;
-  background: linear-gradient(to right top, #17191f, #272b33);
-  z-index: 100;
-  -moz-backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-/* line 342, ../../source/sass/style.sass */
 .autn-section h2 {
   color: #ECB72E;
   margin-bottom: 16px;
 }
 
-/* line 346, ../../source/sass/style.sass */
+/* line 336, ../../source/sass/style.sass */
 .autn-section h3 {
   width: 50%;
   margin-bottom: 32px;
 }
 
-/* line 350, ../../source/sass/style.sass */
+/* line 340, ../../source/sass/style.sass */
 .autn-section input {
   margin-bottom: 40px;
   margin-right: 16px;
 }
 
-/* line 354, ../../source/sass/style.sass */
-.autn-section:after {
-  content: "";
-  position: absolute;
-  top: calc(50% - 160px);
-  left: -160px;
-  width: 320px;
-  height: 320px;
-  background-image: url(../images/key.svg);
-}
-
-/* line 363, ../../source/sass/style.sass */
-.autn-section:before {
-  content: "";
-  position: absolute;
-  top: 16;
-  left: 16;
-  width: calc(100% - 16px);
-  height: calc(100% - 32px);
-  box-shadow: inset rgba(255, 255, 255, 0.1) 0 0 0 1px;
-  z-index: -1;
-}
-
-/* line 374, ../../source/sass/style.sass */
+/* line 345, ../../source/sass/style.sass */
 #viewport {
   position: absolute;
   top: -10%;
   left: -5%;
 }
 
-/* line 382, ../../source/sass/style.sass */
+/* line 353, ../../source/sass/style.sass */
 .animate-modal-parent {
   display: inline;
   overflow: hidden;
 }
 
-/* line 386, ../../source/sass/style.sass */
+/* line 357, ../../source/sass/style.sass */
 .animate-modal-side {
   position: absolute;
   top: 200;
@@ -771,7 +734,7 @@ section.right_menu a:hover {
   backface-visibility: hidden;
 }
 
-/* line 396, ../../source/sass/style.sass */
+/* line 367, ../../source/sass/style.sass */
 .animate-modal-side:after {
   content: "";
   position: absolute;
@@ -782,7 +745,7 @@ section.right_menu a:hover {
   background-image: url(../images/key.svg);
 }
 
-/* line 405, ../../source/sass/style.sass */
+/* line 376, ../../source/sass/style.sass */
 .animate-modal-side:before {
   content: "";
   position: absolute;

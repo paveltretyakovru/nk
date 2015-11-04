@@ -1,9 +1,10 @@
 define(function(require) {
   'use strict';
-  var ForgotPasswordComponent, Marionette, Template;
+  var AuthComponent, ForgotPasswordComponent, Marionette, Template;
   Marionette = require('marionette');
   Template = require('text!tmpls/parts/header/header.html');
   ForgotPasswordComponent = require('components/animatedmodal/forgotpassword/forgotpassword');
+  AuthComponent = require('components/animatedmodal/auth/auth');
   require('gsap');
   return Marionette.LayoutView.extend({
     debugAnimation: false,
@@ -11,25 +12,24 @@ define(function(require) {
     template: Template,
     tagName: 'header',
     regions: {
-      regionForgotPassword: '.js-forgot-from-header'
+      regionForgotPassword: '.js-forgot-from-header',
+      regionAuth: '.js-auth-animated-modal'
     },
     ui: {
       'linkMenu': '.js-link-menu',
       'link_loginFromHeader': '.js-login-from-header',
       'link_registrateFromHeader': '.js-registrate-from-header'
     },
-    events: {
-      'click @ui.linkMenu': 'showMenu',
-      'click @ui.link_loginFromHeader': 'showLoginFromHeader',
-      'click @ui.link_registrateFromHeader': 'showRegistrateFromHeader'
-    },
     initialize: function() {
       return this.on('render', this.afterRender, this);
     },
     onRender: function() {
       this.forgotPassword = new ForgotPasswordComponent();
+      this.authComponent = new AuthComponent();
       window.tComp = this.forgotPassword;
-      return this.regionForgotPassword.show(this.forgotPassword);
+      window.authComponent = this.authComponent;
+      this.regionForgotPassword.show(this.forgotPassword);
+      return this.regionAuth.show(this.authComponent);
     },
     afterRender: function() {},
     showLoginFromHeader: function(event) {

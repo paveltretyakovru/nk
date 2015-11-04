@@ -4,6 +4,7 @@ define ( require ) ->
 	Marionette 	= require 'marionette'
 	Template 	= require 'text!tmpls/parts/header/header.html'
 	ForgotPasswordComponent = require 'components/animatedmodal/forgotpassword/forgotpassword'
+	AuthComponent 	= require 'components/animatedmodal/auth/auth'
 
 	require 'gsap'
 
@@ -14,17 +15,18 @@ define ( require ) ->
 		tagName 		: 'header'
 
 		regions :
-			regionForgotPassword : '.js-forgot-from-header'
+			regionForgotPassword 	: '.js-forgot-from-header'
+			regionAuth 				: '.js-auth-animated-modal'
 
 		ui 	:
 			'linkMenu'					: '.js-link-menu'
 			'link_loginFromHeader'		: '.js-login-from-header'
 			'link_registrateFromHeader'	: '.js-registrate-from-header'
 
-		events 		: 
-			'click @ui.linkMenu'					: 'showMenu'
-			'click @ui.link_loginFromHeader' 		: 'showLoginFromHeader'
-			'click @ui.link_registrateFromHeader'	: 'showRegistrateFromHeader'
+		#events 		: 
+		#	'click @ui.linkMenu'					: 'showMenu'
+		#	'click @ui.link_loginFromHeader' 		: 'showLoginFromHeader'
+		#	'click @ui.link_registrateFromHeader'	: 'showRegistrateFromHeader'
 
 		initialize 	: ->
 			# Events
@@ -32,10 +34,13 @@ define ( require ) ->
 
 		onRender : ->
 			@forgotPassword = new ForgotPasswordComponent()
+			@authComponent 	= new AuthComponent()
 
 			window.tComp = @forgotPassword
+			window.authComponent  = @authComponent
 
 			@regionForgotPassword.show @forgotPassword
+			@regionAuth.show @authComponent
 
 		afterRender : ->
 

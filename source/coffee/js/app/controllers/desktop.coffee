@@ -23,7 +23,7 @@ define ( require ) ->
 			@Menu 	= new MenuView()
 
 			app.regionHeader.show @Header
-			app.regionAnimatedModal.show @Login
+			#app.regionAnimatedModal.show @Login
 			app.regionMenu.show @Menu
 
 			app.regionContent.on 'show' , ->
