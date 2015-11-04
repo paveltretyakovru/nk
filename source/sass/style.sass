@@ -376,3 +376,38 @@ section.right_menu
 	top 	: -10%
 	left	: -5%
 
+// ######### Components ##########
+
+// AnimatedModal
+.animate-modal-parent
+	display 	: inline
+	overflow 	: hidden
+
+.animate-modal-side
+	position	: absolute
+	top			: 200
+	right 		: -120%	
+	width 		: 110%
+	padding 	: 80px
+	background 	: linear-gradient(left bottom, #17191F, #272B33)
+	z-index 	: 100
+	+backface-visibility( hidden )
+
+.animate-modal-side:after
+	content 	: ''
+	position 	: absolute
+	top			: calc(50% - 160px)
+	left		: -160px
+	width		: 320px
+	height 		: 320px
+	background-image: url(../images/key.svg)
+
+.animate-modal-side:before
+	content: ''
+	position: absolute
+	top: 16
+	left: 16
+	width: calc(100% - 16px)
+	height: calc(100% - 32px)
+	box-shadow: inset rgba(255, 255, 255, .1) 0 0 0 1px
+	z-index: -1

@@ -750,3 +750,46 @@ section.right_menu a:hover {
   top: -10%;
   left: -5%;
 }
+
+/* line 382, ../../source/sass/style.sass */
+.animate-modal-parent {
+  display: inline;
+  overflow: hidden;
+}
+
+/* line 386, ../../source/sass/style.sass */
+.animate-modal-side {
+  position: absolute;
+  top: 200;
+  right: -120%;
+  width: 110%;
+  padding: 80px;
+  background: linear-gradient(to right top, #17191f, #272b33);
+  z-index: 100;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* line 396, ../../source/sass/style.sass */
+.animate-modal-side:after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 160px);
+  left: -160px;
+  width: 320px;
+  height: 320px;
+  background-image: url(../images/key.svg);
+}
+
+/* line 405, ../../source/sass/style.sass */
+.animate-modal-side:before {
+  content: "";
+  position: absolute;
+  top: 16;
+  left: 16;
+  width: calc(100% - 16px);
+  height: calc(100% - 32px);
+  box-shadow: inset rgba(255, 255, 255, 0.1) 0 0 0 1px;
+  z-index: -1;
+}

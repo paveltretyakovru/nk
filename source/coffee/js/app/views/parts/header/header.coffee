@@ -20,13 +20,11 @@ define ( require ) ->
 			'linkMenu'					: '.js-link-menu'
 			'link_loginFromHeader'		: '.js-login-from-header'
 			'link_registrateFromHeader'	: '.js-registrate-from-header'
-			'link_forgotPassword'		: '.js-forgot-from-header'
 
 		events 		: 
 			'click @ui.linkMenu'					: 'showMenu'
 			'click @ui.link_loginFromHeader' 		: 'showLoginFromHeader'
 			'click @ui.link_registrateFromHeader'	: 'showRegistrateFromHeader'
-			'click @ui.link_forgotPassword'			: 'showForgotPasswordFromHeader'
 
 		initialize 	: ->
 			# Events
@@ -63,8 +61,4 @@ define ( require ) ->
 		showMenu 			: ( event ) ->
 			console.log 'Show menu' if @debug
 			app.regionMenu.currentView.trigger 'showMenu'
-			event.preventDefault()
-
-		showForgotPasswordFromHeader : ( event ) ->
-			console.log 'SHow forgot from header function'
 			event.preventDefault()

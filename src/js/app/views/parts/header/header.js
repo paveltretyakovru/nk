@@ -16,14 +16,12 @@ define(function(require) {
     ui: {
       'linkMenu': '.js-link-menu',
       'link_loginFromHeader': '.js-login-from-header',
-      'link_registrateFromHeader': '.js-registrate-from-header',
-      'link_forgotPassword': '.js-forgot-from-header'
+      'link_registrateFromHeader': '.js-registrate-from-header'
     },
     events: {
       'click @ui.linkMenu': 'showMenu',
       'click @ui.link_loginFromHeader': 'showLoginFromHeader',
-      'click @ui.link_registrateFromHeader': 'showRegistrateFromHeader',
-      'click @ui.link_forgotPassword': 'showForgotPasswordFromHeader'
+      'click @ui.link_registrateFromHeader': 'showRegistrateFromHeader'
     },
     initialize: function() {
       return this.on('render', this.afterRender, this);
@@ -60,10 +58,6 @@ define(function(require) {
         console.log('Show menu');
       }
       app.regionMenu.currentView.trigger('showMenu');
-      return event.preventDefault();
-    },
-    showForgotPasswordFromHeader: function(event) {
-      console.log('SHow forgot from header function');
       return event.preventDefault();
     }
   });
