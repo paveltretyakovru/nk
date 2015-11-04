@@ -33,6 +33,7 @@ define(function(require) {
     },
     initialize: function() {
       this.scaleElement = document.getElementById('scale-body');
+      this.scaleClass = 'scale-element';
       this.fullReverseCallback = {};
       if (!isEmpty(this.title)) {
         this.model.set('title', this.title);
@@ -103,13 +104,15 @@ define(function(require) {
     initAnimations: function() {
       this.animationDropSides = new TimelineMax({
         paused: true
-      }).to(this.$front, .3, {
+      }).to(this.scaleElement, .3, {
+        className: '+=' + this.scaleClass + ' background-color-overlay'
+      }, 0).to(this.$front, .3, {
         right: '-20%',
         alpha: 1
-      }, 0).to(this.$back, .3, {
+      }, .3).to(this.$back, .3, {
         right: '-20%',
         alpha: 1
-      }, 0);
+      }, .3);
       return this.animationRotateToBack = new TimelineMax({
         paused: true
       }).set(this.$back, {

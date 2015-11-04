@@ -35,6 +35,7 @@ define ( require ) ->
 
 		initialize : ->
 			@scaleElement			= document.getElementById 	'scale-body'	# Элемент который будет уходить назад
+			@scaleClass				= 'scale-element' 							# Клас анимации ухода назад
 			@fullReverseCallback 	= {} 
 			
 			# Ести есть заголовок, ставим заголовок для шаблона
@@ -101,8 +102,9 @@ define ( require ) ->
 
 		initAnimations : ->
 			@animationDropSides = new TimelineMax paused : true
-			.to @$front , .3 , { right : '-20%' , alpha : 1 } , 0
-			.to @$back  , .3 , { right : '-20%' , alpha : 1 } , 0
+			.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
+			.to @$front , .3 , { right : '-20%' , alpha : 1 } , .3
+			.to @$back  , .3 , { right : '-20%' , alpha : 1 } , .3
 
 			@animationRotateToBack = new TimelineMax paused : true
 			.set @$back , rotationX : -180

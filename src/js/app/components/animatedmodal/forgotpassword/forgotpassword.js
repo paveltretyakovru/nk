@@ -3,6 +3,10 @@ define(function(require) {
   var AnimatedModal, BackView, ComponentItem, FrontView, Marionette;
   Marionette = require('marionette');
   AnimatedModal = require('components/animatedmodal/animatedmodal');
+
+  /**
+  	 * Манипуляция через шаблон
+   */
   FrontView = Marionette.ItemView.extend({
     template: 'Front view <a href="#" class="js-animate-modal-rotate">Перевернуть</a>'
   });
