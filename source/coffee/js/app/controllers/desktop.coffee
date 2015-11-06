@@ -3,7 +3,6 @@ define ( require ) ->
 
 	Marionette 	= require 'marionette'
 	HeaderView	= require 'views/parts/header/header'
-	LoginView	= require 'views/parts/login/login_item'
 	MenuView 	= require 'views/parts/menu/menu_itemview'
 
 	Pages =
@@ -19,11 +18,9 @@ define ( require ) ->
 		initialize : ->
 			console.log 'controllers/desktop : initializin function' if @debug
 			@Header = new HeaderView()
-			@Login 	= new LoginView()
 			@Menu 	= new MenuView()
 
 			app.regionHeader.show @Header
-			#app.regionAnimatedModal.show @Login
 			app.regionMenu.show @Menu
 
 			app.regionContent.on 'show' , ->

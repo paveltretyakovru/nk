@@ -12,6 +12,10 @@ define ( require ) ->
 		template 			: Template
 		className 			: 'animate-modal-parent'
 		
+		scaleElement		: document.getElementById 	'scale-body'	# Элемент который будет уходить назад
+		scaleClass			: 'scale-element' 							# Клас анимации ухода назад
+		fullReverseCallback : {} 
+		
 		bodyView 			: {}
 		frontView 			: {}
 		backView 			: {}
@@ -34,10 +38,6 @@ define ( require ) ->
 
 		initialize : ->
 			@model = new Model()
-
-			@scaleElement			= document.getElementById 	'scale-body'	# Элемент который будет уходить назад
-			@scaleClass				= 'scale-element' 							# Клас анимации ухода назад
-			@fullReverseCallback 	= {} 
 			
 			# Ести есть заголовок, ставим заголовок для шаблона
 			if not isEmpty @title then @model.set 'title' , @title
