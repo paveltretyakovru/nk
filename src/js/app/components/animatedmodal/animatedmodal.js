@@ -11,6 +11,9 @@ define(function(require) {
   return Marionette.LayoutView.extend({
     template: Template,
     className: 'animate-modal-parent',
+    scaleElement: document.getElementById('scale-body'),
+    scaleClass: 'scale-element',
+    fullReverseCallback: {},
     bodyView: {},
     frontView: {},
     backView: {},
@@ -32,9 +35,6 @@ define(function(require) {
     },
     initialize: function() {
       this.model = new Model();
-      this.scaleElement = document.getElementById('scale-body');
-      this.scaleClass = 'scale-element';
-      this.fullReverseCallback = {};
       if (!isEmpty(this.title)) {
         this.model.set('title', this.title);
       }

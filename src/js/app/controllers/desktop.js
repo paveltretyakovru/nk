@@ -1,9 +1,8 @@
 define(function(require) {
   'use strict';
-  var HeaderView, LoginView, Marionette, MenuView, Pages;
+  var HeaderView, Marionette, MenuView, Pages;
   Marionette = require('marionette');
   HeaderView = require('views/parts/header/header');
-  LoginView = require('views/parts/login/login_item');
   MenuView = require('views/parts/menu/menu_itemview');
   Pages = {
     Home: require('views/pages/home/home'),
@@ -19,7 +18,6 @@ define(function(require) {
         console.log('controllers/desktop : initializin function');
       }
       this.Header = new HeaderView();
-      this.Login = new LoginView();
       this.Menu = new MenuView();
       app.regionHeader.show(this.Header);
       app.regionMenu.show(this.Menu);
