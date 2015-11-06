@@ -1,10 +1,10 @@
 define(function(require) {
   'use strict';
-  var AuthComponent, ForgotPasswordComponent, Marionette, Template;
+  var LoginComponent, Marionette, RegistrationComponent, Template;
   Marionette = require('marionette');
   Template = require('text!tmpls/parts/header/header.html');
-  ForgotPasswordComponent = require('components/animatedmodal/forgotpassword/forgotpassword');
-  AuthComponent = require('components/animatedmodal/auth/auth');
+  LoginComponent = require('components/animatedmodal/auth/login');
+  RegistrationComponent = require('components/animatedmodal/auth/registration');
   require('gsap');
   return Marionette.LayoutView.extend({
     debugAnimation: false,
@@ -12,8 +12,8 @@ define(function(require) {
     template: Template,
     tagName: 'header',
     regions: {
-      regionForgotPassword: '.js-forgot-from-header',
-      regionAuth: '.js-auth-animated-modal'
+      regionAnimatedmodalRegistration: '.js-animatedmodal-registration',
+      regionAnimatedmodalLogin: '.js-animatedmodal-login'
     },
     ui: {
       'linkMenu': '.js-link-menu',
@@ -23,14 +23,13 @@ define(function(require) {
     initialize: function() {
       return this.on('render', this.afterRender, this);
     },
-    onRender: function() {},
-    afterRender: function() {
-      this.authComponent = new AuthComponent();
-      this.forgotPassword = new ForgotPasswordComponent();
-      window.tComp = this.forgotPassword;
-      window.authComponent = this.authComponent;
-      this.regionForgotPassword.show(this.forgotPassword);
-      return this.regionAuth.show(this.authComponent);
+    onRender: function() {
+      console.log('LoginComponent', LoginComponent);
+      return this.registrationAnimatedModal = new RegistrationComponent();
+    },
+    afterRender: function() {},
+    onShow: function() {
+      return this.regionAnimatedmodalRegistration.show(this.registrationAnimatedModal);
     },
     showLoginFromHeader: function(event) {
       app.regionAnimatedModal.currentView.trigger('showLoginFromHeader');

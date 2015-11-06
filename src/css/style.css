@@ -715,13 +715,13 @@ section.right_menu a:hover {
 }
 
 /* line 353, ../../source/sass/style.sass */
-.animate-modal-parent {
-  display: inline;
+.animatedmodal-parent {
+  display: inline-flex;
   overflow: hidden;
 }
 
 /* line 357, ../../source/sass/style.sass */
-.animate-modal-side {
+.animatedmodal-side {
   position: absolute;
   top: 200;
   right: -120%;
@@ -735,7 +735,7 @@ section.right_menu a:hover {
 }
 
 /* line 367, ../../source/sass/style.sass */
-.animate-modal-side:after {
+.animatedmodal-side:after {
   content: "";
   position: absolute;
   top: calc(50% - 160px);
@@ -746,7 +746,7 @@ section.right_menu a:hover {
 }
 
 /* line 376, ../../source/sass/style.sass */
-.animate-modal-side:before {
+.animatedmodal-side:before {
   content: "";
   position: absolute;
   top: 16;

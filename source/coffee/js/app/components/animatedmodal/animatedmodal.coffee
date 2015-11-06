@@ -8,59 +8,64 @@ define ( require ) ->
 		defaults :
 			title 		: '[Показать окно]'			
 
-	Marionette.LayoutView.extend
+	AnimatedModalModule = Marionette.LayoutView.extend
 		template 			: Template
-		className 			: 'animate-modal-parent'
-		
-		bodyView 			: {}
-		frontView 			: {}
-		backView 			: {}
+
+		scaleElement		: document.getElementById 	'scale-body'	# Элемент который будет уходить назад
+		scaleClass			: 'scale-element' 							# Клас анимации ухода назад
+		fullReverseCallback : {} 
 
 		regions 	:
-			regionFront 	: '.js-animate-modal-front'
-			regionBack 		: '.js-animate-modal-back'
+			regionBodyComponent 	: '.animatedmodal-side' # Сюда будет заливаться вид самого компонента
 
 		ui :
 			'targetLink' 		: '.js-animate-modal-target'
-			'rotateLink'		: '.js-animate-modal-rotate'
-			'targetBackLink'	: '.js-animate-modal-target-back'
-			'targetFrontLink'	: '.js-animate-modal-target-front'
+			#'rotateLink'		: '.js-animate-modal-rotate'
+			#'targetBackLink'	: '.js-animate-modal-target-back'
+			#'targetFrontLink'	: '.js-animate-modal-target-front'
 
 		events 				:
 			'click @ui.targetLink'		: 'showModal'
-			'click @ui.rotateLink'		: 'rotateModal'
-			'click @ui.targetBackLink' 	: 'showBack'
-			'click @ui.targetFrontLink'	: 'showFront'
+			#'click @ui.rotateLink'		: 'rotateModal'
+			#'click @ui.targetBackLink' 	: 'showBack'
+			#'click @ui.targetFrontLink'	: 'showFront'
 
 		initialize : ->
-			@model = new Model()
-
-			@scaleElement			= document.getElementById 	'scale-body'	# Элемент который будет уходить назад
-			@scaleClass				= 'scale-element' 							# Клас анимации ухода назад
-			@fullReverseCallback 	= {} 
+			console.log 'Initialize animatedmodal' , @name
 			
-			# Ести есть заголовок, ставим заголовок для шаблона
-			if not isEmpty @title then @model.set 'title' , @title
+			@model = new Model()			
+			if not isEmpty @title then @model.set 'title' , @title # Ести есть заголовок, ставим заголовок для шаблона
 
 			@on 'render' , @afterRender , @
 
-		onRender : ->
-			# Если для окна нужна только одна сторона
-			if not isEmpty @bodyView
-				@regionFront.show @bodyView
-			# Если для окна нужны две стороны (перевертышь)
-			else if not isEmpty(@frontView) and not isEmpty(@backView)
-				@regionFront.show 	@frontView
-				@regionBack.show 	@backView
-
 		afterRender : ->
+			console.log 'TEST HERE!!!' , @name , @bodyView
+
+			@regionBodyComponent.on 'show' , @onRegionBodyComponentShow , @
+			@regionBodyComponent.show @bodyView
+
+		onRegionBodyComponentShow : ->
+			@$front = @regionBodyComponent.$el
+			console.log 'onShow!' , @el , @$front			
+			# Инициализируем анимации
+			@initAnimations()			
+
+		showModal : ( event ) ->
+			@animationDropSides.play()
+			if event? then event.preventDefault()
+
+		initAnimations : ->
 			_this 	= @
 
-			@$front = @regionFront.$el
-			@$back 	= @regionBack.$el
+			@animationDropSides = new TimelineMax paused : true
+			.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
+			.to @$front 		, .3 	, { right : '-20%' , alpha : 1 } , .3
+			#.to @$back  , .3 , { right : '-20%' , alpha : 1 } , .3
 
-			# Инициализируем анимации
-			@initAnimations()
+			@animationRotateToBack = new TimelineMax paused : true
+			#.set @$back , rotationX : -180
+			#.to @$back	, .5 	, rotationX : 0 	, .3
+			.to @$front , .5 	, rotationX : 180 	, .3 # Анимация прокручивает секцию до регистрации
 
 			@animationDropSides.eventCallback 'onReverseComplete' , =>
 				if @toBackRotated()
@@ -80,7 +85,7 @@ define ( require ) ->
 
 				# Проверяем, не произошел ли клик в окне
 				if target.closest(_this.$front).length then return
-				if target.closest(_this.$back).length then return
+				#if target.closest(_this.$back).length then return
 
 				# Если окно анимировано и не активно
 				if _this.sidesDroped()
@@ -95,22 +100,6 @@ define ( require ) ->
 						_this.fullReverseCallback = _this.showModal
 
 					_this.animationDropSides.reverse()
-			
-
-		showModal : ( event ) ->
-			@animationDropSides.play()
-			if event? then event.preventDefault()
-
-		initAnimations : ->
-			@animationDropSides = new TimelineMax paused : true
-			.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
-			.to @$front , .3 , { right : '-20%' , alpha : 1 } , .3
-			.to @$back  , .3 , { right : '-20%' , alpha : 1 } , .3
-
-			@animationRotateToBack = new TimelineMax paused : true
-			.set @$back , rotationX : -180
-			.to @$back	, .5 	, rotationX : 0 	, .3
-			.to @$front , .5 	, rotationX : 180 	, .3 # Анимация прокручивает секцию до регистрации
 
 		# Проверяет состоияние сексции выдвинута ли она || анимация не активна и анимирована
 		sidesDroped : ->
@@ -142,3 +131,16 @@ define ( require ) ->
 				@animationRotateToBack.play()
 
 			if event? then event.preventDefault()
+
+		initParentData : ( el ) ->
+			result 		= {}
+			result.data = {}
+
+			data 				= if not isEmpty el.dataset then el.dataset else {}			
+			result.data.to 		= if 'animatedmodalTo' of data then data.animatedmodalTo else ''
+
+			console.log 'Parent data' , result.data
+
+			return result
+
+	return AnimatedModalModule

@@ -2,7 +2,7 @@
 	%h2 Регистрация
 	%h3
 		Регистрация нового пользователя. Если у вас	уже есть аккаунт -
-		%a.js-animate-modal-rotate{ :href => '#' } войдите
+		%span.js-animatedmodal-login.animatedmodal-parent{ :href => '#' , :data => { :animatedmodal_to => 'login' } }
 	%form{:action => "", :method => "get", :id => "register_form" }
 		%input{:type => "text", :name => "phone", :placeholder => "Номер телефона"}
 		%input{:type => "text", :name => "name", :placeholder => "ФИО"}

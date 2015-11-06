@@ -1,6 +1,6 @@
 define(function(require) {
   'use strict';
-  var Marionette, Model, Template;
+  var AnimatedModalModule, Marionette, Model, Template;
   Marionette = require('marionette');
   Template = require('text!tmpls/components/animatedmodal/animatedmodal.html');
   Model = Backbone.Model.extend({
@@ -8,52 +8,60 @@ define(function(require) {
       title: '[Показать окно]'
     }
   });
-  return Marionette.LayoutView.extend({
+  AnimatedModalModule = Marionette.LayoutView.extend({
     template: Template,
-    className: 'animate-modal-parent',
-    bodyView: {},
-    frontView: {},
-    backView: {},
+    scaleElement: document.getElementById('scale-body'),
+    scaleClass: 'scale-element',
+    fullReverseCallback: {},
     regions: {
-      regionFront: '.js-animate-modal-front',
-      regionBack: '.js-animate-modal-back'
+      regionBodyComponent: '.animatedmodal-side'
     },
     ui: {
-      'targetLink': '.js-animate-modal-target',
-      'rotateLink': '.js-animate-modal-rotate',
-      'targetBackLink': '.js-animate-modal-target-back',
-      'targetFrontLink': '.js-animate-modal-target-front'
+      'targetLink': '.js-animate-modal-target'
     },
     events: {
-      'click @ui.targetLink': 'showModal',
-      'click @ui.rotateLink': 'rotateModal',
-      'click @ui.targetBackLink': 'showBack',
-      'click @ui.targetFrontLink': 'showFront'
+      'click @ui.targetLink': 'showModal'
     },
     initialize: function() {
+      console.log('Initialize animatedmodal', this.name);
       this.model = new Model();
-      this.scaleElement = document.getElementById('scale-body');
-      this.scaleClass = 'scale-element';
-      this.fullReverseCallback = {};
       if (!isEmpty(this.title)) {
         this.model.set('title', this.title);
       }
       return this.on('render', this.afterRender, this);
     },
-    onRender: function() {
-      if (!isEmpty(this.bodyView)) {
-        return this.regionFront.show(this.bodyView);
-      } else if (!isEmpty(this.frontView) && !isEmpty(this.backView)) {
-        this.regionFront.show(this.frontView);
-        return this.regionBack.show(this.backView);
+    afterRender: function() {
+      console.log('TEST HERE!!!', this.name, this.bodyView);
+      this.regionBodyComponent.on('show', this.onRegionBodyComponentShow, this);
+      return this.regionBodyComponent.show(this.bodyView);
+    },
+    onRegionBodyComponentShow: function() {
+      this.$front = this.regionBodyComponent.$el;
+      console.log('onShow!', this.el, this.$front);
+      return this.initAnimations();
+    },
+    showModal: function(event) {
+      this.animationDropSides.play();
+      if (event != null) {
+        return event.preventDefault();
       }
     },
-    afterRender: function() {
+    initAnimations: function() {
       var _this;
       _this = this;
-      this.$front = this.regionFront.$el;
-      this.$back = this.regionBack.$el;
-      this.initAnimations();
+      this.animationDropSides = new TimelineMax({
+        paused: true
+      }).to(this.scaleElement, .3, {
+        className: '+=' + this.scaleClass + ' background-color-overlay'
+      }, 0).to(this.$front, .3, {
+        right: '-20%',
+        alpha: 1
+      }, .3);
+      this.animationRotateToBack = new TimelineMax({
+        paused: true
+      }).to(this.$front, .5, {
+        rotationX: 180
+      }, .3);
       this.animationDropSides.eventCallback('onReverseComplete', (function(_this) {
         return function() {
           if (_this.toBackRotated()) {
@@ -78,9 +86,6 @@ define(function(require) {
         if (target.closest(_this.$front).length) {
           return;
         }
-        if (target.closest(_this.$back).length) {
-          return;
-        }
         if (_this.sidesDroped()) {
           if (target.closest(_this.ui.targetFrontLink).length) {
             _this.fullReverseCallback = _this.showFront;
@@ -94,34 +99,6 @@ define(function(require) {
           return _this.animationDropSides.reverse();
         }
       });
-    },
-    showModal: function(event) {
-      this.animationDropSides.play();
-      if (event != null) {
-        return event.preventDefault();
-      }
-    },
-    initAnimations: function() {
-      this.animationDropSides = new TimelineMax({
-        paused: true
-      }).to(this.scaleElement, .3, {
-        className: '+=' + this.scaleClass + ' background-color-overlay'
-      }, 0).to(this.$front, .3, {
-        right: '-20%',
-        alpha: 1
-      }, .3).to(this.$back, .3, {
-        right: '-20%',
-        alpha: 1
-      }, .3);
-      return this.animationRotateToBack = new TimelineMax({
-        paused: true
-      }).set(this.$back, {
-        rotationX: -180
-      }).to(this.$back, .5, {
-        rotationX: 0
-      }, .3).to(this.$front, .5, {
-        rotationX: 180
-      }, .3);
     },
     sidesDroped: function() {
       return !this.animationDropSides.isActive() && this.animationDropSides.progress();
@@ -160,6 +137,16 @@ define(function(require) {
       if (event != null) {
         return event.preventDefault();
       }
+    },
+    initParentData: function(el) {
+      var data, result;
+      result = {};
+      result.data = {};
+      data = !isEmpty(el.dataset) ? el.dataset : {};
+      result.data.to = 'animatedmodalTo' in data ? data.animatedmodalTo : '';
+      console.log('Parent data', result.data);
+      return result;
     }
   });
+  return AnimatedModalModule;
 });
