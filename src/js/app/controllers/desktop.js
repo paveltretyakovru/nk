@@ -19,6 +19,7 @@ define(function(require) {
         console.log('controllers/desktop : initializin function');
       }
       this.Header = new HeaderView();
+      this.Login = new LoginView();
       this.Menu = new MenuView();
       app.regionHeader.show(this.Header);
       app.regionMenu.show(this.Menu);

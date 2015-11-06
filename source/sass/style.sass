@@ -350,11 +350,11 @@ section.right_menu
 // ######### Components ##########
 
 // AnimatedModal
-.animatedmodal-parent
-	display 	: inline-flex
+.animate-modal-parent
+	display 	: inline
 	overflow 	: hidden
 
-.animatedmodal-side
+.animate-modal-side
 	position	: absolute
 	top			: 200
 	right 		: -120%	
@@ -364,7 +364,7 @@ section.right_menu
 	z-index 	: 100
 	+backface-visibility( hidden )
 
-.animatedmodal-side:after
+.animate-modal-side:after
 	content 	: ''
 	position 	: absolute
 	top			: calc(50% - 160px)
@@ -373,7 +373,7 @@ section.right_menu
 	height 		: 320px
 	background-image: url(../images/key.svg)
 
-.animatedmodal-side:before
+.animate-modal-side:before
 	content: ''
 	position: absolute
 	top: 16

@@ -19,7 +19,7 @@ define ( require ) ->
 		initialize : ->
 			console.log 'controllers/desktop : initializin function' if @debug
 			@Header = new HeaderView()
-			#@Login 	= new LoginView()
+			@Login 	= new LoginView()
 			@Menu 	= new MenuView()
 
 			app.regionHeader.show @Header

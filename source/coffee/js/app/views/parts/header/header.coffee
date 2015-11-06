@@ -1,10 +1,10 @@
 define ( require ) ->
 	'use strict'
 
-	Marionette 				= require 'marionette'
-	Template 				= require 'text!tmpls/parts/header/header.html'
-	LoginComponent 			= require 'components/animatedmodal/auth/login'
-	RegistrationComponent 	= require 'components/animatedmodal/auth/registration'
+	Marionette 	= require 'marionette'
+	Template 	= require 'text!tmpls/parts/header/header.html'
+	ForgotPasswordComponent = require 'components/animatedmodal/forgotpassword/forgotpassword'
+	AuthComponent 	= require 'components/animatedmodal/auth/auth'
 
 	require 'gsap'
 
@@ -15,8 +15,8 @@ define ( require ) ->
 		tagName 		: 'header'
 
 		regions :
-			regionAnimatedmodalRegistration 	: '.js-animatedmodal-registration'
-			regionAnimatedmodalLogin			: '.js-animatedmodal-login'
+			regionForgotPassword 	: '.js-forgot-from-header'
+			regionAuth 				: '.js-auth-animated-modal'
 
 		ui 	:
 			'linkMenu'					: '.js-link-menu'
@@ -33,18 +33,16 @@ define ( require ) ->
 			@on 'render' , @afterRender , @
 
 		onRender : ->
-			console.log 'LoginComponent' , LoginComponent			
-			@registrationAnimatedModal = new RegistrationComponent()
-			#@loginAnimatedModal = new LoginComponent()
 
 		afterRender : ->
+			@authComponent 	= new AuthComponent()
+			@forgotPassword = new ForgotPasswordComponent()
 
-		onShow : ->
-			#@loginAnimatedModal.on 'render' , ->
-			#@regionAnimatedmodalLogin.show @loginAnimatedModal
-			
-			#@registrationAnimatedModal.on 'render' , ->
-			@regionAnimatedmodalRegistration.show @registrationAnimatedModal
+			window.tComp = @forgotPassword
+			window.authComponent  = @authComponent
+
+			@regionForgotPassword.show @forgotPassword
+			@regionAuth.show @authComponent
 
 		showLoginFromHeader : ( event ) ->
 			app.regionAnimatedModal.currentView.trigger 'showLoginFromHeader'
