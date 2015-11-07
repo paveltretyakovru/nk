@@ -24,7 +24,33 @@ define ( require ) ->
 				--remaining
 				callback() if remaining <= 0			
 			document.getElementById('loader').appendChild(obj)
-			objects.push obj	
+			objects.push obj
+
+	###*
+	 * #Returns true if it is a DOM node
+	 * @param  {mixed}  	o mixed data for check
+	 * @return {Boolean}   	if 'o' is dom node -> TRUE else FALSE
+	###
+	isNode = (o) ->
+		return if typeof Node == 'object' then o instanceof Node else o && typeof o == 'object' && typeof o.nodeType == 'number' && typeof o.nodeName == 'string'
+
+	###*
+	 * Returns true if it is a DOM element
+	 * @param  {mixed}  'o' mixed data for check
+	 * @return {Boolean}   if 'o' is dom element -> TRUE else FALSE
+	###
+	window.isElement = (o) ->
+		return if typeof HTMLElement == "object" then o instanceof HTMLElement else o and typeof o == "object" and o != null and o.nodeType == 1 and typeof o.nodeName == "string"
+
+	window.isString = ( variable ) ->
+		return typeof variable == "string"
+
+	window.isArray = ( variable ) ->
+		return Array.isArray variable
+
+	window.isFunction = ( functionToCheck ) ->
+		getType = {}
+		return functionToCheck && getType.toString.call(functionToCheck) == '[object Function]'
 
 	###*
 	 * Прооверяет obj на пустоту
@@ -40,16 +66,6 @@ define ( require ) ->
 		for key of obj
 			return false if hasOwnProperty.call obj , key
 		return true
-
-	window.isString = ( variable ) ->
-		return typeof variable == "string"
-
-	window.isArray = ( variable ) ->
-		return Array.isArray variable
-
-	window.isFunction = ( functionToCheck ) ->
-		getType = {}
-		return functionToCheck && getType.toString.call(functionToCheck) == '[object Function]'
 
 	# Нативная функции добавления класса
 	window.addClass = ( el , className ) ->

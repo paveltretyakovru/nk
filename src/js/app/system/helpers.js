@@ -1,6 +1,6 @@
 define(function(require) {
   'use strict';
-  var Handlebars, I18n, NumFormat, hasOwnProperty;
+  var Handlebars, I18n, NumFormat, hasOwnProperty, isNode;
   Handlebars = require('handlebars');
   I18n = require('utils/i18n');
   NumFormat = require('system/libs/num_format');
@@ -32,6 +32,43 @@ define(function(require) {
   };
 
   /**
+  	 * #Returns true if it is a DOM node
+  	 * @param  {mixed}  	o mixed data for check
+  	 * @return {Boolean}   	if 'o' is dom node -> TRUE else FALSE
+   */
+  isNode = function(o) {
+    if (typeof Node === 'object') {
+      return o instanceof Node;
+    } else {
+      return o && typeof o === 'object' && typeof o.nodeType === 'number' && typeof o.nodeName === 'string';
+    }
+  };
+
+  /**
+  	 * Returns true if it is a DOM element
+  	 * @param  {mixed}  'o' mixed data for check
+  	 * @return {Boolean}   if 'o' is dom element -> TRUE else FALSE
+   */
+  window.isElement = function(o) {
+    if (typeof HTMLElement === "object") {
+      return o instanceof HTMLElement;
+    } else {
+      return o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName === "string";
+    }
+  };
+  window.isString = function(variable) {
+    return typeof variable === "string";
+  };
+  window.isArray = function(variable) {
+    return Array.isArray(variable);
+  };
+  window.isFunction = function(functionToCheck) {
+    var getType;
+    getType = {};
+    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+  };
+
+  /**
   	 * Прооверяет obj на пустоту
   	 * @param  {mixed} переменная для проверки на пустоту
   	 * @return {Boolean}
@@ -54,17 +91,6 @@ define(function(require) {
       }
     }
     return true;
-  };
-  window.isString = function(variable) {
-    return typeof variable === "string";
-  };
-  window.isArray = function(variable) {
-    return Array.isArray(variable);
-  };
-  window.isFunction = function(functionToCheck) {
-    var getType;
-    getType = {};
-    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
   };
   window.addClass = function(el, className) {
     if (el.classList != null) {
