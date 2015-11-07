@@ -1,21 +1,10 @@
-define (require) ->
+define ['utils/listener','system/animations','components/components','handlebars'],(Listener,Animations,Components,Handlebars)->
 	'use strict'
-
-	Marionette 	= require 'marionette'
-	#Routes     	= require 'app/routes'
-	#Desktop    	= require 'controllers/desktop'
-	Handlebars 	= require 'handlebars'
-	Listener 	= require 'utils/listener'
-	Animations  = require 'system/animations'
-
-	require 'system/helpers'
-	require 'rivets'
-	require 'backbone.rivets'	
 	
 	app = new Marionette.Application
 		debug	: true
 
-		regions :
+		regions : 
 			regionContent		: '#region-content'
 			regionHeader		: '#region-header'
 			regionAnimatedModal	: '#region-animated-modal'
@@ -23,24 +12,19 @@ define (require) ->
 
 		initialize : ->
 			console.log 'app/app : initializing app' if @debug
-
-			@utils 	= {}
+			@utils 			= {}
 			@utils.Listener = new Listener {}
-			@hostUrl = 'http://localhost:3000'
+			@components 	= Components
+			@hostUrl 		= 'http://localhost:3000'
 
-		preload	: ->
-			console.log 'app/app : preload function ' if @debug			
-			Backbone.history.start()
-
-		Rivets : rivets
+		preload	: -> console.log 'app/app : preload function ' if @debug; Backbone.history.start()
+		Rivets 	: rivets # Определен в шиме
 
 	# Компируем в приложение анимации
 	_.extend app , Animations
-
-	app.addInitializer ( options ) -> return @preload()					
-
-	Marionette.Renderer.render = ( template , data ) ->
-		toHTML = Handlebars.compile template
-		return toHTML data
+	# Добавлям инициализатора
+	app.addInitializer ( options ) -> return @preload()
+	# Вешаем на рендеринг Handlebars
+	Marionette.Renderer.render = ( template , data ) -> toHTML = Handlebars.compile template; return toHTML data
 
 	return app

@@ -6,13 +6,32 @@ define ( require ) ->
 	NumFormat 	= require('system/libs/num_format')
 
 	#########################################################################################
+	
+	###*
+	 * Функция загружает массив данных и выполняет callback после всех загруженных
+	 * @param  {array}   	datas    Массив с путями изображений
+	 * @param  {array}   	objects  ПУстой глобальный массив для сохранения объектов
+	 * @param  {Function} 	callback Ответная функция после загрузки всех нужных изображений
+	 * @return {Void}       Заполняет массив object новыми объектами с изображениями и выполняет callback     
+	###
+	window.preloadObjects = ( datas , objects , callback ) ->
+		remaining = datas.length
 
-	hasOwnProperty = Object.prototype.hasOwnProperty
+		for i in [0...remaining]
+			obj = document.createElement 'object'
+			obj.setAttribute 'data' , datas[i]
+			obj.addEventListener 'load' , ->
+				--remaining
+				callback() if remaining <= 0			
+			document.getElementById('loader').appendChild(obj)
+			objects.push obj	
+
 	###*
 	 * Прооверяет obj на пустоту
 	 * @param  {mixed} переменная для проверки на пустоту
 	 * @return {Boolean}
 	###
+	hasOwnProperty = Object.prototype.hasOwnProperty
 	window.isEmpty = ( obj ) ->
 		return true 	if obj == null
 		return false 	if obj.length > 0
@@ -20,7 +39,6 @@ define ( require ) ->
 
 		for key of obj
 			return false if hasOwnProperty.call obj , key
-
 		return true
 
 	window.isString = ( variable ) ->

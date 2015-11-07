@@ -4,13 +4,39 @@ define(function(require) {
   Handlebars = require('handlebars');
   I18n = require('utils/i18n');
   NumFormat = require('system/libs/num_format');
-  hasOwnProperty = Object.prototype.hasOwnProperty;
+
+  /**
+  	 * Функция загружает массив данных и выполняет callback после всех загруженных
+  	 * @param  {array}   	datas    Массив с путями изображений
+  	 * @param  {array}   	objects  ПУстой глобальный массив для сохранения объектов
+  	 * @param  {Function} 	callback Ответная функция после загрузки всех нужных изображений
+  	 * @return {Void}       Заполняет массив object новыми объектами с изображениями и выполняет callback
+   */
+  window.preloadObjects = function(datas, objects, callback) {
+    var i, j, obj, ref, remaining, results;
+    remaining = datas.length;
+    results = [];
+    for (i = j = 0, ref = remaining; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+      obj = document.createElement('object');
+      obj.setAttribute('data', datas[i]);
+      obj.addEventListener('load', function() {
+        --remaining;
+        if (remaining <= 0) {
+          return callback();
+        }
+      });
+      document.getElementById('loader').appendChild(obj);
+      results.push(objects.push(obj));
+    }
+    return results;
+  };
 
   /**
   	 * Прооверяет obj на пустоту
   	 * @param  {mixed} переменная для проверки на пустоту
   	 * @return {Boolean}
    */
+  hasOwnProperty = Object.prototype.hasOwnProperty;
   window.isEmpty = function(obj) {
     var key;
     if (obj === null) {

@@ -43,6 +43,14 @@ requirejs.config
 		'arbor'					: 'bower_components/arbor/lib/arbor'
 		'arbor-graphics'		: 'bower_components/arbor/demos/_/graphics'
 
+		# COMPONENTS
+		
+		###*
+		 * Animatedmodal компонента всплывающих окон
+		###
+		'am'					: 'src/js/app/components/am'	# Каталог с представлениыями
+		#'AM'					: 'src/js/app/components/am/am'		# Главный контроллер
+	    
 	    # TESTS
 		'spec'					: 'src/js/app/tests/spec'
 		'sinon'					: 'bower_components/sinonjs/sinon'
@@ -72,6 +80,7 @@ requirejs.config
 		'jasmine-sinon'			: 'deps': [ 'jasmine' , 'boot' , 'sinon' ] , 'exports': 'jasmine-sinon'
 		'jasmine-jquery'		: 'deps': [ 'jasmine' , 'boot' , 'jquery' ] , 'exports': 'jasmine-jquery'
 		'boot'					: 'deps': [ 'jasmine' , 'jasmine-html'] , 'exports': 'boot'
+		'app/app'				: 'deps': [ 'marionette' , 'system/helpers' , 'rivets' , 'backbone.rivets' ]
 
 		# Plugins
 		'fullpagejs'		: 'deps'	: [ 'jquery']

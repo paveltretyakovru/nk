@@ -1,7 +1,10 @@
 %img{ :alt=>'Уникальные Кальянные' , :height=>'40px' , :src=>'src/images/logo.svg' }
 	%nav
-		%a.js-link-menu{ :href=>'#' }
-			%img{ :height=> '40px' , :src=> 'src/images/menu.svg' }
+		%a.js-link-menu{ :href =>'#' }
+			%img{ :height => '40px' , :src => 'src/images/menu.svg' }
 
-		%span.js-auth-animated-modal
-		%span.js-forgot-from-header
+		%a{ :data => { :component => 'am' , :am_to => 'login' 	} } Войти
+		%a{ :data => { :component => 'am' , :am_to => 'reg' 	} } Регистрация
+
+		-#%span.js-auth-animated-modal
+		-#%span.js-forgot-from-header

@@ -35,6 +35,11 @@ requirejs.config({
     'fullpagejs': 'bower_components/fullpage.js/jquery.fullPage.min',
     'arbor': 'bower_components/arbor/lib/arbor',
     'arbor-graphics': 'bower_components/arbor/demos/_/graphics',
+
+    /**
+    		 * Animatedmodal компонента всплывающих окон
+     */
+    'am': 'src/js/app/components/am',
     'spec': 'src/js/app/tests/spec',
     'sinon': 'bower_components/sinonjs/sinon',
     'jasmine': 'bower_components/jasmine/lib/jasmine-core/jasmine',
@@ -104,6 +109,9 @@ requirejs.config({
     'boot': {
       'deps': ['jasmine', 'jasmine-html'],
       'exports': 'boot'
+    },
+    'app/app': {
+      'deps': ['marionette', 'system/helpers', 'rivets', 'backbone.rivets']
     },
     'fullpagejs': {
       'deps': ['jquery']

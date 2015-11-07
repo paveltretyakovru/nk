@@ -1,13 +1,6 @@
-define(function(require) {
+define(['utils/listener', 'system/animations', 'components/components', 'handlebars'], function(Listener, Animations, Components, Handlebars) {
   'use strict';
-  var Animations, Handlebars, Listener, Marionette, app;
-  Marionette = require('marionette');
-  Handlebars = require('handlebars');
-  Listener = require('utils/listener');
-  Animations = require('system/animations');
-  require('system/helpers');
-  require('rivets');
-  require('backbone.rivets');
+  var app;
   app = new Marionette.Application({
     debug: true,
     regions: {
@@ -22,6 +15,7 @@ define(function(require) {
       }
       this.utils = {};
       this.utils.Listener = new Listener({});
+      this.components = Components;
       return this.hostUrl = 'http://localhost:3000';
     },
     preload: function() {
