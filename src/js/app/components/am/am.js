@@ -8,12 +8,12 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
   var c, o;
   c = Backbone.Collection.extend();
   o = Marionette.Object.extend({
-    cEnt: {
+    cPevnt: {
       'add': 'takePatient'
     },
     initialize: function() {
       this.cP = new c();
-      return Marionette.bindEntityEvents(this, this.cP, this.cPEvnt);
+      return Marionette.bindEntityEvents(this, this.cP, this.cPevnt);
     },
     "catch": function(ops) {
       this.options = ops;
@@ -28,7 +28,7 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
         val = find[i];
         if (isElement(val) && this.getPatient({
           el: val
-        })) {
+        }) === void 0) {
           results.push(this.cP.add({
             el: val,
             to: val.getAttribute('data-am-to')
@@ -44,10 +44,7 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
       return data = m.toJSON();
     },
     getPatient: function(id) {
-      var result;
-      result = this.cP.findWhere(id);
-      console.log('Result get', result);
-      return result;
+      return this.cP.findWhere(id);
     }
   });
   return o;

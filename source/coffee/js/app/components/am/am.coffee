@@ -6,11 +6,11 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 	###
 	c = Backbone.Collection.extend()
 	o = Marionette.Object.extend
-		cEnt : 'add' : 'takePatient'
+		cPevnt : 'add' : 'takePatient'
 
 		initialize : ->
 			@cP	= new c() # Init patients links collection
-			Marionette.bindEntityEvents @ , @cP , @cPEvnt # Bind events links collection
+			Marionette.bindEntityEvents @ , @cP , @cPevnt # Bind events links collection
 
 		catch : ( ops ) ->
 			@options = ops
@@ -24,17 +24,10 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 			find = if el? then el.querySelectorAll '[data-component=am]' # saving our links in collection
 			
 			for i , val of find  # Перебираем удовлетворяющие элементы дума
-				# Последнее свойство селектора length :)
-				if isElement(val) and @getPatient {el : val}					
+				if isElement(val) and @getPatient({el : val}) == undefined # Последнее свойство селектора length :)
 					@cP.add el : val , to : val.getAttribute 'data-am-to'					
 		
-		takePatient	: (m,c,ops) -> # geting new element in collection
-			data = m.toJSON()
-
-		getPatient : ( id ) ->
-			result = @cP.findWhere id
-			console.log 'Result get' , result
-
-			return result
+		takePatient	: ( m,c,ops ) -> data = m.toJSON()
+		getPatient  : ( id ) 	  -> return @cP.findWhere id
 
 	return o
