@@ -1,7 +1,6 @@
 # am - animatedmodal 
-define 'am/Reg' , [ 'require' , 'exports' , 'am' 	, 'am/Login' ] , (  require 	,  exports 	,  am 	, amLogin ) ->
-		
-	amReg = ->
-		console.log 'amregistration module!'
+define [ 'require' , 'marionette' , 'text!am/tmpl/reg.html' ] , ( require , Marionette , Template ) ->
+	'use strict'
 
-	exports.amReg = amReg
+	return Marionette.LayoutView.extend
+		tempalte : Template

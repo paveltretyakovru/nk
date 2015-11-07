@@ -48,8 +48,8 @@ requirejs.config
 		###*
 		 * Animatedmodal компонента всплывающих окон
 		###
-		'am'					: 'src/js/app/components/am'	# Каталог с представлениыями
-		#'AM'					: 'src/js/app/components/am/am'		# Главный контроллер
+		'am'					: 'src/js/app/components/am'				# Каталог с представлениыями
+		'am/tmpl'				: 'src/js/app/templates/components/am/v'	# Каталог с шаблонами am
 	    
 	    # TESTS
 		'spec'					: 'src/js/app/tests/spec'

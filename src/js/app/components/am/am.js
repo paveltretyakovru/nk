@@ -3,36 +3,35 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
 
   /**
   	 * Сокращения: m-model; c-collection; o-object; am-anmatedmodals; ops-options
+  	 * [cP]-коллекция пациентов:) <- ссылки по которыем приклепляются окна
    */
-  var c, m, o;
-  m = Backbone.Model.extend();
-  c = Backbone.Collection.extend({
-    model: m
-  });
+  var c, o;
+  c = Backbone.Collection.extend();
   o = Marionette.Object.extend({
-    mEvents: {},
-    cEvents: {
+    cEnt: {
       'add': 'takePatient'
     },
-    initialize: function(ops) {
+    initialize: function() {
+      this.cP = new c();
+      return Marionette.bindEntityEvents(this, this.cP, this.cPEvnt);
+    },
+    "catch": function(ops) {
       this.options = ops;
-      this.m = new m();
-      this.c = new c();
-      Marionette.bindEntityEvents(this, this.m, this.mEvents);
-      Marionette.bindEntityEvents(this, this.c, this.cEvents);
       return this.collectPatients();
     },
     collectPatients: function() {
-      var el, f, find, i, results;
+      var el, find, i, results, val;
       el = this.getOption('el');
       find = el != null ? el.querySelectorAll('[data-component=am]') : void 0;
       results = [];
       for (i in find) {
-        f = find[i];
-        if (isElement(f)) {
-          results.push(this.c.add({
-            el: f,
-            to: f.getAttribute('data-am-to')
+        val = find[i];
+        if (isElement(val) && this.getPatient({
+          el: val
+        })) {
+          results.push(this.cP.add({
+            el: val,
+            to: val.getAttribute('data-am-to')
           }));
         } else {
           results.push(void 0);
@@ -43,6 +42,12 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
     takePatient: function(m, c, ops) {
       var data;
       return data = m.toJSON();
+    },
+    getPatient: function(id) {
+      var result;
+      result = this.cP.findWhere(id);
+      console.log('Result get', result);
+      return result;
     }
   });
   return o;

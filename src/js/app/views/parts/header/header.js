@@ -10,7 +10,7 @@ define(['marionette', 'text!tmpls/parts/header/header.html'], function(Marionett
       'click @ui.linkMenu': 'showMenu'
     },
     onRender: function() {
-      this.am = new app.components.am({
+      this.am = app.components.am["catch"]({
         el: this.el
       });
       return window.am = this.am;

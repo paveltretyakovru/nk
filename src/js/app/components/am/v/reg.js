@@ -1,7 +1,6 @@
-define('am/Reg', ['require', 'exports', 'am', 'am/Login'], function(require, exports, am, amLogin) {
-  var amReg;
-  amReg = function() {
-    return console.log('amregistration module!');
-  };
-  return exports.amReg = amReg;
+define(['require', 'marionette', 'text!am/tmpl/reg.html'], function(require, Marionette, Template) {
+  'use strict';
+  return Marionette.LayoutView.extend({
+    tempalte: Template
+  });
 });

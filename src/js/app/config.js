@@ -40,6 +40,7 @@ requirejs.config({
     		 * Animatedmodal компонента всплывающих окон
      */
     'am': 'src/js/app/components/am',
+    'am/tmpl': 'src/js/app/templates/components/am/v',
     'spec': 'src/js/app/tests/spec',
     'sinon': 'bower_components/sinonjs/sinon',
     'jasmine': 'bower_components/jasmine/lib/jasmine-core/jasmine',

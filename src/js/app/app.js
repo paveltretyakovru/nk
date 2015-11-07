@@ -30,10 +30,10 @@ define(['utils/listener', 'system/animations', 'components/components', 'handleb
   app.addInitializer(function(options) {
     return this.preload();
   });
-  Marionette.Renderer.render = function(template, data) {
-    var toHTML;
-    toHTML = Handlebars.compile(template);
-    return toHTML(data);
+  Marionette.Renderer.render = function(t, d) {
+    var tH;
+    tH = Handlebars.compile(t);
+    return tH(d);
   };
   return app;
 });

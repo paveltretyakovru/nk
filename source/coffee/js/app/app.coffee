@@ -19,12 +19,9 @@ define ['utils/listener','system/animations','components/components','handlebars
 
 		preload	: -> console.log 'app/app : preload function ' if @debug; Backbone.history.start()
 		Rivets 	: rivets # Определен в шиме
-
-	# Компируем в приложение анимации
-	_.extend app , Animations
-	# Добавлям инициализатора
-	app.addInitializer ( options ) -> return @preload()
-	# Вешаем на рендеринг Handlebars
-	Marionette.Renderer.render = ( template , data ) -> toHTML = Handlebars.compile template; return toHTML data
-
+	
+	_.extend app , Animations 													# Компируем в приложение анимации
+	app.addInitializer ( options ) 	   -> return @preload() 					# Добавлям инициализатора	
+	Marionette.Renderer.render = (t,d) -> tH = Handlebars.compile t; return tH d# Вешаем на рендеринг Handlebars
+																			
 	return app

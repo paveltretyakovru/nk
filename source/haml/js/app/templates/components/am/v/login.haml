@@ -1,0 +1,10 @@
+.autn-section
+	%h2 Войти
+	%h3
+		Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
+		%a.js-animate-modal-rotate{ :href => '#' } зарегистрируйтесь
+	%form{:action => "", :method => "get", :id => "login_form" }
+		%input{:type => "text", :name => "phone", :placeholder => "Номер телефона"}
+		%input{:type => "text", :name => "password", :placeholder => "Пароль"}
+		%button{:type=>"sumbit", :name=>"sumbit"} Войти
+	%a Вы забыли пароль?
