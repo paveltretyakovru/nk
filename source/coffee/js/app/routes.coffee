@@ -14,6 +14,7 @@ define ( require ) ->
 				'about'			: 'About'
 				'community' 	: 'Community'
 				'philosophie'	: 'Philosophie'
+				'profile'		: 'Profile'
 
 		# Событие при смены роутов
 		onRoute : ->
