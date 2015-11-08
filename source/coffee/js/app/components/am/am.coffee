@@ -10,6 +10,14 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 		el : {}
 		cP : {}
 		cM : {}
+		region 	: {}
+		front 	: el : {} , view : {}
+		back 	: el : {} , view : {}
+		current : el : {} , view : {}
+
+		scaleElement 		: document.getElementById 	'scale-body'	# Элемент который будет уходить назад
+		scaleClass 			: 'scale-element' 							# Клас анимации ухода назад
+		fullReverseCallback : {} 
 
 		cPevnt : 'add' : 'takePatient'
 		cMevnt : 'add' : 'takeModal'
@@ -20,12 +28,31 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 			Marionette.bindEntityEvents @ , @cP , @cPevnt # Bind events to collection of links
 			Marionette.bindEntityEvents @ , @cM , @cMevnt # Bind events to collection of modals
 
+			# Подготавливаем HTML площадку
+			@region 			= document.createElement 'div'
+			@front.el 			= document.createElement 'div'
+			@back.el 			= document.createElement 'div'
+			
+			@region.id 			= 'region-am'
+			@back.el.id 		= 'am-back'
+			@front.el.id 		= 'am-front'
+			
+			@front.el.className = 'am-side'
+			@back.el.className 	= 'am-side'
+
+			document.body.appendChild @region
+			@region.appendChild @back.el
+			@region.appendChild @front.el
+
+			# Инициализируем анимации
+			@initAnimation()		
+
 		###*
 		 * @param  {mixed} ops должен содерать объект el с селектором для поиска ссылок на анимации
 		###
 		catch : ( ops ) ->
 			@options = ops
-			@collectPatients()	# Перебрать и собрать переданых пациентов
+			@collectPatients()	# Перебрать и собрать переданых пациентов			
 
 		###############################################
 		## Функции для работы с пациентами (links) ####
@@ -33,7 +60,12 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 		###*
 		 * @return {Void} Подготовка элемента ссылок 
 		###
-		preparePatient : ( link_object ) -> @collectModals link_object
+		preparePatient : ( link_object ) ->
+			link_object.el.addEventListener 'click' , =>
+				@setCurrent view : link_object.view , el : @cM.findWhere( view : link_object.view ).get('viewObj').el				
+				@showModal( link_object )
+
+			@collectModals link_object
 		
 		###*
 		 * @return {Mixed} Ищет пациента в коллекции] 
@@ -57,26 +89,94 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 			# Перебираем удовлетворяющие элементы дума
 			for i , val of find 
 				# Последнее свойство селектора length :)
-				if isElement(val) and @getPatient({el : val}) == undefined
+				if isElement(val) #and @getPatient({el : val}) == undefined
 					# Если нет повторной кнопки сохраняем ее в коллекцию
-					@cP.add el : val , to : val.getAttribute 'data-am-to'
+					@cP.add el : val , view : val.getAttribute 'data-am-view'
 		
 		###############################################
 		## Функции для работы с модальными окнами #####
 		###############################################
 		collectModals : ( link_object ) ->
-			if not @cM.findWhere( to : link_object.to ) then @cM.add to : link_object.to , path : 'am/v/' + link_object.to
+			if not @cM.findWhere( view : link_object.view ) then @cM.add view : link_object.view , path : 'am/v/' + link_object.view
 
 		takeModal : ( m,c,ops ) ->
 			# Загружаем представление модального окна
-			require [ m.toJSON().path ] , ( obj ) ->
-				viewClass	= obj
-				window.view = new viewClass()
-				m.set 'viewClass' : viewClass , 'view' : view
-				view.render()
+			require [ m.toJSON().path ] , ( obj ) =>
+				viewClass		= obj
+				window.viewObj 	= new viewClass()
+
+				viewObj.on 'render' , ->
+					console.log 'View renderin' , viewObj.el
+					@catch el : viewObj.el
+				, @
+				
+				m.set 'view' : m.toJSON().view , 'viewClass' : viewClass , 'viewObj' : viewObj
+				viewObj.render()				
 
 				console.info 'Загружено представление модального окна' , m.toJSON().path , m.toJSON()
 			, ( err ) ->
 				console.error 'Не удалось загрузить объект модального окна' , m.toJSON().path
+
+		###############################################
+		## Функции для работы с анимациями ############
+		###############################################
+		
+
+		setCurrent : ( options ) ->
+			@current.el 	= options.el
+			@current.view 	= options.view
+
+		setFront : ->
+			@front.el.innerHTML = ''
+			@front.el.appendChild @current.el
+			@front.view = @current.view	
+
+		setBack : ->
+			@back.el.innerHTML = ''
+			@back.el.appendChild @current.el
+			@back.view = @current.view
+
+		initAnimation : ->
+			@createAnimation()
+
+			# Прослушиваем клик вне логин формы
+			$(@scaleElement).on 'click' , (event) =>
+				target = $ event.target 
+
+				# Проверяем, не произошел ли клик в окне
+				if target.closest(@$front).length then return
+				if target.closest(@$back).length then return
+
+				# Если окно анимировано и не активно
+				if @animationDropSides.progress()
+					@animationDropSides.reverse()
+		
+		createAnimation : ->
+			@animationDropSides = new TimelineMax
+				paused 				: true
+				onStart 			: => @setFront()
+				onReverseComplete 	: =>
+					if @animationRotateToBack.progress()
+						@animationRotateToBack.reverse()
+			.set @back.el 		, rotationX : -180
+			.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
+			.to @front.el 		, .3 , { right : '-20%' , alpha : 1 } , .3
+			.to @back.el  		, .3 , { right : '-20%' , alpha : 1 } , .3
+
+			@animationRotateToBack = new TimelineMax
+				paused 	: true
+				onStart : => @setBack()
+			.set @back.el , rotationX : -180
+			.to @back.el  , .5 	, rotationX : 0 	, .3
+			.to @front.el , .5 	, rotationX : 180 	, .3 # Анимация прокручивает секцию до регистрации
+		
+		showModal : ( options ) ->
+			if @animationDropSides.progress()
+				if @animationRotateToBack.progress()
+					@animationRotateToBack.reverse()
+				else
+					@animationRotateToBack.play()
+			else
+				@animationDropSides.play()
 
 	return o

@@ -715,13 +715,13 @@ section.right_menu a:hover {
 }
 
 /* line 353, ../../source/sass/style.sass */
-.animate-modal-parent {
+.am-parent {
   display: inline;
   overflow: hidden;
 }
 
 /* line 357, ../../source/sass/style.sass */
-.animate-modal-side {
+.am-side {
   position: absolute;
   top: 200;
   right: -120%;
@@ -734,8 +734,8 @@ section.right_menu a:hover {
   backface-visibility: hidden;
 }
 
-/* line 367, ../../source/sass/style.sass */
-.animate-modal-side:after {
+/* line 368, ../../source/sass/style.sass */
+.am-side:after {
   content: "";
   position: absolute;
   top: calc(50% - 160px);
@@ -745,8 +745,8 @@ section.right_menu a:hover {
   background-image: url(../images/key.svg);
 }
 
-/* line 376, ../../source/sass/style.sass */
-.animate-modal-side:before {
+/* line 377, ../../source/sass/style.sass */
+.am-side:before {
   content: "";
   position: absolute;
   top: 16;
