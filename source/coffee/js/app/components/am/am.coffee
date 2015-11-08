@@ -61,6 +61,8 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 		 * @return {Void} Подготовка элемента ссылок 
 		###
 		preparePatient : ( link_object ) ->
+
+			# Устанавливаем клик на новую найденую сслыку
 			link_object.el.addEventListener 'click' , =>
 				@setCurrent view : link_object.view , el : @cM.findWhere( view : link_object.view ).get('viewObj').el				
 				@showModal( link_object )
@@ -89,7 +91,7 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 			# Перебираем удовлетворяющие элементы дума
 			for i , val of find 
 				# Последнее свойство селектора length :)
-				if isElement(val) #and @getPatient({el : val}) == undefined
+				if isElement(val)
 					# Если нет повторной кнопки сохраняем ее в коллекцию
 					@cP.add el : val , view : val.getAttribute 'data-am-view'
 		
@@ -102,16 +104,14 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 		takeModal : ( m,c,ops ) ->
 			# Загружаем представление модального окна
 			require [ m.toJSON().path ] , ( obj ) =>
-				viewClass		= obj
-				window.viewObj 	= new viewClass()
+				viewClass = obj
+				viewObj   = new viewClass()
 
-				viewObj.on 'render' , ->
-					console.log 'View renderin' , viewObj.el
-					@catch el : viewObj.el
-				, @
+				# Проверяем загруженное представление на наличие ссылок компоненты
+				viewObj.on 'render' , -> @catch el : viewObj.el , @
 				
 				m.set 'view' : m.toJSON().view , 'viewClass' : viewClass , 'viewObj' : viewObj
-				viewObj.render()				
+				viewObj.render()			
 
 				console.info 'Загружено представление модального окна' , m.toJSON().path , m.toJSON()
 			, ( err ) ->
@@ -120,8 +120,6 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 		###############################################
 		## Функции для работы с анимациями ############
 		###############################################
-		
-
 		setCurrent : ( options ) ->
 			@current.el 	= options.el
 			@current.view 	= options.view

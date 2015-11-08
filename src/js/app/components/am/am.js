@@ -127,15 +127,14 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
     takeModal: function(m, c, ops) {
       return require([m.toJSON().path], (function(_this) {
         return function(obj) {
-          var viewClass;
+          var viewClass, viewObj;
           viewClass = obj;
-          window.viewObj = new viewClass();
+          viewObj = new viewClass();
           viewObj.on('render', function() {
-            console.log('View renderin', viewObj.el);
             return this["catch"]({
               el: viewObj.el
-            });
-          }, _this);
+            }, this);
+          });
           m.set({
             'view': m.toJSON().view,
             'viewClass': viewClass,
