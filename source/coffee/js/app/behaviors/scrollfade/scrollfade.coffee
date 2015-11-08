@@ -9,6 +9,7 @@ define ( require ) ->
 	Scrollfade = Marionette.Behavior.extend
 		# Подготовленные элементы для бехейвера
 		elements : []
+		debug 	 : false
 
 		# Установка параметров по-умолчанию
 		defaults : 
@@ -46,11 +47,10 @@ define ( require ) ->
 			# Создаем функцию для отслеживания прокрутки вниз
 			setBottomScrollEvent = ( element ) ->	
 				$(window).scroll ->
-					#console.log 'setBottomScrollEvent' , element
 					bottom_of_object = element.data.topJS
 					bottom_of_window = $(window).scrollTop() + $(window).height()
 
-					console.log 'BOTTOM' , bottom_of_window , bottom_of_object
+					console.log 'BOTTOM' , bottom_of_window , bottom_of_object if @debug
 
 					if bottom_of_window > bottom_of_object
 						_this.play element
@@ -87,7 +87,7 @@ define ( require ) ->
 			data.type 		= if tmp.scrollfadeType? 	 	then tmp.scrollfadeType 			else @defaults.animation.type
 			data.topJS	= element.$el.offset().top
 
-			console.log 'DATA' , data
+			console.log 'DATA' , data if @debug
 
 			return data
 

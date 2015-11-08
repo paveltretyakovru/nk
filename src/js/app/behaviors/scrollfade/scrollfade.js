@@ -7,6 +7,7 @@ define(function(require) {
   require('jquery-ui');
   Scrollfade = Marionette.Behavior.extend({
     elements: [],
+    debug: false,
     defaults: {
       animation: {
         effect: 'bounce',
@@ -47,7 +48,9 @@ define(function(require) {
           var bottom_of_object, bottom_of_window;
           bottom_of_object = element.data.topJS;
           bottom_of_window = $(window).scrollTop() + $(window).height();
-          console.log('BOTTOM', bottom_of_window, bottom_of_object);
+          if (this.debug) {
+            console.log('BOTTOM', bottom_of_window, bottom_of_object);
+          }
           if (bottom_of_window > bottom_of_object) {
             return _this.play(element);
           }
@@ -82,7 +85,9 @@ define(function(require) {
       data.duration = tmp.scrollfadeTime != null ? parseInt(tmp.scrollfadeTime) : this.defaults.animation.time;
       data.type = tmp.scrollfadeType != null ? tmp.scrollfadeType : this.defaults.animation.type;
       data.topJS = element.$el.offset().top;
-      console.log('DATA', data);
+      if (this.debug) {
+        console.log('DATA', data);
+      }
       return data;
     },
     handleElements: function(callbacks) {
