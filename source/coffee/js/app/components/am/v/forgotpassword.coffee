@@ -7,7 +7,7 @@ define [ 'require' , 'marionette' , 'text!am/tmpl/forgotpassword.html' ] , ( req
 	return Marionette.ItemView.extend
 		template : Template
 		queryUrl : '/api/v1/auth/sessions/forgot'
-		
+
 		ui 		 : 'formForgotpassword' 			: '#form-forgotpassword'
 		events 	 : 'submit @ui.formForgotpassword' 	: 'doForgotpassword' 
 
@@ -16,5 +16,5 @@ define [ 'require' , 'marionette' , 'text!am/tmpl/forgotpassword.html' ] , ( req
 
 		doForgotpassword : ( event ) ->
 			$.post app.hostUrl + @queryUrl , @model.toJSON() , (result) =>
-				console.log "result login: " , result
+				console.log "result forgotpassword: " , result
 			event.preventDefault()

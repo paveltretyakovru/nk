@@ -22,7 +22,7 @@ define(['require', 'marionette', 'text!am/tmpl/forgotpassword.html'], function(r
     doForgotpassword: function(event) {
       $.post(app.hostUrl + this.queryUrl, this.model.toJSON(), (function(_this) {
         return function(result) {
-          return console.log("result login: ", result);
+          return console.log("result forgotpassword: ", result);
         };
       })(this));
       return event.preventDefault();
