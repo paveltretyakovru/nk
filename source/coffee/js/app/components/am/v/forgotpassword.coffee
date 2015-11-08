@@ -6,13 +6,14 @@ define [ 'require' , 'marionette' , 'text!am/tmpl/forgotpassword.html' ] , ( req
 
 	return Marionette.ItemView.extend
 		template : Template
-		ui 		 : 'formForgotpassword' : '#form-forgotpassword'
-		events 	 : 'submit @ui.formForgotpassword' : 'doLogin' 
+		queryUrl : '/api/v1/auth/sessions.json'
+		ui 		 : 'formForgotpassword' 			: '#form-forgotpassword'
+		events 	 : 'submit @ui.formForgotpassword' 	: 'doForgotpassword' 
 
 		initialize 	: -> @model = new Model()
 		onRender 	: -> @binding = app.Rivets.bind @el , model : @model
 
-		doLogin : ( event ) ->
-			$.post app.hostUrl + '/api/v1/auth/sessions.json', @model.toJSON() , (result) =>
+		doForgotpassword : ( event ) ->
+			$.post app.hostUrl + @queryUrl , @model.toJSON() , (result) =>
 				console.log "result login: " , result
 			event.preventDefault()
