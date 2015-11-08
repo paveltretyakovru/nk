@@ -4,10 +4,10 @@
     Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
     <a data-am-view='reg' data-component='am'>зарегистрируйтесь</a>
   </h3>
-  <form action='' id='login_form' method='get'>
-    <input name='phone' placeholder='Номер телефона' type='text'>
-    <input name='password' placeholder='Пароль' type='text'>
+  <form action='' id='form-login' method='get'>
+    <input name='phone' placeholder='Номер телефона' rv-value='model:phone' type='text'>
+    <input name='password' placeholder='Пароль' rv-value='model:password' type='text'>
     <button name='sumbit' type='sumbit'>Войти</button>
   </form>
-  <a>Вы забыли пароль?</a>
+  <a data-am-view='forgotpassword' data-component='am'>Вы забыли пароль?</a>
 </div>

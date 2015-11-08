@@ -1,14 +1,14 @@
-define(['require', 'marionette', 'text!am/tmpl/login.html'], function(require, Marionette, Template) {
+define(['require', 'marionette', 'text!am/tmpl/forgotpassword.html'], function(require, Marionette, Template) {
   'use strict';
   var Model;
   Model = Backbone.Model.extend();
   return Marionette.ItemView.extend({
     template: Template,
     ui: {
-      'formLogin': '#form-login'
+      'formForgotpassword': '#form-forgotpassword'
     },
     events: {
-      'submit @ui.formLogin': 'doLogin'
+      'submit @ui.formForgotpassword': 'doLogin'
     },
     initialize: function() {
       return this.model = new Model();

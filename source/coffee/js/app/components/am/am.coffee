@@ -108,7 +108,7 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 				viewObj   = new viewClass()
 
 				# Проверяем загруженное представление на наличие ссылок компоненты
-				viewObj.on 'render' , -> @catch el : viewObj.el , @
+				viewObj.on 'render' , => @catch el : viewObj.el , @
 				
 				m.set 'view' : m.toJSON().view , 'viewClass' : viewClass , 'viewObj' : viewObj
 				viewObj.render()			

@@ -131,9 +131,9 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
           viewClass = obj;
           viewObj = new viewClass();
           viewObj.on('render', function() {
-            return this["catch"]({
+            return _this["catch"]({
               el: viewObj.el
-            }, this);
+            }, _this);
           });
           m.set({
             'view': m.toJSON().view,
