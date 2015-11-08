@@ -4,7 +4,7 @@ define(['require', 'marionette', 'text!am/tmpl/forgotpassword.html'], function(r
   Model = Backbone.Model.extend();
   return Marionette.ItemView.extend({
     template: Template,
-    queryUrl: '/api/v1/auth/sessions.json',
+    queryUrl: '/api/v1/auth/sessions/forgot',
     ui: {
       'formForgotpassword': '#form-forgotpassword'
     },
