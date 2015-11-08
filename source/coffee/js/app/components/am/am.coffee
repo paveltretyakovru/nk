@@ -171,6 +171,7 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 		showModal : ( options ) ->
 			if @animationDropSides.progress()
 				if @animationRotateToBack.progress()
+					@setFront()
 					@animationRotateToBack.reverse()
 				else
 					@animationRotateToBack.play()

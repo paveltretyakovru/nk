@@ -223,6 +223,7 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
     showModal: function(options) {
       if (this.animationDropSides.progress()) {
         if (this.animationRotateToBack.progress()) {
+          this.setFront();
           return this.animationRotateToBack.reverse();
         } else {
           return this.animationRotateToBack.play();
