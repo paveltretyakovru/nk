@@ -46,7 +46,8 @@ require(['app/app', 'pace', 'app/routes', 'controllers/desktop'], function(app, 
       app.appRouter = new Routes({
         controller: new Desktop()
       });
-      return app.start();
+      app.start();
+      return document.getElementById('loader').style.visibility = 'hidden';
     });
   }
   pace.start({

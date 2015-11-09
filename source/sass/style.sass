@@ -7,6 +7,7 @@
 @import compass/css3/box-shadow
 @import compass/css3/transition
 @import compass/css3/opacity
+@import compass/utilities/general/clearfix
 
 /* Цвета дизайна */
 @import colors
@@ -520,6 +521,7 @@ section.right_menu
 			padding 	: 15px
 			margin-left : 5px
 			text-align 	: center
+			+clearfix()
 
 			span:last-child
 				color : $color_gray
@@ -530,7 +532,9 @@ section.right_menu
 			width 			: 100%
 			margin-bottom 	: 16px
 
-
+	.justify_fix
+		width 		: 100%
+		display 	: inline-block
 
 	.color-orange
 		color : $color_orange !important

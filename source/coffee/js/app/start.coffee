@@ -31,6 +31,7 @@ require [ 'app/app' , 'pace' , 'app/routes' , 'controllers/desktop' ] , ( app , 
 		# Закончена загрузка файлов приложения
 		pace.on 'done' , ->
 			app.appRouter = new Routes controller : new Desktop(); app.start()
+			document.getElementById('loader').style.visibility = 'hidden'
 
 	# Запусками нижний прогрузчик
 	pace.start document : false
