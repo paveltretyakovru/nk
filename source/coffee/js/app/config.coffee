@@ -7,8 +7,8 @@ requirejs.config
 		'text'					: 'bower_components/requirejs-text/text'
 		'i18n'					: 'bower_components/requirejs-i18n/i18n'
 		'jquery'				: 'bower_components/jquery/dist/jquery.min'
-		'underscore'			: 'bower_components/underscore/underscore-min'
-		'backbone'				: 'bower_components/backbone/backbone-min'
+		'underscore'			: 'bower_components/underscore/underscore'
+		'backbone'				: 'bower_components/backbone/backbone'
 		'backbone.babysitter'	: 'bower_components/backbone.babysitter/lib/backbone.babysitter'
 		'backbone.wreqr'		: 'bower_components/backbone.wreqr/lib/backbone.wreqr.min'
 		'backbone.deep-model'	: 'bower_components/backbone-deep-model/distribution/deep-model.min'
@@ -42,6 +42,7 @@ requirejs.config
 		'fullpagejs'			: 'bower_components/fullpage.js/jquery.fullPage.min'
 		'arbor'					: 'bower_components/arbor/lib/arbor'
 		'arbor-graphics'		: 'bower_components/arbor/demos/_/graphics'
+		'd3'					: 'bower_components/d3/d3.min'
 
 		# COMPONENTS
 		
@@ -86,5 +87,6 @@ requirejs.config
 		'fullpagejs'		: 'deps'	: [ 'jquery']
 		'arbor'				: 'deps'	: [ 'jquery']
 		'arbor-graphics'	: 'deps'	: [ 'jquery' ]
+		'd3'				: 'deps'	: ['jquery']
 
 	config: i18n: locale: 'ru-ru'

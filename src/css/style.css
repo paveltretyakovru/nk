@@ -923,27 +923,37 @@ section.right_menu a:hover {
   width: 100%;
   margin-bottom: 16px;
 }
-/* line 535, ../../source/sass/style.sass */
+/* line 536, ../../source/sass/style.sass */
 #profile_block1 .justify_fix {
   width: 100%;
   display: inline-block;
 }
-/* line 539, ../../source/sass/style.sass */
+/* line 540, ../../source/sass/style.sass */
 #profile_block1 .color-orange {
   color: #ECB72E !important;
 }
-/* line 542, ../../source/sass/style.sass */
+/* line 543, ../../source/sass/style.sass */
 #profile_block1 .level-statistic-body {
   font-family: Bebas Neue;
   font-size: 12pt;
   line-height: 14.4pt;
   letter-spacing: 2px;
 }
-/* line 548, ../../source/sass/style.sass */
+/* line 549, ../../source/sass/style.sass */
 #profile_block1 .level-statistic-body .level-statistic-maxmin {
   color: #ECB72E;
 }
-/* line 554, ../../source/sass/style.sass */
+/* line 555, ../../source/sass/style.sass */
 #profile_block1 .level-statistic-body .level-statistic-maxmin span:last-child {
   float: right;
+}
+/* line 558, ../../source/sass/style.sass */
+#profile_block1 #viewport-left {
+  position: absolute;
+  left: 50px;
+}
+/* line 562, ../../source/sass/style.sass */
+#profile_block1 #viewport-right {
+  position: absolute;
+  right: 50px;
 }
