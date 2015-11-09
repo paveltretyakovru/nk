@@ -36,6 +36,7 @@
     "fullpage.js": "~2.7.4",
     "jquery-ui": "~1.11.4",
     "arbor": "*",
-    "backbone.syphon": "0.6.1"
+    "backbone.syphon": "0.6.1",
+    "d3": "~3.5.6"
   }
 }
