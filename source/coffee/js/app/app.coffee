@@ -1,4 +1,4 @@
-define ['utils/listener','system/animations','components/components','handlebars'],(Listener,Animations,Components,Handlebars)->
+define ['utils/listener','system/animations','components/components','handlebars' , 'models/user'],(Listener,Animations,Components,Handlebars , User)->
 	'use strict'
 	
 	app = new Marionette.Application
@@ -12,13 +12,18 @@ define ['utils/listener','system/animations','components/components','handlebars
 
 		initialize : ->
 			console.log 'app/app : initializing app' if @debug
+			@models 		= {}
 			@utils 			= {}
-			@utils.Listener = new Listener {}
 			@components 	= Components
+			
+			@utils.Listener = new Listener {}
 			@hostUrl 		= 'http://192.168.1.39:82'
-
-		preload	: -> console.log 'app/app : preload function ' if @debug; Backbone.history.start()
+		
 		Rivets 	: rivets # Определен в шиме
+
+		preload	: ->
+			@models.user = new User()
+			console.log 'app/app : preload function ' if @debug; Backbone.history.start()
 	
 	_.extend app , Animations 													# Компируем в приложение анимации
 	app.addInitializer ( options ) 	   -> return @preload() 					# Добавлям инициализатора	

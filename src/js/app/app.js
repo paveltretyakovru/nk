@@ -1,4 +1,4 @@
-define(['utils/listener', 'system/animations', 'components/components', 'handlebars'], function(Listener, Animations, Components, Handlebars) {
+define(['utils/listener', 'system/animations', 'components/components', 'handlebars', 'models/user'], function(Listener, Animations, Components, Handlebars, User) {
   'use strict';
   var app;
   app = new Marionette.Application({
@@ -13,18 +13,20 @@ define(['utils/listener', 'system/animations', 'components/components', 'handleb
       if (this.debug) {
         console.log('app/app : initializing app');
       }
+      this.models = {};
       this.utils = {};
-      this.utils.Listener = new Listener({});
       this.components = Components;
+      this.utils.Listener = new Listener({});
       return this.hostUrl = 'http://192.168.1.39:82';
     },
+    Rivets: rivets,
     preload: function() {
+      this.models.user = new User();
       if (this.debug) {
         console.log('app/app : preload function ');
       }
       return Backbone.history.start();
-    },
-    Rivets: rivets
+    }
   });
   _.extend(app, Animations);
   app.addInitializer(function(options) {

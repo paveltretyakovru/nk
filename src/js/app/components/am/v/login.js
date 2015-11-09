@@ -1,8 +1,7 @@
-define(['require', 'marionette', 'text!am/tmpl/login.html'], function(require, Marionette, Template) {
+define(['require', 'marionette', 'text!am/tmpl/login.html', 'models/user'], function(require, Marionette, Template, User) {
   'use strict';
-  var Model;
-  Model = Backbone.Model.extend();
   return Marionette.ItemView.extend({
+    queryUrl: '/api/v1/auth/sessions',
     template: Template,
     ui: {
       'formLogin': '#form-login'
@@ -11,7 +10,7 @@ define(['require', 'marionette', 'text!am/tmpl/login.html'], function(require, M
       'submit @ui.formLogin': 'doLogin'
     },
     initialize: function() {
-      return this.model = new Model();
+      return this.model = app.models.user;
     },
     onRender: function() {
       return this.binding = app.Rivets.bind(this.el, {
@@ -19,12 +18,24 @@ define(['require', 'marionette', 'text!am/tmpl/login.html'], function(require, M
       });
     },
     doLogin: function(event) {
-      $.post(app.hostUrl + '/api/v1/auth/sessions', this.model.toJSON(), (function(_this) {
+      $.post(app.hostUrl + this.queryUrl, this.model.toJSON(), (function(_this) {
         return function(result) {
-          return console.log("result login: ", result);
+          console.log('RESULT DATA', result);
+          if ('id' in result) {
+            return _this.successLogin(result);
+          } else {
+            return _this.errorLogin(result);
+          }
         };
       })(this));
       return event.preventDefault();
+    },
+    successLogin: function(data) {
+
+      /* code */
+    },
+    errorLogin: function(data) {
+      return console.error('Ошибка авторизации', data);
     }
   });
 });
