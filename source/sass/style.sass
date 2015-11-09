@@ -194,6 +194,8 @@ main
 	color 			: #fff
 
 /* BUTTONS */
+$color_button_gray : #5D6066
+
 .button-simple
 	width 		: auto
 	text-align 	: center
@@ -208,6 +210,27 @@ main
 
 .opacity05
 	opacity : 0.5
+
+
+button.button-dark
+	position : relative
+	height : 48px
+	width : 256px
+	//border : 2px solid rgba(60,66,72,.5)
+	border : 1px solid $color_button_gray
+	background: none
+	padding: 0 16px 0 16px
+	line-height: 24px
+	text-align: left
+	font-size : 14px
+	color : #C6C7C8
+
+button.button-dark:after
+	content: ''
+	width: 24px
+	height: 24px
+	float: right
+	background-image: url(../images/goto.svg)
 
 
 /* FOR PAGES */
@@ -386,16 +409,142 @@ section.right_menu
 
 // PAGES
 #profile_block1
-	div:first-child
+	$color_white_dark 	: rgba(255, 255, 255, 0.9)
+
+	background 			: url("../images/bg_glow.jpg")
+	background-size 	: cover
+	color 				: $color_white_dark
+	//text-shadow 		: 1px 1px 5px rgba(93, 96, 102, 0.78)
+	padding-top 		: 64px
+	padding-bottom 		: 32px
+
+	>div:first-child
 		vertical-align	: top
+		width 			: 15%
+
+		img
+			position: relative
+			width 	: 320px
+			left 	: -110px
+			top 	: -88px			
+
+	>div:last-child
+		width 			: 15%
+
+	.center-block
+		width: 69%
+
 	>div
 		display	: inline-block
-		border 	: 1px solid red
-		
-		*
-			width : auto
+		// border 	: 1px solid red
 
 		hgroup
+			margin 		: 50px 0px 32px 0px
 			h1
 				color 			: $color_orange
-				margin-bottom 	: 15px
+				margin 			: initial
+				width 			: 100%
+				display 		: inline 
+				font-size 		: 48pt
+				line-height 	: 57.6pt
+
+			i 
+				font-size 		: 40px
+				vertical-align 	: super
+				margin-left 	: 24px
+				color 			: gray
+
+			h5
+				margin-top 		: 16px
+				font-size 		: 18pt
+	button
+		margin: 32px 16px 0px 0px
+
+	progress
+		background-color: rgba(236, 183, 46, 0.3)
+		border			: 0
+		height			: 8px
+		border-radius	: 9px
+		width 			: 100%
+		display 		: block
+
+	progress::-webkit-progress-bar
+		background-color: rgba(236, 183, 46, 0.3)
+		border 			: 0
+		height 			: 8px
+		border-radius 	: 9px
+		width 			: 100%
+		display 		: block
+
+	progress::-webkit-progress-value
+		background-color: $color_orange
+		border 			: 0
+		height 			: 8px
+		border-radius 	: 9px
+		width 			: 100%
+		display 		: block
+
+	progress::-moz-progress-bar
+		background-color: rgba(236, 183, 46, 0.3)
+		border 			: 0
+		height 			: 8px
+		border-radius 	: 9px
+		width 			: 100%
+		display 		: block
+
+
+	.skills		
+		letter-spacing 	: 3px
+		margin-top 		: 56px
+		margin-bottom 	: 56px
+
+		p
+			margin-bottom 	: 16px
+		
+			span
+				color 			: $color_white_dark
+				margin-right 	: 8px
+				font-family 	: Bebas Neue
+				font-size 		: 20pt
+				line-height 	: 24pt
+
+			a
+				color 		: $color_white_dark
+				font-size	: 14pt
+				line-height : 16.8pt
+
+		li
+			float 		: left
+			width 		: 16%
+			padding 	: 15px
+			margin-left : 5px
+			text-align 	: center
+
+			span:last-child
+				color : $color_gray
+				font-size 		: 10pt
+				font-family		: 'Lora'
+		
+		li img
+			width 			: 100%
+			margin-bottom 	: 16px
+
+
+
+	.color-orange
+		color : $color_orange !important
+
+	.level-statistic-body
+		font-family 	: Bebas Neue
+		font-size 		: 12pt
+		line-height 	: 14.4pt
+		letter-spacing 	: 2px
+		
+		.level-statistic-maxmin
+			color 		: $color_orange
+
+		.level-statistic-maxmin span:first-child
+			//float 		: left
+
+		.level-statistic-maxmin span:last-child
+			float 		: right
