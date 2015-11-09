@@ -1,7 +1,7 @@
 .autn-section
-	%h2 Войти
-	%h3
-		Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
+	%header
+		%h2 Войти
+		%p На сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
 		%a{ :data => { :component => 'am' , :am_view => 'reg' 	} }зарегистрируйтесь
 	%form{:action => "", :method => "get", :id => "form-login" }
 		%input{:type => "text", :name => "phone", :placeholder => "Номер телефона" , :rv => { :value => "model:phone"} }

@@ -79,9 +79,9 @@
 	<style>
 
 		path , line ,  circle , polygon {
-			animation 					: hide 3s ease-out;
+			animation 					: hide 2s ease-out;
 			animation-fill-mode			: forwards;
-			-webkit-animation 			: hide 3s ease-out;
+			-webkit-animation 			: hide 2s ease-out;
     		-webkit-animation-fill-mode	: forwards;
 			stroke-dashoffset			: 1000;
 			stroke-dasharray			: 1000;
@@ -101,9 +101,9 @@
 
 		path.show , line.show ,  circle.show , polygon.show {
 			display 					: block;
-			animation 					: showe  3s ease-in;
+			animation 					: showe  1s ease-in;
 			animation-fill-mode 		: forwards;
-			-webkit-animation 			: showe 3s ease-in;
+			-webkit-animation 			: showe 1s ease-in;
 			-webkit-animation-fill-mode : forwards;
 		}
 

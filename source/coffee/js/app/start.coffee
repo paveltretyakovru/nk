@@ -3,7 +3,7 @@ require [ 'app/app' , 'pace' , 'app/routes' , 'controllers/desktop' ] , ( app , 
 	
 	loaded 				= false
 	window.app			= app || false	
-	window.FAST_LOADER 	= true
+	window.FAST_LOADER 	= false
 
 	# Предзагрузка изображений
 	imagesSrcs 				= [ "src/images/back_loader_logo.svg" , "src/images/front_loader_logo.svg" ]

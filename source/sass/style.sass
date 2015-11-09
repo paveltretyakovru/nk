@@ -72,14 +72,14 @@ main
 #loader
 	position	: absolute
 	overflow 	: hidden
-	width 		: 300px
-	height		: 300px
-	left		: 38%
-	top			: 250px
+	width 		: 160px
+	height		: 160px
+	left		: calc(50% - 80px)
+	top			: calc(50% - 80px)
 	opacity 	: 0
 
 	+transform-origin (50% 50%)
-	+animation ( rot 2s linear )
+	+animation ( rot 1.5s ease-out )
 
 	+keyframes ( rot )
 		from
@@ -102,7 +102,7 @@ main
 .line
 	stroke-dasharray 	: 1000
 	stroke-dashoffset	: 1000
-	animation 			: dash 3s ease-in alternate 1 forwards
+	animation 			: dash 4s ease-in alternate 1 forwards
 	transition 			: dash .3s ease-out
 
 @keyframes dash
@@ -116,7 +116,7 @@ main
 .path
 	stroke-dasharray: 1000
 	stroke-dashoffset: 1000
-	animation: pa 3s ease-in normal 1 forwards
+	animation: pa 4s ease-in normal 1 forwards
 	//transition: dash .3s ease-out
 
 // polygon.path
@@ -135,13 +135,13 @@ main
 	//+background(radial-gradient(center top, 100% 25%, #fff, $color_gray), $color_gray)
 
 /* Крутим лучи логотипа */
-+spin( '.loader-logo-back' , 10s )
++spin( '.loader-logo-back' , 5s )
 
 /* Создаем пропадающий класс */
-+fadeout( '.fadeout' , 2s )
++fadeout( '.fadeout' , 1s )
 
 /* Создаем появляющийся класс */
-+fadein( '.fadein' , 2s )
++fadein( '.fadein' , 1s )
 
 /* Появления лоадера */
 +fadein( '.fadein-loader' , 1s )
@@ -244,9 +244,6 @@ button.button-dark:after
 
 .page-index-content
 	+sides-padding()
-	padding-bottom 	: 160px
-	padding-top 	: 50px
-	
 	img	
 		width : 100%
 
@@ -548,3 +545,148 @@ section.right_menu
 
 		.level-statistic-maxmin span:last-child
 			float 		: right
+
+// Стили для home page
+.section_1_bg
+	display: relative
+	padding-top: 120px
+	min-height: 70%
+	background: url("../images/places/places_bg_1_gradient.png"), url("../images/places/places_bg_1.png")
+	background-size: 100% 100% , 100% 100%
+	margin-bottom: 160px
+	h1
+		font-family: Bebas Neue
+		font-size: 60px
+		line-height: 64px
+		letter-spacing: 3px
+
+		width: 75%		
+		margin: 96px 0 32px 0
+		text-align 	: left
+	h3
+		font-family: "Lora Regular", sans-serif
+		font-size: 16px
+		line-height: 24px
+		letter-spacing: 0
+		color: rgba(255,255,255,0.5)
+
+		width: 30%
+		margin-bottom: 32px
+		text-align	: left
+	button
+		margin-bottom: 64px
+
+.instruments
+	display: block
+	position: relative
+	width: 100%
+	height: 16px
+	margin: 32px 0 15px 0
+	font-family: Bebas Neue
+	font-size: 18px
+	font-weight: 300
+	letter-spacing: 2px
+	+sides-padding()
+
+	figure:first-child
+		float : left
+		margin : 0
+		color: rgba(255,255,255,0.5)
+	
+	figure 
+		display: inline-block
+		float : right
+		margin-left : 16px
+		height : 16px
+
+	figcapation
+		font-size : 18px
+		+opacity(.5)
+
+	figure img 
+		margin-right : 8px
+hr
+	margin-bottom : 32px
+	height : 1px
+	background : white
+	+opacity(.4)
+	margin 		: 0 40px 30px 40px
+
+// Все по карточкам заведений
+
+section.lounges
+	+display-flex(flex)
+	+justify-content(center)
+	padding : 0 40px 0
+
+
+$url_0: url(../images/venzel-corner.svg)
+
+article.lounge 
+	display : inline-block
+	position : relative
+	min-width : 280px
+	border-radius: 8px
+	margin-bottom: 20px
+	overflow: hidden
+	background: red
+
+	.frontside
+		position: relative
+		color : black
+		text-align : center
+		background: linear-gradient(white, #E0E8EE)
+		// $url_0 left 16px top 16px no-repeat, $url_0 right 16px top 16px no-repeat, $url_0 left 16px bottom 16px no-repeat, $url_0 right 16px bottom 16px no-repeat,
+		padding: 40px
+		z-index: 50
+		
+	.frontside:before
+		content: ''
+		display: block
+		position: absolute
+		top: 8px
+		left: 8px
+		width: calc(100% - 16px)
+		height: calc(100% - 16px)
+		box-shadow: inset rgba(122, 195, 108, .5) 0 0 0 2px
+		border-radius: 4px
+
+	.frontside:after
+		content: ''
+		display: block
+		position: absolute
+		top: 12px
+		left: 12px
+		width: calc(100% - 24px)
+		height: calc(100% - 24px)
+		box-shadow: inset rgba(122, 195, 108, .25) 0 0 0 1px
+		border-radius: 2px
+
+	.frontside img 
+		margin-bottom: 48px
+		width : 100%
+		background: red
+
+	.frontside h4 
+		margin-bottom: 8px
+		font-family: "Bebas Neue Book", sans-serif
+		font-size: 24px
+		letter-spacing: 4px
+	
+	.frontside small
+		font-family	: "Lora Regular", sans-serif
+		font-size	: 12px
+		color 		: $color_gray
+
+	.backside
+		position: absolute
+		display: block
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		background : #fff
+		z-index: 20
+
+.frontside , .backside
+	+backface-visibility( hidden )

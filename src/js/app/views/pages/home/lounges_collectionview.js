@@ -3,7 +3,7 @@ define(function(require) {
   var Collection, Marionette, childView, data;
   Marionette = require('marionette');
   childView = Marionette.ItemView.extend({
-    template: "<div class='frontside' style='color:{{ color }}'><img src='src/images/blazons/{{ blazon }}'><h4>«{{ title }}»</h4><small>{{ city }}</small></div><div class='backside'><img src='src/images/reverse-side.jpg' style='width: 100%; height: 100%'></div>",
+    template: "<div class='frontside'><img src='src/images/blazons/{{ blazon }}'><h4>«{{ title }}»</h4><small>{{ city }}</small></div><div class='backside'><img src='src/images/reverse-side.jpg' style='width: 100%; height: 100%'></div>",
     tagName: 'article',
     className: 'lounge'
   });

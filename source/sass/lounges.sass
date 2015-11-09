@@ -37,7 +37,10 @@ h1
 	line-height : 64px
 
 h2 
-	font-size : 48px
+	font-family: Bebas Neue
+	font-size: 48px
+	letter-spacing: 2px
+	color: #EBB22F
 
 h3 
 	font-family: Bebas Neue
@@ -97,123 +100,6 @@ button:after
 	float: right
 	background-image: url(../images/goto.svg)
 
-// Section 1
-main h1 		
-	width: 75%		
-	margin: 96px 0 32px 0
-	text-align 	: left
-
-main h3
-	width: 30%
-	margin-bottom: 32px
-	font-size	: 16pt
-	text-align	: left
-
-main button
-	margin-bottom: 64px
-
-figure:first-child
-	float : left
-	margin : 0
-	
-figure 
-	display: inline-block
-	float : right
-	margin-left : 16px
-	height : 16px
-
-figcapation
-	font-size : 18px
-	+opacity(.5)
-
-figure img 
-	margin-right : 8px
-
-.instruments
-	width: 100%
-	height: 16px
-	margin: 32px 0 15px 0
-	+sides-padding()
-hr
-	margin-bottom : 32px
-	height : 1px
-	background : white
-	+opacity(.4)
-	margin 		: 0 40px 30px 40px
-
-section.lounges
-	text-align: center
-	padding : 0 40px 0
-
-$url_0: url(../images/venzel-corner.svg)
-
-article.lounge 
-	display : inline-block
-	position : relative
-	width : 280px
-	border-radius: 8px
-	overflow: hidden
-	margin-bottom: 20px
-	margin-right	: 10px
-
-	.frontside
-		position: relative
-		color : black
-		text-align : center
-		background: linear-gradient(white, #E0E8EE)
-		// $url_0 left 16px top 16px no-repeat, $url_0 right 16px top 16px no-repeat, $url_0 left 16px bottom 16px no-repeat, $url_0 right 16px bottom 16px no-repeat,
-		padding: 40px
-		z-index: 50
-		
-	.frontside:before
-		content: ''
-		display: block
-		position: absolute
-		top: 8px
-		left: 8px
-		width: calc(100% - 16px)
-		height: calc(100% - 16px)
-		box-shadow: inset rgba(122, 195, 108, .5) 0 0 0 2px
-		border-radius: 4px
-
-	.frontside:after
-		content: ''
-		display: block
-		position: absolute
-		top: 12px
-		left: 12px
-		width: calc(100% - 24px)
-		height: calc(100% - 24px)
-		box-shadow: inset rgba(122, 195, 108, .25) 0 0 0 1px
-		border-radius: 2px
-
-	.frontside img 
-		margin-bottom: 48px
-		width : 100%
-
-	.frontside h4 
-		margin-bottom: 8px
-		font-family: Bebas Neue
-		font-size: 36pt
-	
-	.frontside small
-		font-family	: Lora
-		font-size	: 12pt
-		color 		: $color_gray
-
-	.backside
-		position: absolute
-		display: block
-		left: 0
-		top: 0
-		width: 100%
-		height: 100%
-		background : #fff
-		z-index: 20
-
-.frontside , .backside
-	+backface-visibility( hidden )
-
 // Login
 section.login
 	position	: absolute
@@ -223,16 +109,31 @@ section.login
 	padding 	: 80px
 	background 	: linear-gradient(left bottom, #17191F, #272B33)
 	z-index 	: 100
-
-	h2	
-		color: #EBB22F
-		margin-bottom: 16px
-	h3
-		width: 50%
-		margin-bottom: 32px
+	header
+		display: block
+		position: relative
+		float: none
+		height: auto
+		padding: 0
+		h2	
+			font-family: "Bebas Neue Book", sans-serif
+			font-size: 48px
+			letter-spacing: 2px
+			color: #EBB22F
+			margin-bottom: 32px
+		p
+			font-family: "Lora Regular", sans-serif
+			font-size: 18px
+			line-height: 28px
+			letter-spacing: 0px
+			color: white
+			width: 50%
+			margin-bottom: 32px
 	input 
 		margin-bottom: 40px
 		margin-right: 16px
+	a
+		letter-spacing: 0
 
 section.login:after
 	content: ''
