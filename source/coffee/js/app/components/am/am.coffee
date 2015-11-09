@@ -166,16 +166,16 @@ define ['require' , 'exports' , 'marionette' , 'components/am/model' , 'gsap' , 
 						@animationRotateToBack.reverse()
 			.set @back.el 		, rotationX : -180
 			#.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay bg_testing' , 0
-			.to @scaleElement 	, .3 	, className : '+=bg_testing' , 0			
-			.to @front.el 		, .3 , { right : '-20%' , alpha : 1 } , .3
-			.to @back.el  		, .3 , { right : '-20%' , alpha : 1 } , .3
+			.to @scaleElement 	, .6 	, className : '+=bg_testing' , 0			
+			.to @front.el 		, .6 , { right : '-20%' , alpha : 1 } , .6
+			.to @back.el  		, .6 , { right : '-20%' , alpha : 1 } , .6
 
 			@animationRotateToBack = new TimelineMax
 				paused 	: true
 				onStart : => @setBack()
 			.set @back.el , rotationX : -180
-			.to @back.el  , .5 	, rotationX : 0 	, .3
-			.to @front.el , .5 	, rotationX : 180 	, .3 # Анимация прокручивает секцию до регистрации
+			.to @back.el  , .10 	, rotationX : 0 	, .6
+			.to @front.el , .10 	, rotationX : 180 	, .6 # Анимация прокручивает секцию до регистрации
 		
 		showModal : ( options ) ->
 			if @animationDropSides.progress()

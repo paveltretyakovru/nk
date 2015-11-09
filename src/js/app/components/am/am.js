@@ -204,15 +204,15 @@ define(['require', 'exports', 'marionette', 'components/am/model', 'gsap', 'syst
         })(this)
       }).set(this.back.el, {
         rotationX: -180
-      }).to(this.scaleElement, .3, {
+      }).to(this.scaleElement, .6, {
         className: '+=bg_testing'
-      }, 0).to(this.front.el, .3, {
+      }, 0).to(this.front.el, .6, {
         right: '-20%',
         alpha: 1
-      }, .3).to(this.back.el, .3, {
+      }, .6).to(this.back.el, .6, {
         right: '-20%',
         alpha: 1
-      }, .3);
+      }, .6);
       return this.animationRotateToBack = new TimelineMax({
         paused: true,
         onStart: (function(_this) {
@@ -222,11 +222,11 @@ define(['require', 'exports', 'marionette', 'components/am/model', 'gsap', 'syst
         })(this)
       }).set(this.back.el, {
         rotationX: -180
-      }).to(this.back.el, .5, {
+      }).to(this.back.el, .10, {
         rotationX: 0
-      }, .3).to(this.front.el, .5, {
+      }, .6).to(this.front.el, .10, {
         rotationX: 180
-      }, .3);
+      }, .6);
     },
     showModal: function(options) {
       if (this.animationDropSides.progress()) {
