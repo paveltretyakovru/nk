@@ -34,9 +34,10 @@ require(['app/app', 'pace', 'app/routes', 'controllers/desktop'], function(app, 
     });
     pace.on('done', function() {
       if (loaded) {
-        return app.animations.hideLoader(function() {
+        app.animations.hideLoader(function() {
           return app.start();
         });
+        return document.getElementsByClassName('pace')[0].style.visibility = 'hidden';
       } else {
         return loaded = true;
       }
@@ -47,7 +48,8 @@ require(['app/app', 'pace', 'app/routes', 'controllers/desktop'], function(app, 
         controller: new Desktop()
       });
       app.start();
-      return document.getElementById('loader').style.visibility = 'hidden';
+      document.getElementById('loader').style.visibility = 'hidden';
+      return document.getElementsByClassName('pace')[0].style.visibility = 'hidden';
     });
   }
   pace.start({

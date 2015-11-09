@@ -25,13 +25,19 @@ require [ 'app/app' , 'pace' , 'app/routes' , 'controllers/desktop' ] , ( app , 
 				else loaded = true
 		
 		# Закончена загрузка файлов приложения
-		pace.on 'done' , -> if loaded then app.animations.hideLoader -> app.start() else loaded = true
+		pace.on 'done' , -> 
+			if loaded
+				app.animations.hideLoader -> app.start()
+				document.getElementsByClassName('pace')[0].style.visibility = 'hidden'
+			else
+				loaded = true
 
 	else		
 		# Закончена загрузка файлов приложения
 		pace.on 'done' , ->
 			app.appRouter = new Routes controller : new Desktop(); app.start()
 			document.getElementById('loader').style.visibility = 'hidden'
+			document.getElementsByClassName('pace')[0].style.visibility = 'hidden'
 
 	# Запусками нижний прогрузчик
 	pace.start document : false

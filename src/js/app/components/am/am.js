@@ -1,4 +1,4 @@
-define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(require, exports, Marionette) {
+define(['require', 'exports', 'marionette', 'components/am/model', 'gsap', 'system/helpers'], function(require, exports, Marionette, mM) {
   'use strict';
 
   /**
@@ -128,18 +128,25 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
     takeModal: function(m, c, ops) {
       return require([m.toJSON().path], (function(_this) {
         return function(obj) {
-          var viewClass, viewObj;
+          var data, tM, viewClass, viewObj;
           viewClass = obj;
           viewObj = new viewClass();
+          data = {
+            'view': m.toJSON().view,
+            'viewClass': viewClass,
+            'viewObj': viewObj
+          };
+          if (viewObj.model) {
+            _.extend(data, viewObj.model.toJSON());
+          } else {
+            tM = new mM();
+            _.extend(data, tM.toJSON());
+          }
+          m.set(data);
           viewObj.on('render', function() {
             return _this["catch"]({
               el: viewObj.el
             }, _this);
-          });
-          m.set({
-            'view': m.toJSON().view,
-            'viewClass': viewClass,
-            'viewObj': viewObj
           });
           viewObj.render();
           return console.info('Загружено представление модального окна', m.toJSON().path, m.toJSON());
@@ -198,7 +205,7 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
       }).set(this.back.el, {
         rotationX: -180
       }).to(this.scaleElement, .3, {
-        className: '+=' + this.scaleClass + ' background-color-overlay'
+        className: '+=bg_testing'
       }, 0).to(this.front.el, .3, {
         right: '-20%',
         alpha: 1

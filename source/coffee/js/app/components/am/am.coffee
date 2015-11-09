@@ -1,4 +1,4 @@
-define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( require , exports , Marionette ) ->
+define ['require' , 'exports' , 'marionette' , 'components/am/model' , 'gsap' , 'system/helpers' ] , ( require , exports , Marionette , mM ) ->
 	'use strict'	
 	###*
 	 * Сокращения: [m]-model; [c]-collection; [o]-object; [am]-anmatedmodals; [ops]-options
@@ -65,7 +65,7 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 			# Устанавливаем клик на новую найденую сслыку
 			link_object.el.addEventListener 'click' , =>
 				console.log 'CLICK ELEMENT'
-				@setCurrent view : link_object.view , el : @cM.findWhere( view : link_object.view ).get('viewObj').el				
+				@setCurrent view : link_object.view , el : @cM.findWhere( view : link_object.view ).get('viewObj').el
 				@showModal( link_object )
 
 			@collectModals link_object
@@ -107,12 +107,19 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 			require [ m.toJSON().path ] , ( obj ) =>
 				viewClass = obj
 				viewObj   = new viewClass()
-
+				
+				data = 'view' : m.toJSON().view , 'viewClass' : viewClass , 'viewObj' : viewObj
+				if viewObj.model 
+					_.extend data , viewObj.model.toJSON()
+				else
+					tM = new mM()
+					_.extend data , tM.toJSON()
+				m.set( data )
+				
 				# Проверяем загруженное представление на наличие ссылок компоненты
 				viewObj.on 'render' , => @catch el : viewObj.el , @
+				viewObj.render()				
 				
-				m.set 'view' : m.toJSON().view , 'viewClass' : viewClass , 'viewObj' : viewObj
-				viewObj.render()			
 
 				console.info 'Загружено представление модального окна' , m.toJSON().path , m.toJSON()
 			, ( err ) ->
@@ -158,7 +165,8 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 					if @animationRotateToBack.progress()
 						@animationRotateToBack.reverse()
 			.set @back.el 		, rotationX : -180
-			.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay' , 0
+			#.to @scaleElement 	, .3 	, className : '+=' + @scaleClass + ' background-color-overlay bg_testing' , 0
+			.to @scaleElement 	, .3 	, className : '+=bg_testing' , 0			
 			.to @front.el 		, .3 , { right : '-20%' , alpha : 1 } , .3
 			.to @back.el  		, .3 , { right : '-20%' , alpha : 1 } , .3
 

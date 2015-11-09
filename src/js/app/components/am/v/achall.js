@@ -1,8 +1,11 @@
-define(['require', 'marionette', 'text!am/tmpl/achall.html'], function(require, Marionette, Template) {
+define(['require', 'marionette', 'text!am/tmpl/achall.html', 'components/am/model'], function(require, Marionette, Template, Model) {
   'use strict';
-  var Model;
-  Model = Backbone.Model.extend();
   return Marionette.ItemView.extend({
-    template: Template
+    template: Template,
+    initialize: function() {
+      return this.model = new Model({
+        design: true
+      });
+    }
   });
 });
