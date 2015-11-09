@@ -25,7 +25,7 @@ define ( require ) ->
 			app.regionMenu.show @Menu
 
 			app.regionContent.on 'show' , ->
-				app.animations.showMain()
+				if FAST_LOADER then app.animations.fastShowMain() else app.animations.showMain()
 
 		run : ( pageName , pageParameters ) ->
 			console.log 'controllers/desktop.run : route->' + pageName if @debug

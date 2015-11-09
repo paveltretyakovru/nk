@@ -50,6 +50,24 @@ define ( requrie ) ->
 					@tweens.showMain.to 	@elements.content 	, .5 	, autoAlpha : 1 , 1.5
 					@tweens.showMain.play()
 
+			# Появление всего контента
+			@animations.fastShowMain = ( onstart , callback ) =>
+				# Если анимация уже инициализирована
+				if @tweens.hideMain? then @tweens.hideMain.reverse()
+				else
+					# Иначе создаем новую
+					@tweens.showMain = new TimelineLite
+						onStart : ->							
+							if onstart? then onstart()
+						onComplete : ->
+							if callback? then callback()
+						paused 	: true					
+					@tweens.showMain.set 	[ @elements.main , @elements.header , @elements.content ] , autoAlpha : 1
+					# @tweens.showMain.to 	@elements.main 		, 0 	, autoAlpha : 1 , 0
+					# @tweens.showMain.to 	@elements.header 	, 0 	, autoAlpha : 1 , 0
+					# @tweens.showMain.to 	@elements.content 	, 0 	, autoAlpha : 1 , 1.5
+					@tweens.showMain.play()
+
 			# Показать загрузчик
 			@animations.showLoader = ( callback ) =>			
 
