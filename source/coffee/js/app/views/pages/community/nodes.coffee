@@ -8,6 +8,9 @@ define ( require ) ->
 		w: 300
 		h: 500
 
+		nodes: Graph.nodes
+		links: Graph.links
+
 		node: {}
 		link: {}
 
@@ -15,8 +18,14 @@ define ( require ) ->
 
 		element: ''
 
-		constructor: (el) ->
+		constructor: (el, w, h) ->
 			@element = el
+			@w = w
+			@h = h
+
+			#_.each @nodes, (v) =>
+			#	v.y = v.y / 100 * @h
+
 			rightSide = d3.select '#'+el#'#viewport-left'
 			.append 'svg'
 			.attr 'width', @w
@@ -32,8 +41,8 @@ define ( require ) ->
 
 			@force = d3.layout.force()
 			.size [@w, @h]
-			.nodes Graph.nodes
-			.links Graph.links
+			.nodes @nodes
+			.links @links
 			.linkStrength 5
 			.linkDistance (link) ->
 				x = link.target.x - link.source.x
@@ -58,7 +67,7 @@ define ( require ) ->
 			do @render
 
 		render: () ->
-			@link = @link.data Graph.links
+			@link = @link.data @links
 
 			@link
 			.enter()
@@ -74,7 +83,7 @@ define ( require ) ->
 				else
 					return 3
 
-			@node = @node.data Graph.nodes
+			@node = @node.data @nodes
 
 			@node
 			.enter()

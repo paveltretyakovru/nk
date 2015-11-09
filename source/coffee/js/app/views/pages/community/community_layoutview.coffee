@@ -11,14 +11,17 @@ define ( require ) ->
 		className 	: '.main-wrap'
 
 		initialize : ->
+
 			@on 'render' , @afterRender , @
 		# end INITIALIZE
 
 		onShow : ->
+			w = @$el.find("#viewport-left").width()
+			h = @$el.find("#viewport-left").height()
 			# Отрисовываем плавающий график
-			@nodesLeft = new Nodes 'viewport-left'
+			@nodesLeft = new Nodes 'viewport-left', w, h
 			@nodesLeft.render
 
-			@nodesRight = new Nodes 'viewport-right'
+			@nodesRight = new Nodes 'viewport-right', w, h
 			@nodesRight.render
 

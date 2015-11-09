@@ -11,9 +11,12 @@ define(function(require) {
       return this.on('render', this.afterRender, this);
     },
     onShow: function() {
-      this.nodesLeft = new Nodes('viewport-left');
+      var h, w;
+      w = this.$el.find("#viewport-left").width();
+      h = this.$el.find("#viewport-left").height();
+      this.nodesLeft = new Nodes('viewport-left', w, h);
       this.nodesLeft.render;
-      this.nodesRight = new Nodes('viewport-right');
+      this.nodesRight = new Nodes('viewport-right', w, h);
       return this.nodesRight.render;
     }
   });
