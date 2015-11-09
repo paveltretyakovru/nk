@@ -6,40 +6,49 @@ require(['app/app', 'pace', 'app/routes', 'controllers/desktop'], function(app, 
   window.FAST_LOADER = true;
   imagesSrcs = ["src/images/back_loader_logo.svg", "src/images/front_loader_logo.svg"];
   app.elements.loaders = [];
-  preloadObjects(imagesSrcs, app.elements.loaders, function() {
-    app.elements.loaders[0].className = 'loader-logo-back';
-    app.elements.loaders[1].className = 'loader-logo-front';
-    return app.animations.showLoader(function() {
-      if (loaded) {
-        if (!FAST_LOADER) {
-          return app.animations.hideLoader(function() {
-            app.appRouter = new Routes({
-              controller: new Desktop()
+  if (!FAST_LOADER) {
+    preloadObjects(imagesSrcs, app.elements.loaders, function() {
+      app.elements.loaders[0].className = 'loader-logo-back';
+      app.elements.loaders[1].className = 'loader-logo-front';
+      return app.animations.showLoader(function() {
+        if (loaded) {
+          if (!FAST_LOADER) {
+            return app.animations.hideLoader(function() {
+              app.appRouter = new Routes({
+                controller: new Desktop()
+              });
+              return app.start();
             });
-            return app.start();
-          });
+          } else {
+            return app.animations.fastHideLoader(function() {
+              app.appRouter = new Routes({
+                controller: new Desktop()
+              });
+              return app.start();
+            });
+          }
         } else {
-          return app.animations.fastHideLoader(function() {
-            app.appRouter = new Routes({
-              controller: new Desktop()
-            });
-            return app.start();
-          });
+          return loaded = true;
         }
+      });
+    });
+    pace.on('done', function() {
+      if (loaded) {
+        return app.animations.hideLoader(function() {
+          return app.start();
+        });
       } else {
         return loaded = true;
       }
     });
-  });
-  pace.on('done', function() {
-    if (loaded) {
-      return app.animations.hideLoader(function() {
-        return app.start();
+  } else {
+    pace.on('done', function() {
+      app.appRouter = new Routes({
+        controller: new Desktop()
       });
-    } else {
-      return loaded = true;
-    }
-  });
+      return app.start();
+    });
+  }
   pace.start({
     document: false
   });
