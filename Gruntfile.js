@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          port: 666
+          port: 3012
         }
       }
     } ,
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
       } ,
 
       build : {
-        expand  : true            , 
+        expand  : true            ,
         cwd     : 'source/coffee' ,
         src     : '**/*.coffee'   ,
         dest    : 'src'           ,
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
 
     compass : {
       dist : {
-        options : {          
+        options : {
           cssDir    : "src/css" ,
           sassDir   : "source/sass" ,
           imagesDir : "src/images"
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
   });
 
   grunt.event.on('watch', function(action, filepath) {
-    
+
     var replace , root;
 
     if(filepath.indexOf('.haml') === -1) return;
@@ -87,15 +87,15 @@ module.exports = function(grunt) {
     }
 
     root            = (proto) ? '' : 'src'
-    
-    var file        = {};    
+
+    var file        = {};
     var destfile    = filepath.replace( '.haml','.html' );
     destfile        = destfile.replace(  replace , root );
     file[destfile]  = filepath;
 
     console.log('Parts: ' , replace , root);
     console.log('Compile file ' + filepath + ' to ' + destfile );
-    
+
     grunt.config('haml.watch.files', file);
   });
 
@@ -104,7 +104,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-watch'   );
   grunt.loadNpmTasks( 'grunt-contrib-compass' );
   grunt.loadNpmTasks( 'grunt-contrib-connect' );
-  
+
   grunt.registerTask( 'default', [ 'connect' , 'haml' , 'coffee' , 'watch'] );
 
 };
