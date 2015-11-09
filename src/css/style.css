@@ -193,7 +193,6 @@ body {
 
 /* line 32, ../../source/sass/style.sass */
 #region-header {
-  position: absolute;
   width: 100%;
   z-index: 90;
 }
