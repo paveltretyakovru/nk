@@ -1,8 +1,8 @@
 @charset "UTF-8";
-/* Цвета дизайна */
+/* ╨ж╨▓╨╡╤В╨░ ╨┤╨╕╨╖╨░╨╣╨╜╨░ */
 /* COLORS */
-/* Своя библиотека анимации */
-/* Крутим элементы (селектор , секунды (4sec) ) */
+/* ╨б╨▓╨╛╤П ╨▒╨╕╨▒╨╗╨╕╨╛╤В╨╡╨║╨░ ╨░╨╜╨╕╨╝╨░╤Ж╨╕╨╕ */
+/* ╨Ъ╤А╤Г╤В╨╕╨╝ ╤Н╨╗╨╡╨╝╨╡╨╜╤В╤Л (╤Б╨╡╨╗╨╡╨║╤В╨╛╤А , ╤Б╨╡╨║╤Г╨╜╨┤╤Л (4sec) ) */
 @-webkit-keyframes spin_animation {
   100% {
     -moz-transform: rotate(360deg);
@@ -112,9 +112,9 @@
   }
 }
 /* End fadein function */
-/* Дефолтны
+/* ╨Ф╨╡╤Д╨╛╨╗╤В╨╜╤Л
  * box-sizing : padding-box */
-/* Отступ по краям */
+/* ╨Ю╤В╤Б╤В╤Г╨┐ ╨┐╨╛ ╨║╤А╨░╤П╨╝ */
 /* line 26, ../../source/sass/achievments.sass */
 * {
   box-sizing: border-box;
@@ -320,43 +320,12 @@ section.global_achievment_page_bg {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* line 196, ../../source/sass/achievments.sass */
-.edit_profile_all:before {
-  content: "";
-  display: block;
-  position: absolute;
-  height: 320px;
-  width: 320px;
-  top: 8px;
-  left: -192px;
-  background: url("../images/key.svg");
-  z-index: 250;
-  float: left;
-}
-
-/* line 209, ../../source/sass/achievments.sass */
-.edit_profile_all:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 1px;
-  height: 100%;
-  left: 16px;
-  top: 0;
-  background: rgba(255, 255, 255, 0.1);
-  z-index: 200;
-}
-
 /* line 220, ../../source/sass/achievments.sass */
 .edit_profile_all {
   display: block;
   position: relative;
   min-height: 100%;
-  left: 136px;
   top: 0;
-  padding: 32px;
-  padding-left: 48px;
-  background: #282C34;
   z-index: 200;
 }
 /* line 231, ../../source/sass/achievments.sass */

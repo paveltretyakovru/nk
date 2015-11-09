@@ -755,9 +755,10 @@ section.right_menu a:hover {
   -moz-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  font-family: Bebas Neue;
 }
 
-/* line 391, ../../source/sass/style.sass */
+/* line 392, ../../source/sass/style.sass */
 .am-side:after {
   content: "";
   position: absolute;
@@ -768,7 +769,7 @@ section.right_menu a:hover {
   background-image: url(../images/key.svg);
 }
 
-/* line 400, ../../source/sass/style.sass */
+/* line 401, ../../source/sass/style.sass */
 .am-side:before {
   content: "";
   position: absolute;
@@ -780,43 +781,43 @@ section.right_menu a:hover {
   z-index: -1;
 }
 
-/* line 411, ../../source/sass/style.sass */
+/* line 412, ../../source/sass/style.sass */
 #profile_block1 {
   background: url("../images/bg_glow.jpg");
   background-size: cover;
   color: rgba(255, 255, 255, 0.9);
-  padding-top: 64px;
+  padding-top: 256px;
   padding-bottom: 32px;
 }
-/* line 421, ../../source/sass/style.sass */
+/* line 422, ../../source/sass/style.sass */
 #profile_block1 > div:first-child {
   vertical-align: top;
   width: 15%;
 }
-/* line 425, ../../source/sass/style.sass */
+/* line 426, ../../source/sass/style.sass */
 #profile_block1 > div:first-child img {
   position: relative;
   width: 320px;
   left: -110px;
   top: -88px;
 }
-/* line 431, ../../source/sass/style.sass */
+/* line 432, ../../source/sass/style.sass */
 #profile_block1 > div:last-child {
   width: 15%;
 }
-/* line 434, ../../source/sass/style.sass */
+/* line 435, ../../source/sass/style.sass */
 #profile_block1 .center-block {
   width: 69%;
 }
-/* line 437, ../../source/sass/style.sass */
+/* line 438, ../../source/sass/style.sass */
 #profile_block1 > div {
   display: inline-block;
 }
-/* line 441, ../../source/sass/style.sass */
+/* line 442, ../../source/sass/style.sass */
 #profile_block1 > div hgroup {
   margin: 50px 0px 32px 0px;
 }
-/* line 443, ../../source/sass/style.sass */
+/* line 444, ../../source/sass/style.sass */
 #profile_block1 > div hgroup h1 {
   color: #ECB72E;
   margin: initial;
@@ -825,23 +826,23 @@ section.right_menu a:hover {
   font-size: 48pt;
   line-height: 57.6pt;
 }
-/* line 451, ../../source/sass/style.sass */
+/* line 452, ../../source/sass/style.sass */
 #profile_block1 > div hgroup i {
   font-size: 40px;
   vertical-align: super;
   margin-left: 24px;
   color: gray;
 }
-/* line 457, ../../source/sass/style.sass */
+/* line 458, ../../source/sass/style.sass */
 #profile_block1 > div hgroup h5 {
   margin-top: 16px;
   font-size: 18pt;
 }
-/* line 460, ../../source/sass/style.sass */
+/* line 461, ../../source/sass/style.sass */
 #profile_block1 button {
   margin: 32px 16px 0px 0px;
 }
-/* line 463, ../../source/sass/style.sass */
+/* line 464, ../../source/sass/style.sass */
 #profile_block1 progress {
   background-color: rgba(236, 183, 46, 0.3);
   border: 0;
@@ -850,7 +851,7 @@ section.right_menu a:hover {
   width: 100%;
   display: block;
 }
-/* line 471, ../../source/sass/style.sass */
+/* line 472, ../../source/sass/style.sass */
 #profile_block1 progress::-webkit-progress-bar {
   background-color: rgba(236, 183, 46, 0.3);
   border: 0;
@@ -859,7 +860,7 @@ section.right_menu a:hover {
   width: 100%;
   display: block;
 }
-/* line 479, ../../source/sass/style.sass */
+/* line 480, ../../source/sass/style.sass */
 #profile_block1 progress::-webkit-progress-value {
   background-color: #ECB72E;
   border: 0;
@@ -868,7 +869,7 @@ section.right_menu a:hover {
   width: 100%;
   display: block;
 }
-/* line 487, ../../source/sass/style.sass */
+/* line 488, ../../source/sass/style.sass */
 #profile_block1 progress::-moz-progress-bar {
   background-color: rgba(236, 183, 46, 0.3);
   border: 0;
@@ -877,17 +878,17 @@ section.right_menu a:hover {
   width: 100%;
   display: block;
 }
-/* line 496, ../../source/sass/style.sass */
+/* line 497, ../../source/sass/style.sass */
 #profile_block1 .skills {
   letter-spacing: 3px;
   margin-top: 56px;
   margin-bottom: 56px;
 }
-/* line 501, ../../source/sass/style.sass */
+/* line 502, ../../source/sass/style.sass */
 #profile_block1 .skills p {
   margin-bottom: 16px;
 }
-/* line 504, ../../source/sass/style.sass */
+/* line 505, ../../source/sass/style.sass */
 #profile_block1 .skills p span {
   color: rgba(255, 255, 255, 0.9);
   margin-right: 8px;
@@ -895,13 +896,13 @@ section.right_menu a:hover {
   font-size: 20pt;
   line-height: 24pt;
 }
-/* line 511, ../../source/sass/style.sass */
+/* line 512, ../../source/sass/style.sass */
 #profile_block1 .skills p a {
   color: rgba(255, 255, 255, 0.9);
   font-size: 14pt;
   line-height: 16.8pt;
 }
-/* line 516, ../../source/sass/style.sass */
+/* line 517, ../../source/sass/style.sass */
 #profile_block1 .skills li {
   float: left;
   width: 16%;
@@ -909,33 +910,33 @@ section.right_menu a:hover {
   margin-left: 5px;
   text-align: center;
 }
-/* line 523, ../../source/sass/style.sass */
+/* line 524, ../../source/sass/style.sass */
 #profile_block1 .skills li span:last-child {
   color: #282C34;
   font-size: 10pt;
   font-family: "Lora";
 }
-/* line 528, ../../source/sass/style.sass */
+/* line 529, ../../source/sass/style.sass */
 #profile_block1 .skills li img {
   width: 100%;
   margin-bottom: 16px;
 }
-/* line 534, ../../source/sass/style.sass */
+/* line 535, ../../source/sass/style.sass */
 #profile_block1 .color-orange {
   color: #ECB72E !important;
 }
-/* line 537, ../../source/sass/style.sass */
+/* line 538, ../../source/sass/style.sass */
 #profile_block1 .level-statistic-body {
   font-family: Bebas Neue;
   font-size: 12pt;
   line-height: 14.4pt;
   letter-spacing: 2px;
 }
-/* line 543, ../../source/sass/style.sass */
+/* line 544, ../../source/sass/style.sass */
 #profile_block1 .level-statistic-body .level-statistic-maxmin {
   color: #ECB72E;
 }
-/* line 549, ../../source/sass/style.sass */
+/* line 550, ../../source/sass/style.sass */
 #profile_block1 .level-statistic-body .level-statistic-maxmin span:last-child {
   float: right;
 }

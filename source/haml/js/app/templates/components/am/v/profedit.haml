@@ -1,0 +1,24 @@
+%section.edit_profile_all
+	%header.edit_profile_header
+		%a Назад
+		%h6 Достижения
+	%section.edit_profile_list
+		%form.edit_profile_form{:action => "", :method => "get"}
+			%header
+				%h2 Редактирование профиля
+				%h3 Хорошо заполненный профиль способствует увеличению полезных знакомств
+			%fieldset
+				%legend	Основная информация
+				%input{:type => "text", :name => "input", :placeholder => "ФИО"}
+				%input{:type => "text", :name => "input", :placeholder => "Город"}
+				%input{:type => "text", :name => "input", :placeholder => "Рабочая должность"}
+				%input{:type => "text", :name => "input", :placeholder => "Компания работодатель"}
+				%input.large{:type => "text", :name => "input", :placeholder => "Напишите о ваших увлечениях, так будет проще найти людей со схожими интересами."}
+			%fieldset
+				%legend	Регистрационные данные
+				%input{:type => "text", :name => "input", :placeholder => "Номер телефона"}
+			%fieldset
+				%legend	зменить пароль
+				%input{:type => "text", :name => "input", :placeholder => "Старый пароль"}
+				%input{:type => "text", :name => "input", :placeholder => "Новый пароль"}
+			%button{:type=>"sumbit", :name=>"sumbit"} Сохранить

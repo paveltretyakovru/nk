@@ -67,6 +67,7 @@ define(['require', 'exports', 'marionette', 'gsap', 'system/helpers'], function(
     preparePatient: function(link_object) {
       link_object.el.addEventListener('click', (function(_this) {
         return function() {
+          console.log('CLICK ELEMENT');
           _this.setCurrent({
             view: link_object.view,
             el: _this.cM.findWhere({

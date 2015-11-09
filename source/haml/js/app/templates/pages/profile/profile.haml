@@ -1,6 +1,67 @@
-﻿%section#philosophie_block3
-	.cont-wrap
-		%h3 ВИТАЛИЙ ПИХОНТ
-		%br
-		%h5 Санкт-Петербург, Россия
-		-# %h4 %h6
+﻿%section#profile_block1
+	%div
+		%img{:src=>"./src/images/for-photo.svg" , :alt=>"Profile photo"}
+
+	%div.center-block
+		%div					
+			%hgroup
+				%h1	ВИТАЛИЙ ПИХОНТ
+				%a{ :data => { :component => 'am' , :am_view => 'profedit' } } 
+					%i.fa.fa-cog
+				%h5 Санкт-Петербург, Россия
+		
+		%div.level-statistic-body
+			%h6 4525 очков для следующиего уровня
+			%progress{ :value => 50 , :max => 100}
+			%span.level-statistic-maxmin
+				%span 700
+				%span 5225
+
+		%div
+			%button.button-dark Забронировать место
+			%button.button-dark Назначить встречу
+
+		%div.skills
+			%p
+				%span Достижения
+				%span.color-orange 3/25
+				%a Посмотреть все
+
+			%ul
+				%li
+					%img{:src=>"./src/images/skills_masks.svg"}
+					%span Маскировка
+					%span 21.09.15			
+				%li
+					%img{:src=>"./src/images/skills_masks.svg"}
+					Чувство стиля
+					21.09.15
+				%li
+					%img{:src=>"./src/images/skills_masks.svg"}
+					Маскировка
+					21.09.15
+				%li
+					%img{:src=>"./src/images/skills_masks.svg"}
+					Абсолютное здоровье
+					21.09.15
+				%li
+					%img{:src=>"./src/images/skills_masks.svg"}
+					Звездная болезнь
+					21.09.15
+				%li
+					%img{:src=>"./src/images/skills_masks.svg"}
+					Приятный бонус
+					21.09.15	
+
+		%div.skills
+			%p
+				%span Навыйки
+				%span.color-orange 1 ОЧКО
+				%a Посмотреть все
+
+			%ul
+				%li 1 Навыйки
+				%li 2 Навыйки
+				%li 3 Навыйки
+				%li 4 Навыйки
+	%div

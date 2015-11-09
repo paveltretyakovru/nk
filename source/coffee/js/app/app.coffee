@@ -15,7 +15,7 @@ define ['utils/listener','system/animations','components/components','handlebars
 			@utils 			= {}
 			@utils.Listener = new Listener {}
 			@components 	= Components
-			@hostUrl 		= 'http://localhost:3000'
+			@hostUrl 		= 'http://192.168.1.39:82'
 
 		preload	: -> console.log 'app/app : preload function ' if @debug; Backbone.history.start()
 		Rivets 	: rivets # Определен в шиме

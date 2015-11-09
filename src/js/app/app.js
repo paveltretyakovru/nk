@@ -16,7 +16,7 @@ define(['utils/listener', 'system/animations', 'components/components', 'handleb
       this.utils = {};
       this.utils.Listener = new Listener({});
       this.components = Components;
-      return this.hostUrl = 'http://localhost:3000';
+      return this.hostUrl = 'http://192.168.1.39:82';
     },
     preload: function() {
       if (this.debug) {

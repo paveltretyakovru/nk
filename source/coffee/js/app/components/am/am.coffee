@@ -64,6 +64,7 @@ define ['require' , 'exports' , 'marionette' , 'gsap' , 'system/helpers'] , ( re
 
 			# Устанавливаем клик на новую найденую сслыку
 			link_object.el.addEventListener 'click' , =>
+				console.log 'CLICK ELEMENT'
 				@setCurrent view : link_object.view , el : @cM.findWhere( view : link_object.view ).get('viewObj').el				
 				@showModal( link_object )
 
