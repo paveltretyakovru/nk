@@ -3,7 +3,7 @@
 
 
 @font-face {
-    font-family: 'bebas_neue_regularregular';
+    font-family: 'Bebas Neue Regular';
     src: url('bebasneue_regular-webfont.eot');
     src: url('bebasneue_regular-webfont.eot?#iefix') format('embedded-opentype'),
          url('bebasneue_regular-webfont.woff2') format('woff2'),
@@ -31,7 +31,7 @@
 
 
 @font-face {
-    font-family: 'loraregular';
+    font-family: 'Lora Regular';
     src: url('lora-regular-webfont.eot');
     src: url('lora-regular-webfont.eot?#iefix') format('embedded-opentype'),
          url('lora-regular-webfont.woff2') format('woff2'),

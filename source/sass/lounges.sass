@@ -5,6 +5,7 @@
 @import "compass/css3/transition"
 @import "compass/reset/utilities"
 @import "compass/css3/opacity"
+@import "compass/utilities/general/clearfix"
 
 /* Цвета дизайна */
 @import colors
@@ -37,27 +38,24 @@ h1
 	line-height : 64px
 
 h2 
-	font-family: Bebas Neue
+	font-family: Bebas Neue Regular
 	font-size: 48px
 	letter-spacing: 2px
 	color: #EBB22F
-
-h3 
+h3
 	font-family: Bebas Neue
-	font-weight: 300
-	font-size : 30px
+	font-size: 28px
 	letter-spacing: 2px
-	line-height : 24px
 
 h4 
 	font-size : 24px
 	line-height : 32px
-	font-family: Lora Regular
+	font-family: Lora
 	font-weight: 300
 
 h5
 	font-size: 18px
-	font-family: Lora Regular
+	font-family: Lora
 	font-weight: 300
 
 h6
@@ -73,7 +71,7 @@ p
 input
 	position : relative
 	height : 48px
-	width : 256px
+	width : 196px
 	background : rgba(255,255,255, .05)
 	box-shadow: inset rgba(255, 255, 255, .1) 0 0 0 1px
 	border: 0
@@ -109,31 +107,10 @@ section.login
 	padding 	: 80px
 	background 	: linear-gradient(left bottom, #17191F, #272B33)
 	z-index 	: 100
-	header
-		display: block
-		position: relative
-		float: none
-		height: auto
-		padding: 0
-		h2	
-			font-family: "Bebas Neue Book", sans-serif
-			font-size: 48px
-			letter-spacing: 2px
-			color: #EBB22F
-			margin-bottom: 32px
-		p
-			font-family: "Lora Regular", sans-serif
-			font-size: 18px
-			line-height: 28px
-			letter-spacing: 0px
-			color: white
-			width: 50%
-			margin-bottom: 32px
+
 	input 
 		margin-bottom: 40px
 		margin-right: 16px
-	a
-		letter-spacing: 0
 
 section.login:after
 	content: ''
@@ -215,96 +192,71 @@ body
 	background: white
 
 // Landing
+	
 #liberty_block1
 	display: relative
 	position: relative
 	width: 100%
 	height: 100%
-	padding: 64px
+	padding: 200px 40px 40px 40px
 
-	display: flex
-	flex-direction: column
-	flex-grow: 1
-	justify-content: space-between
+	background: url("../images/places/places_bg_1_gradient.png"), url("../images/places/places_bg_1.png")
+
+	// display: flex
+	// flex-direction: column
+	// flex-grow: 1
+	// justify-content: space-between
+	#liberty_herb
+		position: absolute
+		display: block
+		top: 15%
+		left: 60%
+		height: 70%
 
 	header
-		img 
-			float: left
-		nav
-			height: 40px
-			line-height: 44px
-			float : right
-			a
-				font-size : 18px
-				margin-left: 16px
-				font-family: Bebas Neue
-				font-weight: 300
-
-			img
-				margin-left: 16px
-				float: right
-
-	h1 
-		margin-bottom: 0
-
-	h4
-		font-family: Lora Regular
-		margin-bottom	: 48px
-		margin-top		: 40px
-
-	figcapation
-		font-family		: Bebas Neue
-		font-size 		: 18pt		
-		opacity 		: 1
-		letter-spacing 	: 2px
-
-	.informationlib
-		margin-bottom: 32px
+		margin-bottom: 64px
+		h1
+			font-family: Bebas Neue
+			font-size: 60px
+			letter-spacing: 3px
+			color: #E4B33A
+		h4
+			font-family: Lora
+			font-size: 18px
+	section
+		display: block
+		margin-bottom: 64px
+		+clearfix
+		
 		figure
-			float: none
-			margin-left: 0
+			float: left
+			+clearfix
 			margin-right: 32px
+			
 			img
 				float: left
 				margin-right: 8px
 			figcapation
-				font-size: 14px
-				text-align: left
-				line-height: 16px
+				font-family		: "Bebas Neue", sans-serif
+				font-size 		: 18px		
+				line-height: 20px
+				letter-spacing 	: 2px
 				float: left
-
-	.liberactions
+	section.liberactions
+		display: block
+		margin-bottom: 80px
 		button
 			margin-right: 16px
-			border 		: none
-			color 		: #fff			
-
-		button.button-dark
-			position : relative
-			height : 48px
-			width : 256px
-			//border : 2px solid rgba(60,66,72,.5)
-			border : 2px solid $color_orange
-			background: none
-			padding: 0 16px 0 16px
-			line-height: 24px
-			text-align: left
-			font-size : 14px
-
-		button.button-dark:after
-			content: ''
-			width: 24px
-			height: 24px
-			float: right
-			background-image: url(../images/goto.svg)
+	footer
+		position: relative
+		display: block
+		height: 20px
+		bottom: 0
 
 // About us
 #liberty_block2
-	padding: 64px 64px 128px 64px
-	height: 464
+	padding: 40px
 	background: $color_gray
-	//-webkit-column-count: 2
-	//-webkit-column-gap: 48px
 	h4
 		margin-bottom: 26px
 		line-height: 1.6
@@ -365,7 +317,7 @@ body
 
 	h2 
 		font-size: 36px
-		font-family: Bebas Neue
+		font-family: "Bebas Neue", sans-serif
 		letter-spacing: 4px
 		margin-bottom: 32px
 		color: #F2AE32
@@ -410,10 +362,13 @@ body
 			color : #EBB22F
 		h5
 			margin-bottom: 32px
+
 		p 
 			margin-bottom: 32px
 			font-size: 14px
 			line-height: 24px
+		
+
 
 #liberty_block5
 	display: block
@@ -451,8 +406,9 @@ body
 
 	img
 		position: relative
-		height: 300px
-		top: 150px
+		display: inline-block
+		height: 320px
+		top: 180px
 		
 #community_block2
 	display: block
@@ -468,7 +424,7 @@ body
 
 		margin-bottom: 16px
 
-		font-family: "Bebas Neue", sans-serif
+		font-family: Bebas Neue
 		font-weight: 300
 		line-height: 1.2
 		letter-spacing: 4px
@@ -490,7 +446,7 @@ body
 
 		margin-bottom: 64px
 
-		font-family: "Lora", sans-serif
+		font-family: Lora
 		font-size: 18px
 		line-height: 1.5
 		letter-spacing: 0
@@ -506,13 +462,13 @@ body
 		h4
 			margin-bottom: 16px
 
-			font-family: "Bebas Neue", sans-serif
+			font-family: Bebas Neue
 			font-weight: 300
 			line-height: 1.2
 			letter-spacing: 4px
 
 		p
-			text-align: justify
+			text-align: center
 	img
 		width: 80px
 		height: 80px
@@ -521,7 +477,7 @@ body
 	position: relative
 	overflow: hidden
 	width: 100%
-	padding: 40px 80px 0px 80px
+	padding: 80px 80px 0px 80px
 	text-align: center
 	background: url('../images/bg_glow.jpg')
 
@@ -606,7 +562,7 @@ body
 
 		margin-bottom: 16px
 
-		font-family: "Bebas Neue", sans-serif
+		font-family: Bebas Neue
 		font-weight: 300
 		line-height: 1.2
 		letter-spacing: 4px
@@ -683,8 +639,8 @@ body
 
 	img
 		position: relative
-		width: 50%
-		top: 10%
+		height: 50%
+		top: 25%
 		
 #philosophie_block2
 	display: block
@@ -713,7 +669,7 @@ body
 
 		margin-bottom: 64px
 
-		font-family: "Lora", sans-serif
+		font-family: Lora
 		font-size: 18px
 		line-height: 1.5
 		letter-spacing: 0
@@ -734,8 +690,7 @@ body
 	width: 100%
 	padding: 120px 80px
 	text-align: left
-	background: url('../images/bg_glow.jpg')
-	background-size: cover
+	background: black
 
 	.cont-wrap
 		display: block
@@ -793,10 +748,12 @@ body
 	position: relative
 	width: 100%
 	height: 100%
-	padding: 196px 80px 160px 80px
 	text-align: left
 	background: black
-
+	padding: 80px
+	padding: 200px
+	background: url(../images/konovalov_photo.jpg)
+	background-size: cover
 	h3
 		display: block
 		width: 100%
@@ -805,16 +762,15 @@ body
 		margin-bottom: 16px
 
 		font-size: 48px
-		font-family: "Bebas Neue", sans-serif
+		font-family: Bebas Neue
 		font-weight: 300
 		line-height: 1.2
 		letter-spacing: 4px
 
 	p
 		display: inline-block
-		opacity: 0.5
 		width: 40%
-
+		color: rgba(255,255,255,0.5)
 		margin-bottom: 64px
 
 		font-size: 16px
@@ -824,7 +780,7 @@ body
 		display: inline-block
 		color: #EBB22F
 
-		font-family: "Bebas Neue", sans-serif
+		font-family: Bebas Neue
 		font-size: 24px
 		font-weight: 300
 		line-height: 1.2
@@ -833,7 +789,7 @@ body
 	h6
 		margin-bottom: 32px
 
-		font-family: "Lora", sans-serif
+		font-family: Lora 
 		font-size: 14px
 		line-height: 1.5
 		letter-spacing: 0
@@ -868,7 +824,7 @@ body
 
 		margin-bottom: 32px
 
-		font-family: "Lora", sans-serif
+		font-family: Lora
 		font-size: 14px
 		line-height: 1.5
 		letter-spacing: 0

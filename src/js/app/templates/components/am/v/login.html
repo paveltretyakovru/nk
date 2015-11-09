@@ -1,13 +1,15 @@
 <div class='autn-section'>
   <header>
     <h2>Войти</h2>
-    <p>На сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —</p>
-    <a data-am-view='reg' data-component='am'>зарегистрируйтесь</a>
+    <p>
+      На сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
+      <a class='reg_new_user' data-am-view='reg' data-component='am'>зарегистрируйтесь.</a>
+    </p>
   </header>
   <form action='' id='form-login' method='get'>
     <input name='phone' placeholder='Номер телефона' rv-value='model:phone' type='text'>
     <input name='password' placeholder='Пароль' rv-value='model:password' type='text'>
     <button name='sumbit' type='sumbit'>Войти</button>
   </form>
-  <a data-am-view='forgotpassword' data-component='am'>Вы забыли пароль?</a>
+  <a class='forgot_pass' data-am-view='forgotpassword' data-component='am'>Вы забыли пароль?</a>
 </div>

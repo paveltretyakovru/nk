@@ -4,6 +4,7 @@ define ['marionette' , 'text!tmpls/parts/header/header.html'] , ( Marionette , T
 	Marionette.LayoutView.extend		
 		template : Template
 		tagName  : 'header'		
+		className: 'header_menu'
 		ui 		 : 'linkMenu' 			: '.js-link-menu'
 		events 	 : 'click @ui.linkMenu'	: 'showMenu'
 		

@@ -1,4 +1,5 @@
 @import compass/reset/utilities
+
 +global-reset()
 
 @import compass
@@ -7,6 +8,9 @@
 @import compass/css3/box-shadow
 @import compass/css3/transition
 @import compass/css3/opacity
+@import "compass/utilities/general/clearfix"
+@import "compass/css3/flexbox"
+@import "compass/css3/filter"
 
 /* Цвета дизайна */
 @import colors
@@ -31,8 +35,8 @@ body
 
 #region-animated-modal
 	overflow 	: hidden
-
-header
+// Хидер общий
+.header_menu
 	height 		: 40px
 	padding 	: 60px 40px 60px
 	
@@ -298,6 +302,7 @@ section.left_menu
 		margin-bottom: 24px
 	a
 		color: #ECB72E
+		letter-spacing: 0
 
 	footer
 		margin-top: 64px
@@ -349,17 +354,46 @@ section.right_menu
 	cursor: pointer
 
 // Login
+.autn-section header
+	display: block
+	position: relative
+
+	float: none
+	height: auto
+	padding: 0
+	margin: 0
+	margin-bottom: 32px
+
 .autn-section h2
 	color: $color_orange
-	margin-bottom: 16px
-
-.autn-section h3
-	width: 50%
+	font-family: Bebas Neue
+	font-size: 48px
+	letter-spacing: 2px
+	color: #EBB22F
 	margin-bottom: 32px
+.reg_new_user
+	font-family: Lora
+	font-size: 18px
+	line-height: 28px
+	letter-spacing: 0px 
+.forgot_pass
+	font-family: Open Sans
+	font-size: 14px
+	color: white
+	letter-spacing: 0px 
+.autn-section p
+	font-family: Lora
+	font-size: 18px
+	line-height: 28px
+	letter-spacing: 0px
+	color: white
+	width: 50%
+
 
 .autn-section input 
 	margin-bottom: 40px
 	margin-right: 16px
+	color: white
 
 // Community
 #viewport	
@@ -520,7 +554,7 @@ section.right_menu
 			span:last-child
 				color : $color_gray
 				font-size 		: 10pt
-				font-family		: 'Lora'
+				font-family		: "Lora Regular"
 		
 		li img
 			width 			: 100%
@@ -550,10 +584,10 @@ section.right_menu
 .section_1_bg
 	display: relative
 	padding-top: 120px
-	min-height: 70%
+	min-height: 60%
 	background: url("../images/places/places_bg_1_gradient.png"), url("../images/places/places_bg_1.png")
 	background-size: 100% 100% , 100% 100%
-	margin-bottom: 160px
+	margin-bottom: 120px
 	h1
 		font-family: Bebas Neue
 		font-size: 60px
@@ -563,18 +597,18 @@ section.right_menu
 		width: 75%		
 		margin: 96px 0 32px 0
 		text-align 	: left
-	h3
-		font-family: "Lora Regular", sans-serif
+	p
+		font-family: Lora
 		font-size: 16px
 		line-height: 24px
 		letter-spacing: 0
 		color: rgba(255,255,255,0.5)
-
 		width: 30%
-		margin-bottom: 32px
+		min-width: 420px
 		text-align	: left
 	button
-		margin-bottom: 64px
+		display: block
+		margin-top: 48px
 
 .instruments
 	display: block
@@ -609,84 +643,100 @@ hr
 	margin-bottom : 32px
 	height : 1px
 	background : white
-	+opacity(.4)
+	+opacity(.2)
 	margin 		: 0 40px 30px 40px
 
 // Все по карточкам заведений
 
 section.lounges
-	+display-flex(flex)
-	+justify-content(center)
-	padding : 0 40px 0
+	position: relative
 
+	padding: 0 40px
+	width: 100%
 
-$url_0: url(../images/venzel-corner.svg)
-
-article.lounge 
-	display : inline-block
-	position : relative
-	min-width : 280px
-	border-radius: 8px
-	margin-bottom: 20px
-	overflow: hidden
-	background: red
-
-	.frontside
-		position: relative
-		color : black
-		text-align : center
-		background: linear-gradient(white, #E0E8EE)
-		// $url_0 left 16px top 16px no-repeat, $url_0 right 16px top 16px no-repeat, $url_0 left 16px bottom 16px no-repeat, $url_0 right 16px bottom 16px no-repeat,
-		padding: 40px
-		z-index: 50
+	div
+		text-align: justify
+		article.lounge:last-child
+			margin-right: 0
 		
-	.frontside:before
-		content: ''
-		display: block
-		position: absolute
-		top: 8px
-		left: 8px
-		width: calc(100% - 16px)
-		height: calc(100% - 16px)
-		box-shadow: inset rgba(122, 195, 108, .5) 0 0 0 2px
-		border-radius: 4px
+		article.lounge
+			display: inline-block
+			position : relative
+			min-width : 290px
+			margin-right: 16px
 
-	.frontside:after
-		content: ''
-		display: block
-		position: absolute
-		top: 12px
-		left: 12px
-		width: calc(100% - 24px)
-		height: calc(100% - 24px)
-		box-shadow: inset rgba(122, 195, 108, .25) 0 0 0 1px
-		border-radius: 2px
+			margin-bottom: 20px
+			overflow: hidden
+			+border-radius(8px)
+			$url_0: url(../images/venzel-corner.svg)
+			.frontside
+				position: relative
+				color : black
+				text-align : center
+				background: linear-gradient(white, #E0E8EE)
+				// $url_0 left 16px top 16px no-repeat, $url_0 right 16px top 16px no-repeat, $url_0 left 16px bottom 16px no-repeat, $url_0 right 16px bottom 16px no-repeat,
+				padding: 40px
+				z-index: 50
+				+border-radius(8px)
+				overflow: hidden
 
-	.frontside img 
-		margin-bottom: 48px
-		width : 100%
-		background: red
+				img 
+					margin-bottom: 48px
+					width : 100%
 
-	.frontside h4 
-		margin-bottom: 8px
-		font-family: "Bebas Neue Book", sans-serif
-		font-size: 24px
-		letter-spacing: 4px
-	
-	.frontside small
-		font-family	: "Lora Regular", sans-serif
-		font-size	: 12px
-		color 		: $color_gray
+				h4 
+					margin-bottom: 8px
+					font-family: Bebas Neue
+					font-size: 24px
+					letter-spacing: 4px
 
-	.backside
-		position: absolute
-		display: block
-		left: 0
-		top: 0
-		width: 100%
-		height: 100%
-		background : #fff
-		z-index: 20
+				small
+					font-family	: Lora
+					font-size	: 12px
+					color 		: rgba(0,0,0,0.5)
+				
+			.frontside:before
+				content: ''
+				display: block
+				position: absolute
+				top: 8px
+				left: 8px
+				width: calc(100% - 16px)
+				height: calc(100% - 16px)
+				box-shadow: inset rgba(122, 195, 108, .5) 0 0 0 2px
+				border-radius: 4px
 
-.frontside , .backside
-	+backface-visibility( hidden )
+			.frontside:after
+				content: ''
+				display: block
+				position: absolute
+				top: 12px
+				left: 12px
+				width: calc(100% - 24px)
+				height: calc(100% - 24px)
+				box-shadow: inset rgba(122, 195, 108, .25) 0 0 0 1px
+				border-radius: 2px
+
+			.backside
+				position: absolute
+				display: block
+				left: 0
+				top: 0
+				width: 100%
+				height: 100%
+				background : #fff
+				z-index: 20
+				+border-radius(8px)
+				overflow: hidden
+
+			.frontside , .backside
+				+backface-visibility( hidden )
+
+
+
+
+
+
+
+
+
