@@ -23,7 +23,11 @@ define(function(require) {
       app.regionHeader.show(this.Header);
       app.regionMenu.show(this.Menu);
       return app.regionContent.on('show', function() {
-        return app.animations.showMain();
+        if (FAST_LOADER) {
+          return app.animations.fastShowMain();
+        } else {
+          return app.animations.showMain();
+        }
       });
     },
     run: function(pageName, pageParameters) {

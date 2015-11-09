@@ -19,7 +19,7 @@ define(['require', 'marionette', 'text!am/tmpl/login.html'], function(require, M
       });
     },
     doLogin: function(event) {
-      $.post(app.hostUrl + '/api/v1/auth/sessions.json', this.model.toJSON(), (function(_this) {
+      $.post(app.hostUrl + '/api/v1/auth/sessions', this.model.toJSON(), (function(_this) {
         return function(result) {
           return console.log("result login: ", result);
         };

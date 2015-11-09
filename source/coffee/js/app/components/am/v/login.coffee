@@ -13,6 +13,6 @@ define [ 'require' , 'marionette' , 'text!am/tmpl/login.html' ] , ( require , Ma
 		onRender 	: -> @binding = app.Rivets.bind @el , model : @model
 
 		doLogin 	: ( event ) ->
-			$.post app.hostUrl + '/api/v1/auth/sessions.json', @model.toJSON() , (result) =>
+			$.post app.hostUrl + '/api/v1/auth/sessions', @model.toJSON() , (result) =>
 				console.log "result login: " , result
 			event.preventDefault()

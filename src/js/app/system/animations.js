@@ -74,6 +74,31 @@ define(function(requrie) {
           }
         };
       })(this);
+      this.animations.fastShowMain = (function(_this) {
+        return function(onstart, callback) {
+          if (_this.tweens.hideMain != null) {
+            return _this.tweens.hideMain.reverse();
+          } else {
+            _this.tweens.showMain = new TimelineLite({
+              onStart: function() {
+                if (onstart != null) {
+                  return onstart();
+                }
+              },
+              onComplete: function() {
+                if (callback != null) {
+                  return callback();
+                }
+              },
+              paused: true
+            });
+            _this.tweens.showMain.set([_this.elements.main, _this.elements.header, _this.elements.content], {
+              autoAlpha: 1
+            });
+            return _this.tweens.showMain.play();
+          }
+        };
+      })(this);
       this.animations.showLoader = (function(_this) {
         return function(callback) {
           _this.elements.backLoaderSVG = app.elements.loaders[0].getSVGDocument().querySelectorAll('line');
