@@ -45,13 +45,13 @@ requirejs.config
 		'd3'					: 'bower_components/d3/d3.min'
 
 		# COMPONENTS
-		
+
 		###*
 		 * Animatedmodal компонента всплывающих окон
 		###
 		'am'					: 'src/js/app/components/am'				# Каталог с представлениыями
 		'am/tmpl'				: 'src/js/app/templates/components/am/v'	# Каталог с шаблонами am
-	    
+
 	    # TESTS
 		'spec'					: 'src/js/app/tests/spec'
 		'sinon'					: 'bower_components/sinonjs/sinon'

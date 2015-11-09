@@ -1,10 +1,9 @@
-      
-      <section class='content page-index-content section_1_bg'>
-        <h1>Посетите наши лучшие<br>уникальные места</h1>
-        <p>Наша кальянная – первая в мире территория для курения со свободной оплатой и индивидуальным подходом к каждому гостю и гостье.</p>
+      <section class='content page-index-content'>
+        <h1>Посетите наши лучшие <br /> уникальные заведения</h1>
+        <h3>Заведения нашей сети - первая в мире территория для курения со свободной оплатой и индивидуальным подходом к каждому клиенту.</h3>
         <button class="button-flat">Открыть</button>
       </section>
-      
+
       <section class='instruments'>
         <figure>
           <img alt='Поиск' height='16px' src='src/images/search.svg'>
@@ -21,8 +20,8 @@
       </section>
 
       <hr />
-      
-      <section class='lounges' id="region-lounges">        
+
+      <section class='lounges' id="region-lounges">
           <!-- Регион для карт -->
           <div class="justify_fix"></div>
       </section>
