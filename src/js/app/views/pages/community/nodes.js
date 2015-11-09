@@ -1,16 +1,17 @@
 define(function(require) {
   'use strict';
-  var Graph, Nodes;
+  var Nodes;
   require('d3');
-  Graph = require('views/pages/community/data');
   return Nodes = (function() {
     Nodes.prototype.w = 300;
 
     Nodes.prototype.h = 500;
 
-    Nodes.prototype.nodes = Graph.nodes;
+    Nodes.prototype.Graph = [];
 
-    Nodes.prototype.links = Graph.links;
+    Nodes.prototype.nodes = [];
+
+    Nodes.prototype.links = [];
 
     Nodes.prototype.node = {};
 
@@ -20,11 +21,14 @@ define(function(require) {
 
     Nodes.prototype.element = '';
 
-    function Nodes(el, w, h) {
+    function Nodes(el, w, h, graph) {
       var links, nodes, rightSide;
       this.element = el;
       this.w = w;
       this.h = h;
+      this.Graph = graph;
+      this.nodes = this.Graph.nodes;
+      this.links = this.Graph.links;
       rightSide = d3.select('#' + el).append('svg').attr('width', this.w).attr('height', this.h);
       rightSide.append('rect').attr('width', this.w).attr('height', this.h).attr('fill', 'none');
       this.node = rightSide.selectAll(el + '-node');
@@ -64,6 +68,9 @@ define(function(require) {
           return 0.3;
         }
       }).attr('stroke', '#F1AD2F').attr('stroke-width', function(link) {
+        if (link.root) {
+          return 0;
+        }
         if (link.z === 1) {
           return 1;
         } else {

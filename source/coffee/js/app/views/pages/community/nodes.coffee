@@ -2,14 +2,18 @@ define ( require ) ->
 	'use strict'
 
 	require 'd3'
-	Graph = require 'views/pages/community/data'
+	#Graph = require 'views/pages/community/data'
 
 	class Nodes
 		w: 300
 		h: 500
 
-		nodes: Graph.nodes
-		links: Graph.links
+		Graph: []
+
+		nodes: []
+		links: []
+
+
 
 		node: {}
 		link: {}
@@ -18,11 +22,13 @@ define ( require ) ->
 
 		element: ''
 
-		constructor: (el, w, h) ->
+		constructor: (el, w, h, graph) ->
 			@element = el
 			@w = w
 			@h = h
-
+			@Graph = graph
+			@nodes = @Graph.nodes
+			@links = @Graph.links
 			#_.each @nodes, (v) =>
 			#	v.y = v.y / 100 * @h
 
@@ -78,6 +84,8 @@ define ( require ) ->
 					return 0.3
 			.attr 'stroke', '#F1AD2F'
 			.attr 'stroke-width', (link) ->
+				if link.root
+					return 0
 				if link.z == 1
 					return 1
 				else

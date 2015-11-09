@@ -1,8 +1,8 @@
 @charset "UTF-8";
-/* ╨ж╨▓╨╡╤В╨░ ╨┤╨╕╨╖╨░╨╣╨╜╨░ */
+/* Цвета дизайна */
 /* COLORS */
-/* ╨б╨▓╨╛╤П ╨▒╨╕╨▒╨╗╨╕╨╛╤В╨╡╨║╨░ ╨░╨╜╨╕╨╝╨░╤Ж╨╕╨╕ */
-/* ╨Ъ╤А╤Г╤В╨╕╨╝ ╤Н╨╗╨╡╨╝╨╡╨╜╤В╤Л (╤Б╨╡╨╗╨╡╨║╤В╨╛╤А , ╤Б╨╡╨║╤Г╨╜╨┤╤Л (4sec) ) */
+/* Своя библиотека анимации */
+/* Крутим элементы (селектор , секунды (4sec) ) */
 @-webkit-keyframes spin_animation {
   100% {
     -moz-transform: rotate(360deg);
@@ -112,8 +112,8 @@
   }
 }
 /* End fadein function */
-/* ╨Ф╨╡╤Д╨╛╨╗╤В╨╜╤Л╨╡ ╨╛╤В╤Б╤В╤Г╨┐╤Л */
-/* ╨Ю╤В╤Б╤В╤Г╨┐ ╨┐╨╛ ╨║╤А╨░╤П╨╝ */
+/* Дефолтные отступы */
+/* Отступ по краям */
 /* line 19, ../../source/sass/lounges.sass */
 * {
   box-sizing: border-box;
@@ -911,29 +911,29 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 80px;
   text-align: center;
   background: url("../images/bg_glow.jpg");
   overflow: hidden;
 }
-/* line 683, ../../source/sass/lounges.sass */
+/* line 682, ../../source/sass/lounges.sass */
 #community_block5 #viewport-left {
   position: absolute;
   left: 0px;
   width: 300px;
   height: 100%;
 }
-/* line 689, ../../source/sass/lounges.sass */
+/* line 688, ../../source/sass/lounges.sass */
 #community_block5 #viewport-right {
   position: absolute;
   right: 0px;
   width: 300px;
   height: 100%;
 }
-/* line 695, ../../source/sass/lounges.sass */
+/* line 694, ../../source/sass/lounges.sass */
 #community_block5 .round {
   display: inline-block;
   position: relative;
+  margin-top: 80px;
   height: 160px;
   width: 160px;
   border-radius: 80px;

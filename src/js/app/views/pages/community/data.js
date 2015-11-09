@@ -49,7 +49,7 @@ define(function(require) {
         r: 10
       }, {
         id: 8,
-        x: 295,
+        x: 285,
         y: 8,
         r: 10
       }, {
@@ -64,7 +64,7 @@ define(function(require) {
         r: 6
       }, {
         id: 11,
-        x: 280,
+        x: 240,
         y: 40,
         r: 6
       }, {
@@ -84,7 +84,7 @@ define(function(require) {
         r: 6
       }, {
         id: 15,
-        x: 275,
+        x: 265,
         y: 465,
         r: 6
       }, {
@@ -248,13 +248,16 @@ define(function(require) {
         z: 1
       }, {
         source: 16,
-        target: 8
+        target: 8,
+        root: true
       }, {
         source: 17,
-        target: 7
+        target: 7,
+        root: true
       }, {
         source: 18,
-        target: 6
+        target: 6,
+        root: true
       }
     ]
   };
