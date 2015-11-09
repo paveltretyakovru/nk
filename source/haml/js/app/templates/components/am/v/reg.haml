@@ -1,10 +1,11 @@
 .autn-section
-	%h2 Регистрация
-	%h3
-		Регистрация нового пользователя. Если у вас	уже есть аккаунт -
-		%a{ :data => { :component => 'am' , :am_view => 'login' 	} } войдите
+	%header
+		%h2 Регистрация
+		%p 
+			Регистрация нового пользователя. Если у вас	уже есть аккаунт -
+			%a.reg_new_user{ :data => { :component => 'am' , :am_view => 'login' } }войдите.
 	%form{:action => "", :method => "get", :id => "form-reg" }
 		%input{:type => "text", :name => "phone", :placeholder => "Номер телефона"}
 		%input{:type => "text", :name => "name", :placeholder => "ФИО"}
 		%input{:type => "text", :name => "password", :placeholder => "Пароль"}
-		%button{:type=>"sumbit", :name=>"sumbit"} Зарегестрироваться
+		%button{:type=>"sumbit", :name=>"sumbit"} Зарегистрироваться

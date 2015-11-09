@@ -12,8 +12,7 @@
 .autn-section.login-side
 	%h2 Войти
 	%h3
-		Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта —
-		%a.js-registrate-from-login{ :href => '#' } зарегистрируйтесь
+		Вход на сайт для зарегистрированных пользователей, если у вас еще нет аккаунта — <a class="js-registrate-from-login" href="#">зарегистрируйтесь</a>
 	%form{:action => "", :method => "get", :id => "login_form" }
 		%input{:type => "text", :name => "phone", :placeholder => "Номер телефона"}
 		%input{:type => "text", :name => "password", :placeholder => "Пароль"}
