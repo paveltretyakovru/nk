@@ -756,3 +756,22 @@ section.right_menu a:hover {
   box-shadow: inset rgba(255, 255, 255, 0.1) 0 0 0 1px;
   z-index: -1;
 }
+
+/* line 389, ../../source/sass/style.sass */
+#profile_block1 div:first-child {
+  vertical-align: top;
+}
+/* line 391, ../../source/sass/style.sass */
+#profile_block1 > div {
+  display: inline-block;
+  border: 1px solid red;
+}
+/* line 395, ../../source/sass/style.sass */
+#profile_block1 > div * {
+  width: auto;
+}
+/* line 399, ../../source/sass/style.sass */
+#profile_block1 > div hgroup h1 {
+  color: #ECB72E;
+  margin-bottom: 15px;
+}
