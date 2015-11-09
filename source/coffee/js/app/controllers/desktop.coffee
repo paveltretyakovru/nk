@@ -10,6 +10,7 @@ define ( require ) ->
 		About		: require 'views/pages/about/about'
 		Community	: require 'views/pages/community/community_layoutview'
 		Philosophie	: require 'views/pages/philosophie/philosophie_layoutview'
+		Profile 	: require 'views/pages/profile/profile'
 
 	Marionette.Controller.extend
 		debug	: false
@@ -48,5 +49,6 @@ define ( require ) ->
 
 		Home 		: -> @.run 'Home'
 		About 		: -> @.run 'About'
+		Profile		: -> @.run 'Profile'
 		Community 	: -> @.run 'Community'
 		Philosophie : -> @.run 'Philosophie'

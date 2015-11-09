@@ -13,7 +13,8 @@ define(function(require) {
       '': 'Home',
       'about': 'About',
       'community': 'Community',
-      'philosophie': 'Philosophie'
+      'philosophie': 'Philosophie',
+      'profile': 'Profile'
     },
     onRoute: function() {
       return app.regionMenu.currentView.trigger('hashUpdated');

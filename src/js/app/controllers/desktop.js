@@ -8,7 +8,8 @@ define(function(require) {
     Home: require('views/pages/home/home'),
     About: require('views/pages/about/about'),
     Community: require('views/pages/community/community_layoutview'),
-    Philosophie: require('views/pages/philosophie/philosophie_layoutview')
+    Philosophie: require('views/pages/philosophie/philosophie_layoutview'),
+    Profile: require('views/pages/profile/profile')
   };
   return Marionette.Controller.extend({
     debug: false,
@@ -56,6 +57,9 @@ define(function(require) {
     },
     About: function() {
       return this.run('About');
+    },
+    Profile: function() {
+      return this.run('Profile');
     },
     Community: function() {
       return this.run('Community');
