@@ -4,6 +4,14 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg     : grunt.file.readJSON('package.json') ,
 
+    connect: {
+      server: {
+        options: {
+          port: 666
+        }
+      }
+    } ,
+
     haml  : {
 
       dist  : {
@@ -95,7 +103,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-coffee'  );
   grunt.loadNpmTasks( 'grunt-contrib-watch'   );
   grunt.loadNpmTasks( 'grunt-contrib-compass' );
+  grunt.loadNpmTasks( 'grunt-contrib-connect' );
   
-  grunt.registerTask( 'default', ['haml' , 'coffee' , 'watch'] );
+  grunt.registerTask( 'default', [ 'connect' , 'haml' , 'coffee' , 'watch'] );
 
 };
